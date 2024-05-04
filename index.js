@@ -7,7 +7,7 @@ $.getJSON( proj_url, function( data ) {
     var finish = ""
     $.each(data, function(d, a){
         console.log(a)
-        finish = finish + "<div class=\"col-md-4\"> <a class=\"link-offset-2 link-underline link-underline-opacity-0\" href=/\"/content/" + a.path + "\"> <div class=\"card mb-4 shadow-sm\"> <h2 class=\"card-title\"> " + a.name + " </h2> </div> </a> </div> ";
+        finish = finish + "<div class=\"col-md-4\"> <a class=\"link-offset-2 link-underline link-underline-opacity-0\" href=\"/" + a.path + "\"> <div class=\"card mb-4 shadow-sm\"> <h2 class=\"card-title\"> " + a.name + " </h2> </div> </a> </div> ";
     });
     $('#list').html(finish);
   }).fail(function(d) {
