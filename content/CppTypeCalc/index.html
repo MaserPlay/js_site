@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,13 +44,44 @@
 
             <div class="album py-5 bg-light">
                 <div class="container">
-                    <div class="row" id="list">
-                        <section class="jumbotron text-center">
-                            <div class="container">
-                                <h1>Its great time, to start coding... <a href="https://github.com/MaserPlay" class="link-offset-2 link-underline link-underline-opacity-0 text-primary">MaserPlay</a></h1>
-                            </div>
-                        </section>
+                    <div class="jumbotron text-center">
+                        <h2>There are many data types in c++, all of them differ in capacity. This calculator is
+                            designed to help you choose the type of data based on its capacity.</h2>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4 mb-3 mb-sm-0">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Max bytes</label>
+                                            <div class="input-group">
+                                                <input type="number" class="form-control" id="bytes" aria-describedby="basic-addon3 basic-addon4" value="1">
+                                                <span class="input-group-text">B</span><!-- Byte -->
+                                              </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">The data you want to save</label>
+                                            <select class="form-select" aria-label="Default select example" id="sel">
+                                                <option selected>Nothing selected</option>
+                                                <option value="char">Char</option>
+                                                <option value="number">Number</option>
+                                              </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" id="btn">Calc</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mb-6 mb-sm-0">
+                                <div
+                                  class="row align-items-center"
+                                  style="min-height: 15vh">
+                                  <h3 class="fw-light" id="answer"></h3>
+                                </div>
+                        </div>
+                      </div>
                 </div>
             </div>
 
@@ -63,7 +95,8 @@
                     <div class="col-auto">
                         <ul class="links pl-0 align-items-center">
                             <li>
-                                <a href="https://github.com/MaserPlay/js_site" title="Source Code on Github" rel="nofollow">Source Code</a>
+                                <a href="https://github.com/MaserPlay/js_site" title="Source Code on Github"
+                                    rel="nofollow">Source Code</a>
                             </li>
                             <li>
                                 <a href="https://maserplay.ru/" title="Main Site" rel="nofollow">Main Site</a>
