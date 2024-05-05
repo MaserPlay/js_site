@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="MaserPlay">
-    <title>JS MaserPlay's Projects</title>
+    <title>Cpptype calc - JS MaserPlay's Projects</title>
     <meta name="description" content="Things in Javascript">
     <link href="https://maserplay.ru/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://maserplay.ru/css/bootstrap-icons.min.css" rel="stylesheet" />
@@ -57,9 +57,17 @@
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Max bytes</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="bytes" aria-describedby="basic-addon3 basic-addon4" value="1">
+                                                <input type="number" class="form-control" id="bytes" aria-describedby="basic-addon3 basic-addon4" value="16">
                                                 <span class="input-group-text">B</span><!-- Byte -->
-                                              </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Сan store a value up to</label>
+                                            <input type="number" class="form-control" id="StoreTo" aria-describedby="basic-addon3 basic-addon4" value="18446744073709551615">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Can store a value up</label>
+                                            <input type="number" class="form-control" id="StoreUp" aria-describedby="basic-addon3 basic-addon4" value="0">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">The data you want to save</label>
@@ -67,7 +75,7 @@
                                                 <option selected>Nothing selected</option>
                                                 <option value="char">Char</option>
                                                 <option value="number">Number</option>
-                                              </select>
+                                            </select>
                                         </div>
                                         <button type="submit" class="btn btn-primary" id="btn">Calc</button>
                                     </div>
