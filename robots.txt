@@ -1,0 +1,6 @@
+User-agent: *
+Crawl-delay: 1
+Host: https://js.maserplay.ru
+Allow: /
+Allow: /content/
+Sitemap: https://js.maserplay.ru/sitemap.xml
