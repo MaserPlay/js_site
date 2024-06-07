@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="MaserPlay" />
+    <title>CSV reader - JS MaserPlay's Projects</title>
+    <meta name="description" content="This is .csv reader." />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://maserplay.ru/css/site.css"
+      rel="stylesheet"
+      asp-append-version="true"
+    />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CSV reader - JS MaserPlay's Projects" />
+    <meta property="og:description" content="This is .csv reader." />
+    <meta property="og:image" content="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <style>
+      .line {
+        display: flex;
+        width: auto;
+      }
+      .separator {
+        margin: 0px 10px 0px 10px;
+      }
+    </style>
+    <!-- Yandex.Metrika counter -->
+    <script async type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+          if (document.scripts[j].src === r) {
+            return;
+          }
+        }
+        (k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)[0]),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a);
+      })(
+        window,
+        document,
+        'script',
+        'https://mc.yandex.ru/metrika/tag.js',
+        'ym'
+      );
+
+      ym(97253488, 'init', {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+      });
+    </script>
+    <noscript
+      ><div>
+        <img
+          src="https://mc.yandex.ru/watch/97253488"
+          style="position: absolute; left: -9999px"
+          alt=""
+        /></div
+    ></noscript>
+    <!-- /Yandex.Metrika counter -->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-light bg-dark" data-bs-theme="dark">
+      <div class="container">
+        <div class="branding">
+          <a class="navbar-brand" style="margin-left: 1vh" href="/">
+            <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
+            <strong class="text-warning">js.</strong
+            ><strong>maserplay.ru</strong>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <main role="main" class="pb-3">
+        <noscript>
+          <section class="jumbotron text-center">
+            <div class="container">
+              <h1>
+                Please enable JavaScript. This is a website written entirely in
+                JavaScript.
+              </h1>
+            </div>
+          </section>
+        </noscript>
+
+        <div class="album py-5 bg-light">
+          <div class="container">
+            <div class="jumbotron text-center">
+              <h2>This is .csv reader.</h2>
+            </div>
+            <div class="line">
+              <input
+                class="form-control"
+                type="file"
+                id="csv_input"
+                accept=".csv"
+              />
+              <p class="form-label separator">Separator</p>
+              <input
+                type="text"
+                class="form-control"
+                id="input_sep"
+                value=";"
+              />
+            </div>
+            <div class="row">
+              <table class="table">
+                <thead></thead>
+                <tbody id="table_body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="text-muted bg-dark text-white">
+      <div class="container footer-container">
+        <div class="footer-content">
+          <div class="row">
+            <div class="col-auto">
+              <ul class="links pl-0 align-items-center">
+                <li>
+                  <a
+                    href="https://github.com/MaserPlay/js_site"
+                    title="Source Code on Github"
+                    rel="nofollow"
+                    >Source Code</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://maserplay.ru/"
+                    title="maserplay.ru"
+                    rel="nofollow"
+                    >Main Site</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://maserplay.ru/Donate"
+                    title="Donation without remuneration"
+                    rel="nofollow"
+                    >Donate me )</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script defer src="index.js"></script>
+  </body>
+</html>
