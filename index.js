@@ -5,9 +5,9 @@ $.getJSON( proj_url, function( data ) {
     }
     var finish = ""
     $.each(data, function(_d, a){
-        finish += "<div class=\"col-md-4\"> <a class=\"link-offset-2 link-underline link-underline-opacity-0 btn btn-warning\" id=\"elem\" style=\"opacity: 0;\" href=\"/" + a.path + "\"> <div class=\"mb-4\"> <h2  > " + a.name + " </h2> </div> </a> </div> ";
+        finish += "<div class=\"col-md-4\"> <a class=\"link-offset-2 link-underline link-underline-opacity-0 btn btn-warning\" id=\"elem\" href=\"/" + a.path + "\"> <div class=\"mb-4\"> <h2  > " + a.name + " </h2> </div> </a> </div> ";
         $('#list').html(finish);
-        $('#elem').fadeTo( 800 , 1)
+        //$('#elem').fadeTo( 800 , 1)
     });
   }).fail(function(d) {
     $('#list').html("<section class=\"jumbotron text-center\"> <div class=\"container\"> <h1>Its time, to fix <span class=\"text-danger\"> errors</span>... <a href=\"https://github.com/MaserPlay\" class=\"link-offset-2 link-underline link-underline-opacity-0 text-primary\">MaserPlay</a></h1> </div> </section>");
