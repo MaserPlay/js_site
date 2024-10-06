@@ -12,3 +12,31 @@ $.getJSON( proj_url, function( data ) {
   }).fail(function(d) {
     $('#list').html("<section class=\"jumbotron text-center\"> <div class=\"container\"> <h1>Its time, to fix <span class=\"text-danger\"> errors</span>... <a href=\"https://github.com/MaserPlay\" class=\"link-offset-2 link-underline link-underline-opacity-0 text-primary\">MaserPlay</a></h1> </div> </section>");
 });
+
+$('.scChngThm').on('click', function () {
+    document.cookie=`theme=${$(this).attr("val")};path=/`; document.location.reload()
+    return false;
+});
+function getCookie(name) {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith(name + '='));
+    return cookie ? cookie.split('=')[1] : null;
+  }
+function getTheme(){
+    return getCookie("theme") ?? "light";
+}
+  
+$('body,html').attr("data-bs-theme", getTheme())
+$('#theme-' + getTheme()).addClass("active")
+$('#theme-change').removeClass("bi-patch-question-fill")
+switch (getTheme()) {
+  case 'light':
+    $('#theme-change').addClass("bi-sun-fill");
+    break;
+  case 'dark':
+    $('#theme-change').addClass("bi-moon-fill");
+    break;
+  default:
+    console.error("cannot find " + getTheme() + "in this")
+    $('#theme-change').addClass("bi-patch-question-fill");
+    break;
+}

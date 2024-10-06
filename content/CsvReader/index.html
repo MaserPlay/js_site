@@ -17,6 +17,7 @@
       rel="stylesheet"
       asp-append-version="true"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="CSV reader - JS MaserPlay's Projects" />
@@ -78,17 +79,34 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-light bg-dark" data-bs-theme="dark">
-      <div class="container">
-        <div class="branding">
-          <a class="navbar-brand" style="margin-left: 1vh" href="/">
-            <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
-            <strong class="text-warning">js.</strong
-            ><strong>maserplay.ru</strong>
-          </a>
+    <header class="navbar border-bottom">
+        <div class="container">
+            <div class="branding">
+                <a class="navbar-brand" style="margin-left: 10px;" href="/">
+                    <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
+                    <strong class="text-warning">js.</strong><strong>maserplay.ru</strong>
+                </a>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 400px;">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">maserplay.ru</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                </div>
+                <noscript class="text-white">! Warning Javascript is disabled ! Some things may not work properly</noscript>
+            </div>
+            <div class="actions">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-sun-fill" data-bs-toggle="dropdown" aria-expanded="false"></button>
+                        <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                            <li><a class="dropdown-item scChngThm" id="theme-light" val="light" style="cursor: pointer;">Light</a></li>
+                            <li><a class="dropdown-item scChngThm" id="theme-dark" val="dark" style="cursor: pointer;">Dark</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </nav>
+    </header>
 
     <div class="container-fluid">
       <main role="main" class="pb-3">
@@ -103,7 +121,7 @@
           </section>
         </noscript>
 
-        <div class="album py-5 bg-light">
+        <div class="album py-5">
           <div class="container">
             <div class="jumbotron text-center">
               <h2>This is .csv reader.</h2>
@@ -134,43 +152,27 @@
       </main>
     </div>
 
-    <footer class="text-muted bg-dark text-white">
+    <footer class="text-muted text-secondary fixed-bottom">
       <div class="container footer-container">
-        <div class="footer-content">
-          <div class="row">
-            <div class="col-auto">
-              <ul class="links pl-0 align-items-center">
-                <li>
-                  <a
-                    href="https://github.com/MaserPlay/js_site"
-                    title="Source Code on Github"
-                    rel="nofollow"
-                    >Source Code</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://maserplay.ru/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link"
-                    title="maserplay.ru"
-                    rel="nofollow"
-                    >Main Site</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://maserplay.ru/Donate/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link"
-                    title="Donation without remuneration"
-                    rel="nofollow"
-                    >Donate me )</a
-                  >
-                </li>
+          <div class="my-4">
+              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                  <li class="nav-item">
+                      <a class="nav-link px-2 text-body-secondary" href="https://github.com/MaserPlay/js_site" title="Source Code on Github" rel="nofollow">Source Code</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link px-2 text-body-secondary" href="https://maserplay.ru/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link" title="maserplay.ru" rel="nofollow">Main Site</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link px-2 text-body-secondary" href="https://maserplay.ru/Donate/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link" title="Donation without remuneration" rel="nofollow">Donate me )</a>
+                  </li>
               </ul>
-            </div>
           </div>
-        </div>
       </div>
-    </footer>
-    <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script defer src="index.js"></script>
-  </body>
+  </footer>
+          
+  <script defer src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="/index.js"></script>
+  <script defer src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+</body>
 </html>
