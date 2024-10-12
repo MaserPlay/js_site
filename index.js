@@ -31,3 +31,5 @@ app.get('/content/*', (req,res) => {
 app.use(function(req,res){
     res.status(404).render("404");
 });
+
+require("./voice_chat");
