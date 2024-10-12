@@ -1,3 +1,4 @@
 express
 express-handlebars
 morgan
+socket.io
