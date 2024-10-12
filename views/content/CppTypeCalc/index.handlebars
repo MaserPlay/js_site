@@ -1,0 +1,46 @@
+<div class="jumbotron text-center">
+    <h2>There are many data types in c++, all of them differ in capacity. This calculator is
+        designed to help you choose the type of data based on its capacity.</h2>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Max bytes</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="bytes" aria-describedby="basic-addon3 basic-addon4" value="16">
+                            <span class="input-group-text">B</span><!-- Byte -->
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Сan store a value up to</label>
+                        <input type="number" class="form-control" id="StoreTo" aria-describedby="basic-addon3 basic-addon4" value="18446744073709551615">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Can store a value up</label>
+                        <input type="number" class="form-control" id="StoreUp" aria-describedby="basic-addon3 basic-addon4" value="0">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">The data you want to save</label>
+                        <select class="form-select" aria-label="Default select example" id="sel">
+                            <option selected>Nothing selected</option>
+                            <option value="char">Char</option>
+                            <option value="number">Number</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btn">Calc</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 mb-6 mb-sm-0">
+            <div
+                class="row align-items-center"
+                style="min-height: 15vh">
+                <h3 class="fw-light" id="answer"></h3>
+            </div>
+    </div>
+    </div>
