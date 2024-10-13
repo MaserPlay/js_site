@@ -3,6 +3,7 @@ const userStatus = {
     username: localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999),
     online: false,
   };
+  let madiaRecorder;
   var settings = JSON.parse(localStorage.getItem("settings")) ?? {
     record_length: 500,
     connect_notification: false,
@@ -59,7 +60,7 @@ const userStatus = {
       {
         stream.addTrack(stream.getTrackById(settings.mic))
       }
-      let madiaRecorder = new MediaRecorder(stream);
+      madiaRecorder = new MediaRecorder(stream);
       madiaRecorder.start();
   
       var audioChunks = [];
