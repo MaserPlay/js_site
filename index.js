@@ -1,4 +1,3 @@
-const http = require("http");
 const fs = require("fs");
 const morgan = require('morgan')
 const express = require("express");
@@ -6,6 +5,9 @@ const handlebars = require("express-handlebars");
 
 const port = 3000
 const app = express();
+let httpServer = require("http").Server(app);
+module.exports = app
+module.exports = httpServer
 // var router = express.Router();
 
 const customHandlebars = handlebars.create({ layoutsDir: "./views",defaultLayout: './base/main'});
@@ -14,8 +16,10 @@ app.engine("handlebars", customHandlebars.engine);
 app.set("view engine", "handlebars");
 app.use("/", express.static("static"));
 
+exports.httpServer = httpServer;
+require("./voice_chat");
 
-http.createServer(app).listen(port, () => {
+httpServer.listen(port, () => {
 console.log(`Server running on port ${port}; http://localhost:${port}`);
 });
 
@@ -31,5 +35,3 @@ app.get('/content/*', (req,res) => {
 app.use(function(req,res){
     res.status(404).render("404");
 });
-
-require("./voice_chat");
