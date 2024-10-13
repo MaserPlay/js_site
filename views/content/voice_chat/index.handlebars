@@ -1,23 +1,24 @@
-<header>
+
+<div class="text-center pagination-centered">
     <div class="user-controller">
-        <p id="username-label"></p>
+        <h3 id="username-label"></h3>
+    </div>
+
+    <div class="controller">
+        <button type="button" class="btn btn-primary disable-btn" onclick="toggleMute(this)">Mute</button>
+        <button type="button" class="btn btn-primary disable-btn" onclick="toggleConnection(this);">Go online</button>
+    </div>
+    <hr/>
+<p class="text-secondary">users list</p>
+<ul class="users row" id="users">
+</div>
+
+
+</ul>
         <div id="username-div">
             <input type="text" id="username">
             <button class="username-btn" onclick="changeUsername()">Change username</button>
         </div>
-    </div>
-
-    <div class="controller">
-        <button class="control-btn disable-btn" onclick="toggleMute(this)">Mute</button>
-        <button class="control-btn disable-btn" onclick="toggleConnection(this);">Go online</button>
-    </div>
-
-</header>
-<h2>users list</h2>
-<ul class="users" id="users">
-
-
-</ul>
 {{!-- <div class="modal fade show" id="exampleModalToggle" tabindex="-1" aria-modal="true" role="dialog"></div> --}}
 <!-- Select Name Modal -->
 <div class="modal fade show" id="startup_select" tabindex="-1" aria-modal="true" role="dialog" >
@@ -28,8 +29,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Select your username: 
-        <input type="text" class="form-control" id="username_startup">
+        <form>
+          <div class="mb-3">
+            <label for="username_startup" class="col-form-label">Select your username: </label>
+            <input type="text" class="form-control" id="username_startup">
+          </div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -42,6 +47,22 @@
 <!-- toast -->
 <div aria-live="polite" aria-atomic="true" class="position-relative"></div>
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="nitification_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <div class="me-2" width="20" height="20" role="status">👋
+        <span class="visually-hidden">Loading...</span>
+      </div>
+        <strong class="me-auto">System</strong>
+        {{!-- <small>11 mins ago</small> --}}
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )
+      <div class="mt-2 pt-2 border-top">
+        <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission((result) => {})">Allow</button>
+      </div>
+      </div>
+    </div>
     <div id="disconnected_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <div class="spinner-border text-primary me-2" width="20" height="20" role="status">
@@ -53,21 +74,6 @@
       </div>
       <div class="toast-body">
         Disconected. Connecting....
-      </div>
-    </div>
-  </div>
-  </div>
-
-<!-- Modal disconected -->
-<div class="modal fade" id="disconnected_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Disconected.</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Connecting...
       </div>
     </div>
   </div>

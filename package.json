@@ -2,10 +2,10 @@
   "name": "js_maserplay",
   "version": "1.0.0",
   "description": "js things",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node index.js"
+    "run": "node server/index.js"
   },
   "author": "MaserPlay",
   "license": "MIT",

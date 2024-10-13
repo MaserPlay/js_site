@@ -1,33 +1,37 @@
 const userStatus = {
-    microphone: false,
     mute: false,
-    username: "user#" + Math.floor(Math.random() * 999999),
+    username: localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999),
     online: false,
   };
-  $("#username_startup").val(userStatus.username)
-  new bootstrap.Modal('#startup_select').show()
+  if (localStorage.getItem("username") == null)
+  {
+    $("#username_startup").val(userStatus.username)
+    new bootstrap.Modal('#startup_select').show()
+  }
   var disconnected_toast = new bootstrap.Toast('#disconnected_toast')
+  var disconnected_notification = {close: ()=>{}};
   
   const usernameInput = document.getElementById("username");
   const usernameLabel = document.getElementById("username-label");
   const usernameDiv = document.getElementById("username-div");
-  const usersDiv = document.getElementById("users");
+  const usersDiv = $("#users");
   
   usernameInput.value = userStatus.username;
   usernameLabel.innerText = userStatus.username;
+    
   
+  var socket = io("ws://" + document.location.host);
+  socket.on("connect", () => {
+    disconnected_toast.hide(); disconnected_notification.close(); socket.emit("userInformation", userStatus);
+  });
   
-  window.onload = (e) => {
-    mainFunction(1000);
-  };
+  socket.on("connect_error", (err) => {
+    console.error(e);
+  });
   
-  var socket = io("ws://localhost:3000");
-  socket.emit("userInformation", userStatus);
-  socket.ondisconect = () => {
-    disconnected_modal.show()
-  }
-  socket.onconnect = () => {disconnected_modal.hide()}
-  socket.onerror = (e) => {console.error(e)}
+  socket.on("disconnect", (reason) => {
+    disconnected_toast.show();disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected.`, icon: "/favicon.ico" });
+  });
   
   
   function mainFunction(time) {
@@ -51,7 +55,7 @@ const userStatus = {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(audioBlob);
         fileReader.onloadend = function () {
-          if (!userStatus.microphone || !userStatus.online) return;
+          if (!userStatus.online) return;
   
           var base64String = fileReader.result;
           socket.emit("voice", base64String);
@@ -80,15 +84,12 @@ const userStatus = {
     });
   
     socket.on("usersUpdate", function (data) {
-      usersDiv.innerHTML = '';
+      usersReset();
       for (const key in data) {
         if (!Object.hasOwnProperty.call(data, key)) continue;
   
         const element = data[key];
-        const li = document.createElement("li");
-        li.innerText = element.username;
-        usersDiv.append(li);
-  
+        userVisible(element.username, true);  
       }
     });
   
@@ -100,19 +101,18 @@ const userStatus = {
   }
   
   function changeUsername(name) {
+    localStorage.setItem("username", name)
     userStatus.username = name;
     usernameLabel.innerText = userStatus.username;
-    usernameDiv.style.display = "none";
-    usernameLabel.style.display = "block";
     emitUserInformation();
   }
   
   function toggleConnection(e) {
     userStatus.online = !userStatus.online;
-    userStatus.microphone = !userStatus.microphone;
   
     editButtonClass(e, userStatus.online);
     emitUserInformation();
+    mainFunction(1000);
   }
   
   function toggleMute(e) {
@@ -125,13 +125,12 @@ const userStatus = {
   
   function editButtonClass(target, bool) {
     const classList = target.classList;
-    classList.remove("enable-btn");
-    classList.remove("disable-btn");
+    classList.remove("active");
   
     if (bool)
-      return classList.add("enable-btn");
+      return classList.add("active");
   
-    classList.add("disable-btn");
+    classList.remove("active");
   }
   
   function emitUserInformation() {
@@ -140,4 +139,13 @@ const userStatus = {
   
   
   
-  
+  function userVisible(name, vis){
+    if (vis){
+      usersDiv.html(usersDiv.html() + `<div id=\"card-${name}\" class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${name}</div></div></div>`);
+    } else {
+      $(`#card-${name}`).remove()
+    }
+  }
+  function usersReset(){
+    usersDiv.html("")
+  }
