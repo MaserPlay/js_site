@@ -3,17 +3,27 @@ const userStatus = {
     username: localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999),
     online: false,
   };
+  var settings = JSON.parse(localStorage.getItem("settings")) ?? {
+    record_length: 1000,
+    connect_notification: false,
+    disconnect_notification: true
+  }
   if (localStorage.getItem("username") == null)
   {
     $("#username_startup").val(userStatus.username)
     new bootstrap.Modal('#startup_select').show()
   }
-  var disconnected_toast = new bootstrap.Toast('#disconnected_toast')
+  if (Notification.permission == 'granted')
+  {
+    (new bootstrap.Toast('#notification_toast')).hide()
+  }
+  let settings_modal = new bootstrap.Modal('#settings_toast_div');
+  var disconnected_toast = new bootstrap.Toast('#disconnected_toast');
   var disconnected_notification = {close: ()=>{}};
+  var connected_notification = {close: ()=>{}};
   
   const usernameInput = document.getElementById("username");
   const usernameLabel = document.getElementById("username-label");
-  const usernameDiv = document.getElementById("username-div");
   const usersDiv = $("#users");
   
   usernameInput.value = userStatus.username;
@@ -22,20 +32,19 @@ const userStatus = {
   
   var socket = io("ws://" + document.location.host);
   socket.on("connect", () => {
-    disconnected_toast.hide(); disconnected_notification.close(); socket.emit("userInformation", userStatus);
+    disconnected_toast.hide(); disconnected_notification.close();settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" })); socket.emit("userInformation", userStatus);
   });
   
   socket.on("connect_error", (err) => {
-    console.error(e);
+    console.error(err);
   });
   
   socket.on("disconnect", (reason) => {
-    disconnected_toast.show();disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected.`, icon: "/favicon.ico" });
+    disconnected_toast.show();settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected. ${reason.capitalize()}`, icon: "/favicon.ico" }));connected_notification.close();
   });
   
   
-  function mainFunction(time) {
-  
+  function mainFunction() {
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       var madiaRecorder = new MediaRecorder(stream);
@@ -67,12 +76,12 @@ const userStatus = {
   
         setTimeout(function () {
           madiaRecorder.stop();
-        }, time);
+        }, settings.record_length);
       });
   
       setTimeout(function () {
         madiaRecorder.stop();
-      }, time);
+      }, settings.record_length);
     }).catch((err) => {
       console.log(err);                           // will show "foo"
   });
@@ -87,17 +96,13 @@ const userStatus = {
       usersReset();
       for (const key in data) {
         if (!Object.hasOwnProperty.call(data, key)) continue;
-  
         const element = data[key];
-        userVisible(element.username, true);  
+        element.mute
+  
+        userVisible(element.username, true, !element.mute);  
       }
     });
   
-  }
-  
-  usernameLabel.onclick = function () {
-    usernameDiv.style.display = "block";
-    usernameLabel.style.display = "none";
   }
   
   function changeUsername(name) {
@@ -112,7 +117,7 @@ const userStatus = {
   
     editButtonClass(e, userStatus.online);
     emitUserInformation();
-    mainFunction(1000);
+    mainFunction();
   }
   
   function toggleMute(e) {
@@ -139,13 +144,26 @@ const userStatus = {
   
   
   
-  function userVisible(name, vis){
+  function userVisible(name, vis, mic){
     if (vis){
-      usersDiv.html(usersDiv.html() + `<div id=\"card-${name}\" class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${name}</div></div></div>`);
+      usersDiv.html(usersDiv.html() + `<div id=\"card-${name}\" class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${name}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
     } else {
       $(`#card-${name}`).remove()
     }
   }
   function usersReset(){
     usersDiv.html("")
+  }
+  function loadSettings(){
+    $("#rec_length_num").val(settings.record_length)
+    $("#rec_length").val(settings.record_length)
+    $("#disconnect_Notifications_check").prop('checked', settings.disconnect_notification)
+    $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
+  }
+  loadSettings()
+  function saveSettings(){
+    settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
+    settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
+    settings.record_length = $("#rec_length_num").val();
+    localStorage.setItem("settings", JSON.stringify(settings))
   }

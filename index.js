@@ -18,10 +18,10 @@ module.exports = {
     app: app,
     httpServer: httpServer
 }
-require("./voice_chat");
+require("./server/voice_chat");
 
 httpServer.listen(port, () => {
 console.log(`Server running on port ${port}; http://localhost:${port}`);
 });
 
-require("./controllers/controller")
+require("./server/controllers/controller")
