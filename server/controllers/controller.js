@@ -1,4 +1,4 @@
-const app = require("./../index").app
+const app = require("../../index").app
 const fs = require("fs");
 const morgan = require('morgan')
 

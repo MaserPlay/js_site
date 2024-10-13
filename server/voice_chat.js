@@ -1,4 +1,4 @@
-const httpServer = require("./index").httpServer
+const httpServer = require("../index").httpServer
 const io = require("socket.io")(httpServer);
 //To holding users information 
 const socketsStatus = {};
@@ -25,7 +25,12 @@ io.on("connection", function (socket) {
     });
   
     socket.on("userInformation", function (data) {
-      socketsStatus[socketId] = data;
+      if (!data.online)
+      {
+        delete socketsStatus[socketId];
+      } else {
+        socketsStatus[socketId] = data;
+      }
   
       io.sockets.emit("usersUpdate",socketsStatus);
     });
