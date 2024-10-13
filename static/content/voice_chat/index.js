@@ -6,7 +6,7 @@ const userStatus = {
   };
   $("#username_startup").val(userStatus.username)
   new bootstrap.Modal('#startup_select').show()
-  var disconnected_modal = new bootstrap.Modal('#disconnected_modal')
+  var disconnected_toast = new bootstrap.Toast('#disconnected_toast')
   
   const usernameInput = document.getElementById("username");
   const usernameLabel = document.getElementById("username-label");

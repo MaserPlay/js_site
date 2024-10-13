@@ -18,9 +18,9 @@
 
 
 </ul>
-
+{{!-- <div class="modal fade show" id="exampleModalToggle" tabindex="-1" aria-modal="true" role="dialog"></div> --}}
 <!-- Select Name Modal -->
-<div class="modal fade" id="startup_select" tabindex="-1" aria-modal="true" role="dialog">
+<div class="modal fade show" id="startup_select" tabindex="-1" aria-modal="true" role="dialog" >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -29,7 +29,7 @@
       </div>
       <div class="modal-body">
         Select your username: 
-        <input type="text" class="form-control" id="username_startup" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="username_startup">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -39,6 +39,24 @@
   </div>
 </div>
 
+<!-- toast -->
+<div aria-live="polite" aria-atomic="true" class="position-relative"></div>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="disconnected_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <div class="spinner-border text-primary me-2" width="20" height="20" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+        <strong class="me-auto">System</strong>
+        {{!-- <small>11 mins ago</small> --}}
+        {{!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
+      </div>
+      <div class="toast-body">
+        Disconected. Connecting....
+      </div>
+    </div>
+  </div>
+  </div>
 
 <!-- Modal disconected -->
 <div class="modal fade" id="disconnected_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
