@@ -4,11 +4,12 @@ const io = require("socket.io")(httpServer);
 const socketsStatus = {};
 
 io.on("connection", function (socket) {
+    console.log("[voice] connect with id:", socket.id);
+
     const socketId = socket.id;
-    socketsStatus[socket.id] = {};
+    socketsStatus[socket.id] = {}; 
   
-  
-    console.log("connect with id:", socket.id);
+    io.sockets.emit("usersUpdate",socketsStatus);
   
     socket.on("voice", function (data) {
   
