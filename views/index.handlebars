@@ -1,10 +1,12 @@
 <div class="row">
-{{#each content}}
-<div class="col-md-4"> <a class="link-offset-2 link-underline link-underline-opacity-0 btn btn-warning" id="elem"
-        href="/content/{{.}}">
-        <div class="mb-4">
-            <h2> {{.}} </h2>
-        </div>
-    </a> </div>
-{{/each}}
+    {{#each content}}
+    <div class="col-md-3">
+        <a class="link-offset-2 link-underline link-underline-opacity-0 btn btn-sm btn-outline-primary" id="elem"
+            href="/content/{{.}}">
+            <div class="mb-4">
+                <h2> {{.}} </h2>
+            </div>
+        </a>
+    </div>
+    {{/each}}
 </div>
