@@ -30,7 +30,7 @@ const userStatus = {
   usernameLabel.innerText = userStatus.username;
     
   
-  var socket = io("ws://" + document.location.host);
+  var socket = io("wss://" + document.location.host);
   socket.on("connect", () => {
     disconnected_toast.hide(); disconnected_notification.close();settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" })); socket.emit("userInformation", userStatus);
   });
