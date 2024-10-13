@@ -4,9 +4,10 @@ const userStatus = {
     online: false,
   };
   var settings = JSON.parse(localStorage.getItem("settings")) ?? {
-    record_length: 1000,
+    record_length: 500,
     connect_notification: false,
-    disconnect_notification: true
+    disconnect_notification: true,
+    mic: ""
   }
   if (localStorage.getItem("username") == null)
   {
@@ -22,15 +23,14 @@ const userStatus = {
   var disconnected_notification = {close: ()=>{}};
   var connected_notification = {close: ()=>{}};
   
-  const usernameInput = document.getElementById("username");
+  const usernameInput = $("#username");
   const usernameLabel = document.getElementById("username-label");
   const usersDiv = $("#users");
   
-  usernameInput.value = userStatus.username;
+  usernameInput.val(userStatus.username);
   usernameLabel.innerText = userStatus.username;
-    
   
-  var socket = io("wss://" + document.location.host);
+  var socket = io((location.protocol !== 'https:' ? 'ws' : 'wss') + '://' + document.location.host);
   socket.on("connect", () => {
     disconnected_toast.hide(); disconnected_notification.close();settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" })); socket.emit("userInformation", userStatus);
   });
@@ -47,7 +47,19 @@ const userStatus = {
   function mainFunction() {
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      var madiaRecorder = new MediaRecorder(stream);
+      if ($('#microphone_select').html().trim() === "")
+      {stream.getTracks().forEach((track)=>{
+        $('#microphone_select').append($('<option>', {
+            value: track.id,
+            text: track.label,
+            disabled: track.muted
+        }));
+      })}
+      if (settings.mic&&settings.mic.trim() !== "")
+      {
+        stream.addTrack(stream.getTrackById(settings.mic))
+      }
+      let madiaRecorder = new MediaRecorder(stream);
       madiaRecorder.start();
   
       var audioChunks = [];
@@ -71,7 +83,8 @@ const userStatus = {
   
         };
   
-        madiaRecorder.start();
+        if (!userStatus.mute)
+        {madiaRecorder.start();}
   
   
         setTimeout(function () {
@@ -83,7 +96,7 @@ const userStatus = {
         madiaRecorder.stop();
       }, settings.record_length);
     }).catch((err) => {
-      console.log(err);                           // will show "foo"
+      console.error(err);                           // will show "foo"
   });
   
   
@@ -122,6 +135,7 @@ const userStatus = {
   
   function toggleMute(e) {
     userStatus.mute = !userStatus.mute;
+    if (userStatus.mute){madiaRecorder&&madiaRecorder.stop()}
   
     editButtonClass(e, userStatus.mute);
     emitUserInformation();
@@ -167,3 +181,4 @@ const userStatus = {
     settings.record_length = $("#rec_length_num").val();
     localStorage.setItem("settings", JSON.stringify(settings))
   }
+  $('#microphone_select').on( "change", ()=>{settings.mic=$('#microphone_select').val().trim()})
