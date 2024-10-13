@@ -16,16 +16,16 @@ app.use("/", express.static("static"));
 
 
 http.createServer(app).listen(port, () => {
-console.log(`Server running on port ${port}`);
+console.log(`Server running on port ${port}; http://localhost:${port}`);
 });
 
 app.use(morgan('combined'))
 
 app.get("/" , (req , res)=>{
-        res.render("index", {"content": fs.readdirSync("./views/content").map(dirent => dirent)});
+        res.render("index", {"content": fs.readdirSync("./views/content").map(dirent => dirent), "name": "Index"});
     });
 app.get('/content/*', (req,res) => {
-    res.render("content/" + req.params[0])
+    res.render("content/" + req.params[0], {"name": req.params[0].replaceAll("/", "")})
    })
 
 app.use(function(req,res){
