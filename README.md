@@ -1,4 +1,5 @@
 # This is the site repository of [js.maserplay.ru](https://js.maserplay.ru)
+# The server has moved to node.js. This repository will be updated later
 ## en (English)
 This website is completely written in JavaScript without using server logic. This is my first experience in this field. On this site, I am experimenting with JavaScript web development capabilities.
 
