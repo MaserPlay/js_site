@@ -32,7 +32,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary"
-          onclick="changeUsername($('username_startup').val())" data-bs-dismiss="modal">Save
+          onclick="changeUsername($('#username_startup').val())" data-bs-dismiss="modal">Save
           changes</button>
       </div>
     </div>
@@ -95,8 +95,8 @@
     <div class="toast-body">
       Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )
       <div class="mt-2 pt-2 border-top">
-        <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission(g=>{"
-          granted"==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission(g=>{'
+          granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
       </div>
     </div>
   </div>
