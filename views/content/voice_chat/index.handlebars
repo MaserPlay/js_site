@@ -1,0 +1,121 @@
+<div class="text-center pagination-centered">
+  <div class="user-controller">
+    <h3 id="username-label">Username</h3>
+  </div>
+
+  <div class="controller">
+    <button type="button" class="btn btn-primary disable-btn" onclick="toggleMute(this)">Mute</button>
+    <button type="button" class="btn btn-primary disable-btn" onclick="toggleConnection(this);">Go online</button>
+    <button type="button" class="btn bi bi-gear-fill" onclick="settings_modal.show();"></button>
+  </div>
+  <hr />
+  <p class="text-secondary">users list</p>
+  <div class="users row" id="users"></div>
+</div>
+
+<!-- Select Name Modal -->
+<div class="modal fade" id="startup_select" tabindex="-1" aria-modal="true" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">Welcome!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="username_startup" class="col-form-label">Select your username: </label>
+            <input type="text" class="form-control" id="username_startup">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"
+          onclick="changeUsername($('#username_startup').val())" data-bs-dismiss="modal">Save
+          changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Settings Modal -->
+<div class="modal fade" id="settings_toast_div" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Settings</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username">
+        </div>
+        <div class="mb-3">
+        <label for="rec_length" class="form-label">Record length</label>
+        <input type="number" class="form-control" id="rec_length_num" onchange="$('#rec_length').val(value)">
+        <input type="range" class="form-range" min="1" max="1000" id="rec_length" onchange="$('#rec_length_num').val(value)">
+        </div>
+        <h1>Notifications</h1>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="Connect_Notifications_check">
+          <label class="form-check-label" for="Connect_Notifications_check">
+            Connect Notifications
+          </label>
+        </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="disconnect_Notifications_check">
+          <label class="form-check-label" for="disconnect_Notifications_check">
+            Disconnect Notifications
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="changeUsername($('#username').val()); saveSettings()" data-bs-dismiss="modal">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- toast -->
+<div aria-live="polite" aria-atomic="true" class="position-relative"></div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="notification_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <div class="me-2" width="20" height="20" role="status">👋
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <strong class="me-auto">System</strong>
+      {{!-- <small>11 mins ago</small> --}}
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )
+      <div class="mt-2 pt-2 border-top">
+        <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission(g=>{'
+          granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
+      </div>
+    </div>
+  </div>
+  <div id="disconnected_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <div class="spinner-border text-primary me-2" width="20" height="20" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <strong class="me-auto">System</strong>
+      {{!-- <small>11 mins ago</small> --}}
+      {{!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
+    </div>
+    <div class="toast-body">
+      Disconected. Connecting....
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
+  integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
