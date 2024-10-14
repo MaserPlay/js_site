@@ -25,7 +25,6 @@ const userStatus = {
   var disconnected_notification = {close: ()=>{}};
   var mic_disconnected_notification = {close: ()=>{}};
   var connected_notification = {close: ()=>{}};
-  var PromizeMute = new Promise();
   
   const usernameInput = $("#username");
   const usernameLabel = document.getElementById("username-label");
