@@ -113,6 +113,7 @@ const userStatus = {
   }); 
   
     socket.on("send", function (data) {
+      if (!userStatus.online) return;
       var audio = new Audio(data);
       audio.play();
     });  
