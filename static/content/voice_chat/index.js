@@ -25,6 +25,7 @@ const userStatus = {
   var disconnected_notification = {close: ()=>{}};
   var mic_disconnected_notification = {close: ()=>{}};
   var connected_notification = {close: ()=>{}};
+  var PromizeMute = new Promise();
   
   const usernameInput = $("#username");
   const usernameLabel = document.getElementById("username-label");
@@ -64,6 +65,8 @@ const userStatus = {
   }
   
   function mainFunction() {
+
+    const audioContext = new AudioContext();
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
@@ -71,6 +74,7 @@ const userStatus = {
       {
         stream.addTrack(stream.getTrackById(settings.mic))
       }
+
       madiaRecorder = new MediaRecorder(stream);
       madiaRecorder.start();
   
@@ -107,14 +111,16 @@ const userStatus = {
       setTimeout(function () {
         madiaRecorder.stop();
       }, settings.record_length);
-    }).catch((err) => {
+    }).catch((e) => {
       if (e.message == "Requested device not found"){MicAvailable(false)}
-      console.error(err);                           // will show "foo"
+      console.error(e);                           // will show "foo"
   }); 
   
     socket.on("send", function (data) {
       if (!userStatus.online) return;
       var audio = new Audio(data);
+      var tr = audioContext.createMediaElementSource(audio)
+      tr.connect(audioContext.destination);
       audio.play();
     });  
   
@@ -147,10 +153,20 @@ const userStatus = {
   
   function ChangeMute(mute) {
     userStatus.mute = mute;
-    if (userStatus.mute){madiaRecorder&&madiaRecorder.stop()}
+    if (madiaRecorder)
+    {
+      if (userStatus.mute){madiaRecorder.stop()}
+      else {
+        madiaRecorder.start();
+
+        setTimeout(function () {
+          madiaRecorder.stop();
+        }, settings.record_length);
+      }
+    }
   
     editButtonClass($("#mute_btn"), userStatus.mute);
-    emitUserInformation();
+    emitUserInformation(); 
   }
   
   
