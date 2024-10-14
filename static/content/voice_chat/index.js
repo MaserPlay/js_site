@@ -98,26 +98,24 @@ const userStatus = {
       }, settings.record_length);
     }).catch((err) => {
       console.error(err);                           // will show "foo"
-  });
-  
+  }); 
   
     socket.on("send", function (data) {
       var audio = new Audio(data);
       audio.play();
-    });
-  
-    socket.on("usersUpdate", function (data) {
-      usersReset();
-      for (const key in data) {
-        if (!Object.hasOwnProperty.call(data, key)) continue;
-        const element = data[key];
-        element.mute
-  
-        userVisible(element.username, true, !element.mute);  
-      }
-    });
+    });  
   
   }
+  socket.on("usersUpdate", function (data) {
+    usersReset();
+    for (const key in data) {
+      if (!Object.hasOwnProperty.call(data, key)) continue;
+      const element = data[key];
+      element.mute
+
+      userVisible(element.username, true, !element.mute);  
+    }
+  });
   
   function changeUsername(name) {
     localStorage.setItem("username", name)

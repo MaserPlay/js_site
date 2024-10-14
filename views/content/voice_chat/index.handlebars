@@ -86,43 +86,45 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- toast -->
-    <div aria-live="polite" aria-atomic="true" class="position-relative"></div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-      <div id="notification_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <div class="me-2" width="20" height="20" role="status">👋
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <strong class="me-auto">System</strong>
-          {{!-- <small>11 mins ago</small> --}}
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+<div>
+  <!-- toast -->
+  <div aria-live="polite" aria-atomic="true" class="position-relative"></div>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notification_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <div class="me-2" width="20" height="20" role="status">👋
+          <span class="visually-hidden">Loading...</span>
         </div>
-        <div class="toast-body">
-          Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )
-          <div class="mt-2 pt-2 border-top">
-            <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission(g=>{'
-          granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
-          </div>
-        </div>
+        <strong class="me-auto">System</strong>
+        {{!-- <small>11 mins ago</small> --}}
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      <div id="disconnected_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <div class="spinner-border text-primary me-2" width="20" height="20" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-          <strong class="me-auto">System</strong>
-          {{!-- <small>11 mins ago</small> --}}
-          {{!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
-        </div>
-        <div class="toast-body">
-          Disconected. Connecting....
+      <div class="toast-body">
+        Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )
+        <div class="mt-2 pt-2 border-top">
+          <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
         </div>
       </div>
     </div>
+    <div id="disconnected_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <div class="spinner-border text-primary me-2" width="20" height="20" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <strong class="me-auto">System</strong>
+        {{!-- <small>11 mins ago</small> --}}
+        {{!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
+      </div>
+      <div class="toast-body">
+        Disconected. Connecting....
+      </div>
+    </div>
   </div>
+</div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
-    integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
+  integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
