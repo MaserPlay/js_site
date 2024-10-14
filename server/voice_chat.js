@@ -32,13 +32,14 @@ io.on("connection", function (socket) {
       } else {
         socketsStatus[socketId] = data;
       }
-  
+      
       io.sockets.emit("usersUpdate",socketsStatus);
     });
   
   
     socket.on("disconnect", function () {
       delete socketsStatus[socketId];
+      io.sockets.emit("usersUpdate",socketsStatus);
     });
     socket.on("ping", (callback) => {
       callback();
