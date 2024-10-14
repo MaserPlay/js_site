@@ -40,5 +40,8 @@ io.on("connection", function (socket) {
     socket.on("disconnect", function () {
       delete socketsStatus[socketId];
     });
+    socket.on("ping", (callback) => {
+      callback();
+    });
   
   });
