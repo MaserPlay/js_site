@@ -27,12 +27,14 @@ const userStatus = {
   const usernameInput = $("#username");
   const usernameLabel = document.getElementById("username-label");
   const usersDiv = $("#users");
+  var ping_p = $("#ping");
   
   usernameInput.val(userStatus.username);
   usernameLabel.innerText = userStatus.username;
   
   var socket = io((location.protocol !== 'https:' ? 'ws' : 'wss') + '://' + document.location.host);
   socket.on("connect", () => {
+    ping_p.removeClass("text-decoration-line-through")
     disconnected_toast.hide(); disconnected_notification.close();settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" })); socket.emit("userInformation", userStatus);
   });
   
@@ -41,6 +43,7 @@ const userStatus = {
   });
   
   socket.on("disconnect", (reason) => {
+    ping_p.addClass("text-decoration-line-through")
     disconnected_toast.show();settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected. ${reason.capitalize()}`, icon: "/favicon.ico" }));connected_notification.close();
   });
   
@@ -167,13 +170,12 @@ const userStatus = {
   function usersReset(){
     usersDiv.html("")
   }
-  function loadSettings(){
+  (()=>{
     $("#rec_length_num").val(settings.record_length)
     $("#rec_length").val(settings.record_length)
     $("#disconnect_Notifications_check").prop('checked', settings.disconnect_notification)
     $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
-  }
-  loadSettings()
+  })();
   function saveSettings(){
     settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
     settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
@@ -181,3 +183,13 @@ const userStatus = {
     localStorage.setItem("settings", JSON.stringify(settings))
   }
   $('#microphone_select').on( "change", ()=>{settings.mic=$('#microphone_select').val().trim()})
+  
+setInterval(() => {
+  const start = Date.now();
+
+  socket.emit("ping", () => {
+    const duration = Date.now() - start;
+    ping_p.html(duration);
+    // console.log(duration);
+  });
+}, 1000);
