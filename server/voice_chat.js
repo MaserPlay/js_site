@@ -19,7 +19,7 @@ io.on("connection", function (socket) {
   
       for (const id in socketsStatus) {
   
-        if (id != socketId && !socketsStatus[id].mute && socketsStatus[id].online)
+        if (id != socketId && socketsStatus[id].online)
           socket.broadcast.to(id).emit("send", newData);
       }
   
