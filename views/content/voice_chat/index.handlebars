@@ -1,12 +1,15 @@
 <div class="text-center pagination-centered">
   <div>
-    <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary"style="margin:3px"></span><span id="ping" class="text-decoration-line-through">100000</span></p>
+    <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary" style="margin:3px"></span><span
+        id="ping" class="text-decoration-line-through">100000</span></p>
     <h3 id="username-label">Username</h3>
   </div>
 
   <div>
-    <button type="button" class="btn btn-primary disable-btn" onclick="toggleMute(this)">Mute</button>
-    <button type="button" class="btn btn-primary disable-btn" onclick="toggleConnection(this);">Go online</button>
+    <button type="button" class="btn btn-primary disable-btn" onclick="ChangeMute(!userStatus.mute)"
+      id="mute_btn">Mute</button>
+    <button type="button" class="btn btn-primary disable-btn" onclick="ChangeConnection(!userStatus.online);"
+      id="onl_btn">Go online</button>
     <button type="button" class="btn bi bi-gear-fill" onclick="settings_modal.show();"></button>
   </div>
   <hr />
@@ -60,7 +63,7 @@
         </div>
         <div class="mb-3">
           <label for="microphone_select" class="form-label">Micophone</label>
-          <select class="form-select" id="microphone_select" aria-label="Default select example">
+          <select class="form-select" id="microphone_select" aria-label="Default select example" onfocus="getmic()">
           </select>
         </div>
         <h1>Notifications</h1>
@@ -71,23 +74,28 @@
               Connect Notifications
             </label>
           </div>
-          <div class="mb-3">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="disconnect_Notifications_check">
-              <label class="form-check-label" for="disconnect_Notifications_check">
-                Disconnect Notifications
-              </label>
-            </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="disconnect_Notifications_check">
+            <label class="form-check-label" for="disconnect_Notifications_check">
+              Disconnect Notifications
+            </label>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="changeUsername($('#username').val()); saveSettings()"
-              data-bs-dismiss="modal">Save changes</button>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="mic_disconnect_Notifications_check">
+            <label class="form-check-label" for="mic_disconnect_Notifications_check">
+              Microphone disconnect Notifications
+            </label>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="changeUsername($('#username').val()); saveSettings()"
+            data-bs-dismiss="modal">Save changes</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <div>
@@ -106,7 +114,8 @@
       <div class="toast-body">
         Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )
         <div class="mt-2 pt-2 border-top">
-          <button type="button" class="btn btn-primary btn-sm" onclick="Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
+          <button type="button" class="btn btn-primary btn-sm"
+            onclick="Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
         </div>
       </div>
     </div>
