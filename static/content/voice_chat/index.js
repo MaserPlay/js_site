@@ -77,6 +77,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   function mainFunction() {
 
     const audioContext = new AudioContext();
+    const convolver = audioContext.createConvolver();
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
@@ -126,12 +127,23 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       console.error(e);                           // will show "foo"
   }); 
   
-    socket.on("send", function (data) {
+    socket.on("send", async function (data) {
       if (!userStatus.online) return;
-      var audio = new Audio(data);
-      var tr = audioContext.createMediaElementSource(audio)
-      tr.connect(audioContext.destination);
-      audio.play();
+
+      // Grab audio track via fetch() for convolver node
+      try {
+        const response = await fetch(data);
+        const arrayBuffer = await response.arrayBuffer();
+        const decodedAudio = await audioContext.decodeAudioData(arrayBuffer);
+        source = audioContext.createBufferSource();
+        source.buffer = decodedAudio;
+        source.connect(audioContext.destination);
+        source.start();
+      } catch (error) {
+        console.error(
+          `Unable to fetch the audio file. Error: ${error.message}`
+        );
+      }
     });  
   
   }
