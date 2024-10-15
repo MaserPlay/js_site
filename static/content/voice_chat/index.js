@@ -10,6 +10,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   connect_notification: false,
   disconnect_notification: true,
   height_ping_notification: -1,
+  debug: false,
   }
 
   let settings_modal = new bootstrap.Modal('#settings_toast_div');
@@ -40,7 +41,12 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   usernameInput.val(userStatus.username);
   usernameLabel.innerText = userStatus.username;
   
-  var socket = io((location.protocol !== 'https:' ? 'ws' : 'wss') + '://' + document.location.host);
+  var socket = io((location.protocol !== 'https:' ? 'ws' : 'wss') + '://' + document.location.host, {
+      'reconnection': true,
+      'reconnectionDelay': 1000,
+      'reconnectionDelayMax' : 5000,
+      'reconnectionAttempts': 5
+    });
   socket.on("connect", () => {
     ping_p.removeClass("text-decoration-line-through");
     disconnected_notification.close();
@@ -77,7 +83,6 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   function mainFunction() {
 
     const audioContext = new AudioContext();
-    const convolver = audioContext.createConvolver();
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
@@ -234,8 +239,6 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     $("#mute_btn").attr("disabled", !isavailable);
   }
   (()=>{ //load settings
-    $("#rec_length_num").val(settings.record_length)
-    $("#rec_length").val(settings.record_length)
     $("#disconnect_Notifications_check").prop('checked', settings.disconnect_notification)
     $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
     $("#mic_disconnect_Notifications_check").prop('checked', settings.mic_disconnect_notification)
@@ -244,17 +247,23 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       $("#height_ping_Notifications_check").change()
       $("#height_ping_num").val(settings.height_ping_notification)
     }
+    
+    $("#rec_length_num").val(settings.record_length)
+    $("#rec_length").val(settings.record_length)
+    $("#Debug_mode").prop('checked', settings.debug)
   })()
   function saveSettings(){
     settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
     settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
     settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
-    settings.record_length = Number($("#rec_length_num").val());
     if (settings.height_ping_notification > 0){
       settings.height_ping_notification = Number(-1);
     } else {
       settings.height_ping_notification = Number($("#height_ping_num").val());
     }
+
+    settings.record_length = Number($("#rec_length_num").val());
+    settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
     localStorage.setItem("settings", JSON.stringify(settings))
   }  
 
