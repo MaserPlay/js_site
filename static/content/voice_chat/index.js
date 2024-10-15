@@ -214,7 +214,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   
   function userVisible(name, vis, mic){
     if (vis){
-      usersDiv.html(usersDiv.html() + `<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${name.replace("<", "").replace(">", ">")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
+      usersDiv.html(usersDiv.html() + `<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replace("<", "").replace(">", ">")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
     } else {
       $(`#card-${name}`).remove()
     }
