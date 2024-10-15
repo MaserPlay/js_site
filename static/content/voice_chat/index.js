@@ -257,7 +257,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
     settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
     settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
-    if (settings.height_ping_notification > 0){
+    if (!$("#height_ping_Notifications_check").prop('checked')){
       settings.height_ping_notification = Number(-1);
     } else {
       settings.height_ping_notification = Number($("#height_ping_num").val());
@@ -278,7 +278,7 @@ setInterval(() => {
     {
       if (duration >= settings.height_ping_notification)
       {
-        height_ping_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" });
+        height_ping_notification = new Notification("js.maserplay.ru", { body: `Ping too height! ${duration}`, icon: "/favicon.ico" });
       } else {
         height_ping_notification.close();
       }
