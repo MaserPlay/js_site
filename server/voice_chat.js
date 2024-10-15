@@ -7,7 +7,7 @@ io.on("connection", function (socket) {
     console.log("[voice] connect with id:", socket.id);
 
     const socketId = socket.id;
-    socketsStatus[socket.id] = {}; 
+    // socketsStatus[socket.id] = {}; 
   
     io.sockets.emit("usersUpdate",socketsStatus);
   
@@ -33,7 +33,9 @@ io.on("connection", function (socket) {
         socketsStatus[socketId] = data;
       }
       
-      io.sockets.emit("usersUpdate",socketsStatus);
+      for (const id in socketsStatus) {  
+        socket.broadcast.to(id).emit("usersUpdate", socketsStatus);
+      }
     });
   
   
