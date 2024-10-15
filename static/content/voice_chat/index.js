@@ -53,7 +53,6 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" }));
     socket.emit("userInformation", userStatus);
     $("#onl_btn").attr("disabled", false)
-    emitUserInformation()
   });
   
   socket.on("connect_error", (err) => {
