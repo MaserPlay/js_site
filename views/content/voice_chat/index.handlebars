@@ -1,7 +1,7 @@
 <div class="text-center pagination-centered">
   <div>
     <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary" style="margin:3px"></span><span
-        id="ping" class="text-decoration-line-through">100000</span></p>
+        id="ping" class="text-decoration-line-through">ping</span></p>
     <h3 id="username-label">Username</h3>
   </div>
 
@@ -57,13 +57,13 @@
         </div>
         <div class="mb-3">
           <label for="rec_length" class="form-label">Record length</label>
-          <input type="number" class="form-control" id="rec_length_num" onchange="$('#rec_length').val(value)">
-          <input type="range" class="form-range" min="10" max="1000" id="rec_length"
+          <input type="number" class="form-control" id="rec_length_num" min="30" max="1000"  onchange="$('#rec_length').val(value)">
+          <input type="range" class="form-range" min="30" max="1000" id="rec_length"
             onchange="$('#rec_length_num').val(value)">
         </div>
         <div class="mb-3">
           <label for="microphone_select" class="form-label">Micophone</label>
-          <select class="form-select" id="microphone_select" aria-label="Default select example" onfocus="getmic()">
+          <select class="form-select" id="microphone_select" aria-label="Default select example" onfocus="getmic()" onchange="settings.mic=$('#microphone_select').val().trim()">
           </select>
         </div>
         <h1>Notifications</h1>
@@ -85,6 +85,17 @@
             <label class="form-check-label" for="mic_disconnect_Notifications_check">
               Microphone disconnect Notifications
             </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="height_ping_Notifications_check" onchange="$('#height_ping_div').toggle()">
+            <label class="form-check-label" for="height_ping_Notifications_check" >
+              Too height ping notification
+            </label>
+            <div id="height_ping_div" style="display: none;">
+              <input type="number" class="form-control" id="height_ping_num" min="30" value="100" max="1000" onchange="$('#height_ping').val(value)">
+              <input type="range" class="form-range" min="30" value="100" max="1000" id="height_ping"
+                onchange="$('#height_ping_num').val(value)">
+            </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -117,19 +128,6 @@
           <button type="button" class="btn btn-primary btn-sm"
             onclick="Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">Allow</button>
         </div>
-      </div>
-    </div>
-    <div id="disconnected_toast" class="toast fade show" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <div class="spinner-border text-primary me-2" width="20" height="20" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-        <strong class="me-auto">System</strong>
-        {{!-- <small>11 mins ago</small> --}}
-        {{!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> --}}
-      </div>
-      <div class="toast-body">
-        Disconected. Connecting....
       </div>
     </div>
   </div>

@@ -3,14 +3,30 @@ const userStatus = {
     username: localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999),
     online: false,
   };
-  let madiaRecorder;
-  var settings = JSON.parse(localStorage.getItem("settings")) ?? {
-    record_length: 500,
-    connect_notification: false,
-    disconnect_notification: true,
-    mic: "",
-    mic_disconnect_notification: true
+const settings = JSON.parse(localStorage.getItem("settings")) ?? {
+  record_length: 500,
+  mic: "",
+  mic_disconnect_notification: true,
+  connect_notification: false,
+  disconnect_notification: true,
+  height_ping_notification: -1,
   }
+
+  let settings_modal = new bootstrap.Modal('#settings_toast_div');
+  var disconnected_toast = new bootstrap.Toast('#disconnected_toast');
+  
+  const usernameInput = $("#username");
+  const usernameLabel = document.getElementById("username-label");
+  const usersDiv = $("#users");
+  var ping_p = $("#ping");
+  
+  var disconnected_notification = {close: ()=>{}};
+  var mic_disconnected_notification = {close: ()=>{}};
+  var connected_notification = {close: ()=>{}};
+  var height_ping_notification = {close: ()=>{}};
+  
+  let madiaRecorder;
+  
   if (localStorage.getItem("username") == null)
   {
     $("#username_startup").val(userStatus.username)
@@ -20,24 +36,17 @@ const userStatus = {
   {
     (new bootstrap.Toast('#notification_toast')).hide()
   }
-  let settings_modal = new bootstrap.Modal('#settings_toast_div');
-  var disconnected_toast = new bootstrap.Toast('#disconnected_toast');
-  var disconnected_notification = {close: ()=>{}};
-  var mic_disconnected_notification = {close: ()=>{}};
-  var connected_notification = {close: ()=>{}};
-  
-  const usernameInput = $("#username");
-  const usernameLabel = document.getElementById("username-label");
-  const usersDiv = $("#users");
-  var ping_p = $("#ping");
-  
+
   usernameInput.val(userStatus.username);
   usernameLabel.innerText = userStatus.username;
   
   var socket = io((location.protocol !== 'https:' ? 'ws' : 'wss') + '://' + document.location.host);
   socket.on("connect", () => {
-    ping_p.removeClass("text-decoration-line-through")
-    disconnected_toast.hide(); disconnected_notification.close();settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" })); socket.emit("userInformation", userStatus);
+    ping_p.removeClass("text-decoration-line-through");
+    disconnected_notification.close();
+    settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" }));
+    socket.emit("userInformation", userStatus);
+    $("#onl_btn").attr("disabled", false)
   });
   
   socket.on("connect_error", (err) => {
@@ -45,8 +54,10 @@ const userStatus = {
   });
   
   socket.on("disconnect", (reason) => {
-    ping_p.addClass("text-decoration-line-through")
-    disconnected_toast.show();settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected. ${reason.capitalize()}`, icon: "/favicon.ico" }));connected_notification.close();
+    ping_p.addClass("text-decoration-line-through");
+    settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected. ${reason.capitalize()}`, icon: "/favicon.ico" }));
+    connected_notification.close();
+    $("#onl_btn").attr("disabled", true)
   });
   
   function getmic(){
@@ -210,28 +221,45 @@ const userStatus = {
     {ChangeMute(true);}
     $("#mute_btn").attr("disabled", !isavailable);
   }
-  (()=>{
+  (()=>{ //load settings
     $("#rec_length_num").val(settings.record_length)
     $("#rec_length").val(settings.record_length)
     $("#disconnect_Notifications_check").prop('checked', settings.disconnect_notification)
     $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
     $("#mic_disconnect_Notifications_check").prop('checked', settings.mic_disconnect_notification)
-  })();
+    $("#height_ping_Notifications_check").prop('checked', settings.height_ping_notification > 0);
+    if (settings.height_ping_notification > 0){
+      $("#height_ping_Notifications_check").change()
+      $("#height_ping_num").val(settings.height_ping_notification)
+    }
+  })()
   function saveSettings(){
     settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
     settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
     settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
-    settings.record_length = $("#rec_length_num").val();
+    settings.record_length = Number($("#rec_length_num").val());
+    if (settings.height_ping_notification > 0){
+      settings.height_ping_notification = Number(-1);
+    } else {
+      settings.height_ping_notification = Number($("#height_ping_num").val());
+    }
     localStorage.setItem("settings", JSON.stringify(settings))
-  }
-  $('#microphone_select').on( "change", ()=>{settings.mic=$('#microphone_select').val().trim()})
-  
+  }  
+
 setInterval(() => {
   const start = Date.now();
 
   socket.emit("ping", () => {
     const duration = Date.now() - start;
     ping_p.html(duration);
-    // console.log(duration);
+    if (settings.height_ping_notification > 0)
+    {
+      if (duration >= settings.height_ping_notification)
+      {
+        height_ping_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" });
+      } else {
+        height_ping_notification.close();
+      }
+    }
   });
 }, 1000);
