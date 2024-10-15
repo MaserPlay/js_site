@@ -53,6 +53,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" }));
     socket.emit("userInformation", userStatus);
     $("#onl_btn").attr("disabled", false)
+    emitUserInformation()
   });
   
   socket.on("connect_error", (err) => {
@@ -247,7 +248,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       $("#height_ping_Notifications_check").change()
       $("#height_ping_num").val(settings.height_ping_notification)
     }
-    
+
     $("#rec_length_num").val(settings.record_length)
     $("#rec_length").val(settings.record_length)
     $("#Debug_mode").prop('checked', settings.debug)
