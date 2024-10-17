@@ -41,11 +41,11 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   usernameInput.val(userStatus.username);
   usernameLabel.innerText = userStatus.username;
   
-  var socket = io((location.protocol !== 'https:' ? 'ws' : 'wss') + '://' + document.location.host, {
-      'reconnection': true,
-      'reconnectionDelay': 1000,
-      'reconnectionDelayMax' : 5000,
-      'reconnectionAttempts': 5
+  var socket = io(`${document.location.origin}`, {
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax : 5000,
+      reconnectionAttempts: 5
     });
   socket.on("connect", () => {
     ping_p.removeClass("text-decoration-line-through");
@@ -53,6 +53,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" }));
     socket.emit("userInformation", userStatus);
     $("#onl_btn").attr("disabled", false)
+    usersDiv.html("")
   });
   
   socket.on("connect_error", (err) => {
@@ -64,13 +65,14 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected. ${reason.capitalize()}`, icon: "/favicon.ico" }));
     connected_notification.close();
     $("#onl_btn").attr("disabled", true)
+    usersDiv.html("<div class='text-center'> <div class='spinner-border' role='status'> <span class='visually-hidden'>Loading...</span> </div> </div>")
   });
   
   function getmic(){
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
       if ($('#microphone_select').html().trim() === "")
-      {stream.getTracks().forEach((track)=>{
+      {stream.getAudioTracks().forEach((track)=>{
         $('#microphone_select').append($('<option>', {
             value: track.id,
             text: track.label,
@@ -78,6 +80,9 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
         }));
       })}
     }).catch((e)=>{if (e.message == "Requested device not found"){MicAvailable(false)}; console.error(e)})
+  }
+  function getspe(){
+    // navigator.mediaDevices.
   }
   
   function mainFunction() {
