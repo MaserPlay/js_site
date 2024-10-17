@@ -16,7 +16,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
 
   let settings_modal = new bootstrap.Modal('#settings_toast_div');
   var disconnected_toast = new bootstrap.Toast('#disconnected_toast');
-  const audioContext = new AudioContext({ sinkId: settings.speaker });
+  const audioContext = new AudioContext();
   
   const usernameInput = $("#username");
   const usernameLabel = document.getElementById("username-label");
@@ -107,12 +107,12 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
-      if (settings.mic&&settings.mic.trim() !== "")
+      if (settings.mic&&settings.mic.trim() !== "" && stream.getTrackById(settings.mic))
       {
         stream.addTrack(stream.getTrackById(settings.mic))
       }
 
-      madiaRecorder = new MediaRecorder(stream);
+      madiaRecorder = new MediaRecorder(stream, { 'type': 'audio/ogg; codecs=opus' });
       madiaRecorder.start();
   
       var audioChunks = [];
@@ -151,40 +151,41 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     }).catch((e) => {
       if (e.message == "Requested device not found"){MicAvailable(false)}
       console.error(e);                           // will show "foo"
-  }); 
-  
-    socket.on("send", async function (data) {
-      if (!userStatus.online) return;
-      if (!CheckUrl(data)) {
-        console.error("url isn`t valid")
-      };
-
-      // Grab audio track via fetch() for convolver node
-      try {
-        const response = await fetch(data);
-        const arrayBuffer = await response.arrayBuffer();
-        const decodedAudio = await audioContext.decodeAudioData(arrayBuffer);
-        source = audioContext.createBufferSource();
-        source.buffer = decodedAudio;
-        source.connect(audioContext.destination);
-        source.start();
-      } catch (error) {
-        console.error(
-          `Unable to fetch the audio file. Error: ${error.message}`
-        );
-      }
-    });  
-    function CheckUrl(string) {
-      let url;      
-      try {
-        url = new URL(string);
-      } catch (_) {
-        return false;  
-      }    
-      return !url.protocol || url.protocol == "data:";
-    }
-  
+  });    
   }
+
+  socket.on("send", async function (data) {
+    if (!userStatus.online) return;
+    if (!CheckUrl(data)) {
+      console.error("url isn`t valid")
+    };
+
+    // Grab audio track via fetch() for convolver node
+    try {
+      const response = await fetch(data);
+      const arrayBuffer = await response.arrayBuffer();
+      const decodedAudio = await audioContext.decodeAudioData(arrayBuffer);
+      source = audioContext.createBufferSource();
+      source.buffer = decodedAudio;
+      source.connect(audioContext.destination);
+      source.start();
+    } catch (error) {
+      console.error(
+        `Unable to fetch the audio file. Error: ${error.message}`
+      );
+    }
+  });  
+
+  function CheckUrl(string) {
+    let url;      
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;  
+    }    
+    return !url.protocol || url.protocol == "data:";
+  }
+
   socket.on("usersUpdate", function (data) {
     usersReset();
     for (const key in data) {
@@ -284,6 +285,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     $("#rec_length_num").val(settings.record_length)
     $("#rec_length").val(settings.record_length)
     $("#Debug_mode").prop('checked', settings.debug)
+    audioContext.setSinkId(settings.speaker);
   })()
   function saveSettings(){
     settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
