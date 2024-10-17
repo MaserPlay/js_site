@@ -6,6 +6,7 @@ const userStatus = {
 const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   record_length: 500,
   mic: "",
+  speaker: "",
   mic_disconnect_notification: true,
   connect_notification: false,
   disconnect_notification: true,
@@ -15,6 +16,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
 
   let settings_modal = new bootstrap.Modal('#settings_toast_div');
   var disconnected_toast = new bootstrap.Toast('#disconnected_toast');
+  const audioContext = new AudioContext({ sinkId: settings.speaker });
   
   const usernameInput = $("#username");
   const usernameLabel = document.getElementById("username-label");
@@ -36,6 +38,10 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   if (Notification.permission == 'granted')
   {
     (new bootstrap.Toast('#notification_toast')).hide()
+  }
+  if ("setSinkId" in AudioContext.prototype) {
+  } else {
+    $("#speaker_select").prop('disabled', true)
   }
 
   usernameInput.val(userStatus.username);
@@ -71,23 +77,34 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   function getmic(){
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
-      if ($('#microphone_select').html().trim() === "")
-      {stream.getAudioTracks().forEach((track)=>{
+      $('#microphone_select').html("")
+      stream.getAudioTracks().forEach((track)=>{
         $('#microphone_select').append($('<option>', {
             value: track.id,
             text: track.label,
             disabled: track.muted
         }));
-      })}
+      })
     }).catch((e)=>{if (e.message == "Requested device not found"){MicAvailable(false)}; console.error(e)})
   }
-  function getspe(){
-    // navigator.mediaDevices.
+  async function getspe(){
+    if ("setSinkId" in AudioContext.prototype) {
+      $("#speaker_select").html("");
+      (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind == "audiooutput").forEach((device)=>{
+        $("#speaker_select").append($('<option>', {
+          value: device.deviceId,
+          text: device.label,
+          // disabled: track.muted
+      }));
+      })
+      
+    } else {
+      console.error("setSinkId not supported")
+    }
   }
   
   function mainFunction() {
 
-    const audioContext = new AudioContext();
   
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
@@ -269,6 +286,9 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
 
     settings.record_length = Number($("#rec_length_num").val());
     settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
+    settings.mic=$('#microphone_select').val().trim();
+    settings.speaker=($('#speaker_select').val().trim() === "default") ? "" : $('#speaker_select').val().trim();
+    audioContext.setSinkId(settings.speaker);
     localStorage.setItem("settings", JSON.stringify(settings))
   }  
 
