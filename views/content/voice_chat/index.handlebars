@@ -63,7 +63,12 @@
         </div>
         <div class="mb-3">
           <label for="microphone_select" class="form-label">Micophone</label>
-          <select class="form-select" id="microphone_select" aria-label="Default select example" onfocus="getmic()" onchange="settings.mic=$('#microphone_select').val().trim()">
+          <select class="form-select" id="microphone_select" aria-label="Default select example" onfocus="getmic()">
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="speaker_select" class="form-label">Speaker</label>
+          <select class="form-select" id="speaker_select" aria-label="Default select example" onfocus="getspe()">
           </select>
         </div>
         <h1>Notifications</h1>
