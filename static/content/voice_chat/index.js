@@ -94,7 +94,6 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
         $("#speaker_select").append($('<option>', {
           value: device.deviceId,
           text: device.label,
-          // disabled: track.muted
       }));
       })
       
@@ -156,6 +155,9 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   
     socket.on("send", async function (data) {
       if (!userStatus.online) return;
+      if (!CheckUrl(data)) {
+        console.error("url isn`t valid")
+      };
 
       // Grab audio track via fetch() for convolver node
       try {
@@ -172,6 +174,15 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
         );
       }
     });  
+    function CheckUrl(string) {
+      let url;      
+      try {
+        url = new URL(string);
+      } catch (_) {
+        return false;  
+      }    
+      return !url.protocol || url.protocol == "data:";
+    }
   
   }
   socket.on("usersUpdate", function (data) {

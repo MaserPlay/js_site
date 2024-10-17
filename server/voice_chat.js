@@ -23,8 +23,18 @@ io.on("connection", function (socket) {
       }
   
     });
+    // socket.on("voiceRaw", function (data) {
+  
+    //   for (const id in socketsStatus[room]) {
+  
+    //     if (id != socketId && socketsStatus[room][id].online)
+    //       socket.broadcast.to(id).emit("send", data);
+    //   }
+  
+    // });
   
     socket.on("userInformation", function (data) {
+      data.username.replace("<", "{").replace(">", "}")
       if (!data.online)
       {
         delete socketsStatus[room][socketId];
