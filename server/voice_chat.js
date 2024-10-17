@@ -12,9 +12,10 @@ io.on("connection", function (socket) {
   
     socket.on("voice", function (data) {
   
-      var newData = data.split(";");
-      newData[0] = "data:audio/ogg;";
-      newData = newData[0] + newData[1];
+      // var newData = data.split(";");
+      // newData[0] = "data:audio/ogg;";
+      // newData = newData[0] + newData[1];
+      var newData = data
   
       for (const id in socketsStatus[room]) {
   
