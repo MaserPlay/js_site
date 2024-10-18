@@ -41,7 +41,7 @@ io.on("connection", function (socket) {
       leaveRoom()
     });
 
-    socket.on("changeRoom", (name, callback)=>{
+    socket.on("changeRoom", (name)=>{
       if (name === "+")
       {
         leaveRoom()
@@ -50,12 +50,12 @@ io.on("connection", function (socket) {
         JoinRoom(nroom)
         io.emit("roomsChanged", Object.keys(socketsStatus));
       } else {
-        leaveRoom()
-        JoinRoom(name)
+        if (socketsStatus[name])
+        {
+          leaveRoom()
+          JoinRoom(name)
+        }
       }
-      callback({
-        status: "ok"
-      });
     })
 
     function leaveRoom() {
