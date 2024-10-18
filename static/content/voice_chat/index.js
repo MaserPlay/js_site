@@ -51,7 +51,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       reconnection: true,
       reconnectionDelay: 1000,
       reconnectionDelayMax : 5000,
-      reconnectionAttempts: 5
+      reconnectionAttempts: 10
     });
   socket.on("connect", () => {
     ping_p.removeClass("text-decoration-line-through");

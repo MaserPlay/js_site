@@ -26,7 +26,7 @@
 	"System": "Система",
 	" Hi! It would be great to have a connection with the interlocutor! Allow me to\r\n        receive notifications ) ": "Привет! Было бы здорово поддерживать связь с собеседником! Разрешите мне получать уведомления )",
 	"Allow": "Разрешить",
-	"! Warning Javascript is disabled ! Some things may not work properly": "! Предупреждение, Javascript отключен! Некоторые функции могут работать неправильно",
+	"! Warning Javascript is disabled ! Some things may not work properly": "! Предупреждение, Javascript отключен ! Некоторые функции могут работать неправильно",
 	"Light": "Light",
 	"Dark": "Dark",
 	"Please enable JavaScript. This is a website written entirely in JavaScript.": "Пожалуйста, включите JavaScript. Это веб-сайт, полностью написанный на JavaScript.",
@@ -40,7 +40,9 @@
 	"Nothing selected": "Ничего не выбрано",
 	"Char": "Char",
 	"Number": "Number",
-	"Calc": "Calc",
+	"Calc": "Посчитать",
 	"This is .csv reader.": "Это программа для чтения файлов в формате .csv.",
-	"Separator": "Разделитель"
+	"Separator": "Разделитель",
+	"You have nothing to look for here, traveler": "Тебе нечего здесь искать, путешественник",
+	"To the main page": "Перейти на главную страницу"
 }
