@@ -19,7 +19,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   const audioContext = new AudioContext();
   
   const usernameInput = $("#username");
-  const usernameLabel = document.getElementById("username-label");
+  const usernameLabel = $("#username-label");
   const usersDiv = $("#users");
   var ping_p = $("#ping");
   
@@ -45,7 +45,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   }
 
   usernameInput.val(userStatus.username);
-  usernameLabel.innerText = userStatus.username;
+  usernameLabel.text(userStatus.username);
   
   var socket = io(`${document.location.origin}`, {
       reconnection: true,
@@ -157,13 +157,18 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   socket.on("send", async function (data) {
     if (!userStatus.online) return;
     if (!CheckUrl(data)) {
-      console.error("url isn`t valid")
+      console.warn("url isn`t valid")
+      return;
     };
 
     // Grab audio track via fetch() for convolver node
     try {
       const response = await fetch(data);
       const arrayBuffer = await response.arrayBuffer();
+      if (arrayBuffer.byteLength <= 0){
+        console.warn("arrayBuffer.byteLength <= 0")
+        return;
+      };
       const decodedAudio = await audioContext.decodeAudioData(arrayBuffer);
       source = audioContext.createBufferSource();
       source.buffer = decodedAudio;
@@ -200,7 +205,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   function changeUsername(name) {
     localStorage.setItem("username", name)
     userStatus.username = name;
-    usernameLabel.innerText = userStatus.username;
+    usernameLabel.text(userStatus.username);
     emitUserInformation();
   }
   
@@ -299,8 +304,8 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
 
     settings.record_length = Number($("#rec_length_num").val());
     settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
-    settings.mic=$('#microphone_select').val().trim();
-    settings.speaker=($('#speaker_select').val().trim() === "default") ? "" : $('#speaker_select').val().trim();
+    settings.mic=$('#microphone_select').val()?.trim() ?? "";
+    settings.speaker=(($('#speaker_select').val()?.trim() === "default") ? "" : $('#speaker_select').val()?.trim()) ?? "";
     audioContext.setSinkId(settings.speaker);
     localStorage.setItem("settings", JSON.stringify(settings))
   }  

@@ -11,11 +11,11 @@ io.on("connection", function (socket) {
     
   
     socket.on("voice", function (data) {
-  
-      // var newData = data.split(";");
-      // newData[0] = "data:audio/ogg;";
-      // newData = newData[0] + newData[1];
       var newData = data
+      if (!CheckUrl(newData)) { // output url dont correct
+        console.warn("url isn`t valid")
+        return;
+      };
   
       for (const id in socketsStatus[room]) {
   
@@ -24,15 +24,6 @@ io.on("connection", function (socket) {
       }
   
     });
-    // socket.on("voiceRaw", function (data) {
-  
-    //   for (const id in socketsStatus[room]) {
-  
-    //     if (id != socketId && socketsStatus[room][id].online)
-    //       socket.broadcast.to(id).emit("send", data);
-    //   }
-  
-    // });
   
     socket.on("userInformation", function (data) {
       data.username.replace("<", "{").replace(">", "}")
@@ -90,3 +81,12 @@ io.on("connection", function (socket) {
       callback();
     });
   });
+  function CheckUrl(string) {
+    let url;      
+    try {
+      url = new URL(string);
+    } catch (_) {
+      return false;  
+    }    
+    return !url.protocol || url.protocol == "data:";
+  }
