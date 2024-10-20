@@ -1,8 +1,20 @@
-const userStatus = {
-    mute: false,
-    username: localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999),
-    online: false,
-  };
+var changeRoom = (to)=>{}
+(async ()=> {
+  var lang = await (await langpromize).json()
+  String.prototype.format = String.prototype.format ||
+  function () {
+    var args = Array.prototype.slice.call(arguments);
+    var replacer = function (a){return args[a.substr(1)-1];};
+    return this.replace(/(\$\d+)/gm, replacer)
+};
+class User {
+  constructor() {
+    this.mute = false;
+    this.username = localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999);
+    this.online = false;
+  }
+}
+const userStatus = new User();
 const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   record_length: 500,
   mic: "",
@@ -15,8 +27,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   }
 
   let settings_modal = new bootstrap.Modal('#settings_toast_div');
-  var disconnected_toast = new bootstrap.Toast('#disconnected_toast');
-  const audioContext = new AudioContext();
+  let audioContext;
   
   const usernameInput = $("#username");
   const usernameLabel = $("#username-label");
@@ -39,10 +50,8 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   {
     (new bootstrap.Toast('#notification_toast')).hide()
   }
-  if ("setSinkId" in AudioContext.prototype) {
-  } else {
-    $("#speaker_select").prop('disabled', true)
-  }
+  var haveSink = "setSinkId" in AudioContext.prototype;
+  $("#speaker_select").prop('disabled', !haveSink)
 
   usernameInput.val(userStatus.username);
   usernameLabel.text(userStatus.username);
@@ -51,12 +60,12 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       reconnection: true,
       reconnectionDelay: 1000,
       reconnectionDelayMax : 5000,
-      reconnectionAttempts: 10
+      // reconnectionAttempts: 10
     });
   socket.on("connect", () => {
     ping_p.removeClass("text-decoration-line-through");
     disconnected_notification.close();
-    settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: `Connected.`, icon: "/favicon.ico" }));
+    settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: lang["Connected"], icon: "/favicon.ico" }));
     socket.emit("userInformation", userStatus);
     $("#onl_btn").attr("disabled", false)
     usersDiv.html("")
@@ -68,11 +77,14 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   
   socket.on("disconnect", (reason) => {
     ping_p.addClass("text-decoration-line-through");
-    settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: `Disconected. ${reason.capitalize()}`, icon: "/favicon.ico" }));
+    settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: lang["Disconected"].format(reason.capitalize()), icon: "/favicon.ico" }));
     connected_notification.close();
     $("#onl_btn").attr("disabled", true)
-    usersDiv.html("<div class='text-center'> <div class='spinner-border' role='status'> <span class='visually-hidden'>Loading...</span> </div> </div>")
+    usersDiv.html(`<div class='text-center'> <div class='spinner-border' role='status'> <span class='visually-hidden'>${lang["Loading"]}...</span> </div> </div>`)
+    $("#groupRooms").html(`<button class='btn btn-primary' type='button' disabled> <span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> <span class='visually-hidden'>${lang["Loading"]}...</span> </button>`)
   });
+  socket.on("ChangeMute", (mute)=>{if (mute){return};ChangeMute(mute);})
+  socket.on("ChangeConnection", (conn)=>{if (conn){return};ChangeConnection(conn);})
   
   function getmic(){
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -198,26 +210,52 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       const element = data[key];
       element.mute
 
-      userVisible(element.username, true, !element.mute);  
+      if (data[key].online)
+      {userVisible(element.username, true, !element.mute);}
     }
   });
+  socket.on("roomsChanged", (rooms) => {
+    var addRoom = (id, name)=>{
+      $("#groupRooms").append(
+      `<button type='button' class='btn btn-outline-secondary w-100' onclick='changeRoom("${id}")'>${name}</button>`
+      )
+    }
+    $("#groupRooms").html("")
+    for (r in rooms){
+      if (rooms[r] === "System")
+      {
+        addRoom(r, lang[r])
+      } else {
+        addRoom(r, lang["room_author"].format(rooms[r]) )
+      }
+    }
+    addRoom("+", "+")
+  })
   
   function changeUsername(name) {
-    localStorage.setItem("username", name)
+    localStorage.setItem("username", name);
     userStatus.username = name;
     usernameLabel.text(userStatus.username);
     emitUserInformation();
   }
   
-  function ChangeConnection(conn) {
+  function ChangeConnection (conn){
     userStatus.online = conn;
+    TryCreateContext()
   
     editButtonClass($("#onl_btn"), userStatus.online);
     emitUserInformation();
     mainFunction();
   }
+  function TryCreateContext(){
+    if (audioContext)
+    {return}
+    audioContext = new AudioContext()
+    if (haveSink)
+    {audioContext.setSinkId(settings.speaker);}
+  }
   
-  function ChangeMute(mute) {
+  let ChangeMute = (mute) => {
     userStatus.mute = mute;
     if (madiaRecorder)
     {
@@ -266,7 +304,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     {
       if (!isavailable)
       {
-        mic_disconnected_notification = new Notification("js.maserplay.ru", { body: `Microphone disconnected.`, icon: "/favicon.ico" })
+        mic_disconnected_notification = new Notification("js.maserplay.ru", { body: lang["Microphone disconnected"], icon: "/favicon.ico" })
       }
       else {
         mic_disconnected_notification.close()
@@ -290,7 +328,6 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     $("#rec_length_num").val(settings.record_length)
     $("#rec_length").val(settings.record_length)
     $("#Debug_mode").prop('checked', settings.debug)
-    audioContext.setSinkId(settings.speaker);
   })()
   function saveSettings(){
     settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
@@ -305,9 +342,11 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     settings.record_length = Number($("#rec_length_num").val());
     settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
     settings.mic=$('#microphone_select').val()?.trim() ?? "";
-    settings.speaker=(($('#speaker_select').val()?.trim() === "default") ? "" : $('#speaker_select').val()?.trim()) ?? "";
-    audioContext.setSinkId(settings.speaker);
-    localStorage.setItem("settings", JSON.stringify(settings))
+    if (haveSink)
+    {settings.speaker=(($('#speaker_select').val()?.trim() === "default") ? "" : $('#speaker_select').val()?.trim()) ?? "";
+    audioContext.setSinkId(settings.speaker);}
+    localStorage.setItem("settings", JSON.stringify(settings));
+    changeUsername($('#username').val());
   }  
 
 setInterval(() => {
@@ -320,10 +359,46 @@ setInterval(() => {
     {
       if (duration >= settings.height_ping_notification)
       {
-        height_ping_notification = new Notification("js.maserplay.ru", { body: `Ping too height! ${duration}`, icon: "/favicon.ico" });
+        height_ping_notification = new Notification("js.maserplay.ru", { body: lang["Ping too height!"].format(duration), icon: "/favicon.ico" });
       } else {
         height_ping_notification.close();
       }
     }
   });
 }, 1000);
+$("#notification_toast_btn").on('click', function(){
+  Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});
+})
+function clearSettings(){
+  localStorage.removeItem('settings');localStorage.removeItem('username');location.reload();
+}
+$("#clearAll").on('click', function(){
+  clearSettings()
+})
+$("#saveSettings").on('click', function(){
+  saveSettings()
+})
+$("#onl_btn").on('click', function(){
+  ChangeConnection(!userStatus.online);
+})
+$("#mute_btn").on('click', function(){
+  ChangeMute(!userStatus.mute)
+})
+$("#sett_btn").on('click', function(){
+  TryCreateContext()
+  settings_modal.show();
+})
+$("#AcceptWelcome").on('click', function(){
+  TryCreateContext()
+  changeUsername($('#username_startup').val())
+})
+$("#speaker_select").on('focus', function() {
+  getspe()
+})
+$("#microphone_select").on('focus', function() {
+  getmic()
+})
+changeRoom = (to)=>{
+  socket.emit("changeRoom", to)
+}
+})()

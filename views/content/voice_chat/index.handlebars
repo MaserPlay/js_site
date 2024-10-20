@@ -1,13 +1,24 @@
+<link href="index.css" rel="stylesheet">
+<div class="row">
+  <div class="col-sm-2 v-center-if-pc" style="padding: calc(var(--bs-gutter-x)* .5)">
+    <p class="text-secondary text-center">{{__ 'rooms list'}}</p>
+  <div class="btn-group-auto w-100" role="group" aria-label="Rooms" id="groupRooms">
+            <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span class="visually-hidden">Loading...</span>
+            </button>
+</div></label>
+</div></div>
+  <div class="col-sm-10">
 <div class="text-center pagination-centered">
   <div>
     <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary" style="margin:3px"></span><span
         id="ping" class="text-decoration-line-through">{{__ 'ping'}}</span></p>
     <h3 id="username-label">{{__ 'Username'}}</h3>
   </div>
-  <div> <button type="button" class="btn btn-primary disable-btn" onclick="ChangeMute(!userStatus.mute)"
-      id="mute_btn">{{__ 'Mute'}}</button> <button type="button" class="btn btn-primary disable-btn"
-      onclick="ChangeConnection(!userStatus.online);" id="onl_btn">{{__ 'Go online'}}</button> <button type="button"
-      class="btn bi bi-gear-fill" onclick="settings_modal.show();"></button> </div>
+  <div> <button type="button" class="btn btn-primary disable-btn"
+      id="mute_btn">{{__ 'Mute'}}</button> <button type="button" class="btn btn-primary disable-btn" id="onl_btn">{{__ 'Go online'}}</button> <button type="button" id="sett_btn"
+      class="btn bi bi-gear-fill"></button> </div>
   <hr />
   <p class="text-secondary">{{__ 'users list'}}</p>
   <div class="users row" id="users">
@@ -15,6 +26,8 @@
       <div class='spinner-border' role='status'> <span class='visually-hidden'>{{__ 'Loading...'}}</span> </div>
     </div>
   </div>
+</div>
+</div>
 </div> <!-- Select Name Modal -->
 <div class="modal fade" id="startup_select" tabindex="-1" aria-modal="true" role="dialog">
   <div class="modal-dialog">
@@ -30,8 +43,7 @@
         </form>
       </div>
       <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__
-          'Close'}}</button> <button type="button" class="btn btn-primary"
-          onclick="changeUsername($('#username_startup').val())" data-bs-dismiss="modal">{{__ 'Save
+          'Close'}}</button> <button type="button" class="btn btn-primary" id="AcceptWelcome" data-bs-dismiss="modal">{{__ 'Save
           changes'}}</button> </div>
     </div>
   </div>
@@ -51,10 +63,10 @@
             onchange="$('#rec_length').val(value)"> <input type="range" class="form-range" min="30" max="1000"
             id="rec_length" onchange="$('#rec_length_num').val(value)"> </div>
         <div class="mb-3"> <label for="microphone_select" class="form-label">{{__ 'Micophone'}}</label> <select
-            class="form-select" id="microphone_select" aria-label="Default select example" onfocus="getmic()"> </select>
+            class="form-select" id="microphone_select" aria-label="Default select example"> </select>
         </div>
         <div class="mb-3"> <label for="speaker_select" class="form-label">{{__ 'Speaker'}}</label> <select
-            class="form-select" id="speaker_select" aria-label="Default select example" onfocus="getspe()"> </select>
+            class="form-select" id="speaker_select" aria-label="Default select example"> </select>
         </div>
         <h1>{{__ 'Notifications'}}</h1>
         <div class="mb-3">
@@ -82,8 +94,7 @@
             aria-controls="external_sett">{{__ ' External settings '}}</button>
           <div class="collapse" id="external_sett">
             <div class="card card-body">
-              <div class="mb-3"> <button type="button" class="btn btn-outline-secondary w-100"
-                  onclick="localStorage.removeItem('settings');localStorage.removeItem('username');location.reload();">{{__ 'Clear all
+              <div class="mb-3"> <button id="clearAll" type="button" class="btn btn-outline-secondary w-100">{{__ 'Clear all
                   voice_chat data'}}</button> </div>
               <div class="mb-3">
                 <div class="form-check"> <input class="form-check-input" type="checkbox" id="Debug_mode"> <label
@@ -93,8 +104,7 @@
           </div>
         </div>
         <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__
-            'Close'}}</button> <button type="button" class="btn btn-primary"
-            onclick="changeUsername($('#username').val()); saveSettings()" data-bs-dismiss="modal">{{__ 'Save
+            'Close'}}</button> <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveSettings">{{__ 'Save
             changes'}}</button> </div>
       </div>
     </div>
@@ -110,15 +120,15 @@
             'Loading...'}}</span> </div> <strong class="me-auto">{{__ 'System'}}</strong><button type="button"
           class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      <div class="toast-body">{{__ ' Hi! It would be great to have a connection with the interlocutor! Allow me to
+      <div id="notification_toast_btn" class="toast-body">{{__ ' Hi! It would be great to have a connection with the interlocutor! Allow me to
         receive notifications ) '}}<div class="mt-2 pt-2 border-top"> <button type="button"
-            class="btn btn-primary btn-sm"
-            onclick="Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});">{{__
+            class="btn btn-primary btn-sm">{{__
             'Allow'}}</button> </div>
       </div>
     </div>
   </div>
 </div>
+<script>var langpromize = fetch('{{__ 'lang'}}.json')</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
   integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
