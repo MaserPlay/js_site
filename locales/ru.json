@@ -44,5 +44,7 @@
 	"This is .csv reader.": "Это программа для чтения файлов в формате .csv.",
 	"Separator": "Разделитель",
 	"You have nothing to look for here, traveler": "Тебе нечего здесь искать, путешественник",
-	"To the main page": "Перейти на главную страницу"
+	"To the main page": "Перейти на главную страницу",
+	"lang": "ru",
+	"rooms list": "список комнат"
 }

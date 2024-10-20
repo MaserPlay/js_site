@@ -1,0 +1,9 @@
+{
+    "Connected": "Подключенно",
+    "Disconected": "Отсоединен. $1",
+    "Loading": "Загрузка",
+    "Microphone disconnected": "Микрофон отсоединен",
+    "Ping too height!": "Слишком высокий уровень пинга! $1",
+    "room_author": "Комната $1",
+    "main-room": "Основная комната"
+}
