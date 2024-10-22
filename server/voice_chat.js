@@ -60,7 +60,7 @@ io.on("connection", function (socket) {
     });
   
     socket.on("userInformation", function (data) {
-      data.username.replace("<", "{").replace(">", "}")
+      data.username = data.username.replace("<", "{").replace(">", "}")
       user = data
       socketsStatus.get(room).addUser(user, socketId);
       emitUsersUpdate()
