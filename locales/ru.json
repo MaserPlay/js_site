@@ -18,7 +18,7 @@
 	" Disconnect Notifications\r\n              ": "Уведомления о отключении",
 	" Microphone disconnect Notifications ": "Уведомления об отключении микрофона",
 	" Too height ping notification ": "Уведомление о слишком высоком уровне пинга",
-	" External settings ": "Расширенные настройки",
+	"External settings": "Расширенные настройки",
 	" Debug mode ": "Debug mode",
 	"Save\r\n            changes": "Сохранить настройки",
 	"👋 ": "👋",
@@ -47,5 +47,8 @@
 	"lang": "ru",
 	"rooms list": "список комнат",
 	"Clear\r\n                  all\r\n                  voice_chat data": "Очистить все voice_chat данные",
-	" Hi! It would be great to have a connection with the\r\n        interlocutor! Allow me to\r\n        receive notifications ) ": "Привет! Было бы здорово поддерживать связь с собеседником! Разрешите мне получать уведомления )"
+	" Hi! It would be great to have a connection with the\r\n        interlocutor! Allow me to\r\n        receive notifications ) ": "Привет! Было бы здорово поддерживать связь с собеседником! Разрешите мне получать уведомления )",
+	"Clear\r\n          all\r\n          voice_chat data": "Clear\r\n          all\r\n          voice_chat data",
+	"You": "Вы",
+	"Audio": "Аудио"
 }
