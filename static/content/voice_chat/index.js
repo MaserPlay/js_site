@@ -21,7 +21,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   speaker: "",
   mic_disconnect_notification: true,
   connect_notification: false,
-  disconnect_notification: true,
+  disconnect_notification: false,
   height_ping_notification: -1,
   debug: false,
   }
