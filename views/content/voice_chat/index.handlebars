@@ -49,51 +49,33 @@
     </div>
   </div>
 </div> <!-- Settings Modal -->
-<div class="modal modal-lg fade" id="settings_toast_div" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="settings_toast_div" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">{{__ 'Settings'}}</h1> <button type="button"
           class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row">
-  <div class="col-4">
-    <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
-      <nav class="nav nav-pills flex-column">
-        <a class="nav-link" href="#you_settings">{{__ 'You'}}</a>
-        <a class="nav-link" href="#audio_settings">{{__ 'Audio'}}</a>
-        <a class="nav-link" href="#notifications_settings">{{__ 'Notifications'}}</a>
-        <a class="nav-link" href="#external_settings">{{__ 'External settings'}}</a>
-      </nav>
-    </nav>
-  </div>
-
-  <div class="col-8">
-    <h4 id="you_settings">{{__ 'You'}}</h1>
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
-      <div class="mb-3"> <label for="exampleInputEmail1" class="form-label">{{__ 'Username'}}</label> <input
+        <div class="mb-3"> <label for="exampleInputEmail1" class="form-label">{{__ 'Username'}}</label> <input
             type="text" class="form-control" id="username"> </div>
-            <h4 id="audio_settings">{{__ 'Audio'}}</h1>
-      <div class="mb-3"> <label for="rec_length" class="form-label">{{__ 'Record length'}}</label> <input
+        <div class="mb-3"> <label for="rec_length" class="form-label">{{__ 'Record length'}}</label> <input
             type="number" class="form-control" id="rec_length_num" min="30" max="1000"
             onchange="$('#rec_length').val(value)"> <input type="range" class="form-range" min="30" max="1000"
             id="rec_length" onchange="$('#rec_length_num').val(value)"> </div>
         <div class="mb-3"> <label for="microphone_select" class="form-label">{{__ 'Micophone'}}</label> <select
             class="form-select" id="microphone_select" aria-label="Default select example"> </select>
         </div>
-      <div class="mb-3"> <label for="speaker_select" class="form-label">{{__ 'Speaker'}}</label> <select
+        <div class="mb-3"> <label for="speaker_select" class="form-label">{{__ 'Speaker'}}</label> <select
             class="form-select" id="speaker_select" aria-label="Default select example"> </select>
         </div>
-      </div>
-      <h4 id="notifications_settings">{{__ 'Notifications'}}</h1>
-      <div class="mb-3">
+        <h1>{{__ 'Notifications'}}</h1>
+        <div class="mb-3">
           <div class="form-check"> <input class="form-check-input" type="checkbox" id="Connect_Notifications_check">
             <label class="form-check-label" for="Connect_Notifications_check">{{__ ' Connect Notifications '}}</label>
           </div>
           <div class="form-check"> <input class="form-check-input" type="checkbox" id="disconnect_Notifications_check">
-            <label class="form-check-label" for="disconnect_Notifications_check">{{__ ' Disconnect Notifications
-              '}}</label>
+            <label class="form-check-label" for="disconnect_Notifications_check">{{__ 'Disconnect Notifications'}}</label>
           </div>
           <div class="form-check"> <input class="form-check-input" type="checkbox"
               id="mic_disconnect_Notifications_check"> <label class="form-check-label"
@@ -107,24 +89,19 @@
                 onchange="$('#height_ping_num').val(value)"> </div>
           </div>
         </div>
-      <div class="mb-3">
-        <h4 class="text-secondary" id="external_settings">{{__ 'External settings'}}</h4> <button class="btn btn-outline-secondary btn-sm w-100" type="button" data-bs-toggle="collapse"
-    data-bs-target="#external_sett" aria-expanded="false" aria-controls="external_sett">{{__ 'External settings'}}</button>
-  <div class="collapse" id="external_sett">
-    <div class="card card-body">
-      <div class="mb-3"> <button id="clearAll" type="button" class="btn btn-outline-secondary w-100">{{__ 'Clear
-          all
-          voice_chat data'}}</button> </div>
-      <div class="mb-3">
-        <div class="form-check"> <input class="form-check-input" type="checkbox" id="Debug_mode"> <label
-            class="form-check-label" for="Debug_mode">{{__ ' Debug mode '}}</label> </div>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</div>
+        <div class="mb-3"> <button class="btn btn-outline-secondary btn-sm w-100" type="button"
+            data-bs-toggle="collapse" data-bs-target="#external_sett" aria-expanded="false"
+            aria-controls="external_sett">{{__ 'External settings'}}</button>
+          <div class="collapse" id="external_sett">
+            <div class="card card-body">
+              <div class="mb-3"> <button id="clearAll" type="button" class="btn btn-outline-secondary w-100">{{__ 'Clear all voice_chat data'}}</button> </div>
+              <div class="mb-3">
+                <div class="form-check"> <input class="form-check-input" type="checkbox" id="Debug_mode"> <label
+                    class="form-check-label" for="Debug_mode">{{__ ' Debug mode '}}</label> </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__
             'Close'}}</button> <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
             id="saveSettings">{{__ 'Save
