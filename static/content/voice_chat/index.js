@@ -81,7 +81,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     connected_notification.close();
     $("#onl_btn").attr("disabled", true)
     usersDiv.html(`<div class='text-center'> <div class='spinner-border' role='status'> <span class='visually-hidden'>${lang["Loading"]}...</span> </div> </div>`)
-    $("#groupRooms").html(`<button class='btn btn-primary' type='button' disabled> <span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> <span class='visually-hidden'>${lang["Loading"]}...</span> </button>`)
+    $("#groupRooms").html(`<button class='btn btn-outline-secondary' type='button' disabled> <span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> <span class='visually-hidden'>${lang["Loading"]}...</span> </button>`)
   });
   socket.on("ChangeMute", (mute)=>{if (mute){return};ChangeMute(mute);})
   socket.on("ChangeConnection", (conn)=>{if (conn){return};ChangeConnection(conn);})
