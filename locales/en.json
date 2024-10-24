@@ -26,5 +26,17 @@
 	"System": "System",
 	" Hi! It would be great to have a connection with the interlocutor! Allow me to\r\n        receive notifications ) ": "Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )",
 	"Allow": "Allow",
-	"lang": "en"
+	"lang": "en",
+	"rooms list": "rooms list",
+	"You": "You",
+	"Audio": "Audio",
+	"External settings": "External settings",
+	"Clear\r\n          all\r\n          voice_chat data": "Clear\r\n          all\r\n          voice_chat data",
+	" Hi! It would be great to have a connection with the\r\n        interlocutor! Allow me to\r\n        receive notifications ) ": " Hi! It would be great to have a connection with the\r\n        interlocutor! Allow me to\r\n        receive notifications ) ",
+	"! Warning Javascript is disabled ! Some things may not work properly": "! Warning Javascript is disabled ! Some things may not work properly",
+	"Light": "Light",
+	"Dark": "Dark",
+	"Please enable JavaScript. This is a website written entirely in JavaScript.": "Please enable JavaScript. This is a website written entirely in JavaScript.",
+	"Main Site": "Main Site",
+	"Donate me )": "Donate me )"
 }
