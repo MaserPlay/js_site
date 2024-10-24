@@ -2,14 +2,17 @@ const httpServer = require("../index").httpServer
 const io = require("socket.io")(httpServer);
 
 class User {
-  mute = false;
   username = "AnUnnamedUser";
+  mute = false;
   online = false;
   /**
   * @param {string} name
   */
   constructor(name){
-    this.username = name
+    this.username = name;
+  }
+  fromJson(json){
+    return Object.assign(this, json)
   }
 }
 class Room {
@@ -60,9 +63,8 @@ io.on("connection", function (socket) {
     });
   
     socket.on("userInformation", function (data) {
-      data.username = data.username.replace("<", "{").replace(">", "}")
-      user = data
-      socketsStatus.get(room).addUser(user, socketId);
+      data.username = data.username.replaceAll("<", "{").replaceAll(">", "}")
+      user = user.fromJson(data)
       emitUsersUpdate()
     });
   
