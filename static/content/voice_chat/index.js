@@ -217,7 +217,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   socket.on("roomsChanged", (rooms) => {
     var addRoom = (id, name)=>{
       $("#groupRooms").append(
-      `<button type='button' class='btn btn-outline-secondary w-100 text-break' onclick='changeRoom("${id}")'>${String(name).replace("<", "").replace(">", "")}</button>`
+      `<button type='button' class='btn btn-outline-secondary w-100 text-break' onclick='changeRoom("${id}")'>${String(name).replaceAll("<", "").replaceAll(">", "")}</button>`
       )
     }
     $("#groupRooms").html("")
@@ -291,7 +291,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
   
   function userVisible(name, vis, mic){
     if (vis){
-      usersDiv.html(usersDiv.html() + `<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replace("<", "").replace(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
+      usersDiv.html(usersDiv.html() + `<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
     } else {
       $(`#card-${name}`).remove()
     }
