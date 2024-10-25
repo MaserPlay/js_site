@@ -25,9 +25,17 @@ switch (getTheme()) {
     $('#theme-change').addClass("bi-patch-question-fill");
     break;
 }
-Object.defineProperty(String.prototype, 'capitalize', {
-  value: function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-  },
-  enumerable: false
-});
+String.prototype.capitalize = String.prototype.capitalize || function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+String.prototype.format = String.prototype.format ||
+  function () {
+    var args = Array.prototype.slice.call(arguments);
+    var replacer = function (a) { return args[a.substr(1) - 1]; };
+    return this.replace(/(\$\d+)/gm, replacer)
+  };
+(()=>{
+  for (let popover of document.getElementsByClassName("popovers_cls")) {
+    new bootstrap.Popover(popover)
+  }
+})()
