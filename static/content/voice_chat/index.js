@@ -1,53 +1,45 @@
-var changeRoom = (to)=>{}
-(async ()=> {
+var changeRoom = (to) => { }
+(async () => {
   var lang = await (await langpromize).json()
-  String.prototype.format = String.prototype.format ||
-  function () {
-    var args = Array.prototype.slice.call(arguments);
-    var replacer = function (a){return args[a.substr(1)-1];};
-    return this.replace(/(\$\d+)/gm, replacer)
-};
-class User {
-  constructor() {
-    this.mute = false;
-    this.username = localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999);
-    this.online = false;
+  class User {
+    constructor() {
+      this.mute = false;
+      this.username = localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999);
+      this.online = false;
+    }
   }
-}
-const userStatus = new User();
-const settings = JSON.parse(localStorage.getItem("settings")) ?? {
-  record_length: 500,
-  mic: "",
-  speaker: "",
-  mic_disconnect_notification: true,
-  connect_notification: false,
-  disconnect_notification: false,
-  height_ping_notification: -1,
-  debug: false,
+  const userStatus = new User();
+  const settings = JSON.parse(localStorage.getItem("settings")) ?? {
+    record_length: 500,
+    mic: "",
+    speaker: "",
+    mic_disconnect_notification: true,
+    connect_notification: false,
+    disconnect_notification: false,
+    height_ping_notification: -1,
+    debug: false,
   }
 
   let settings_modal = new bootstrap.Modal('#settings_toast_div');
   let audioContext;
-  
+
   const usernameInput = $("#username");
   const usernameLabel = $("#username-label");
   const usersDiv = $("#users");
   var ping_p = $("#ping");
-  
-  var disconnected_notification = {close: ()=>{}};
-  var mic_disconnected_notification = {close: ()=>{}};
-  var connected_notification = {close: ()=>{}};
-  var height_ping_notification = {close: ()=>{}};
-  
+
+  var disconnected_notification = { close: () => { } };
+  var mic_disconnected_notification = { close: () => { } };
+  var connected_notification = { close: () => { } };
+  var height_ping_notification = { close: () => { } };
+
   let madiaRecorder;
-  
-  if (localStorage.getItem("username") == null)
-  {
+
+  if (localStorage.getItem("username") == null) {
     $("#username_startup").val(userStatus.username)
     new bootstrap.Modal('#startup_select').show()
   }
-  if (Notification.permission == 'granted')
-  {
+  if (Notification.permission == 'granted') {
     (new bootstrap.Toast('#notification_toast')).hide()
   }
   var haveSink = "setSinkId" in AudioContext.prototype;
@@ -55,115 +47,113 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
 
   usernameInput.val(userStatus.username);
   usernameLabel.text(userStatus.username);
-  
+
   var socket = io(`${document.location.origin}`, {
-      reconnection: true,
-      reconnectionDelay: 1000,
-      reconnectionDelayMax : 5000,
-      // reconnectionAttempts: 10
-    });
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionDelayMax: 5000,
+    // reconnectionAttempts: 10
+  });
   socket.on("connect", () => {
     ping_p.removeClass("text-decoration-line-through");
     disconnected_notification.close();
-    settings.connect_notification&&(connected_notification = new Notification("js.maserplay.ru", { body: lang["Connected"], icon: "/favicon.ico" }));
+    settings.connect_notification && (connected_notification = new Notification("js.maserplay.ru", { body: lang["Connected"], icon: "/favicon.ico" }));
     socket.emit("userInformation", userStatus);
     $("#onl_btn").attr("disabled", false)
     usersDiv.html("")
   });
-  
+
   socket.on("connect_error", (err) => {
     console.error(err);
   });
-  
+
   socket.on("disconnect", (reason) => {
     ping_p.addClass("text-decoration-line-through");
-    settings.disconnect_notification&&(disconnected_notification = new Notification("js.maserplay.ru", { body: lang["Disconected"].format(reason.capitalize()), icon: "/favicon.ico" }));
+    settings.disconnect_notification && (disconnected_notification = new Notification("js.maserplay.ru", { body: lang["Disconected"].format(reason.capitalize()), icon: "/favicon.ico" }));
     connected_notification.close();
     $("#onl_btn").attr("disabled", true)
     usersDiv.html(`<div class='text-center'> <div class='spinner-border' role='status'> <span class='visually-hidden'>${lang["Loading"]}...</span> </div> </div>`)
     $("#groupRooms").html(`<button class='btn btn-outline-secondary' type='button' disabled> <span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> <span class='visually-hidden'>${lang["Loading"]}...</span> </button>`)
   });
-  socket.on("ChangeMute", (mute)=>{if (mute){return};ChangeMute(mute);})
-  socket.on("ChangeConnection", (conn)=>{if (conn){return};ChangeConnection(conn);})
-  
-  function getmic(){
+  socket.on("ChangeMute", (mute) => { if (mute) { return }; ChangeMute(mute); })
+  socket.on("ChangeConnection", (conn) => { if (conn) { return }; ChangeConnection(conn); })
+
+  function getmic() {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
       $('#microphone_select').html("")
-      stream.getAudioTracks().forEach((track)=>{
+      stream.getAudioTracks().forEach((track) => {
         $('#microphone_select').append($('<option>', {
-            value: track.id,
-            text: track.label,
-            disabled: track.muted
+          value: track.id,
+          text: track.label,
+          disabled: track.muted
         }));
       })
-    }).catch((e)=>{if (e.message == "Requested device not found"){MicAvailable(false)}; console.error(e)})
+    }).catch((e) => { if (e.message == "Requested device not found") { MicAvailable(false) }; console.error(e) })
   }
-  async function getspe(){
+  async function getspe() {
     if ("setSinkId" in AudioContext.prototype) {
       $("#speaker_select").html("");
-      (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind == "audiooutput").forEach((device)=>{
+      (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind == "audiooutput").forEach((device) => {
         $("#speaker_select").append($('<option>', {
           value: device.deviceId,
           text: device.label,
-      }));
+        }));
       })
-      
+
     } else {
       console.error("setSinkId not supported")
     }
   }
-  
+
   function mainFunction() {
 
-  
+
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
-      if (settings.mic&&settings.mic.trim() !== "" && stream.getTrackById(settings.mic))
-      {
+      if (settings.mic && settings.mic.trim() !== "" && stream.getTrackById(settings.mic)) {
         stream.addTrack(stream.getTrackById(settings.mic))
       }
 
       madiaRecorder = new MediaRecorder(stream, { 'type': 'audio/ogg; codecs=opus' });
       madiaRecorder.start();
-  
+
       var audioChunks = [];
-  
+
       madiaRecorder.addEventListener("dataavailable", function (event) {
         audioChunks.push(event.data);
       });
-  
+
       madiaRecorder.addEventListener("stop", function () {
         var audioBlob = new Blob(audioChunks);
-  
+
         audioChunks = [];
-  
+
         var fileReader = new FileReader();
         fileReader.readAsDataURL(audioBlob);
         fileReader.onloadend = function () {
           if (!userStatus.online) return;
-  
+
           var base64String = fileReader.result;
           socket.emit("voice", base64String);
-  
+
         };
-  
-        if (!userStatus.mute)
-        {madiaRecorder.start();}
-  
-  
+
+        if (!userStatus.mute) { madiaRecorder.start(); }
+
+
         setTimeout(function () {
           madiaRecorder.stop();
         }, settings.record_length);
       });
-  
+
       setTimeout(function () {
         madiaRecorder.stop();
       }, settings.record_length);
     }).catch((e) => {
-      if (e.message == "Requested device not found"){MicAvailable(false)}
+      if (e.message == "Requested device not found") { MicAvailable(false) }
       console.error(e);                           // will show "foo"
-  });    
+    });
   }
 
   socket.on("send", async function (data) {
@@ -177,7 +167,7 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     try {
       const response = await fetch(data);
       const arrayBuffer = await response.arrayBuffer();
-      if (arrayBuffer.byteLength <= 0){
+      if (arrayBuffer.byteLength <= 0) {
         console.warn("arrayBuffer.byteLength <= 0")
         return;
       };
@@ -191,15 +181,15 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
         `Unable to fetch the audio file. Error: ${error.message}`
       );
     }
-  });  
+  });
 
   function CheckUrl(string) {
-    let url;      
+    let url;
     try {
       url = new URL(string);
     } catch (_) {
-      return false;  
-    }    
+      return false;
+    }
     return !url.protocol || url.protocol == "data:";
   }
 
@@ -210,56 +200,51 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
       const element = data[key];
       element.mute
 
-      if (data[key].online)
-      {userVisible(element.username, true, !element.mute);}
+      if (data[key].online) { userVisible(element.username, true, !element.mute); }
     }
   });
   socket.on("roomsChanged", (rooms) => {
-    var addRoom = (id, name)=>{
+    var addRoom = (id, name) => {
       $("#groupRooms").append(
-      `<button type='button' class='btn btn-outline-secondary w-100 text-break' onclick='changeRoom("${id}")'>${String(name).replaceAll("<", "").replaceAll(">", "")}</button>`
+        `<button type='button' class='btn btn-outline-secondary w-100 text-break' onclick='changeRoom("${id}")'>${String(name).replaceAll("<", "").replaceAll(">", "")}</button>`
       )
     }
     $("#groupRooms").html("")
-    for (r in rooms){
-      if (rooms[r] === "System")
-      {
+    for (r in rooms) {
+      if (rooms[r] === "System") {
         addRoom(r, lang[r])
       } else {
-        addRoom(r, lang["room_author"].format(rooms[r]) )
+        addRoom(r, lang["room_author"].format(rooms[r]))
       }
     }
     addRoom("+", "+")
   })
-  
+
   function changeUsername(name) {
     localStorage.setItem("username", name);
     userStatus.username = name;
     usernameLabel.text(userStatus.username);
     emitUserInformation();
   }
-  
-  function ChangeConnection (conn){
+
+  function ChangeConnection(conn) {
     userStatus.online = conn;
     TryCreateContext()
-  
+
     editButtonClass($("#onl_btn"), userStatus.online);
     emitUserInformation();
     mainFunction();
   }
-  function TryCreateContext(){
-    if (audioContext)
-    {return}
+  function TryCreateContext() {
+    if (audioContext) { return }
     audioContext = new AudioContext()
-    if (haveSink)
-    {audioContext.setSinkId(settings.speaker);}
+    if (haveSink) { audioContext.setSinkId(settings.speaker); }
   }
-  
+
   let ChangeMute = (mute) => {
     userStatus.mute = mute;
-    if (madiaRecorder)
-    {
-      if (userStatus.mute){madiaRecorder.stop()}
+    if (madiaRecorder) {
+      if (userStatus.mute) { madiaRecorder.stop() }
       else {
         madiaRecorder.start();
 
@@ -268,59 +253,56 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
         }, settings.record_length);
       }
     }
-  
+
     editButtonClass($("#mute_btn"), userStatus.mute);
-    emitUserInformation(); 
+    emitUserInformation();
   }
-  
-  
+
+
   function editButtonClass(target, bool) {
     target.removeClass("active");
-  
+
     if (bool)
       return target.addClass("active");
-  
+
     target.removeClass("active");
   }
-  
+
   function emitUserInformation() {
     socket.emit("userInformation", userStatus);
   }
-  
-  
-  
-  function userVisible(name, vis, mic){
-    if (vis){
+
+
+
+  function userVisible(name, vis, mic) {
+    if (vis) {
       usersDiv.html(usersDiv.html() + `<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
     } else {
       $(`#card-${name}`).remove()
     }
   }
-  function usersReset(){
+  function usersReset() {
     usersDiv.html("")
   }
   function MicAvailable(isavailable) {
-    if (settings.mic_disconnect_notification)
-    {
-      if (!isavailable)
-      {
+    if (settings.mic_disconnect_notification) {
+      if (!isavailable) {
         mic_disconnected_notification = new Notification("js.maserplay.ru", { body: lang["Microphone disconnected"], icon: "/favicon.ico" })
       }
       else {
         mic_disconnected_notification.close()
       }
-      
+
     }
-    if (!isavailable)
-    {ChangeMute(true);}
+    if (!isavailable) { ChangeMute(true); }
     $("#mute_btn").attr("disabled", !isavailable);
   }
-  (()=>{ //load settings
+  (() => { //load settings
     $("#disconnect_Notifications_check").prop('checked', settings.disconnect_notification)
     $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
     $("#mic_disconnect_Notifications_check").prop('checked', settings.mic_disconnect_notification)
     $("#height_ping_Notifications_check").prop('checked', settings.height_ping_notification > 0);
-    if (settings.height_ping_notification > 0){
+    if (settings.height_ping_notification > 0) {
       $("#height_ping_Notifications_check").change()
       $("#height_ping_num").val(settings.height_ping_notification)
     }
@@ -329,11 +311,11 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     $("#rec_length").val(settings.record_length)
     $("#Debug_mode").prop('checked', settings.debug)
   })()
-  function saveSettings(){
+  function saveSettings() {
     settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
     settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
     settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
-    if (!$("#height_ping_Notifications_check").prop('checked')){
+    if (!$("#height_ping_Notifications_check").prop('checked')) {
       settings.height_ping_notification = Number(-1);
     } else {
       settings.height_ping_notification = Number($("#height_ping_num").val());
@@ -341,64 +323,63 @@ const settings = JSON.parse(localStorage.getItem("settings")) ?? {
 
     settings.record_length = Number($("#rec_length_num").val());
     settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
-    settings.mic=$('#microphone_select').val()?.trim() ?? "";
-    if (haveSink)
-    {settings.speaker=(($('#speaker_select').val()?.trim() === "default") ? "" : $('#speaker_select').val()?.trim()) ?? "";
-    audioContext.setSinkId(settings.speaker);}
+    settings.mic = $('#microphone_select').val()?.trim() ?? "";
+    if (haveSink) {
+      settings.speaker = (($('#speaker_select').val()?.trim() === "default") ? "" : $('#speaker_select').val()?.trim()) ?? "";
+      audioContext.setSinkId(settings.speaker);
+    }
     localStorage.setItem("settings", JSON.stringify(settings));
     changeUsername($('#username').val());
-  }  
+  }
 
-setInterval(() => {
-  const start = Date.now();
+  setInterval(() => {
+    const start = Date.now();
 
-  socket.emit("ping", () => {
-    const duration = Date.now() - start;
-    ping_p.html(duration);
-    if (settings.height_ping_notification > 0)
-    {
-      if (duration >= settings.height_ping_notification)
-      {
-        height_ping_notification = new Notification("js.maserplay.ru", { body: lang["Ping too height!"].format(duration), icon: "/favicon.ico" });
-      } else {
-        height_ping_notification.close();
+    socket.emit("ping", () => {
+      const duration = Date.now() - start;
+      ping_p.html(duration);
+      if (settings.height_ping_notification > 0) {
+        if (duration >= settings.height_ping_notification) {
+          height_ping_notification = new Notification("js.maserplay.ru", { body: lang["Ping too height!"].format(duration), icon: "/favicon.ico" });
+        } else {
+          height_ping_notification.close();
+        }
       }
-    }
-  });
-}, 1000);
-$("#notification_toast_btn").on('click', function(){
-  Notification.requestPermission(g=>{'granted'==g&&new bootstrap.Toast('#notification_toast').hide()});
-})
-function clearSettings(){
-  localStorage.removeItem('settings');localStorage.removeItem('username');location.reload();
-}
-$("#clearAll").on('click', function(){
-  clearSettings()
-})
-$("#saveSettings").on('click', function(){
-  saveSettings()
-})
-$("#onl_btn").on('click', function(){
-  ChangeConnection(!userStatus.online);
-})
-$("#mute_btn").on('click', function(){
-  ChangeMute(!userStatus.mute)
-})
-$("#sett_btn").on('click', function(){
-  TryCreateContext()
-  settings_modal.show();
-})
-$("#AcceptWelcome").on('click', function(){
-  TryCreateContext()
-  changeUsername($('#username_startup').val())
-})
-$("#speaker_select").on('focus', function() {
-  getspe()
-})
-$("#microphone_select").on('focus', function() {
-  getmic()
-})
-changeRoom = (to)=>{
-  socket.emit("changeRoom", to)
-}
+    });
+  }, 1000);
+  $("#notification_toast_btn").on('click', function () {
+    Notification.requestPermission(g => { 'granted' == g && new bootstrap.Toast('#notification_toast').hide() });
+  })
+  function clearSettings() {
+    localStorage.removeItem('settings'); localStorage.removeItem('username'); location.reload();
+  }
+  $("#clearAll").on('click', function () {
+    clearSettings()
+  })
+  $("#saveSettings").on('click', function () {
+    saveSettings()
+  })
+  $("#onl_btn").on('click', function () {
+    ChangeConnection(!userStatus.online);
+  })
+  $("#mute_btn").on('click', function () {
+    ChangeMute(!userStatus.mute)
+  })
+  $("#sett_btn").on('click', function () {
+    TryCreateContext()
+    settings_modal.show();
+  })
+  $("#AcceptWelcome").on('click', function () {
+    TryCreateContext()
+    changeUsername($('#username_startup').val())
+  })
+  $("#speaker_select").on('focus', function () {
+    getspe()
+  })
+  $("#microphone_select").on('focus', function () {
+    getmic()
+  })
+  changeRoom = (to) => {
+    socket.emit("changeRoom", to)
+  }
 })()

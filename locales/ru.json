@@ -31,7 +31,6 @@
 	"Please enable JavaScript. This is a website written entirely in JavaScript.": "Пожалуйста, включите JavaScript. Это веб-сайт, полностью написанный на JavaScript.",
 	"Main Site": "Основной сайт",
 	"Donate me )": "Donate me )",
-	"There are many data types in c++, all of them differ in capacity. This calculator is\r\n        designed to help you choose the type of data based on its capacity.": "В c++ существует множество типов данных, и все они различаются по объему. Этот калькулятор предназначен для того, чтобы помочь вам выбрать тип данных в зависимости от их объема.",
 	"Max bytes": "Максимальное количество байт",
 	"Сan store a value up to": "Может хранить значение до",
 	"Can store a value up": "Может хранить значение до",
@@ -40,7 +39,6 @@
 	"Char": "Буква",
 	"Number": "Число",
 	"Calc": "Посчитать",
-	"This is .csv reader.": "Это программа для чтения файлов в формате .csv.",
 	"Separator": "Разделитель",
 	"You have nothing to look for here, traveler": "Тебе нечего здесь искать, путешественник",
 	"To the main page": "Перейти на главную страницу",
@@ -49,5 +47,15 @@
 	"Clear all voice_chat data": "Очистить все voice_chat данные",
 	" Hi! It would be great to have a connection with the\r\n        interlocutor! Allow me to\r\n        receive notifications ) ": "Привет! Было бы здорово поддерживать связь с собеседником! Разрешите мне получать уведомления )",
 	"You": "Вы",
-	"Audio": "Аудио"
+	"Audio": "Аудио",
+	"Change theme": "Сменить тему",
+	"About Project": "О проекте",
+	"voice_chat": "Voice chat",
+	"voice_chat description": "Это голосовой чат. Это моя первая попытка создать войсчат. P.s. В будущем опыт который я получу с создания этого проекта я применяю для создания нейросети. ;)",
+	"CppTypeCalc": "Калькулятор C++ типов",
+	"CppTypeCalc description": "В c++ существует множество типов данных, и все они различаются по объему. Этот калькулятор предназначен для того, чтобы помочь вам выбрать тип данных в зависимости от их объема.",
+	"CsvReader": "Чтец .csv",
+	"CsvReader description": "Это программа для чтения файлов в формате .csv.",
+	"Index": "Главная",
+	"Things in Javascript": "Приколюхи на Javascript"
 }

@@ -38,5 +38,11 @@
 	"Dark": "Dark",
 	"Please enable JavaScript. This is a website written entirely in JavaScript.": "Please enable JavaScript. This is a website written entirely in JavaScript.",
 	"Main Site": "Main Site",
-	"Donate me )": "Donate me )"
+	"Donate me )": "Donate me )",
+	"voice_chat": "Voice chat",
+	"voice_chat description": "This is a voice chat. This is my first attempt to create a voice chat. p.s. In the future, I will use the experience that I will gain from creating this project to create a neural network. ;)",
+	"CppTypeCalc": "Cpp Types Calculator",
+	"CppTypeCalc description": "There are many data types in c++, all of them differ in capacity. This calculator is designed to help you choose the type of data based on its capacity.",
+	"CsvReader": ".Csv Reader",
+	"CsvReader description":"This is a reader of .csv files."
 }
