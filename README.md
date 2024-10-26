@@ -1,6 +1,6 @@
 # This is the site repository of [js.maserplay.ru](https://js.maserplay.ru)
 ## en (English)
-На этом сайте я эксперпементирую с разными javascript и nodejs решениями. 
+On this site, I am experimenting with different javascript and node js solutions.
 
 The main page uses the GitHub API to parse the /content folder and convert the received data into a table from the cards. All my experiments are stored in the /content folder.
 
