@@ -66,6 +66,7 @@ io.on("connection", function (socket) {
       data.username = data.username.replaceAll("<", "{").replaceAll(">", "}")
       user = user.fromJson(data)
       emitUsersUpdate()
+      socket.emit("ChangeNickname", data.username)
     });
   
   
