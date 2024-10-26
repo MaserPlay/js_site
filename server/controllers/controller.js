@@ -7,6 +7,7 @@ const app = index.app
 app.use("/", require("express").static("static"));
 app.use(morgan('combined'))
 app.use(index.i18n.init)
+app.use(require("compression")())
 
 app.get("/" , (req , res)=>{
         res.render("index", {"content": fs.readdirSync("./views/content").map(dirent => dirent), "name": res.__("Index"), "description": res.__("Things in Javascript")});
