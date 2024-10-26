@@ -77,6 +77,7 @@ var changeRoom = (to) => { }
   });
   socket.on("ChangeMute", (mute) => { if (mute) { return }; ChangeMute(mute); })
   socket.on("ChangeConnection", (conn) => { if (conn) { return }; ChangeConnection(conn); })
+  socket.on("ChangeNickname", (nick)=>{ChangeUsername(nick);})
 
   function getmic() {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -220,7 +221,7 @@ var changeRoom = (to) => { }
     addRoom("+", "+")
   })
 
-  function changeUsername(name) {
+  function ChangeUsername(name) {
     localStorage.setItem("username", name);
     userStatus.username = name;
     usernameLabel.text(userStatus.username);
@@ -241,7 +242,7 @@ var changeRoom = (to) => { }
     if (haveSink) { audioContext.setSinkId(settings.speaker); }
   }
 
-  let ChangeMute = (mute) => {
+  function ChangeMute(mute) {
     userStatus.mute = mute;
     if (madiaRecorder) {
       if (userStatus.mute) { madiaRecorder.stop() }
@@ -329,7 +330,7 @@ var changeRoom = (to) => { }
       audioContext.setSinkId(settings.speaker);
     }
     localStorage.setItem("settings", JSON.stringify(settings));
-    changeUsername($('#username').val());
+    ChangeUsername($('#username').val());
   }
 
   setInterval(() => {
@@ -371,7 +372,7 @@ var changeRoom = (to) => { }
   })
   $("#AcceptWelcome").on('click', function () {
     TryCreateContext()
-    changeUsername($('#username_startup').val())
+    ChangeUsername($('#username_startup').val())
   })
   $("#speaker_select").on('focus', function () {
     getspe()
