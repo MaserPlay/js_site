@@ -26,8 +26,8 @@
 	" Hi! It would be great to have a connection with the interlocutor! Allow me to\r\n        receive notifications ) ": "Привет! Было бы здорово поддерживать связь с собеседником! Разрешите мне получать уведомления )",
 	"Allow": "Разрешить",
 	"! Warning Javascript is disabled ! Some things may not work properly": "! Предупреждение, Javascript отключен ! Некоторые функции могут работать неправильно",
-	"Light": "Светлая",
-	"Dark": "Темная",
+	"light": "Светлая",
+	"dark": "Темная",
 	"Please enable JavaScript. This is a website written entirely in JavaScript.": "Пожалуйста, включите JavaScript. Это веб-сайт, полностью написанный на JavaScript.",
 	"Main Site": "Основной сайт",
 	"Donate me )": "Donate me )",
@@ -42,7 +42,6 @@
 	"Separator": "Разделитель",
 	"You have nothing to look for here, traveler": "Тебе нечего здесь искать, путешественник",
 	"To the main page": "Перейти на главную страницу",
-	"lang": "ru",
 	"rooms list": "список комнат",
 	"Clear all voice_chat data": "Очистить все voice_chat данные",
 	" Hi! It would be great to have a connection with the\r\n        interlocutor! Allow me to\r\n        receive notifications ) ": "Привет! Было бы здорово поддерживать связь с собеседником! Разрешите мне получать уведомления )",
@@ -57,5 +56,12 @@
 	"CsvReader": "Чтец .csv",
 	"CsvReader description": "Это программа для чтения файлов в формате .csv.",
 	"Index": "Главная",
-	"Things in Javascript": "Приколюхи на Javascript"
+	"Things in Javascript": "Приколюхи на Javascript",
+	"Source Code on Github": "Исходный код на Github",
+	"Source Code": "Исходный код",
+	"Contact us!": "Свяжитесь с нами!",
+	"Donation without remuneration": "Безвозмездное пожертвование",
+	"Change Language": "Сменить язык",
+	"en": "Английский",
+	"ru": "Русский"
 }

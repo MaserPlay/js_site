@@ -10,22 +10,20 @@ let httpServer = require("http").Server(app);
 //mini js
 const fs = require("fs");
 var UglifyJS = require("uglify-js");
-var options = {
-};
-var minijs = (name)=>{fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(name + ".js", "utf8"), options).code, "utf8");}
+var minijs = (name)=>{fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(name + ".js", "utf8")).code, "utf8");}
 fs.readdirSync("./static/content").map(dirent => dirent).forEach( (name)=>{
   var name = `./static/content/${name}/index`
   minijs(name)
 })
 minijs('./static/index')
 
-const customHandlebars = handlebars.create({ layoutsDir: "./views",defaultLayout: './base/main', helpers: require("./server/config/helpers")});
+const customHandlebars = handlebars.create({ layoutsDir: "./views",defaultLayout: './base/main'});
 
 const i18n = new I18n.I18n({
-  locales: ['en', 'ru'],
-  directory: path.join(__dirname, 'locales'), 
+  locales: ['en', 'ru'], 
   defaultLocale: 'en',
-  cookie: 'lang'
+  cookie: 'lang',
+  directory: path.join(__dirname, 'locales'),
 })
 module.exports = {
     app: app,

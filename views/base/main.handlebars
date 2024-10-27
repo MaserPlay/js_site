@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='{{__ 'lang'}}' {{!-- data-bs-theme='{{theme}}'--}}> 
+<html lang='{{getLocale}}' data-bs-theme='{{theme}}'> 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,8 @@
     <title>{{name}} - JS MaserPlay's Projects</title>
     <meta name="description" content="{{description}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://maserplay.ru/css/site.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="{{css_include 'https://maserplay.ru/css/site'}}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{css_include 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons'}}">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{name}} - JS MaserPlay's Projects" />
@@ -35,6 +35,14 @@
     <noscript><div><img src="https://mc.yandex.ru/watch/97253488" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     {{/if}}
+    <style>
+        .logo_yellow{
+            color: #CF6311;
+        }
+        [data-bs-theme=dark] .logo_yellow{
+            color: #ffff00;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,7 +51,7 @@
             <div class="branding">
                 <a class="navbar-brand" style="margin-left: 10px;" href="/">
                     <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
-                    <strong class="text-warning">js.</strong><strong>maserplay.ru</strong>
+                    <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
                 </a>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 400px;">
                     <div class="offcanvas-header">
@@ -58,8 +66,15 @@
                     <li class="nav-item dropdown">
                         <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-patch-question-fill" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">{{__ 'Change theme'}}</span></button>
                         <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
-                            <li><a class="dropdown-item scChngThm" id="theme-light" val="light" style="cursor: pointer;">{{__ 'Light'}}</a></li>
-                            <li><a class="dropdown-item scChngThm" id="theme-dark" val="dark" style="cursor: pointer;">{{__ 'Dark'}}</a></li>
+                            {{#each eachTheme}}
+                            <li><a class="dropdown-item scChngThm {{this.active}}" val="{{this.id}}" style="cursor: pointer;">{{this.displayName}}</a></li>
+                            {{/each}}
+                        </ul>
+                        <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn bi bi-globe" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden">{{__ 'Change Language'}}</span></button>
+                        <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                            {{#each eachLocale}}
+                                <li><a class="dropdown-item scChngLang {{this.active}}" val="{{this.id}}" style="cursor: pointer;">{{this.displayName}}</a></li>
+                            {{/each}}
                         </ul>
                         <button type="button" class="btn bi bi-question-lg popovers_cls" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="{{description}}">
                             <span class="visually-hidden">{{__ 'About Project'}}</span>
@@ -96,27 +111,27 @@
         <div class="container footer-container">
             <div class="my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    {{!-- <li class="nav-item">
-                        <a class="nav-link px-2 text-body-secondary" href="https://github.com/MaserPlay/js_site" title="Source Code on Github" rel="nofollow">Source Code</a>
-                    </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link px-2 text-body-secondary" href="mailto:admin@maserplay.ru" title="Contact us!" rel="nofollow">admin@maserplay.ru</a>
+                        <a class="nav-link px-2 text-body-secondary" href="https://github.com/MaserPlay/js_site" title="{{__ 'Source Code on Github'}}" rel="nofollow">{{__ 'Source Code'}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-2 text-body-secondary" href="mailto:admin@maserplay.ru" title="{{__ 'Contact us!'}}" rel="nofollow">admin@maserplay.ru</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link px-2 text-body-secondary" href="https://maserplay.ru/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link" title="maserplay.ru" rel="nofollow">{{__ 'Main Site' }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link px-2 text-body-secondary" href="https://maserplay.ru/Donate/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link" title="Donation without remuneration" rel="nofollow">{{__ 'Donate me )'}}</a>
+                        <a class="nav-link px-2 text-body-secondary" href="https://maserplay.ru/Donate/?utm_source=js_maserplay&utm_medium=cpc&utm_content=down_link" title="{{__ 'Donation without remuneration'}}" rel="nofollow">{{__ 'Donate me )'}}</a>
                     </li>
                 </ul>
             </div>
         </div>
     </footer>
             
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="{{js_include 'https://code.jquery.com/jquery-3.7.1'}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
-    <script src="/index.min.js"></script>
-    <script src="index.min.js"></script>
+    <script src="{{js_include '/index'}}"></script>
+    <script src="{{js_include 'index'}}"></script>
 </body>
 
 </html>

@@ -26,7 +26,6 @@
 	"System": "System",
 	" Hi! It would be great to have a connection with the interlocutor! Allow me to\r\n        receive notifications ) ": "Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )",
 	"Allow": "Allow",
-	"lang": "en",
 	"rooms list": "rooms list",
 	"You": "You",
 	"Audio": "Audio",
@@ -44,5 +43,18 @@
 	"CppTypeCalc": "Cpp Types Calculator",
 	"CppTypeCalc description": "There are many data types in c++, all of them differ in capacity. This calculator is designed to help you choose the type of data based on its capacity.",
 	"CsvReader": ".Csv Reader",
-	"CsvReader description":"This is a reader of .csv files."
+	"CsvReader description": "This is a reader of .csv files.",
+	"en": "English",
+	"ru": "Russian",
+	"Index": "Index",
+	"Things in Javascript": "Things in Javascript",
+	"Change theme": "Change theme",
+	"light": "light",
+	"dark": "dark",
+	"Change Language": "Change Language",
+	"About Project": "About Project",
+	"Source Code on Github": "Source Code on Github",
+	"Source Code": "Source Code",
+	"Contact us!": "Contact us!",
+	"Donation without remuneration": "Donation without remuneration"
 }
