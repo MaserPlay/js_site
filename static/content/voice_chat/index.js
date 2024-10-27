@@ -2,13 +2,61 @@ var changeRoom = (to) => { }
 (async () => {
   var lang = await (await langpromize).json()
   class User {
-    constructor() {
-      this.mute = false;
-      this.username = localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999);
-      this.online = false;
+    username = "AnUnnamedUser";
+    mute = false;
+    online = false;
+    constructor(name) {
+      this.username = name;
     }
   }
-  const userStatus = new User();
+  class MyUser extends User {
+    constructor() {
+      super(localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999));
+    }
+    set Username(name) {
+      localStorage.setItem("username", name);
+      this.username = name;
+      usernameLabel.html(name);
+      emitUserInformation();
+    }
+    get Username(){return this.username}
+
+    set Mute(m){
+      this.mute = m;
+      if (madiaRecorder) {
+        if (m) { madiaRecorder.stop() }
+        else {
+          madiaRecorder.start();
+  
+          setTimeout(function () {
+            madiaRecorder.stop();
+          }, settings.record_length);
+        }
+      }
+  
+      editButtonClass($("#mute_btn"), m);
+      emitUserInformation();
+    }
+    get Mute(){return this.mute}
+
+    set Online(onl){      
+      this.online = onl;
+
+      editButtonClass($("#onl_btn"), this.online);
+      emitUserInformation();
+      if (onl)
+      mainFunction();
+    }
+    get Online(){return this.online}
+  }
+
+  var socket = io(`${document.location.origin}`, {
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionDelayMax: 5000,
+    // reconnectionAttempts: 10
+  });
+  const userStatus = new MyUser();
   const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     record_length: 500,
     mic: "",
@@ -36,7 +84,7 @@ var changeRoom = (to) => { }
   let madiaRecorder;
 
   if (localStorage.getItem("username") == null) {
-    $("#username_startup").val(userStatus.username)
+    $("#username_startup").val(userStatus.Username)
     new bootstrap.Modal('#startup_select').show()
   }
   if (Notification.permission == 'granted') {
@@ -45,15 +93,9 @@ var changeRoom = (to) => { }
   var haveSink = "setSinkId" in AudioContext.prototype;
   $("#speaker_select").prop('disabled', !haveSink)
 
-  usernameInput.val(userStatus.username);
-  usernameLabel.text(userStatus.username);
+  usernameInput.val(userStatus.Username);
+  userStatus.Username = userStatus.Username;
 
-  var socket = io(`${document.location.origin}`, {
-    reconnection: true,
-    reconnectionDelay: 1000,
-    reconnectionDelayMax: 5000,
-    // reconnectionAttempts: 10
-  });
   socket.on("connect", () => {
     ping_p.removeClass("text-decoration-line-through");
     disconnected_notification.close();
@@ -75,9 +117,9 @@ var changeRoom = (to) => { }
     usersDiv.html(`<div class='text-center'> <div class='spinner-border' role='status'> <span class='visually-hidden'>${lang["Loading"]}...</span> </div> </div>`)
     $("#groupRooms").html(`<button class='btn btn-outline-secondary' type='button' disabled> <span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> <span class='visually-hidden'>${lang["Loading"]}...</span> </button>`)
   });
-  socket.on("ChangeMute", (mute) => { if (mute) { return }; ChangeMute(mute); })
-  socket.on("ChangeConnection", (conn) => { if (conn) { return }; ChangeConnection(conn); })
-  socket.on("ChangeNickname", (nick)=>{ChangeUsername(nick);})
+  socket.on("ChangeMute", (mute) => { if (mute) { return }; userStatus.Mute = mute; })
+  socket.on("ChangeConnection", (conn) => { if (conn) { return }; userStatus.Online = conn; })
+  socket.on("ChangeNickname", (nick)=>{userStatus.Username = nick;})
 
   function getmic() {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -133,14 +175,14 @@ var changeRoom = (to) => { }
         var fileReader = new FileReader();
         fileReader.readAsDataURL(audioBlob);
         fileReader.onloadend = function () {
-          if (!userStatus.online) return;
+          if (!userStatus.Online) return;
 
           var base64String = fileReader.result;
           socket.emit("voice", base64String);
 
         };
 
-        if (!userStatus.mute) { madiaRecorder.start(); }
+        if (!userStatus.Mute) { madiaRecorder.start(); }
 
 
         setTimeout(function () {
@@ -158,7 +200,7 @@ var changeRoom = (to) => { }
   }
 
   socket.on("send", async function (data) {
-    if (!userStatus.online) return;
+    if (!userStatus.Online) return;
     if (!CheckUrl(data)) {
       console.warn("url isn`t valid")
       return;
@@ -219,46 +261,13 @@ var changeRoom = (to) => { }
       }
     }
     addRoom("+", "+")
-  })
-
-  function ChangeUsername(name) {
-    localStorage.setItem("username", name);
-    userStatus.username = name;
-    usernameLabel.text(userStatus.username);
-    emitUserInformation();
-  }
-
-  function ChangeConnection(conn) {
-    userStatus.online = conn;
-    TryCreateContext()
-
-    editButtonClass($("#onl_btn"), userStatus.online);
-    emitUserInformation();
-    mainFunction();
-  }
+  })  
+  
   function TryCreateContext() {
     if (audioContext) { return }
     audioContext = new AudioContext()
     if (haveSink) { audioContext.setSinkId(settings.speaker); }
   }
-
-  function ChangeMute(mute) {
-    userStatus.mute = mute;
-    if (madiaRecorder) {
-      if (userStatus.mute) { madiaRecorder.stop() }
-      else {
-        madiaRecorder.start();
-
-        setTimeout(function () {
-          madiaRecorder.stop();
-        }, settings.record_length);
-      }
-    }
-
-    editButtonClass($("#mute_btn"), userStatus.mute);
-    emitUserInformation();
-  }
-
 
   function editButtonClass(target, bool) {
     target.removeClass("active");
@@ -295,7 +304,7 @@ var changeRoom = (to) => { }
       }
 
     }
-    if (!isavailable) { ChangeMute(true); }
+    if (!isavailable) { userStatus.Mute = true; }
     $("#mute_btn").attr("disabled", !isavailable);
   }
   (() => { //load settings
@@ -330,7 +339,7 @@ var changeRoom = (to) => { }
       audioContext.setSinkId(settings.speaker);
     }
     localStorage.setItem("settings", JSON.stringify(settings));
-    ChangeUsername($('#username').val());
+    userStatus.Username = $('#username').val();
   }
 
   setInterval(() => {
@@ -361,10 +370,11 @@ var changeRoom = (to) => { }
     saveSettings()
   })
   $("#onl_btn").on('click', function () {
-    ChangeConnection(!userStatus.online);
+    TryCreateContext()
+    userStatus.Online = !userStatus.Online;
   })
   $("#mute_btn").on('click', function () {
-    ChangeMute(!userStatus.mute)
+    userStatus.Mute = !userStatus.Mute;
   })
   $("#sett_btn").on('click', function () {
     TryCreateContext()
@@ -372,7 +382,7 @@ var changeRoom = (to) => { }
   })
   $("#AcceptWelcome").on('click', function () {
     TryCreateContext()
-    ChangeUsername($('#username_startup').val())
+    userStatus.Username = $('#username_startup').val()
   })
   $("#speaker_select").on('focus', function () {
     getspe()
