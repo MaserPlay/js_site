@@ -41,4 +41,4 @@ httpServer.listen(port, () => {
 console.log(`Server running on port ${port}; http://localhost:${port}`);
 });
 
-require("./server/controllers/controller")
+require("./server/controller")
