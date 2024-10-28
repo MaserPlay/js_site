@@ -31,6 +31,9 @@ function main(request, response, next) {
     },
     eachTheme: function () {
       return themeList.map((local) => ({ id: local, displayName: response.__(local), active: response.getTheme() == local ? "active" : "" }))
+    },
+    event: function () {
+      return require("../config").getEvents()[0]
     }
     });
   return next()

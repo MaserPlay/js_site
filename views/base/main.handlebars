@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='{{getLocale}}' data-bs-theme='{{theme}}'> 
+<html lang='{{getLocale}}' data-bs-theme='{{theme}}' data-bs-event-theme='{{event}}'> 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,11 +36,34 @@
     <!-- /Yandex.Metrika counter -->
     {{/if}}
     <style>
+        {{!-- @font-face {
+            font-family: frozen-ice;
+            src: url(http://localhost:3000/font/frozen-ice.ttf);
+        }
+        @font-face {
+            font-family: regular-hat;
+            src: url(http://localhost:3000/font/regular-hat.ttf);
+        } --}}
+        @font-face {
+            font-family: snowman;
+            src: url(http://localhost:3000/font/snowman.ttf);
+        }
         .logo_yellow{
             color: #CF6311;
         }
         [data-bs-theme=dark] .logo_yellow{
             color: #ffff00;
+        }
+        .logo{
+            margin-left: 10px;
+        }
+        [data-bs-event-theme=snow] .logo{
+            font-family: snowman;
+            text-transform: uppercase;
+            font-size: 2rem;
+        }
+        [data-bs-event-theme=snow] .logo > strong{
+            font-weight: normal;
         }
     </style>
 </head>
@@ -49,16 +72,10 @@
     <header class="navbar border-bottom">
         <div class="container">
             <div class="branding">
-                <a class="navbar-brand" style="margin-left: 10px;" href="/">
+                <a class="navbar-brand logo" href="/">
                     <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
                     <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
                 </a>
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 400px;">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">maserplay.ru</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                </div>
                 <noscript class="text-white">{{__ '! Warning Javascript is disabled ! Some things may not work properly'}}</noscript>
             </div>
             <div class="actions">
