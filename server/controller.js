@@ -1,4 +1,4 @@
-const index = require("../../index")
+const index = require("../index")
 const fs = require("fs");
 const morgan = require('morgan')
 
@@ -8,7 +8,7 @@ app.use("/", require("express").static("static"));
 app.use(morgan('combined'))
 app.use(require("cookie-parser")())
 app.use(index.i18n.init)
-app.use(require("../middleware").main)
+app.use(require("./middleware").main)
 app.use(require("compression")())
 
 app.get("/", (req, res) => {
