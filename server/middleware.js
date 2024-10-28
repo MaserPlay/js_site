@@ -1,11 +1,10 @@
+var themeList = ['light', 'dark']
+
 /**
  * @param {Express.Request} request
  * @param {Express.Response} response
  * @param {() => void} next
  */
-
-var themeList = ['light', 'dark']
-
 function main(request, response, next) {
   response.getTheme = function (){
     return request.cookies.theme ?? 'light'
@@ -34,7 +33,8 @@ function main(request, response, next) {
     },
     event: function () {
       return require("../config").getEvents()[0]
-    }
+    },
+    eventGoingSnow:function () {return require("../config").IsEventGoing("snow")}
     });
   return next()
 }
