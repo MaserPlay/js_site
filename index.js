@@ -2,8 +2,8 @@ const express = require("express");
 const handlebars = require("express-handlebars");
 const path = require('path')
 const I18n = require('i18n')
+const config = require("./config")
 
-const port = 3000
 const app = express();
 let httpServer = require("http").Server(app);
 
@@ -20,7 +20,7 @@ minijs('./static/index')
 const customHandlebars = handlebars.create({ layoutsDir: "./views",defaultLayout: './base/main'});
 
 const i18n = new I18n.I18n({
-  locales: ['en', 'ru'], 
+  locales: config.json.locales, 
   defaultLocale: 'en',
   cookie: 'lang',
   directory: path.join(__dirname, 'locales'),
@@ -37,8 +37,8 @@ app.set("view engine", "handlebars");
 
 require("./server/voice_chat");
 
-httpServer.listen(port, () => {
-console.log(`Server running on port ${port}; http://localhost:${port}`);
+httpServer.listen(config.json.port, () => {
+console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`);
 });
 
 require("./server/controller")

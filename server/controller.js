@@ -17,7 +17,7 @@ app.use("/favicon.ico", require("express").static(`static/${favicon_name}.ico`))
 app.use(morgan('combined'))
 app.use(require("cookie-parser")())
 app.use(index.i18n.init)
-app.use(require("./middleware").main)
+app.use(require("./middleware"))
 app.use(require("compression")())
 
 app.get("/", (req, res) => {
