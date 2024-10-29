@@ -54,3 +54,11 @@
         flex: 1 1 auto;
     }
   }
+  @media (min-width: 768px){ /* settings pc */
+  .settings-ui{
+    display: unset !important
+  }
+  .border-if-pc{
+    padding-left: 1.5rem !important; border-left: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+  }
+}
