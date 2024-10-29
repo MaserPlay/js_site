@@ -63,10 +63,13 @@ io.on("connection", function (socket) {
     });
   
     socket.on("userInformation", function (data) {
-      data.username = data.username.replaceAll("<", "{").replaceAll(">", "}")
+      if (data.username !== data.username.replaceAll("<", "{").replaceAll(">", "}"))
+      {
+        data.username = data.username.replaceAll("<", "{").replaceAll(">", "}")
+        socket.emit("ChangeNickname", data.username)
+      }
       user = user.fromJson(data)
       emitUsersUpdate()
-      socket.emit("ChangeNickname", data.username)
     });
   
   

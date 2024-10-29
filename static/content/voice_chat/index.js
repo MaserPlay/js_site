@@ -343,6 +343,11 @@ var changeRoom = (to) => { }
   }
 
   setInterval(() => {
+    if (document.visibilityState === "hidden") //dontcheck ping if document non visible
+    {
+      return
+    }
+
     const start = Date.now();
 
     socket.emit("ping", () => {
