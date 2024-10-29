@@ -1,64 +1,90 @@
 <link href="index.css" rel="stylesheet">
-<div class="row">
-  <div class="col-sm-2 v-center-if-pc" style="padding: calc(var(--bs-gutter-x)* .5)">
-    <p class="text-secondary text-center">{{__ 'rooms list'}}</p>
-    <div class="btn-group-auto w-100" role="group" aria-label="Rooms" id="groupRooms">
-      <button class="btn btn-outline-secondary" type="button" disabled>
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span class="visually-hidden">{{__ 'Loading...'}}</span>
-      </button>
-    </div></label>
+<div id="Loading">
+  <section class="jumbotron text-center vertical-center">
+    <div class="container">
+      <img src="/favicon.svg" width="250px" height="250px" alt="За стеклом"
+        style="animation: .75s linear infinite spinner-grow;opacity: 0;">
+      <p class="lead text-muted">{{__ 'Loading...'}}</p>
+    </div>
+  </section>
 </div>
-<div class="col-sm-10">
-  <div class="text-center pagination-centered">
-    <div>
-      <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary" style="margin:3px"></span><span
-          id="ping" class="text-decoration-line-through">{{__ 'ping'}}</span></p>
-      <h3 id="username-label">{{__ 'Username'}}</h3>
+<div style="display: none;" id="Main">
+  <div class="row">
+    <div class="col-sm-2 v-center-if-pc" style="padding: calc(var(--bs-gutter-x)* .5)">
+      <p class="text-secondary text-center">{{__ 'rooms list'}}</p>
+      <div class="btn-group-auto w-100" role="group" aria-label="Rooms" id="groupRooms">
+        <button class="btn btn-outline-secondary" type="button" disabled>
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span class="visually-hidden">{{__ 'Loading...'}}</span>
+        </button>
+      </div></label>
     </div>
-    <div> <button type="button" class="btn btn-primary disable-btn" id="mute_btn">{{__ 'Mute'}}</button> <button
-        type="button" class="btn btn-primary disable-btn" id="onl_btn">{{__ 'Go online'}}</button> <button type="button"
-        id="sett_btn" class="btn bi bi-gear-fill"></button> </div>
-    <hr />
-    <p class="text-secondary">{{__ 'users list'}}</p>
-    <div class="users row" id="users">
-      <div class='text-center'>
-        <div class='spinner-border' role='status'> <span class='visually-hidden'>{{__ 'Loading...'}}</span> </div>
+    <div class="col-sm-10">
+      <div class="text-center pagination-centered">
+        <div>
+          <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary"
+              style="margin:3px"></span><span id="ping" class="text-decoration-line-through">{{__ 'ping'}}</span></p>
+          <h3 id="username-label">{{__ 'Username'}}</h3>
+        </div>
+        <div> <button type="button" class="btn btn-primary disable-btn" id="mute_btn">{{__ 'Mute'}}</button> <button
+            type="button" class="btn btn-primary disable-btn" id="onl_btn">{{__ 'Go online'}}</button> <button
+            type="button" id="sett_btn" class="btn bi bi-gear-fill"></button> </div>
+        <hr />
+        <p class="text-secondary">{{__ 'users list'}}</p>
+        <div class="users row" id="users">
+          <div class='text-center'>
+            <div class='spinner-border' role='status'> <span class='visually-hidden'>{{__ 'Loading...'}}</span> </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </div> <!-- Select Name Modal -->
+  <div class="modal fade" id="startup_select" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">{{__ 'Welcome!'}}</h1> <button type="button" class="btn-close"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3"> <label for="username_startup" class="col-form-label">{{__ 'Select your username:'}}</label> <input type="text" class="form-control" id="username_startup"> </div>
+          </form>
+        </div>
+        <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__ 'Close'}}</button> 
+        <button type="button" class="btn btn-primary" id="AcceptWelcome" data-bs-dismiss="modal">{{__ 'Save changes'}}</button> </div>
+      </div>
+    </div>
+  </div> <!-- Settings Modal -->
 </div>
-</div> <!-- Select Name Modal -->
-<div class="modal fade" id="startup_select" tabindex="-1" aria-modal="true" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5">{{__ 'Welcome!'}}</h1> <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button>
+<div id="Settings" style="display: none;">
+  <div class="text-center pagination-centered"><p class="text-secondary">{{__ 'Settings'}}</p></div>
+  <div class="row">
+    <div class="col-md-4" style="padding: calc(var(--bs-gutter-x)* .5);">
+      <div class="position-sticky" style="top: 2rem">
+        <nav id="settings-navbar" class="h-100 flex-column align-items-stretch">
+          <ul class="nav nav-pills settings-ui">
+            <li class="nav-item">
+              <a class="nav-link" href="#settings_you">{{__ 'You'}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#settings_audio">{{__ 'Audio'}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#settings_notifications">{{__ 'Notifications'}}</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3"> <label for="username_startup" class="col-form-label">{{__ 'Select your username:
-              '}}</label> <input type="text" class="form-control" id="username_startup"> </div>
-        </form>
-      </div>
-      <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__
-          'Close'}}</button> <button type="button" class="btn btn-primary" id="AcceptWelcome"
-          data-bs-dismiss="modal">{{__ 'Save
-          changes'}}</button> </div>
     </div>
-  </div>
-</div> <!-- Settings Modal -->
-<div class="modal fade" id="settings_toast_div" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{__ 'Settings'}}</h1> <button type="button"
-          class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+
+    <div class="col-md-8" style="padding: calc(var(--bs-gutter-x)* .5);">
+      <div data-bs-spy="scroll" data-bs-target="#settings-navbar" data-bs-smooth-scroll="true"
+        class="border-if-pc" tabindex="0">
+        <h2 id="settings_you">{{__ 'You'}}</h2>
         <div class="mb-3"> <label for="exampleInputEmail1" class="form-label">{{__ 'Username'}}</label> <input
             type="text" class="form-control" id="username"> </div>
+        <h2 id="settings_audio">{{__ 'Audio'}}</h2>
         <div class="mb-3"> <label for="rec_length" class="form-label">{{__ 'Record length'}}</label> <input
             type="number" class="form-control" id="rec_length_num" min="30" max="1000"
             onchange="$('#rec_length').val(value)"> <input type="range" class="form-range" min="30" max="1000"
@@ -69,7 +95,7 @@
         <div class="mb-3"> <label for="speaker_select" class="form-label">{{__ 'Speaker'}}</label> <select
             class="form-select" id="speaker_select" aria-label="Default select example"> </select>
         </div>
-        <h1>{{__ 'Notifications'}}</h1>
+        <h2 id="settings_notifications">{{__ 'Notifications'}}</h2>
         <div class="mb-3">
           <div class="form-check"> <input class="form-check-input" type="checkbox" id="Connect_Notifications_check">
             <label class="form-check-label" for="Connect_Notifications_check">{{__ ' Connect Notifications '}}</label>
@@ -102,13 +128,13 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__
-            'Close'}}</button> <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-            id="saveSettings">{{__ 'Save
-            changes'}}</button> </div>
       </div>
+      <div style="bottom: 110px;position: fixed;">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeSettings">{{__ 'Close'}}</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveSettings">{{__ 'Save changes'}}</button> 
+      </div>
+      <div style="height: 100px;"></div>
     </div>
-  </div>
 </div>
 </div>
 <div> <!-- toast -->
@@ -128,8 +154,7 @@
       </div>
     </div>
   </div>
-</div>
-<script>var langpromize = fetch('{{getLocale}}.json')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
-  integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>var langpromize = fetch('{{getLocale}}.json')</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"
+    integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>

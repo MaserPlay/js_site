@@ -68,7 +68,6 @@ var changeRoom = (to) => { }
     debug: false,
   }
 
-  let settings_modal = new bootstrap.Modal('#settings_toast_div');
   let audioContext;
 
   const usernameInput = $("#username");
@@ -373,6 +372,12 @@ var changeRoom = (to) => { }
   })
   $("#saveSettings").on('click', function () {
     saveSettings()
+    $("#Settings").hide();
+    $("#Main").show()
+  })
+  $("#closeSettings").on('click', function () {
+    $("#Settings").hide();
+    $("#Main").show()
   })
   $("#onl_btn").on('click', function () {
     TryCreateContext()
@@ -383,7 +388,8 @@ var changeRoom = (to) => { }
   })
   $("#sett_btn").on('click', function () {
     TryCreateContext()
-    settings_modal.show();
+    $("#Settings").show();
+    $("#Main").hide()
   })
   $("#AcceptWelcome").on('click', function () {
     TryCreateContext()
@@ -398,4 +404,6 @@ var changeRoom = (to) => { }
   changeRoom = (to) => {
     socket.emit("changeRoom", to)
   }
+  $("#Loading").hide()
+  $("#Main").show()
 })()
