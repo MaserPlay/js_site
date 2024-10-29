@@ -1,10 +1,19 @@
 const index = require("../index")
 const fs = require("fs");
 const morgan = require('morgan')
+const config = require("../config")
 
 const app = index.app
 
 app.use("/", require("express").static("static"));
+var favicon_name = "favicon-default"
+switch (config.getEvents()[0]) {
+    case "snow":
+        favicon_name = "favicon-snow"
+        break;
+}
+app.use("/favicon.svg", require("express").static(`static/${favicon_name}.svg`))
+app.use("/favicon.ico", require("express").static(`static/${favicon_name}.ico`))
 app.use(morgan('combined'))
 app.use(require("cookie-parser")())
 app.use(index.i18n.init)

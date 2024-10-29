@@ -1,0 +1,21 @@
+@font-face {
+    font-family: snowman;
+    src: url(http://localhost:3000/font/snowman.ttf);
+}
+.logo_yellow{
+    color: #CF6311;
+}
+[data-bs-theme=dark] .logo_yellow{
+    color: #ffff00;
+}
+.logo{
+    margin-left: 10px;
+}
+[data-bs-event-theme=snow] .logo{
+    font-family: snowman;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+[data-bs-event-theme=snow] .logo > strong{
+    font-weight: normal;
+}

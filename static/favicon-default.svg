@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <text y="80" fill="orange" font-family="Arial" font-size="90">Js</text>
+  <circle cx="80" cy="80" r="15" fill="#1e90ff"/>
+  <text x="70" y="88" font-family="Arial" font-size="25">M</text>
+</svg>
