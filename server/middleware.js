@@ -1,5 +1,4 @@
-var themeList = ['light', 'dark']
-
+const config = require("../config")
 /**
  * @param {Express.Request} request
  * @param {Express.Response} response
@@ -7,7 +6,7 @@ var themeList = ['light', 'dark']
  */
 function main(request, response, next) {
   response.getTheme = function (){
-    return request.cookies.theme ?? 'light'
+    return request.cookies.theme ?? config.json.themes[0]
   }
   Object.assign(response.locals, {
     theme: response.getTheme, 
@@ -29,13 +28,13 @@ function main(request, response, next) {
       return response.getLocales().map((local) => ({ id: local, displayName: response.__({ phrase: local, locale: local }), active: response.getLocale() === local ? "active" : "" }))
     },
     eachTheme: function () {
-      return themeList.map((local) => ({ id: local, displayName: response.__(local), active: response.getTheme() == local ? "active" : "" }))
+      return config.json.themes.map((local) => ({ id: local, displayName: response.__(local), active: response.getTheme() == local ? "active" : "" }))
     },
     event: function () {
-      return require("../config").getEvents()[0]
+      return config.getEvents()[0]
     },
-    eventGoingSnow:function () {return require("../config").IsEventGoing("snow")}
+    eventGoingSnow:function () {return config.IsEventGoing("snow")}
     });
   return next()
 }
-module.exports = { main: main }
+module.exports = main

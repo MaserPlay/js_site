@@ -1,5 +1,8 @@
 {
     "events":{
         "snow":{"start": "2024-11-30T21:00:00.000Z", "end": "2025-03-01T21:00:00.000Z", "repeat":"YEAR"}
-    }
+    },
+    "themes":["light", "dark"],
+    "port": 3000,
+    "locales": ["en", "ru"]
 }
