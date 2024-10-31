@@ -1,15 +1,35 @@
 const config = require("../config")
 /**
+* Returns a random number between min (inclusive) and max (exclusive)
+*/
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive).
+ * The value is no lower than min (or the next integer greater than min
+ * if min isn't an integer) and no greater than max (or the next integer
+ * lower than max if max isn't an integer).
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/**
  * @param {Express.Request} request
  * @param {Express.Response} response
  * @param {() => void} next
  */
 function main(request, response, next) {
-  response.getTheme = function (){
+  response.getTheme = function () {
     return request.cookies.theme ?? config.json.themes[0]
   }
   Object.assign(response.locals, {
-    theme: response.getTheme, 
+    theme: response.getTheme,
     js_include: function (script_name) {
       if (request.query.hasOwnProperty("nomini")) {
         return script_name + ".js";
@@ -33,8 +53,15 @@ function main(request, response, next) {
     event: function () {
       return config.getEvents()[0]
     },
-    eventGoingSnow:function () {return config.IsEventGoing("snow")}
-    });
+    eventGoingSnow: function () { return config.IsEventGoing("snow") },
+    snowRandom: function () {
+      var final = []
+      for (let index = 0; index < 50; index++) {
+        final.push(`--size: ${getRandomArbitrary(.1, 1)}vw; --left-ini: ${getRandomArbitrary(-9, 9)}vw; --left-end: ${getRandomArbitrary(-9, 9)}vw; left: ${getRandomArbitrary(100, 5)}vw; animation: snowfall ${getRandomArbitrary(5, 15)}s linear infinite; animation-delay: ${getRandomArbitrary(-1, -10)}s; font-size: ${getRandomArbitrary(30, 60)}px; blur(${getRandomArbitrary(0, 3)}px)`)
+      }
+      return final
+    }
+  });
   return next()
 }
 module.exports = main
