@@ -60,8 +60,8 @@
 <div id="Settings" style="display: none;">
   <div class="text-center pagination-centered"><p class="text-secondary">{{__ 'Settings'}}</p></div>
   <div class="row">
-    <div class="col-md-4" style="padding: calc(var(--bs-gutter-x)* .5);">
-      <div class="position-sticky" style="top: 2rem">
+    <div class="col-md-4 position-sticky" style="padding: calc(var(--bs-gutter-x)* .5);top: 0;background: rgba(var(--bs-body-bg-rgb),.1);backdrop-filter: blur(4px);">
+      <div style="margin-top: 2rem;">
         <nav id="settings-navbar" class="h-100 flex-column align-items-stretch">
           <ul class="nav nav-pills settings-ui">
             <li class="nav-item">
@@ -129,11 +129,12 @@
           </div>
         </div>
       </div>
-      <div style="bottom: 110px;position: fixed;">
+    </div>
+    <div class="col-md-12 jumbotron text-center position-sticky" style="bottom: 0;background: rgba(var(--bs-body-bg-rgb),.1);backdrop-filter: blur(4px);">
+      <div style="margin-bottom: 1rem;">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeSettings">{{__ 'Close'}}</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveSettings">{{__ 'Save changes'}}</button> 
       </div>
-      <div style="height: 100px;"></div>
     </div>
 </div>
 </div>
