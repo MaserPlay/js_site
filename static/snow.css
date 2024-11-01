@@ -1,0 +1,27 @@
+.snow-main {
+    z-index: -1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+    opacity: .3;
+}
+
+.snow-main > * {
+	font-size: 50px;
+	color: white;
+	position: absolute;
+	top: -5vh;
+}
+
+@keyframes snowfall {
+	0% {
+		transform: translate3d(var(--left-ini), 0, 0);
+	}
+
+	100% {
+		transform: translate3d(var(--left-end), 110vh, 0);
+	}
+}
