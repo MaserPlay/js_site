@@ -60,6 +60,9 @@ function main(request, response, next) {
         final.push(`--size: ${getRandomArbitrary(.1, 1)}vw; --left-ini: ${getRandomArbitrary(-9, 9)}vw; --left-end: ${getRandomArbitrary(-9, 9)}vw; left: ${getRandomArbitrary(100, 5)}vw; animation: snowfall ${getRandomArbitrary(5, 15)}s linear infinite; animation-delay: ${getRandomArbitrary(-1, -10)}s; font-size: ${getRandomArbitrary(30, 60)}px; blur(${getRandomArbitrary(0, 3)}px)`)
       }
       return final
+    },
+    useAd: function () {
+      return !request.query.hasOwnProperty("noad")
     }
   });
   return next()
