@@ -19,35 +19,38 @@ var changeRoom = (to) => { }
       usernameLabel.html(name);
       emitUserInformation();
     }
-    get Username(){return this.username}
+    get Username() { return this.username }
 
-    set Mute(m){
+    set Mute(m) {
       this.mute = m;
       if (madiaRecorder) {
-        if (m) { madiaRecorder.stop() }
+        if (m) { madiaRecorder.stop() ;}
         else {
           madiaRecorder.start();
-  
+
           setTimeout(function () {
             madiaRecorder.stop();
           }, settings.record_length);
         }
       }
-  
+
       editButtonClass($("#mute_btn"), m);
       emitUserInformation();
     }
-    get Mute(){return this.mute}
+    get Mute() { return this.mute }
 
-    set Online(onl){      
+    set Online(onl) {
       this.online = onl;
 
       editButtonClass($("#onl_btn"), this.online);
       emitUserInformation();
+      // if (madiaRecorder) {
+      //   if (!onl) { madiaRecorder.stop() }
+      // }
       if (onl)
-      mainFunction();
+        mainFunction();
     }
-    get Online(){return this.online}
+    get Online() { return this.online }
   }
 
   var socket = io({
@@ -112,7 +115,7 @@ var changeRoom = (to) => { }
   });
   socket.on("ChangeMute", (mute) => { if (mute) { return }; userStatus.Mute = mute; })
   socket.on("ChangeConnection", (conn) => { if (conn) { return }; userStatus.Online = conn; })
-  socket.on("ChangeNickname", (nick)=>{userStatus.Username = nick;})
+  socket.on("ChangeNickname", (nick) => { userStatus.Username = nick; })
 
   function getmic() {
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -144,7 +147,6 @@ var changeRoom = (to) => { }
 
   function mainFunction() {
 
-
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       MicAvailable(true)
       if (settings.mic && settings.mic.trim() !== "" && stream.getTrackById(settings.mic)) {
@@ -175,9 +177,10 @@ var changeRoom = (to) => { }
 
         };
 
-        if (!userStatus.Mute) { madiaRecorder.start(); }
+        if (!userStatus.Mute && userStatus.Online) { madiaRecorder.start(); }
 
 
+        // clearTimeout(timeout)
         setTimeout(function () {
           madiaRecorder.stop();
         }, settings.record_length);
@@ -235,7 +238,7 @@ var changeRoom = (to) => { }
       if (!Object.hasOwnProperty.call(data, key)) continue;
       const element = data[key];
 
-      if (data[key].online) { userVisible(element.username, !element.mute); }
+      if (data[key].Online) { userVisible(element.username, !element.mute); }
     }
   });
   socket.on("roomsChanged", (rooms) => {
@@ -253,8 +256,8 @@ var changeRoom = (to) => { }
       }
     }
     addRoom("+", "+")
-  })  
-  
+  })
+
   function TryCreateContext() {
     if (audioContext) { return }
     audioContext = new AudioContext()
