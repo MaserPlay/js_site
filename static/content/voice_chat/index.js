@@ -50,12 +50,10 @@ var changeRoom = (to) => { }
     get Online(){return this.online}
   }
 
-  var socket = io(`${document.location.origin}`, {
+  var socket = io({
     reconnection: true,
-    reconnectionDelay: 1000,
-    reconnectionDelayMax: 5000,
-    // reconnectionAttempts: 10
-  });
+    reconnectionDelay: 1000
+  }); //Create connection <--
   const userStatus = new MyUser();
   const settings = JSON.parse(localStorage.getItem("settings")) ?? {
     record_length: 500,
@@ -102,10 +100,6 @@ var changeRoom = (to) => { }
     socket.emit("userInformation", userStatus);
     $("#onl_btn").attr("disabled", false)
     usersDiv.html("")
-  });
-
-  socket.on("connect_error", (err) => {
-    console.error(err);
   });
 
   socket.on("disconnect", (reason) => {
@@ -240,9 +234,8 @@ var changeRoom = (to) => { }
     for (const key in data) {
       if (!Object.hasOwnProperty.call(data, key)) continue;
       const element = data[key];
-      element.mute
 
-      if (data[key].online) { userVisible(element.username, true, !element.mute); }
+      if (data[key].online) { userVisible(element.username, !element.mute); }
     }
   });
   socket.on("roomsChanged", (rooms) => {
@@ -285,10 +278,13 @@ var changeRoom = (to) => { }
 
   function userVisible(name, vis, mic) {
     if (vis) {
-      usersDiv.html(usersDiv.html() + `<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
+      userVisible(name, mic);
     } else {
       $(`#card-${name}`).remove()
     }
+  }
+  function userVisible(name, mic) {
+    usersDiv.append(`<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
   }
   function usersReset() {
     usersDiv.html("")
