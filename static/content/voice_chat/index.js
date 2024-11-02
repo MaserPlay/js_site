@@ -22,7 +22,6 @@ var changeRoom = (to) => { }
     get Username() { return this.username }
 
     set Mute(m) {
-      this.mute = m;
       if (madiaRecorder) {
         if (m) { madiaRecorder.stop() ;}
         else {
@@ -33,6 +32,7 @@ var changeRoom = (to) => { }
           }, settings.record_length);
         }
       }
+      this.mute = m;
 
       editButtonClass($("#mute_btn"), m);
       emitUserInformation();
@@ -238,7 +238,7 @@ var changeRoom = (to) => { }
       if (!Object.hasOwnProperty.call(data, key)) continue;
       const element = data[key];
 
-      if (data[key].Online) { userVisible(element.username, !element.mute); }
+      if (data[key].online) { userVisible(element.username, !element.mute); }
     }
   });
   socket.on("roomsChanged", (rooms) => {
@@ -279,15 +279,12 @@ var changeRoom = (to) => { }
 
 
 
-  function userVisible(name, vis, mic) {
+  function userVisible(name, mic, vis = true) {
     if (vis) {
-      userVisible(name, mic);
+      usersDiv.append(`<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
     } else {
       $(`#card-${name}`).remove()
     }
-  }
-  function userVisible(name, mic) {
-    usersDiv.append(`<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
   }
   function usersReset() {
     usersDiv.html("")
