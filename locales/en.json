@@ -67,5 +67,6 @@
 	"Clear all voice_chat data": "Clear all voice_chat data",
 	"Self spectogram type": "Self spectogram type",
 	"Columnar": "Columnar",
-	"Solid": "Solid"
+	"Solid": "Solid",
+	"auto_locale": "Automaticly"
 }
