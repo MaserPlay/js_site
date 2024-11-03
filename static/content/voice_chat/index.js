@@ -71,6 +71,7 @@ var changeRoom = (to) => { }
     height_ping_notification: -1,
     debug: false,
     self_spectogram: false,
+    self_spectogramm_type: "Columnar"
   }
   
   var canvas = $("#self-spectogramm").get(0);
@@ -213,7 +214,7 @@ var changeRoom = (to) => { }
         analyser.fftSize = 256;
         const bufferLength = analyser.frequencyBinCount;
         var draw = ()=>{
-          if (!userStatus.Mute && userStatus.Online) {
+          if (!userStatus.Mute && userStatus.Online && settings.self_spectogram) {
           requestAnimationFrame(draw);
           } else {
             requestAnimationFrame(()=>{
@@ -229,23 +230,64 @@ var changeRoom = (to) => { }
           const barWidth = (WIDTH / bufferLength) * 2.5;
           let x = 0;
   
+          switch (settings.self_spectogramm_type) {
+            case "Columnar":
+              for (let i = 0; i < bufferLength; i++) {
+                const barHeight = dataArray[i];
+                canvasContext.fillRect(
+                  WIDTH / 2 + x,
+                  HEIGHT - barHeight / 2,
+                  barWidth / 2,
+                  barHeight / 2
+                );
+                canvasContext.fillRect(
+                  WIDTH / 2 - x,
+                  HEIGHT - barHeight / 2,
+                  barWidth / 2 *-1,
+                  barHeight / 2
+                );
+      
+                x += barWidth / 2;
+              }              
+              break;
+            case "Solid":
+              canvasContext.beginPath();
+          canvasContext.moveTo(WIDTH / 2 + x, HEIGHT);
           for (let i = 0; i < bufferLength; i++) {
             const barHeight = dataArray[i];
-            canvasContext.fillRect(
+            canvasContext.lineTo(
               WIDTH / 2 + x,
-              HEIGHT - barHeight / 2,
-              barWidth / 2,
-              barHeight / 2
-            );
-            canvasContext.fillRect(
-              WIDTH / 2 - x,
-              HEIGHT - barHeight / 2,
-              barWidth / 2 *-1,
-              barHeight / 2
-            );
-  
+              HEIGHT - barHeight / 2
+            );  
             x += barWidth / 2;
           }
+          canvasContext.closePath();
+          canvasContext.strokeStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
+          canvasContext.fill()
+          canvasContext.stroke()
+          
+          x = 0;
+
+          canvasContext.beginPath();
+          canvasContext.moveTo(WIDTH / 2 + x, HEIGHT);
+          for (let i = 0; i < bufferLength; i++) {
+            const barHeight = dataArray[i];
+            canvasContext.lineTo(
+              WIDTH / 2 + x,
+              HEIGHT - barHeight / 2
+            );  
+            x -= barWidth / 2;
+          }
+          canvasContext.closePath();
+          canvasContext.strokeStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
+          canvasContext.fill()
+          canvasContext.stroke()
+              break;
+          
+            default:
+              break;
+          }
+          
 
         }
         draw()
@@ -381,6 +423,7 @@ var changeRoom = (to) => { }
 
     $("#rec_length_num").val(settings.record_length)
     $("#rec_length").val(settings.record_length)
+    $("#self_spectogram_select").val(settings.self_spectogramm_type)
     $("#Debug_mode").prop('checked', settings.debug)
   })()
   function saveSettings() {
@@ -403,6 +446,7 @@ var changeRoom = (to) => { }
     }
     localStorage.setItem("settings", JSON.stringify(settings));
     userStatus.Username = $('#username').val();
+    settings.self_spectogramm_type = $("#self_spectogram_select").val();
   }
 
   setInterval(() => {
