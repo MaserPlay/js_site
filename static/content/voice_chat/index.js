@@ -9,6 +9,7 @@ var changeRoom = (to) => { }
       this.username = name;
     }
   }
+  let doSpectogram = ()=>{}
   class MyUser extends User {
     constructor() {
       super(localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999));
@@ -25,11 +26,13 @@ var changeRoom = (to) => { }
       if (madiaRecorder) {
         if (m) { madiaRecorder.stop() ;}
         else {
+          this.mute = m;
           madiaRecorder.start();
 
           setTimeout(function () {
             madiaRecorder.stop();
           }, settings.record_length);
+          doSpectogram();
         }
       }
       this.mute = m;
@@ -67,7 +70,11 @@ var changeRoom = (to) => { }
     disconnect_notification: false,
     height_ping_notification: -1,
     debug: false,
+    self_spectogram: false,
   }
+  
+  var canvas = $("#self-spectogramm").get(0);
+  var canvasContext = canvas.getContext("2d");
 
   let audioContext;
 
@@ -189,6 +196,65 @@ var changeRoom = (to) => { }
       setTimeout(function () {
         madiaRecorder.stop();
       }, settings.record_length);
+      
+      doSpectogram =()=>{
+        canvas.width = canvas.getBoundingClientRect().width;
+        const audioContextInput = new AudioContext();
+        const analyser = audioContextInput.createAnalyser();
+        analyser.minDecibels = -90;
+        analyser.maxDecibels = -30;
+        analyser.smoothingTimeConstant = 0.85;
+        audioContextInput.createMediaStreamSource(stream).connect(analyser);
+  
+        const WIDTH = canvas.width;
+        const HEIGHT = canvas.height;
+        canvasContext.fillStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
+        canvasContext.fillRect(0, canvas.height-1, canvas.width, 1);
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        var draw = ()=>{
+          if (!userStatus.Mute && userStatus.Online) {
+          requestAnimationFrame(draw);
+          } else {
+            requestAnimationFrame(()=>{
+              canvasContext.clearRect(0,0,canvas.width,canvas.height-1);
+            })
+          }
+
+          canvasContext.clearRect(0,0,canvas.width,canvas.height-1)
+
+          const dataArray = new Uint8Array(bufferLength);
+          analyser.getByteFrequencyData(dataArray);
+
+          const barWidth = (WIDTH / bufferLength) * 2.5;
+          let x = 0;
+  
+          for (let i = 0; i < bufferLength; i++) {
+            const barHeight = dataArray[i];
+            canvasContext.fillRect(
+              WIDTH / 2 + x,
+              HEIGHT - barHeight / 2,
+              barWidth / 2,
+              barHeight / 2
+            );
+            canvasContext.fillRect(
+              WIDTH / 2 - x,
+              HEIGHT - barHeight / 2,
+              barWidth / 2 *-1,
+              barHeight / 2
+            );
+  
+            x += barWidth / 2;
+          }
+
+        }
+        draw()
+      }
+      if (settings.self_spectogram)
+      {
+        doSpectogram()
+      }
+
     }).catch((e) => {
       if (e.message == "Requested device not found") { MicAvailable(false) }
       console.error(e);                           // will show "foo"
@@ -307,6 +373,7 @@ var changeRoom = (to) => { }
     $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
     $("#mic_disconnect_Notifications_check").prop('checked', settings.mic_disconnect_notification)
     $("#height_ping_Notifications_check").prop('checked', settings.height_ping_notification > 0);
+    $("#Show_self_spectro").prop('checked', settings.self_spectogram)
     if (settings.height_ping_notification > 0) {
       $("#height_ping_Notifications_check").change()
       $("#height_ping_num").val(settings.height_ping_notification)
@@ -325,6 +392,7 @@ var changeRoom = (to) => { }
     } else {
       settings.height_ping_notification = Number($("#height_ping_num").val());
     }
+    settings.self_spectogram = $("#Show_self_spectro").prop('checked')
 
     settings.record_length = Number($("#rec_length_num").val());
     settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
@@ -400,6 +468,9 @@ var changeRoom = (to) => { }
   changeRoom = (to) => {
     socket.emit("changeRoom", to)
   }
+  
+  canvasContext.fillStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
+  canvasContext.fillRect(0, canvas.height-1, canvas.width, 1);
   $("#Loading").hide()
   $("#Main").show()
 })()
