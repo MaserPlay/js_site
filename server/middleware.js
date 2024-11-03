@@ -25,6 +25,10 @@ function getRandomInt(min, max) {
  * @param {() => void} next
  */
 function main(request, response, next) {
+  if (request.cookies.lang&&request.cookies.lang==="auto_locale")
+  {
+    delete request.cookies["lang"]
+  }
   response.getTheme = function () {
     return request.cookies.theme ?? config.json.themes[0]
   }
@@ -44,8 +48,8 @@ function main(request, response, next) {
         return style_name + ".min.css";
       }
     },
-    eachLocale: function () {
-      return response.getLocales().map((local) => ({ id: local, displayName: response.__({ phrase: local, locale: local }), active: response.getLocale() === local ? "active" : "" }))
+    eachLocale: function () {      
+      return ["auto_locale"].concat(response.getLocales()).map((local) => ({ id: local, displayName: response.__({ phrase: local, locale: local==="auto_locale"?response.getLocale():local }), active: (request.cookies.lang&&(response.getLocale() === local)||(!request.cookies.lang&&local==="auto_locale")) ? "active" : "" }))
     },
     eachTheme: function () {
       return config.json.themes.map((local) => ({ id: local, displayName: response.__(local), active: response.getTheme() == local ? "active" : "" }))
