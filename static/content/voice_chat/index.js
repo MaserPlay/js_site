@@ -23,16 +23,10 @@ var changeRoom = (to) => { }
     get Username() { return this.username }
 
     set Mute(m) {
-      if (madiaRecorder) {
-        if (m) { madiaRecorder.stop() ;}
+      if (audioContextInput) {
+        if (m) { audioContextInput.suspend();}
         else {
-          this.mute = m;
-          madiaRecorder.start();
-
-          setTimeout(function () {
-            madiaRecorder.stop();
-          }, settings.record_length);
-          doSpectogram();
+          audioContextInput.resume();
         }
       }
       this.mute = m;
@@ -47,9 +41,10 @@ var changeRoom = (to) => { }
 
       editButtonClass($("#onl_btn"), this.online);
       emitUserInformation();
-      // if (madiaRecorder) {
-      //   if (!onl) { madiaRecorder.stop() }
-      // }
+      if (!onl&&audioContextInput)
+      {
+        audioContextInput.close()
+      }
       if (onl)
         mainFunction();
     }
@@ -77,7 +72,14 @@ var changeRoom = (to) => { }
   var canvas = $("#self-spectogramm").get(0);
   var canvasContext = canvas.getContext("2d");
 
+  /**
+   * @type {AudioContext}
+   */
   let audioContext;
+  /**
+   * @type {AudioContext}
+   */
+  let audioContextInput;
 
   const usernameInput = $("#username");
   const usernameLabel = $("#username-label");
@@ -89,7 +91,6 @@ var changeRoom = (to) => { }
   var connected_notification = { close: () => { } };
   var height_ping_notification = { close: () => { } };
 
-  let madiaRecorder;
 
   if (localStorage.getItem("username") == null) {
     $("#username_startup").val(userStatus.Username)
@@ -125,8 +126,9 @@ var changeRoom = (to) => { }
   socket.on("ChangeConnection", (conn) => { if (conn) { return }; userStatus.Online = conn; })
   socket.on("ChangeNickname", (nick) => { userStatus.Username = nick; })
 
-  function getmic() {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+  async function getmic() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       MicAvailable(true)
       $('#microphone_select').html("")
       stream.getAudioTracks().forEach((track) => {
@@ -134,9 +136,11 @@ var changeRoom = (to) => { }
           value: track.id,
           text: track.label,
           disabled: track.muted
-        }));
+        })); track.stop();
       })
-    }).catch((e) => { if (e.message == "Requested device not found") { MicAvailable(false) }; console.error(e) })
+    } catch (e) {
+      if (e.message == "Requested device not found") { MicAvailable(false) }; console.error(e);
+    }
   }
   async function getspe() {
     if ("setSinkId" in AudioContext.prototype) {
@@ -153,83 +157,46 @@ var changeRoom = (to) => { }
     }
   }
 
-  function mainFunction() {
+  async function mainFunction() {
 
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+
       MicAvailable(true)
       if (settings.mic && settings.mic.trim() !== "" && stream.getTrackById(settings.mic)) {
         stream.addTrack(stream.getTrackById(settings.mic))
       }
+      audioContextInput = new AudioContext();
 
-      madiaRecorder = new MediaRecorder(stream, { 'type': 'audio/ogg; codecs=opus' });
-      madiaRecorder.start();
+      const audioSource = audioContextInput.createMediaStreamSource(stream);
 
-      var audioChunks = [];
+      const dest = audioContextInput.createMediaStreamDestination()
+      audioSource.connect(dest)
 
-      madiaRecorder.addEventListener("dataavailable", function (event) {
-        audioChunks.push(event.data);
-      });
-
-      madiaRecorder.addEventListener("stop", function () {
-        var audioBlob = new Blob(audioChunks);
-
-        audioChunks = [];
-
-        var fileReader = new FileReader();
-        fileReader.readAsDataURL(audioBlob);
-        fileReader.onloadend = function () {
-          if (!userStatus.Online) return;
-
-          var base64String = fileReader.result;
-          socket.emit("voice", base64String);
-
-        };
-
-        if (!userStatus.Mute && userStatus.Online) { madiaRecorder.start(); }
-
-
-        // clearTimeout(timeout)
-        setTimeout(function () {
-          madiaRecorder.stop();
-        }, settings.record_length);
-      });
-
-      setTimeout(function () {
-        madiaRecorder.stop();
-      }, settings.record_length);
-      
-      doSpectogram =()=>{
-        canvas.width = canvas.getBoundingClientRect().width;
-        const audioContextInput = new AudioContext();
+      if (settings.self_spectogram) {
         const analyser = audioContextInput.createAnalyser();
+        audioSource.connect(analyser);
         analyser.minDecibels = -90;
         analyser.maxDecibels = -30;
         analyser.smoothingTimeConstant = 0.85;
-        audioContextInput.createMediaStreamSource(stream).connect(analyser);
-  
+        canvas.width = canvas.getBoundingClientRect().width;
         const WIDTH = canvas.width;
         const HEIGHT = canvas.height;
         canvasContext.fillStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
-        canvasContext.fillRect(0, canvas.height-1, canvas.width, 1);
+        canvasContext.fillRect(0, canvas.height - 1, canvas.width, 1);
         analyser.fftSize = 256;
         const bufferLength = analyser.frequencyBinCount;
-        var draw = ()=>{
-          if (!userStatus.Mute && userStatus.Online && settings.self_spectogram) {
+        var draw = () => {
           requestAnimationFrame(draw);
-          } else {
-            requestAnimationFrame(()=>{
-              canvasContext.clearRect(0,0,canvas.width,canvas.height-1);
-            })
-          }
 
-          canvasContext.clearRect(0,0,canvas.width,canvas.height-1)
+          canvasContext.clearRect(0, 0, canvas.width, canvas.height - 1)
 
           const dataArray = new Uint8Array(bufferLength);
           analyser.getByteFrequencyData(dataArray);
 
           const barWidth = (WIDTH / bufferLength) * 2.5;
           let x = 0;
-  
+
           switch (settings.self_spectogramm_type) {
             case "Columnar":
               for (let i = 0; i < bufferLength; i++) {
@@ -243,64 +210,103 @@ var changeRoom = (to) => { }
                 canvasContext.fillRect(
                   WIDTH / 2 - x,
                   HEIGHT - barHeight / 2,
-                  barWidth / 2 *-1,
+                  barWidth / 2 * -1,
                   barHeight / 2
                 );
-      
+
                 x += barWidth / 2;
-              }              
+              }
               break;
             case "Solid":
               canvasContext.beginPath();
-          canvasContext.moveTo(WIDTH / 2 + x, HEIGHT);
-          for (let i = 0; i < bufferLength; i++) {
-            const barHeight = dataArray[i];
-            canvasContext.lineTo(
-              WIDTH / 2 + x,
-              HEIGHT - barHeight / 2
-            );  
-            x += barWidth / 2;
-          }
-          canvasContext.closePath();
-          canvasContext.strokeStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
-          canvasContext.fill()
-          canvasContext.stroke()
-          
-          x = 0;
+              canvasContext.moveTo(WIDTH / 2 + x, HEIGHT);
+              for (let i = 0; i < bufferLength; i++) {
+                const barHeight = dataArray[i];
+                canvasContext.lineTo(
+                  WIDTH / 2 + x,
+                  HEIGHT - barHeight / 2
+                );
+                x += barWidth / 2;
+              }
+              canvasContext.closePath();
+              canvasContext.strokeStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
+              canvasContext.fill()
+              canvasContext.stroke()
 
-          canvasContext.beginPath();
-          canvasContext.moveTo(WIDTH / 2 + x, HEIGHT);
-          for (let i = 0; i < bufferLength; i++) {
-            const barHeight = dataArray[i];
-            canvasContext.lineTo(
-              WIDTH / 2 + x,
-              HEIGHT - barHeight / 2
-            );  
-            x -= barWidth / 2;
-          }
-          canvasContext.closePath();
-          canvasContext.strokeStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
-          canvasContext.fill()
-          canvasContext.stroke()
+              x = 0;
+
+              canvasContext.beginPath();
+              canvasContext.moveTo(WIDTH / 2 + x, HEIGHT);
+              for (let i = 0; i < bufferLength; i++) {
+                const barHeight = dataArray[i];
+                canvasContext.lineTo(
+                  WIDTH / 2 + x,
+                  HEIGHT - barHeight / 2
+                );
+                x -= barWidth / 2;
+              }
+              canvasContext.closePath();
+              canvasContext.strokeStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
+              canvasContext.fill()
+              canvasContext.stroke()
               break;
-          
+
             default:
               break;
           }
-          
+
 
         }
         draw()
       }
-      if (settings.self_spectogram)
-      {
-        doSpectogram()
-      }
 
-    }).catch((e) => {
+
+      const madiaRecorder = new MediaRecorder(dest.stream, { 'type': 'audio/ogg; codecs=opus' });
+      madiaRecorder.start();
+
+      var audioChunks = [];
+
+      madiaRecorder.addEventListener("dataavailable", function (event) {
+        if (event.data.size == 0){
+          return
+        }
+        console.log(event.data)
+        audioChunks.push(event.data);
+      });
+
+      madiaRecorder.addEventListener("stop", function () {
+        if (audioChunks.length != 0) {
+          var audioBlob = new Blob(audioChunks);
+
+          audioChunks = [];
+
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(audioBlob);
+          fileReader.onloadend = function () {
+            if (!userStatus.Online) return;
+
+            var base64String = fileReader.result;
+            socket.emit("voice", base64String);
+
+          };
+        }
+        if (audioContextInput.state === "suspended" || audioContextInput.state === "running") { madiaRecorder.start(); }
+
+
+        // clearTimeout(timeout)
+        setTimeout(function () {
+          madiaRecorder.stop();
+        }, settings.record_length);
+      });
+
+      setTimeout(function () {
+        madiaRecorder.stop();
+      }, settings.record_length);
+
+    } catch (e) {
       if (e.message == "Requested device not found") { MicAvailable(false) }
-      console.error(e);                           // will show "foo"
-    });
+      console.error(e);
+    }
   }
 
   socket.on("send", async function (data) {
