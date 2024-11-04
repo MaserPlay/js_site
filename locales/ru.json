@@ -65,5 +65,8 @@
 	"ru": "Русский",
 	"Loading icon": "Иконка загрузки",
 	"Show self spectogram": "Показать свою спермограмму",
-	"auto_locale": "Автоматически"
+	"auto_locale": "Автоматически",
+	"Self spectogram type": "Тип своей спектрограммы",
+	"Columnar": "Колоннообразный",
+	"Solid": "Твердый"
 }
