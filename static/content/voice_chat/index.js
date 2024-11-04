@@ -270,7 +270,7 @@ var changeRoom = (to) => { }
         if (event.data.size == 0){
           return
         }
-        console.log(event.data)
+        // console.log(event.data)
         audioChunks.push(event.data);
       });
 
