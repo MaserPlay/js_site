@@ -56,6 +56,11 @@ io.on("connection", function (socket) {
       return;
     };
 
+    if (!socketsStatus.get(room))
+    {
+      console.warn("socketsStatus.get(room) === null")
+      return;
+    }
     for (id of socketsStatus.get(room).users.keys()) {
 
       if (id != socketId && socketsStatus.get(room).getUser(id).online)
@@ -93,6 +98,7 @@ io.on("connection", function (socket) {
       if (socketsStatus.has(name)) {
         leaveRoom()
         JoinRoom(name)
+        emitRoomsChanged(true);
       }
     }
   })
@@ -101,7 +107,7 @@ io.on("connection", function (socket) {
     if (!socketsStatus.has(room)) return;
     socketsStatus.get(room).deleteUser(socketId);
     if (room !== "main-room") {
-      if (Object.keys(socketsStatus.get(room).users).length <= 0) {
+      if ((socketsStatus.get(room).users).size <= 0) {
         socketsStatus.delete(room)
         emitRoomsChanged();
       }
@@ -122,6 +128,11 @@ io.on("connection", function (socket) {
     callback();
   });
   function emitUsersUpdate() {
+    if (!socketsStatus.get(room))
+    {
+      console.warn("socketsStatus.get(room) === null")
+      return;
+    }
     io.in(room).emit("usersUpdate", Object.fromEntries(socketsStatus.get(room).users));
   }
   /**
@@ -131,25 +142,25 @@ io.on("connection", function (socket) {
 
     /**
      * @param {BroadcastOperator} socket 
-     * @param {User} socketUser 
+     * @param {string} socketUserID 
      */
-    function emitRoomsChangedtosocket(socket, socketUser) {
+    function emitRoomsChangedtosocket(socket, socketUserID) {
       socket.emit("roomsChanged", Object.fromEntries(Array.from(socketsStatus.entries()).map(([key, value]) => 
         [
           key, {
             "owner": value.owner.username,
-            "is_we_here": !!value.getUser(socketId)
+            "is_we_here": !!value.getUser(socketUserID)
           }
         ]
       )));
     }
 
     if (only_socket) {
-      emitRoomsChangedtosocket(socket, user)
+      emitRoomsChangedtosocket(socket, socketId)
     } else {
       socketsStatus.forEach((room)=>{
         for (const socket of room.users) {
-          emitRoomsChangedtosocket(io.to(socket[0]), socket[1])
+          emitRoomsChangedtosocket(io.to(socket[0]), socket[0])
         }
       })
     }

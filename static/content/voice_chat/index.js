@@ -360,7 +360,7 @@ var changeRoom = (to) => { }
     for (key in rooms) {
       const r =rooms[key] 
       $("#groupRooms").append(
-        `<button type='button' class='btn ${r.is_we_here?"btn-secondary":"btn-outline-secondary"} w-100 text-break' onclick='changeRoom("${r}")'>${escapeHtml(r.owner==="System"?lang[key]:lang["room_author"].format(r.owner))}</button>`
+        `<button type='button' class='btn ${r.is_we_here?"btn-secondary":"btn-outline-secondary"} w-100 text-break' onclick='changeRoom("${key}")'>${escapeHtml(r.owner==="System"?lang[key]:lang["room_author"].format(r.owner))}</button>`
       )
     }
     $("#groupRooms").append(
