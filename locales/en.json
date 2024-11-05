@@ -68,5 +68,9 @@
 	"Self spectogram type": "Self spectogram type",
 	"Columnar": "Columnar",
 	"Solid": "Solid",
-	"auto_locale": "Automaticly"
+	"auto_locale": "Automaticly",
+	"External": "External",
+	"Connect Notifications": "Connect Notifications",
+	"Microphone disconnect Notifications": "Microphone disconnect Notifications",
+	"Too height ping notification": "Too height ping notification"
 }

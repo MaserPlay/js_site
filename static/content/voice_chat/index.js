@@ -9,7 +9,6 @@ var changeRoom = (to) => { }
       this.username = name;
     }
   }
-  let doSpectogram = ()=>{}
   class MyUser extends User {
     constructor() {
       super(localStorage.getItem("username") ?? "user#" + Math.floor(Math.random() * 999999));
@@ -63,7 +62,8 @@ var changeRoom = (to) => { }
     mic_disconnect_notification: true,
     connect_notification: false,
     disconnect_notification: false,
-    height_ping_notification: -1,
+    height_ping_notification: 100,
+    height_ping_notification_bool: false,
     debug: false,
     self_spectogram: false,
     self_spectogramm_type: "Columnar"
@@ -81,7 +81,7 @@ var changeRoom = (to) => { }
    */
   let audioContextInput;
 
-  const usernameInput = $("#username");
+  const usernameInput = $("#settings-username");
   const usernameLabel = $("#username-label");
   const usersDiv = $("#users");
   var ping_p = $("#ping");
@@ -100,7 +100,7 @@ var changeRoom = (to) => { }
     (new bootstrap.Toast('#notification_toast')).hide()
   }
   var haveSink = "setSinkId" in AudioContext.prototype;
-  $("#speaker_select").prop('disabled', !haveSink)
+  $("#settings-speaker").prop('disabled', !haveSink)
 
   usernameInput.val(userStatus.Username);
   userStatus.Username = userStatus.Username;
@@ -130,9 +130,9 @@ var changeRoom = (to) => { }
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       MicAvailable(true)
-      $('#microphone_select').html("")
+      $('#settings-mic').html("")
       stream.getAudioTracks().forEach((track) => {
-        $('#microphone_select').append($('<option>', {
+        $('#settings-mic').append($('<option>', {
           value: track.id,
           text: track.label,
           disabled: track.muted
@@ -144,9 +144,9 @@ var changeRoom = (to) => { }
   }
   async function getspe() {
     if ("setSinkId" in AudioContext.prototype) {
-      $("#speaker_select").html("");
+      $("#settings-speaker").html("");
       (await navigator.mediaDevices.enumerateDevices()).filter((device) => device.kind == "audiooutput").forEach((device) => {
-        $("#speaker_select").append($('<option>', {
+        $("#settings-speaker").append($('<option>', {
           value: device.deviceId,
           text: device.label,
         }));
@@ -356,20 +356,16 @@ var changeRoom = (to) => { }
     }
   });
   socket.on("roomsChanged", (rooms) => {
-    var addRoom = (id, name) => {
+    $("#groupRooms").html("")
+    for (key in rooms) {
+      const r =rooms[key] 
       $("#groupRooms").append(
-        `<button type='button' class='btn btn-outline-secondary w-100 text-break' onclick='changeRoom("${id}")'>${String(name).replaceAll("<", "").replaceAll(">", "")}</button>`
+        `<button type='button' class='btn ${r.is_we_here?"btn-secondary":"btn-outline-secondary"} w-100 text-break' onclick='changeRoom("${r}")'>${escapeHtml(r.owner==="System"?lang[key]:lang["room_author"].format(r.owner))}</button>`
       )
     }
-    $("#groupRooms").html("")
-    for (r in rooms) {
-      if (rooms[r] === "System") {
-        addRoom(r, lang[r])
-      } else {
-        addRoom(r, lang["room_author"].format(rooms[r]))
-      }
-    }
-    addRoom("+", "+")
+    $("#groupRooms").append(
+      `<button type='button' class='btn btn-outline-secondary w-100 text-break' onclick='changeRoom("+")'>+</button>`
+    )
   })
 
   function TryCreateContext() {
@@ -395,7 +391,7 @@ var changeRoom = (to) => { }
 
   function userVisible(name, mic, vis = true) {
     if (vis) {
-      usersDiv.append(`<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${String(name).replaceAll("<", "").replaceAll(">", "")}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
+      usersDiv.append(`<div class=\"col-md-3\"><div class=\"card\"><div class=\"card-body\">${escapeHtml(name)}<span class="bi ${mic ? "bi-mic" : "bi-mic-mute"}"></span></div></div></div>`);
     } else {
       $(`#card-${name}`).remove()
     }
@@ -417,42 +413,48 @@ var changeRoom = (to) => { }
     $("#mute_btn").attr("disabled", !isavailable);
   }
   (() => { //load settings
-    $("#disconnect_Notifications_check").prop('checked', settings.disconnect_notification)
-    $("#Connect_Notifications_check").prop('checked', settings.connect_notification)
-    $("#mic_disconnect_Notifications_check").prop('checked', settings.mic_disconnect_notification)
-    $("#height_ping_Notifications_check").prop('checked', settings.height_ping_notification > 0);
-    $("#Show_self_spectro").prop('checked', settings.self_spectogram)
-    if (settings.height_ping_notification > 0) {
-      $("#height_ping_Notifications_check").change()
-      $("#height_ping_num").val(settings.height_ping_notification)
+    for(key in settings){
+      switch (typeof settings[key]) {
+        case 'string':
+          $("#settings-"+key).val(settings[key])
+          break;      
+        case 'boolean':
+          $("#settings-"+key).prop('checked',settings[key])
+          break;
+        case 'number':
+          $("#settings-"+key+"-num").val(settings[key]);
+          $("#settings-"+key).val(settings[key]);
+          break;
+        default:
+          console.warn("cannot find case to typeof "+typeof settings[key]+"key: "+key)
+          break;
+      }
     }
-
-    $("#rec_length_num").val(settings.record_length)
-    $("#rec_length").val(settings.record_length)
-    $("#self_spectogram_select").val(settings.self_spectogramm_type)
-    $("#Debug_mode").prop('checked', settings.debug)
+    $('#settings-username').val(userStatus.Username);
   })()
   function saveSettings() {
-    settings.mic_disconnect_notification = $("#mic_disconnect_Notifications_check").prop('checked')
-    settings.connect_notification = $("#Connect_Notifications_check").prop('checked')
-    settings.disconnect_notification = $("#disconnect_Notifications_check").prop('checked')
-    if (!$("#height_ping_Notifications_check").prop('checked')) {
-      settings.height_ping_notification = Number(-1);
-    } else {
-      settings.height_ping_notification = Number($("#height_ping_num").val());
+    for(key in settings){
+      switch (typeof settings[key]) {
+        case 'string':
+          if (!!$("#settings"+key).val())
+            {
+              settings[key]=$("#settings-"+key).val()
+            }
+          
+          break;      
+        case 'boolean':
+          settings[key]=$("#settings-"+key).prop('checked')
+          break;
+        case 'number':
+          settings[key]=Number($("#settings-"+key).val());
+          break;
+        default:
+          console.warn("cannot find case to typeof "+typeof settings[key])
+          break;
+      }
     }
-    settings.self_spectogram = $("#Show_self_spectro").prop('checked')
-
-    settings.record_length = Number($("#rec_length_num").val());
-    settings.debug = $("#mic_disconnect_Notifications_check").prop('checked')
-    settings.mic = $('#microphone_select').val()?.trim() ?? "";
-    if (haveSink) {
-      settings.speaker = (($('#speaker_select').val()?.trim() === "default") ? "" : $('#speaker_select').val()?.trim()) ?? "";
-      audioContext.setSinkId(settings.speaker);
-    }
-    localStorage.setItem("settings", JSON.stringify(settings));
-    userStatus.Username = $('#username').val();
-    settings.self_spectogramm_type = $("#self_spectogram_select").val();
+    userStatus.Username = $('#settings-username').val();
+    localStorage.setItem("settings",JSON.stringify(settings))
   }
 
   setInterval(() => {
@@ -466,7 +468,7 @@ var changeRoom = (to) => { }
     socket.emit("ping", () => {
       const duration = Date.now() - start;
       ping_p.html(duration);
-      if (settings.height_ping_notification > 0) {
+      if (settings.height_ping_notification_bool) {
         if (duration >= settings.height_ping_notification) {
           height_ping_notification = new Notification("js.maserplay.ru", { body: lang["Ping too height!"].format(duration), icon: "/favicon.ico" });
         } else {
@@ -503,20 +505,32 @@ var changeRoom = (to) => { }
   $("#sett_btn").on('click', function () {
     TryCreateContext()
     $("#Settings").show();
-    $("#Main").hide()
+    $("#Main").hide();
+    getmic();
+    if ("setSinkId" in AudioContext.prototype) {
+    getspe();
+    }
   })
   $("#AcceptWelcome").on('click', function () {
     TryCreateContext()
     userStatus.Username = $('#username_startup').val()
   })
-  $("#speaker_select").on('focus', function () {
+  $("#settings-speaker").on('focus', function () {
     getspe()
   })
-  $("#microphone_select").on('focus', function () {
+  $("#settings-mic").on('focus', function () {
     getmic()
   })
   changeRoom = (to) => {
     socket.emit("changeRoom", to)
+  }
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/`/g, '&#x60;');
   }
   
   canvasContext.fillStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;

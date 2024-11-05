@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-sm-2 v-center-if-pc" style="padding: calc(var(--bs-gutter-x)* .5)">
+        <p class="text-secondary text-center">
+            <%=__('rooms list')%>
+        </p>
+        <div class="btn-group-auto w-100" role="group" aria-label="Rooms" id="groupRooms">
+            <button class="btn btn-outline-secondary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <span class="visually-hidden">
+                    <%=__('Loading...')%>
+                </span>
+            </button>
+        </div></label>
+    </div>
+    <div class="col-sm-10">
+        <div class="text-center pagination-centered">
+            <div>
+                <p style="margin-bottom:auto"><span class="bi bi-bar-chart-fill text-secondary"
+                        style="margin:3px"></span><span id="ping" class="text-decoration-line-through">
+                        <%=__ ('ping')%>
+                    </span></p>
+                <h3 id="username-label" class="text-break">
+                    <%=__('Username')%>
+                </h3>
+            </div>
+            <div> <button type="button" class="btn btn-primary disable-btn" id="mute_btn">
+                    <%=__('Mute')%>
+                </button> <button type="button" class="btn btn-primary disable-btn" id="onl_btn">
+                    <%=__('Go online')%>
+                </button> <button type="button" id="sett_btn" class="btn bi bi-gear-fill"></button> </div>
+            <canvas id="self-spectogramm" class="w-100 py-2" style="height: 75px;" height="75"></canvas>
+            <!-- <hr />  -->
+            <p class="text-secondary">
+                <%=__('users list')%>
+            </p>
+            <div class="row" id="users">
+                <div class='text-center'>
+                    <div class='spinner-border' role='status'> <span class='visually-hidden'>
+                            <%=__('Loading...')%>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- Select Name Modal -->
+<div class="modal fade" id="startup_select" tabindex="-1" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">
+                    <%=__('Welcome!')%>
+                </h1> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3"> <label for="username_startup" class="col-form-label">
+                            <%=__('Select your username:')%>
+                        </label> <input type="text" class="form-control" id="username_startup"> </div>
+                </form>
+            </div>
+            <div class="modal-footer"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <%=__('Close')%>
+                </button>
+                <button type="button" class="btn btn-primary" id="AcceptWelcome" data-bs-dismiss="modal">
+                    <%=__('Save changes')%>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
