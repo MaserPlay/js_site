@@ -67,7 +67,10 @@ function main(request, response, next) {
     },
     useAd: function () {
       return !request.query.hasOwnProperty("noad")
-    }
+    },
+    getAd: function (){
+      return response.getTheme()==="dark"?"1713037":"1712338"
+    },
   });
   return next()
 }
