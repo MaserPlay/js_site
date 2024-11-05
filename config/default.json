@@ -4,5 +4,89 @@
     },
     "themes":["light", "dark"],
     "port": 3000,
-    "locales": ["en", "ru"]
+    "locales": ["en", "ru"],
+    "voice_chat":{
+        "settings":{
+            "You":[
+                {
+                    "name":"Username",
+                    "id":"username",
+                    "type":"string"
+                },
+                {
+                    "name":"Show self spectogram",
+                    "id":"self_spectogram",
+                    "type":"boolean"
+                },
+                {
+                    "name":"Self spectogram type",
+                    "id":"self_spectogramm_type",
+                    "type":"select",
+                    "elements":[
+                        {
+                            "name":"Columnar",
+                            "id":"Columnar"
+                        },
+                        {
+                            "name":"Solid",
+                            "id":"Solid"
+                        }
+                    ]
+                }
+            ],
+            "Audio":[
+                {
+                    "name":"Record length",
+                    "id":"record_length",
+                    "type":"integer",
+                    "min": 30,
+                    "max":1000
+                },
+                {
+                    "name":"Micophone",
+                    "id":"mic",
+                    "type":"select",
+                    "elements":[]
+                },
+                {
+                    "name":"Speaker",
+                    "id":"speaker",
+                    "type":"select",
+                    "elements":[]
+                }
+            ],
+            "Notifications":[
+                {
+                    "name":"Connect Notifications",
+                    "id":"connect_notification",
+                    "type":"boolean"
+                },
+                {
+                    "name":"Disconnect Notifications",
+                    "id":"disconnect_notification",
+                    "type":"boolean"
+                },
+                {
+                    "name":"Microphone disconnect Notifications",
+                    "id":"mic_disconnect_notification",
+                    "type":"boolean"
+                },
+                {
+                    "name":"Too height ping notification",
+                    "id":"height_ping_notification_bool",
+                    "type":"boolean"
+                },
+                {
+                    "name":"Too height ping notification",
+                    "id":"height_ping_notification",
+                    "type":"integer",
+                    "min": 30,
+                    "max":100
+                }
+            ],
+            "External":[
+                
+            ]
+        }
+    }
 }

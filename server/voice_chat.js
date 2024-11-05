@@ -1,3 +1,5 @@
+const { BroadcastOperator } = require("socket.io");
+
 const httpServer = require("../index").httpServer
 const io = require("socket.io")(httpServer);
 
@@ -63,8 +65,12 @@ io.on("connection", function (socket) {
   });
 
   socket.on("userInformation", function (data) {
-    if (data.username !== data.username.replaceAll("<", "{").replaceAll(">", "}")) {
-      data.username = data.username.replaceAll("<", "{").replaceAll(">", "}")
+    data.username = String(data.username)
+
+    var finalUsername = escapeHtml(String(data.username)).substring(0, 100);
+
+    if (data.username !== finalUsername) {
+      data.username = finalUsername
       socket.emit("ChangeNickname", data.username)
     }
     user = user.fromJson(data)
@@ -118,17 +124,35 @@ io.on("connection", function (socket) {
   function emitUsersUpdate() {
     io.in(room).emit("usersUpdate", Object.fromEntries(socketsStatus.get(room).users));
   }
+  /**
+   * @param {boolean} only_socket 
+   */
   function emitRoomsChanged(only_socket) {
-    // for (var rom of socketsStatus.values()){
-    //   for (var u of rom.users){
-    //     socket.broadcast.to(u[0]).emit("roomsChanged", u[1]);
-    //   }
-    // }
-    var dest = io
-    if (only_socket) {
-      dest = socket
+
+    /**
+     * @param {BroadcastOperator} socket 
+     * @param {User} socketUser 
+     */
+    function emitRoomsChangedtosocket(socket, socketUser) {
+      socket.emit("roomsChanged", Object.fromEntries(Array.from(socketsStatus.entries()).map(([key, value]) => 
+        [
+          key, {
+            "owner": value.owner.username,
+            "is_we_here": !!value.getUser(socketId)
+          }
+        ]
+      )));
     }
-    dest.emit("roomsChanged", Object.fromEntries(Array.from(socketsStatus.entries()).map(([key, value]) => [key, value.owner.username])));
+
+    if (only_socket) {
+      emitRoomsChangedtosocket(socket, user)
+    } else {
+      socketsStatus.forEach((room)=>{
+        for (const socket of room.users) {
+          emitRoomsChangedtosocket(io.to(socket[0]), socket[1])
+        }
+      })
+    }
   }
 });
 
@@ -140,4 +164,13 @@ function CheckUrl(string) {
     return false;
   }
   return !url.protocol || url.protocol == "data:";
+}
+
+function escapeHtml(str) {
+  return str
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/`/g, '&#x60;');
 }
