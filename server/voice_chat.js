@@ -88,7 +88,9 @@ io.on("connection", function (socket) {
   });
 
   socket.on("changeRoom", (name) => {
-    if (name === "+") {
+    if (name == room) {
+
+    } else if (name === "+") {
       leaveRoom()
       var nroom = String(socketsStatus.size);
       socketsStatus.set(nroom, new Room(user, socketId))
