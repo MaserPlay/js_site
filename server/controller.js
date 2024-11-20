@@ -33,30 +33,39 @@ app.get("/", (req, res) => {
     });
 });
 app.get("/content/voice_chat/*", async (req, res, next)=>{
-    try {
-
-        if (fs.existsSync("./views/content/voice_chat")) {
-            res.render("content/voice_chat", {
-                "name": res.__("voice_chat"),
-                "description": res.__(`voice_chat description`),
-                "Main": await ejs.renderFile("./views/content/voice_chat/content/index.ejs", {
-                    __: res.__
-                }),
-                "Settings": await ejs.renderFile("./views/content/voice_chat/content/settings.ejs", {
-                    __: res.__,
-                    settings_json: config.json.voice_chat.settings
-                })
-            })
-            return
-        }
-    } catch (e) {
-        res.status(500).send(e.toString());
+    const page = !req.params[0].replace("/", "") ? "main":escapeHtml(req.params[0].replace("/", "")).toLowerCase()
+    if (fs.existsSync("./views/content/voice_chat/content/"+page+".ejs")) {
+        res.render("content/voice_chat", {
+            "name": res.__("voice_chat"),
+            "description": res.__(`voice_chat description`),
+            "Main": await ejs.renderFile("./views/content/voice_chat/content/main.ejs", {
+                __: res.__
+            }),
+            "Settings": await ejs.renderFile("./views/content/voice_chat/content/settings.ejs", {
+                __: res.__,
+                settings_json: config.json.voice_chat.settings
+            }),
+            "open_page": !req.params[0].replace("/", "") ? "Main":capitalizeFirstLetter(escapeHtml(req.params[0].replace("/", "")))
+        })
+        return
+    }
+    next()
+})
+app.get("/content/snow_extension", (req, res, next) => {
+    const name = req.params[0].replace("/", "")
+    if (config.IsEventGoing("snow"))
+    {
+        res.render("content/" + name, {
+            "name": res.__(name), 
+            "description": res.__(`${name} description`)
+        })
+        return
     }
     next()
 })
 app.get('/content/*', (req, res, next) => {
     const name = req.params[0].replace("/", "")
-    if ((config.IsEventGoing("snow") && name=="snow_extension")||name!="snow_extension"&&fs.existsSync("./views/content/" + name))
+    if (fs.existsSync("./views/content/" + name))
     {
         res.render("content/" + name, {
             "name": res.__(name), 
@@ -70,3 +79,14 @@ app.get('/content/*', (req, res, next) => {
 app.use(function (req, res) {
     res.status(404).render("404", { "name": "404" });
 });
+function escapeHtml(str) {
+  return String(str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/`/g, '&#x60;');
+}
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}

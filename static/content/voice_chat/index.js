@@ -509,6 +509,9 @@ var changeRoom = (to) => { }
     getmic();
     if ("setSinkId" in AudioContext.prototype) {
     getspe();
+    // const url = new URL(location);
+    // url.pathname += "settings"
+    // history.pushState({}, "", url);
     }
   })
   $("#AcceptWelcome").on('click', function () {
@@ -536,5 +539,5 @@ var changeRoom = (to) => { }
   canvasContext.fillStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
   canvasContext.fillRect(0, canvas.height-1, canvas.width, 1);
   $("#Loading").hide()
-  $("#Main").show()
+  $("#"+openpage).show()
 })()
