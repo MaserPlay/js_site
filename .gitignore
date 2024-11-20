@@ -132,6 +132,7 @@ js*.zip
 
 #minijs
 *.min.js
+*.min.css
 
 #forwhy?
 *.tmp

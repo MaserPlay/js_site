@@ -68,5 +68,11 @@
 	"Self spectogram type": "Тип своей спектрограммы",
 	"Columnar": "Колоннообразный",
 	"Solid": "Твердый",
-	"External": "Расширенные"
+	"External": "Расширенные",
+	"snow_extension": "Snow",
+	"snow_extension description": "Снег на страницах",
+	"Download": "Скачать",
+	"Download rigth now!!": "Скачайте прямо сейчас!!",
+	"About": "О дополнении",
+	"This is a browser extension that adds snow to all pages.": "Это расширение для браузера, которое добавляет снег на все страницы."
 }
