@@ -492,8 +492,7 @@ var changeRoom = (to) => { }
     $("#Main").show()
   })
   $("#closeSettings").on('click', function () {
-    $("#Settings").hide();
-    $("#Main").show()
+    setPage("Main")
   })
   $("#onl_btn").on('click', function () {
     TryCreateContext()
@@ -503,15 +502,10 @@ var changeRoom = (to) => { }
     userStatus.Mute = !userStatus.Mute;
   })
   $("#sett_btn").on('click', function () {
-    TryCreateContext()
-    $("#Settings").show();
-    $("#Main").hide();
+    setPage("Settings")
     getmic();
     if ("setSinkId" in AudioContext.prototype) {
     getspe();
-    // const url = new URL(location);
-    // url.pathname += "settings"
-    // history.pushState({}, "", url);
     }
   })
   $("#AcceptWelcome").on('click', function () {
@@ -535,9 +529,30 @@ var changeRoom = (to) => { }
       .replace(/'/g, '&#39;')
       .replace(/`/g, '&#x60;');
   }
+  /**
+   * @param {string} name 
+   */
+  function setPage(name) {
+    $("#Main").hide();
+    $("#Settings").hide();
+    $("#"+name).show();
+    const url = new URL(location);
+    url.pathname = "/content/voice_chat/"+ name
+    history.pushState({id:name}, "", url);
+    if (name=="Main")
+    {
+      document.title = "Voice chat - JS MaserPlay's Projects"
+    } else {
+      document.title = name+" of Voice chat - JS MaserPlay's Projects"
+    }
+  }
+  window.addEventListener("popstate", (event) => { 
+    if (event.state)
+      setPage(event.state.id)
+  });
   
   canvasContext.fillStyle = `rgba(${getComputedStyle(canvas).getPropertyValue("--bs-secondary-rgb")},1)`;
   canvasContext.fillRect(0, canvas.height-1, canvas.width, 1);
   $("#Loading").hide()
-  $("#"+openpage).show()
+  setPage(openpage)
 })()
