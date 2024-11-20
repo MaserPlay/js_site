@@ -72,5 +72,11 @@
 	"External": "External",
 	"Connect Notifications": "Connect Notifications",
 	"Microphone disconnect Notifications": "Microphone disconnect Notifications",
-	"Too height ping notification": "Too height ping notification"
+	"Too height ping notification": "Too height ping notification",
+	"snow_extension": "Snow",
+	"snow_extension description": "Snow on pages",
+	"Download rigth now!!": "Download rigth now!!",
+	"Download": "Download",
+	"About": "About",
+	"This is a browser extension that adds snow to all pages.": "This is a browser extension that adds snow to all pages."
 }

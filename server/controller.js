@@ -22,8 +22,12 @@ app.use(require("./middleware"))
 app.use(require("compression")())
 
 app.get("/", (req, res) => {
+    var content = fs.readdirSync("./views/content").map(dirent => ({id: dirent, name: res.__(dirent)}))
+    if (!config.IsEventGoing("snow")){
+        content = content.filter(item => !(item.id=="snow_extension"))
+    }
     res.render("index", { 
-        "eachcontent": fs.readdirSync("./views/content").map(dirent => ({id: dirent, name: res.__(dirent)})), 
+        "eachcontent": content, 
         "name": res.__("Index"), 
         "description": res.__("Things in Javascript") 
     });
@@ -51,10 +55,12 @@ app.get("/content/voice_chat/*", async (req, res, next)=>{
     next()
 })
 app.get('/content/*', (req, res, next) => {
-    if (fs.existsSync("./views/content/" + req.params[0])) {
-        res.render("content/" + req.params[0], {
-            "name": res.__(req.params[0].replace("/", "")), 
-            "description": res.__(`${req.params[0].replace("/", "")} description`)
+    const name = req.params[0].replace("/", "")
+    if ((config.IsEventGoing("snow") && name=="snow_extension")||name!="snow_extension"&&fs.existsSync("./views/content/" + name))
+    {
+        res.render("content/" + name, {
+            "name": res.__(name), 
+            "description": res.__(`${name} description`)
         })
         return
     }
