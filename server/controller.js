@@ -52,7 +52,7 @@ app.get("/content/voice_chat/*", async (req, res, next)=>{
     next()
 })
 app.get("/content/snow_extension", (req, res, next) => {
-    const name = req.params[0].replace("/", "")
+    const name = "snow_extension";
     if (config.IsEventGoing("snow"))
     {
         res.render("content/" + name, {
