@@ -71,8 +71,8 @@ function main(request, response, next) {
     getAd: function (){
       return response.getTheme()==="dark"?"1713037":"1712338"
     },
-    IsMozilla: function () { 
-      return request.headers["user-agent"].includes("Mozilla")
+    IsFirefox: function () { 
+      return request.headers["user-agent"].includes("Firefox")
     }
   });
   return next()
