@@ -1,6 +1,6 @@
 @font-face {
     font-family: snowman;
-    src: url(https://js.maserplay.ru/font/snowman.ttf);
+    src: url(/font/snowman.ttf);
 }
 .logo_yellow{
     color: #CF6311;
