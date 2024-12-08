@@ -11,7 +11,7 @@
 
 .snow-main > * {
 	font-size: 50px;
-	color: white;
+	color: rgb(78, 190, 255);
 	position: absolute;
 	top: -5vh;
 }
