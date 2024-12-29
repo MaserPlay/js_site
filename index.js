@@ -5,7 +5,7 @@ const I18n = require('i18n')
 const config = require("./config")
 
 const app = express();
-let httpServer = require("http").Server(app);
+const httpServer = require("http").Server(app);
 
 //mini js
 const fs = require("fs");
@@ -25,20 +25,22 @@ const i18n = new I18n.I18n({
   cookie: 'lang',
   directory: path.join(__dirname, 'locales'),
 })
-module.exports = {
-    app: app,
-    httpServer: httpServer,
-    i18n: i18n,
-    customHandlebars: customHandlebars,
-}
 
 app.engine("handlebars", customHandlebars.engine);
 app.set("view engine", "handlebars");
 
-require("./server/voice_chat");
 
-httpServer.listen(config.json.port, () => {
-console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`);
+module.exports = {
+  app: app,
+  httpServer: httpServer,
+  i18n: i18n,
+  customHandlebars: customHandlebars,
+  io: require("socket.io")(httpServer),
+  Server: app.listen(config.json.port, () => {console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`);})
+};
+
+fs.readdirSync(path.resolve(__dirname, "./server")).forEach((file) => {
+  if (file.endsWith(".js")) {
+      require(`./server/${file}`);
+  }
 });
-
-require("./server/controller")

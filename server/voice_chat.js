@@ -1,7 +1,6 @@
 const { BroadcastOperator } = require("socket.io");
 
-const httpServer = require("../index").httpServer
-const io = require("socket.io")(httpServer);
+const io = require("../index").io;
 
 class User {
   username = "AnUnnamedUser";
