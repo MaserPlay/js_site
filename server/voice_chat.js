@@ -42,10 +42,14 @@ const socketsStatus = new Map([["main-room", new Room(systemUser, "system")]])
 // ^\/voice_chat\/room\/\S+$
 io.on("connection", function (socket) {
   var user = new User();
-  console.log("[voice] connect with id:", socket.id);
-  var room;
+  var room = "main-room";
   const socketId = socket.id;
-  JoinRoom("main-room")
+
+  console.log("[voice] connect with id:", socketId);
+  
+  socket.join(room);
+  socketsStatus.get(room).addUser(user, socketId);
+
   emitRoomsChanged(true)
 
 
@@ -82,7 +86,7 @@ io.on("connection", function (socket) {
   });
 
 
-  socket.on("disconnect", function () {
+  socket.on("disconnect", function (reason) {
     leaveRoom()
   });
 
@@ -105,7 +109,6 @@ io.on("connection", function (socket) {
   })
 
   function leaveRoom() {
-    if (!socketsStatus.has(room)) return;
     socketsStatus.get(room).deleteUser(socketId);
     if (room !== "main-room") {
       if ((socketsStatus.get(room).users).size <= 0) {
@@ -113,7 +116,7 @@ io.on("connection", function (socket) {
         emitRoomsChanged();
       }
     }
-    if (socketsStatus.has(room)) { emitUsersUpdate() }
+    if (socketsStatus.has(room) && user.online) { emitUsersUpdate() }
   }
   function JoinRoom(name) {
     if (!socketsStatus.has(name)) return;
@@ -134,7 +137,7 @@ io.on("connection", function (socket) {
       console.warn("socketsStatus.get(room) === null")
       return;
     }
-    io.in(room).emit("usersUpdate", Object.fromEntries(socketsStatus.get(room).users));
+    io.in(room).emit("usersUpdate", Object.fromEntries(Object.entries(Object.fromEntries(socketsStatus.get(room).users)).filter(([a,b])=>b.online === true)));
   }
   /**
    * @param {boolean} only_socket 
