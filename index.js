@@ -1,8 +1,10 @@
 const express = require("express");
-const handlebars = require("express-handlebars");
+const expressLayouts = require('express-ejs-layouts');
+const ejs = require('ejs')
 const path = require('path')
 const I18n = require('i18n')
 const config = require("./config")
+const morgan = require('morgan')
 const ioServer = require("socket.io").Server; // Импортируйте класс Server
 
 const app = express();
@@ -21,8 +23,6 @@ fs.readdirSync("./static/content").forEach((dirent) => {
 });
 
 
-const customHandlebars = handlebars.create({ layoutsDir: "./views",defaultLayout: './base/main'});
-
 const i18n = new I18n.I18n({
   locales: config.json.locales, 
   defaultLocale: 'en',
@@ -30,15 +30,29 @@ const i18n = new I18n.I18n({
   directory: path.join(__dirname, 'locales'),
 })
 
-app.engine("handlebars", customHandlebars.engine);
-app.set("view engine", "handlebars");
+app.use(expressLayouts);
+app.engine("ejs", ejs.renderFile);
+app.set("view engine", "ejs");
+app.set("layout", "./base/main.ejs");
+app.use(morgan('combined'))
+app.use(require("cookie-parser")())
+app.use(i18n.init)
+app.use(require("./server/middleware"))
+app.use(require("compression")())
+var favicon_name = "favicon-default"
+switch (config.getEvents()[0]) {
+    case "snow":
+        favicon_name = "favicon-snow"
+        break;
+}
+app.use("/favicon.svg", require("express").static(`static/${favicon_name}.svg`))
+app.use("/favicon.ico", require("express").static(`static/${favicon_name}.ico`))
 
 
 module.exports = {
   app: app,
   httpServer: httpServer,
   i18n: i18n,
-  customHandlebars: customHandlebars,
   io: io,
   Server: httpServer.listen(config.json.port, () => {console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`);})
 };
