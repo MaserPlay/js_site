@@ -48,28 +48,18 @@ function main(request, response, next) {
         return style_name + ".min.css";
       }
     },
-    eachLocale: function () {      
-      return ["auto_locale"].concat(response.getLocales()).map((local) => ({ id: local, displayName: response.__({ phrase: local, locale: local==="auto_locale"?response.getLocale():local }), active: (request.cookies.lang&&(response.getLocale() === local)||(!request.cookies.lang&&local==="auto_locale")) ? "active" : "" }))
+    lang: function () { 
+      return request.cookies.lang
     },
-    eachTheme: function () {
-      return config.json.themes.map((local) => ({ id: local, displayName: response.__(local), active: response.getTheme() == local ? "active" : "" }))
+    themes: function () { 
+      return config.json.themes
     },
     event: function () {
       return config.getEvents()[0]
     },
     eventGoingSnow: function () { return config.IsEventGoing("snow") },
-    snowRandom: function () {
-      var final = []
-      for (let index = 0; index < 50; index++) {
-        final.push(`--size: ${getRandomArbitrary(.1, 1)}vw; --left-ini: ${getRandomArbitrary(-9, 9)}vw; --left-end: ${getRandomArbitrary(-9, 9)}vw; left: ${getRandomArbitrary(100, 5)}vw; animation: snowfall ${getRandomArbitrary(5, 15)}s linear infinite; animation-delay: ${getRandomArbitrary(-1, -10)}s; font-size: ${getRandomArbitrary(30, 60)}px; filter: blur(${getRandomArbitrary(0, 3)}px)`)
-      }
-      return final
-    },
     useAd: function () {
       return !request.query.hasOwnProperty("noad")
-    },
-    getAd: function (){
-      return response.getTheme()==="dark"?"1713037":"1712338"
     },
     IsFirefox: function () { 
       return request.headers["user-agent"].includes("Firefox")

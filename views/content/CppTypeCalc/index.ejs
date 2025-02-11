@@ -4,7 +4,7 @@
             <div class="card-body">
                 <div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">{{__ 'Max bytes'}}</label>
+                        <label for="exampleInputEmail1" class="form-label"><%= __('Max bytes') %></label>
                         <div class="input-group">
                             <input type="number" class="form-control" id="bytes"
                                 aria-describedby="basic-addon3 basic-addon4" value="16">
@@ -12,24 +12,24 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">{{__ 'Сan store a value up to'}}</label>
+                        <label for="exampleInputEmail1" class="form-label"><%= __('Сan store a value up to') %></label>
                         <input type="number" class="form-control" id="StoreTo"
                             aria-describedby="basic-addon3 basic-addon4" value="18446744073709551615">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">{{__ 'Can store a value up'}}</label>
+                        <label for="exampleInputEmail1" class="form-label"><%= __('Can store a value up') %></label>
                         <input type="number" class="form-control" id="StoreUp"
                             aria-describedby="basic-addon3 basic-addon4" value="0">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">{{__ 'The data you want to save'}}</label>
+                        <label for="exampleInputEmail1" class="form-label"><%= __('The data you want to save') %></label>
                         <select class="form-select" aria-label="Default select example" id="sel">
-                            <option selected>{{__ 'Nothing selected'}}</option>
-                            <option value="char">{{__ 'Char'}}</option>
-                            <option value="number">{{__ 'Number'}}</option>
+                            <option selected><%= __('Nothing selected') %></option>
+                            <option value="char"><%= __('Char') %></option>
+                            <option value="number"><%= __('Number') %></option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="btn">{{__ 'Calc'}}</button>
+                    <button type="submit" class="btn btn-primary" id="btn"><%= __('Calc') %></button>
                 </div>
             </div>
         </div>
@@ -40,15 +40,18 @@
         </div>
     </div>
 </div>
-{{#if useAd}}
-<script async src="https://ad.mail.ru/static/ads-async.js"></script>
-<ins 
-    class="mrg-tag"
-    style="width:100%;height:250px"
-    data-ad-client="ad-{{getAd}}"
-    data-ad-slot="{{getAd}}">
-</ins>
-<script>
-    (MRGtag = window.MRGtag || []).push({});
-</script>
-{{/if}}
+<% if (useAd()) { %>
+    <% function getAd() {
+        return theme()==="dark"?"1713037":"1712338"
+    } %>
+    <script async src="https://ad.mail.ru/static/ads-async.js"></script>
+    <ins 
+        class="mrg-tag"
+        style="width:100%;height:250px"
+        data-ad-client="ad-<%= getAd() %>"
+        data-ad-slot="<%= getAd() %>">
+    </ins>
+    <script>
+        (MRGtag = window.MRGtag || []).push({});
+    </script>
+<% } %>

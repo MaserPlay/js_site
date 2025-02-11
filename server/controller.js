@@ -1,25 +1,11 @@
 const index = require("../index")
 const fs = require("fs");
-const morgan = require('morgan')
 const config = require("../config")
 const ejs = require("ejs")
 
 const app = index.app
 
 app.use("/", require("express").static("static"));
-var favicon_name = "favicon-default"
-switch (config.getEvents()[0]) {
-    case "snow":
-        favicon_name = "favicon-snow"
-        break;
-}
-app.use("/favicon.svg", require("express").static(`static/${favicon_name}.svg`))
-app.use("/favicon.ico", require("express").static(`static/${favicon_name}.ico`))
-app.use(morgan('combined'))
-app.use(require("cookie-parser")())
-app.use(index.i18n.init)
-app.use(require("./middleware"))
-app.use(require("compression")())
 
 app.get("/", (req, res) => {
     var content = fs.readdirSync("./views/content").map(dirent => ({id: dirent, name: res.__(dirent)}))
@@ -77,7 +63,7 @@ app.get('/content/*', (req, res, next) => {
 })
 
 app.use(function (req, res) {
-    res.status(404).render("404", { "name": "404" });
+    res.status(404).render("404", { "name": "404", "description": "404" });
 });
 function escapeHtml(str) {
   return String(str)
