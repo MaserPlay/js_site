@@ -1,18 +1,21 @@
 <section class="jumbotron text-center vertical-center">
     <div class="container" style="margin-bottom: 5rem;">
         <h1>404</h1>
-        <p class="lead text-muted"><%= __('You have nothing to look for here, traveler') %></p>
+        <p class="lead text-muted"><%= __('404/Text') %></p>
         <p>
-            <a href="/" class="btn btn-primary my-2"><%= __('To the main page') %></a>
+            <a href="/" class="btn btn-primary my-2"><%= __('404/ToMain') %></a>
         </p>
     </div>
 <% if (useAd()) { %>
+    <% function getAd() {
+        return theme()==="dark"?"1713037":"1712338"
+    } %>
     <script async src="https://ad.mail.ru/static/ads-async.js"></script>
     <ins 
         class="mrg-tag"
         style="width:100%;height:250px"
-        data-ad-client="ad-{{getAd}}"
-        data-ad-slot="{{getAd}}">
+        data-ad-client="ad-<%= getAd() %>"
+        data-ad-slot="<%= getAd() %>">
     </ins>
     <script>
         (MRGtag = window.MRGtag || []).push({});
