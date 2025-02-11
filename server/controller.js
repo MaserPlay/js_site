@@ -6,9 +6,10 @@ const ejs = require("ejs")
 const app = index.app
 
 app.use("/", require("express").static("static"));
+app.use("/content", require("express").static("content"));
 
 app.get("/", (req, res) => {
-    var content = fs.readdirSync("./views/content").map(dirent => ({id: dirent, name: res.__(dirent)}))
+    var content = fs.readdirSync("./content").map(dirent => ({id: dirent, name: res.__(dirent)}))
     if (!config.IsEventGoing("snow")){
         content = content.filter(item => !(item.id=="snow_extension"))
     }
@@ -20,14 +21,14 @@ app.get("/", (req, res) => {
 });
 app.get("/content/voice_chat/*", async (req, res, next)=>{
     const page = !req.params[0].replace("/", "") ? "main":escapeHtml(req.params[0].replace("/", "")).toLowerCase()
-    if (fs.existsSync("./views/content/voice_chat/content/"+page+".ejs")) {
-        res.render("content/voice_chat", {
+    if (fs.existsSync("./content/voice_chat/content/"+page+".ejs")) {
+        res.render("../content/voice_chat", {
             "name": res.__("voice_chat"),
             "description": res.__(`voice_chat description`),
-            "Main": await ejs.renderFile("./views/content/voice_chat/content/main.ejs", {
+            "Main": await ejs.renderFile("./content/voice_chat/content/main.ejs", {
                 __: res.__
             }),
-            "Settings": await ejs.renderFile("./views/content/voice_chat/content/settings.ejs", {
+            "Settings": await ejs.renderFile("./content/voice_chat/content/settings.ejs", {
                 __: res.__,
                 settings_json: config.json.voice_chat.settings
             }),
@@ -41,7 +42,7 @@ app.get("/content/snow_extension", (req, res, next) => {
     const name = "snow_extension";
     if (config.IsEventGoing("snow"))
     {
-        res.render("content/" + name, {
+        res.render("../content/" + name, {
             "name": res.__(name), 
             "description": res.__(`${name} description`)
         })
@@ -51,9 +52,9 @@ app.get("/content/snow_extension", (req, res, next) => {
 })
 app.get('/content/*', (req, res, next) => {
     const name = req.params[0].replace("/", "")
-    if (fs.existsSync("./views/content/" + name))
+    if (fs.existsSync("./content/" + name))
     {
-        res.render("content/" + name, {
+        res.render("../content/" + name, {
             "name": res.__(name), 
             "description": res.__(`${name} description`)
         })

@@ -15,8 +15,16 @@ const io = new ioServer(httpServer)
 const fs = require("fs");
 var UglifyJS = require("uglify-js");
 var minijs = (name)=>{fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(name + ".js", "utf8")).code, "utf8");}
-fs.readdirSync("./static/content").forEach((dirent) => {
-  const filePath = `./static/content/${dirent}/index.js`;
+
+fs.readdirSync("./content").forEach((dirent) => {
+  const filePath = `./content/${dirent}/index.js`;
+  if (fs.existsSync(filePath)) {
+    minijs(filePath.replace(".js", ""));
+  }
+});
+
+fs.readdirSync("./content").forEach((dirent) => {
+  const filePath = `../content/${dirent}/index.js`;
   if (fs.existsSync(filePath)) {
     minijs(filePath.replace(".js", ""));
   }
