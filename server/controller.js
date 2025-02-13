@@ -63,6 +63,15 @@ app.get('/content/*', (req, res, next) => {
     next()
 })
 
+app.get('/api/locale', (req, res, next) => {
+    if (req.query == null || req.query.code == null || req.query.lang == null)
+    {
+        next()
+    } else {
+        res.send(index.i18n.__(req.query.code, req.query.lang))
+    }
+})
+
 app.use(function (req, res) {
     res.status(404).render("404", { "name": "404", "description": "404" });
 });

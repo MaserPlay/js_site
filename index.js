@@ -16,12 +16,10 @@ const fs = require("fs");
 var UglifyJS = require("uglify-js");
 var minijs = (name)=>{fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(name + ".js", "utf8")).code, "utf8");}
 
-fs.readdirSync("./content").forEach((dirent) => {
-  const filePath = `./content/${dirent}/index.js`;
-  if (fs.existsSync(filePath)) {
-    minijs(filePath.replace(".js", ""));
-  }
-});
+const filePath = `./static/index.js`;
+if (fs.existsSync(filePath)) {
+  minijs(filePath.replace(".js", ""));
+}
 
 fs.readdirSync("./content").forEach((dirent) => {
   const filePath = `../content/${dirent}/index.js`;
@@ -36,6 +34,9 @@ const i18n = new I18n.I18n({
   defaultLocale: 'en',
   cookie: 'lang',
   directory: path.join(__dirname, 'locales'),
+  queryParameter: 'lang',
+  retryInDefaultLocale : true,
+  directoryPermissions: 0o755, // <-- Здесь задаются права
 })
 
 app.use(expressLayouts);
