@@ -7,7 +7,7 @@ String.prototype.format = String.prototype.format ||
     var replacer = function (a) { return args[a.substr(1) - 1]; };
     return this.replace(/(\$\d+)/gm, replacer)
   };
-getLocale = (code, lang = navigator.language) => {
+__ = (code, lang = getLocale()) => {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: "/api/locale",
@@ -21,6 +21,11 @@ getLocale = (code, lang = navigator.language) => {
       reject(msg)
     });
   })
+}
+getLocale = () => {
+  const cookie = document.cookie.match(/lang=([^;]+)/);
+  const lang = cookie?.[1];
+  return !lang || lang === "auto_locale" ? navigator.language : lang;
 }
 (() => {
   $('.scChngThm').on('click', function () {

@@ -81,5 +81,6 @@
 	"👋": "👋",
 	"Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )": "Hi! It would be great to have a connection with the interlocutor! Allow me to receive notifications )",
 	"Games": "Игры",
-	"Games description": "Пытаюсь делать игры на чистом js/ts (Сейчас только тетрис)"
+	"Games description": "Пытаюсь делать игры на чистом js/ts (Сейчас только тетрис)",
+	"game_over": "Игра окончена"
 }
