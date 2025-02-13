@@ -192,7 +192,9 @@ function RunTetris(canvasId, onGameOver) {
         draw();
     }
 }
+var game_over = "🤔";
+__("game_over").then(function (val) { game_over = val; });
 RunTetris("canvas", function () {
-    alert("game over");
+    alert(game_over);
     RunTetris("canvas");
 });

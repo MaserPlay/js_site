@@ -1,3 +1,5 @@
+declare function __(code : string, lang? : string): Promise<string>;
+
 function RunTetris(canvasId: string, onGameOver: () => void = () => { alert("game over") }) {
     type Vector = [number, number]
     type FigureMaks = ReadonlyArray<ReadonlyArray<number>>
@@ -176,7 +178,9 @@ function RunTetris(canvasId: string, onGameOver: () => void = () => { alert("gam
         draw()
     }
 }
+var game_over : string = "🤔"
+__("game_over").then((val)=>{game_over = val})
 RunTetris("canvas", () => {
-    alert("game over")
+    alert(game_over)
     RunTetris("canvas")
 })

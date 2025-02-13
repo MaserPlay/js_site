@@ -22,7 +22,7 @@ if (fs.existsSync(filePath)) {
 }
 
 fs.readdirSync("./content").forEach((dirent) => {
-  const filePath = `../content/${dirent}/index.js`;
+  const filePath = `./content/${dirent}/index.js`;
   if (fs.existsSync(filePath)) {
     minijs(filePath.replace(".js", ""));
   }

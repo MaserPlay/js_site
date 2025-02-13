@@ -82,5 +82,6 @@
 	"myproj": "Projects",
 	"js_things": "JS Laboratory",
 	"Games description": "I'm trying to make games in pure js/ts (Now only tetris)",
-	"Games": "Games"
+	"Games": "Games",
+	"game_over": "Game over"
 }

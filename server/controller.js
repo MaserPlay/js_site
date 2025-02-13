@@ -68,7 +68,7 @@ app.get('/api/locale', (req, res, next) => {
     {
         next()
     } else {
-        res.send(index.i18n.__(req.query.code, req.query.lang))
+        res.send(index.i18n.__({ phrase: req.query.code, locale: req.query.lang }))
     }
 })
 
