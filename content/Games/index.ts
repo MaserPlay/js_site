@@ -1,4 +1,4 @@
-declare function __(code : string, lang? : string): Promise<string>;
+
 function RunTetris(canvasId: string, onGameOver: () => void = () => { alert("game over") }) {
     type Vector = [number, number]
     type FigureMaks = ReadonlyArray<ReadonlyArray<number>>
