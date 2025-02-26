@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/*.test.js",
-    "start": "node index.js"
+    "build": "tsc build.ts --outDir ./ && node build.js && tsc",
+    "start": "cd build && node index.js",
+    "build_start:watch": "tsc --watch && node build/index.js"
   },
   "author": "MaserPlay",
   "license": "MIT",
@@ -14,7 +16,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "express-ejs-layouts": "^2.5.1",
     "i18n": "^0.15.1",
     "morgan": "^1.10.0",
@@ -24,6 +26,14 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
+    "@types/compression": "^1.7.5",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.0",
+    "@types/express-ejs-layouts": "^2.5.4",
+    "@types/i18n": "^0.13.12",
+    "@types/morgan": "^1.9.9",
+    "@types/uglify-js": "^3.17.5",
     "mocha": "^11.0.1",
     "supertest": "^7.0.0"
   }

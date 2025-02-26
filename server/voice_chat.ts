@@ -1,39 +1,41 @@
-const { BroadcastOperator } = require("socket.io");
+// const { BroadcastOperator } = require("socket.io");
+import { DefaultEventsMap, BroadcastOperator, Socket } from 'socket.io';
+// const socketsStatus = socket_io.BroadcastOperator
 
-const io = require("../index").io;
+// const io = require("../index").io;
+import * as index from '../index';
+const io = index.default.io
 
 class User {
   username = "AnUnnamedUser";
   mute = false;
   online = false;
-  /**
-  * @param {string} name
-  */
-  constructor(name) {
-    this.username = name;
+  constructor(name?: string) {
+    this.username = name ?? "AnUnnamedUser";
   }
-  fromJson(json) {
+  fromJson(json: string) {
     return Object.assign(this, json)
   }
 }
 class Room {
-  /**
-  * @param {User} owner
-  * @param {string} socketId
-  */
-  constructor(owner, socketId) {
+  owner: User;
+  users: Map<string, User>;
+
+  constructor(owner: User, socketId: string) {
     this.owner = owner;
     this.users = new Map([[socketId, owner]]);
   }
 
-  getUser(socketId) {
-    return this.users.get(socketId)
+  getUser(socketId: string): User {
+    return this.users.get(socketId)!;
   }
-  deleteUser(socketId) {
+
+  deleteUser(socketId: string): void {
     this.users.delete(socketId);
   }
-  addUser(user, socketId) {
-    this.users.set(socketId, user)
+
+  addUser(user: User, socketId: string): void {
+    this.users.set(socketId, user);
   }
 }
 
@@ -46,9 +48,9 @@ io.on("connection", function (socket) {
   const socketId = socket.id;
 
   console.log("[voice] connect with id:", socketId);
-  
+
   socket.join(room);
-  socketsStatus.get(room).addUser(user, socketId);
+  socketsStatus.get(room)!.addUser(user, socketId);
 
   emitRoomsChanged(true)
 
@@ -59,14 +61,13 @@ io.on("connection", function (socket) {
       return;
     };
 
-    if (!socketsStatus.get(room))
-    {
+    if (!socketsStatus.get(room)) {
       console.warn("socketsStatus.get(room) === null")
       return;
     }
-    for (id of socketsStatus.get(room).users.keys()) {
+    for (const id of socketsStatus.get(room)!.users.keys()) {
 
-      if (id != socketId && socketsStatus.get(room).getUser(id).online)
+      if (id != socketId && socketsStatus.get(room)!.getUser(id).online)
         socket.broadcast.to(id).emit("send", data);
     }
 
@@ -109,21 +110,21 @@ io.on("connection", function (socket) {
   })
 
   function leaveRoom() {
-    socketsStatus.get(room).deleteUser(socketId);
+    socketsStatus.get(room)!.deleteUser(socketId);
     if (room !== "main-room") {
-      if ((socketsStatus.get(room).users).size <= 0) {
+      if ((socketsStatus.get(room)!.users).size <= 0) {
         socketsStatus.delete(room)
         emitRoomsChanged();
       }
     }
     if (socketsStatus.has(room) && user.online) { emitUsersUpdate() }
   }
-  function JoinRoom(name) {
+  function JoinRoom(name: string) {
     if (!socketsStatus.has(name)) return;
     socket.leave(room)
     room = name;
     socket.join(room);
-    socketsStatus.get(room).addUser(user, socketId);
+    socketsStatus.get(room)!.addUser(user, socketId);
     emitUsersUpdate()
   }
 
@@ -132,24 +133,16 @@ io.on("connection", function (socket) {
     callback();
   });
   function emitUsersUpdate() {
-    if (!socketsStatus.get(room))
-    {
+    if (!socketsStatus.get(room)) {
       console.warn("socketsStatus.get(room) === null")
       return;
     }
-    io.in(room).emit("usersUpdate", Object.fromEntries(Object.entries(Object.fromEntries(socketsStatus.get(room).users)).filter(([a,b])=>b.online === true)));
+    io.in(room).emit("usersUpdate", Object.fromEntries(Object.entries(Object.fromEntries(socketsStatus.get(room)!.users)).filter(([a, b]) => b.online === true)));
   }
-  /**
-   * @param {boolean} only_socket 
-   */
-  function emitRoomsChanged(only_socket) {
+  function emitRoomsChanged(only_socket?: boolean) {
 
-    /**
-     * @param {BroadcastOperator} socket 
-     * @param {string} socketUserID 
-     */
-    function emitRoomsChangedtosocket(socket, socketUserID) {
-      socket.emit("roomsChanged", Object.fromEntries(Array.from(socketsStatus.entries()).map(([key, value]) => 
+    function emitRoomsChangedtosocket(socket: any, socketUserID: string) {
+      socket.emit("roomsChanged", Object.fromEntries(Array.from(socketsStatus.entries()).map(([key, value]) =>
         [
           key, {
             "owner": value.owner.username,
@@ -162,7 +155,7 @@ io.on("connection", function (socket) {
     if (only_socket) {
       emitRoomsChangedtosocket(socket, socketId)
     } else {
-      socketsStatus.forEach((room)=>{
+      socketsStatus.forEach((room) => {
         for (const socket of room.users) {
           emitRoomsChangedtosocket(io.to(socket[0]), socket[0])
         }
@@ -171,7 +164,7 @@ io.on("connection", function (socket) {
   }
 });
 
-function CheckUrl(string) {
+function CheckUrl(string: string) {
   let url;
   try {
     url = new URL(string);
@@ -181,7 +174,7 @@ function CheckUrl(string) {
   return !url.protocol || url.protocol == "data:";
 }
 
-function escapeHtml(str) {
+function escapeHtml(str: string) {
   return str
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
