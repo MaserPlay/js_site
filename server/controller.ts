@@ -12,15 +12,13 @@ fs.readdirSync(path.resolve("./content")).forEach(async (name) => { // import al
     const filePath = path.join(__dirname, "..", "./content", name, "server.js")
     if (fs.existsSync(filePath)) {
         content_classes.set(name, new ((await import(filePath)).default)(name));
+    } else {
+        content_classes.set(name, new Content(name));
     }
 });
 
 function getContentClass(name: string): IContent {
-    if (content_classes.has(name)) {
-        return content_classes.get(name)!
-    } else {
-        return new Content(name)
-    }
+    return content_classes.get(name)!
 }
 
 app.use("/", express.static("static"));
@@ -28,6 +26,9 @@ app.use("/content", express.static("content"));
 
 app.get("/", (req, res) => {
     const content = fs.readdirSync("./content").map(dirent => ({ id: dirent, name: res.__(dirent) })).filter(item => getContentClass(item.id).mayShow(req))
+    content.sort((a,b)=>{
+        return getContentClass(a.id).createdAt() < getContentClass(b.id).createdAt() ? 1 : -1
+    })
     res.render("index", {
         "eachcontent": content,
         "name": res.__("Index"),
@@ -40,7 +41,12 @@ app.get('/content/*',async (req, res, next) => {
     const name = paramPage.replace("/", "")
     if (fs.existsSync("./content/" + name)) {
         const contentClass = getContentClass(name)
-        if (contentClass.mayShow(req)) {
+        const mayShow = contentClass.mayShow(req)
+        if (typeof mayShow == 'number')
+        {
+            res.sendStatus(mayShow)
+            return
+        } else if (typeof mayShow == 'boolean' && mayShow) {
             res.render("../content/" + name, Object.assign({
                 "name": res.__(name),
                 "description": res.__(`${name} description`)

@@ -1,15 +1,16 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as pathh from 'path';
 
 const srcDir = './';      // Исходная папка
 const destDir = './build'; // Папка назначения
 
-function deleteFolderInit(){
-  var deleteFolderRecursive = function(path : string) {
-    if( fs.existsSync(path) ) {
-      fs.readdirSync(path).forEach(function(file,index){
-        var curPath = path + "/" + file;
-        if(fs.lstatSync(curPath).isDirectory()) { // recurse
+function deleteFolderInit() {
+  var deleteFolderRecursive = function (path: string) {
+    if (fs.existsSync(path)) {
+      fs.readdirSync(path).forEach(function (file, index) {
+        var curPath = pathh.join(path, file);
+        if (fs.lstatSync(curPath).isDirectory()) { // recurse
           deleteFolderRecursive(curPath);
         } else { // delete file
           fs.unlinkSync(curPath);
@@ -18,8 +19,13 @@ function deleteFolderInit(){
       fs.rmdirSync(path);
     }
   };
-  if (fs.existsSync(destDir))
+  if (fs.existsSync(destDir)) {
+    console.log("Deleting...")
     deleteFolderRecursive(destDir)
+    console.log("Deleting complete!")
+  } else {
+    console.log("Dir not need to be deleted")
+  }
 }
 
 async function copyFiles(src: string, dest: string) {
@@ -51,38 +57,46 @@ async function copyFilesInit() {
   console.log('Copying completed.')
 }
 
+import * as process from "node:child_process";
+
+function runTscInit() {
+  console.log("Run tsc...")
+  process.execSync("tsc")
+  console.log("tsc completed!")
+}
 
 import * as UglifyJS from 'uglify-js';
 
-function miniBuildJs(dir: string) {
+function miniBuildJsInit() {
+  const dir = destDir;
   //mini js
   var minijs = (name: string) => {
     console.log("Minimizing: " + name)
     fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(name + ".js", "utf8")).code, "utf8");
   }
 
-  const filePath = dir + `/static/index.js`;
+  const filePath = path.join(dir, `/static/index.js`);
   if (fs.existsSync(filePath)) {
     minijs(filePath.replace(".js", ""));
   }
 
-  fs.readdirSync(dir + "/content").forEach((dirent: string) => {
-    const filePath = dir + `/content/${dirent}/index.js`;
+  fs.readdirSync(path.join(dir, `/content`)).forEach((dirent: string) => {
+    const filePath = path.join(dir, `/content`, dirent, "index.js");
     if (fs.existsSync(filePath)) {
       minijs(filePath.replace(".js", ""));
     }
   });
-}
-function miniBuildJsInit() {
-  miniBuildJs(destDir)
   console.log("Minimizing complete!")
 }
 
 (async function () {
   deleteFolderInit()
+  console.log("")
   await copyFilesInit()
   console.log("")
-  await miniBuildJsInit()
+  runTscInit()
+  console.log("")
+  miniBuildJsInit()
   console.log("")
   console.log("Finish!")
 })().catch(console.error);

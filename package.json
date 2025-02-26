@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/*.test.js",
-    "build": "tsc build.ts --outDir ./ && node build.js && tsc",
+    "build": "tsc build.ts --outDir ./ && node build.js",
     "start": "cd build && node index.js"
   },
   "author": "MaserPlay",
@@ -31,6 +31,7 @@
     "@types/express": "^5.0.0",
     "@types/express-ejs-layouts": "^2.5.4",
     "@types/i18n": "^0.13.12",
+    "@types/jquery": "^3.5.32",
     "@types/morgan": "^1.9.9",
     "@types/uglify-js": "^3.17.5",
     "mocha": "^11.0.1",

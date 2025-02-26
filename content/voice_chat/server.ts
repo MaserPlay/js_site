@@ -21,6 +21,12 @@ export default class extends Content {
             "open_page": !paramPage.replace("/", "") ? "Main" : capitalizeFirstLetter(escapeHtml(paramPage.replace("/", "")))
         }
     }
+    createdAt(){
+        return new Date(2024, 11, 20)
+    }
+    lastModification(){
+        return new Date(2025, 2, 11)
+    }
 }
 
 function escapeHtml(str: string) {
