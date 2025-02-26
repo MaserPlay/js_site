@@ -10,8 +10,8 @@ app.use("/content", require("express").static("content"));
 
 app.get("/", (req, res) => {
     var content = fs.readdirSync("./content").map(dirent => ({id: dirent, name: res.__(dirent)}))
-    if (!config.IsEventGoing("snow")){
-        content = content.filter(item => !(item.id=="snow_extension"))
+    if (req.get('User-Agent').match(/(iPhone|iPod|iPad|Android|BlackBerry)/)){
+        content = content.filter(item => !(item.id=="Games"))
     }
     res.render("index", { 
         "eachcontent": content, 
@@ -19,6 +19,18 @@ app.get("/", (req, res) => {
         "description": res.__("Things in Javascript") 
     });
 });
+
+app.get('/content/Games', (req, res, next) => {
+    if (req.get('User-Agent').match(/(iPhone|iPod|iPad|Android|BlackBerry)/))
+    {
+        res.sendStatus(403);
+    }
+    res.render("../content/Games", {
+        "name": res.__("Games"), 
+        "description": res.__(`Games description`)
+    })
+})
+
 app.get("/content/voice_chat/*", async (req, res, next)=>{
     const page = !req.params[0].replace("/", "") ? "main":escapeHtml(req.params[0].replace("/", "")).toLowerCase()
     if (fs.existsSync("./content/voice_chat/content/"+page+".ejs")) {
@@ -73,8 +85,10 @@ app.get('/api/locale', (req, res, next) => {
 })
 
 app.use(function (req, res) {
-    res.status(404).render("404", { "name": "404", "description": "404" });
+    const status = 404
+    res.status(status).render(status.toString(), { "name": status.toString(), "description": res.__(`${status}/Text`) });
 });
+
 function escapeHtml(str) {
   return String(str)
     .replace(/</g, '&lt;')

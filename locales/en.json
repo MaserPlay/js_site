@@ -83,5 +83,8 @@
 	"js_things": "JS Laboratory",
 	"Games description": "I'm trying to make games in pure js/ts (Now only tetris)",
 	"Games": "Games",
-	"game_over": "Game over"
+	"game_over": "Game over",
+	"Your browser dont support canvas": "Your browser dont support canvas",
+	"Your browser dont support this game": "Your browser dont support this game",
+	"Only pc": "Only pc"
 }
