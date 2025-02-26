@@ -9,6 +9,6 @@ export default class extends Content {
         return new Date(2025, 2, 14)
     }
     lastModification(){
-        return new Date(2025, 2, 14)
+        return new Date(2025, 2, 26)
     }
 }
