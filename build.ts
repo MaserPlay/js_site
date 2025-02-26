@@ -4,6 +4,24 @@ import * as path from 'path';
 const srcDir = './';      // Исходная папка
 const destDir = './build'; // Папка назначения
 
+function deleteFolderInit(){
+  var deleteFolderRecursive = function(path : string) {
+    if( fs.existsSync(path) ) {
+      fs.readdirSync(path).forEach(function(file,index){
+        var curPath = path + "/" + file;
+        if(fs.lstatSync(curPath).isDirectory()) { // recurse
+          deleteFolderRecursive(curPath);
+        } else { // delete file
+          fs.unlinkSync(curPath);
+        }
+      });
+      fs.rmdirSync(path);
+    }
+  };
+  if (fs.existsSync(destDir))
+    deleteFolderRecursive(destDir)
+}
+
 async function copyFiles(src: string, dest: string) {
   await fs.promises.mkdir(dest, { recursive: true }); // Создаем папку назначения
 
@@ -28,7 +46,7 @@ async function copyFiles(src: string, dest: string) {
   }
 }
 
-async function copyFilesInit(){
+async function copyFilesInit() {
   await copyFiles(srcDir, destDir)
   console.log('Copying completed.')
 }
@@ -55,11 +73,16 @@ function miniBuildJs(dir: string) {
     }
   });
 }
-function miniBuildJsInit(){
+function miniBuildJsInit() {
   miniBuildJs(destDir)
   console.log("Minimizing complete!")
 }
 
-copyFilesInit()
-  .then(miniBuildJsInit)
-  .catch(console.error);
+(async function () {
+  deleteFolderInit()
+  await copyFilesInit()
+  console.log("")
+  await miniBuildJsInit()
+  console.log("")
+  console.log("Finish!")
+})().catch(console.error);

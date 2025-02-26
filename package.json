@@ -6,8 +6,7 @@
   "scripts": {
     "test": "mocha ./test/*.test.js",
     "build": "tsc build.ts --outDir ./ && node build.js && tsc",
-    "start": "cd build && node index.js",
-    "build_start:watch": "tsc --watch && node build/index.js"
+    "start": "cd build && node index.js"
   },
   "author": "MaserPlay",
   "license": "MIT",
