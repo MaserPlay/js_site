@@ -39,11 +39,10 @@ function RunTetris(canvasId: string, onGameOver: () => void = () => { alert("gam
         }
         private readonly _positions_mask: FigureMaks
         private _rotate: RotateFigure = RotateFigure.UP
-        get rotate(){
+        get rotate() {
             return this._rotate
         }
-        set rotate(r : RotateFigure)
-        {
+        set rotate(r: RotateFigure) {
             this._rotate = r
         }
         get positionsMask() {
@@ -177,9 +176,22 @@ function RunTetris(canvasId: string, onGameOver: () => void = () => { alert("gam
         draw()
     }
 }
-var game_over : string = "🤔"
-__("game_over").then((val)=>{game_over = val})
+var game_over: string = "🤔"
+__("game_over").then((val) => { game_over = val })
 RunTetris("canvas", () => {
     alert(game_over)
     RunTetris("canvas")
 })
+if ($("#fullscreen_div")[0].requestFullscreen == null) {
+    $("#fullscreen").remove();
+    $("#exit_fullscreen").hide();
+} else {
+    $("#fullscreen").on('click', () => {
+        $("#fullscreen_div")[0].requestFullscreen()
+        $("#exit_fullscreen").show();
+    })
+    $("#exit_fullscreen").on('click', () => {
+        document.exitFullscreen()
+        $("#exit_fullscreen").hide();
+    })
+}

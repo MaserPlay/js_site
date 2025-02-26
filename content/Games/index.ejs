@@ -1,36 +1,17 @@
-
 <style>
     canvas {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-     } /* To remove the scrollbars */
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    /* To remove the scrollbars */
 </style>
-<% if (userAgent().match(/(iPhone|iPod|iPad|Android|BlackBerry)/)) { %>
-    <section class="jumbotron text-center vertical-center">
-        <div class="container" style="margin-bottom: 5rem;">
-            <h1><%= __('Your browser dont support this game') %></h1>
-            <p class="lead text-muted"><%= __('Only pc') %></p>
-            <p>
-                <a href="/" class="btn btn-primary my-2"><%= __('404/ToMain') %></a>
-            </p>
-        </div>
-    <% if (useAd()) { %>
-        <% function getAd() {
-            return theme()==="dark"?"1713037":"1712338"
-        } %>
-        <script async src="https://ad.mail.ru/static/ads-async.js"></script>
-        <ins 
-            class="mrg-tag"
-            style="width:100%;height:250px"
-            data-ad-client="ad-<%= getAd() %>"
-            data-ad-slot="<%= getAd() %>">
-        </ins>
-        <script>
-            (MRGtag = window.MRGtag || []).push({});
-        </script>
-        </section> 
-    <% } %>
-<% } else { %>
-    <canvas class="bg-secondary-subtle" id="canvas" style="aspect-ratio: 800/500;" width="500" height="800"><%= __('Your browser dont support canvas') %></canvas>
-<% } %>
+<div id="fullscreen_div">
+    <button type="button" id="exit_fullscreen" style="position:absolute; display: none;"
+        class="btn btn-outline-secondary bi bi-fullscreen-exit"></button>
+    <canvas class="bg-secondary-subtle h-100" id="canvas" style="aspect-ratio: 800/500;" width="500" height="800">
+        <%= __('Your browser dont support canvas') %>
+    </canvas>
+</div>
+<button type="button" id="fullscreen" class="btn btn-outline-secondary bi bi-arrows-fullscreen"></button>
