@@ -136,3 +136,6 @@ js*.zip
 
 #forwhy?
 *.tmp
+
+build/
+build.js

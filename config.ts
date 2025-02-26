@@ -1,4 +1,4 @@
-var fs = require('fs');
+import * as fs from 'fs';
 var configFolder = "./config"
 var json = JSON.parse(fs.readFileSync(configFolder + "/default.json", 'utf8'))
 var getEvents = ()=>{
@@ -11,8 +11,10 @@ var getEvents = ()=>{
     }
     return final
 }
-module.exports = {
-    json: json,
-    getEvents: getEvents,
-    IsEventGoing: (name)=>{return getEvents().includes(name)}
+export {
+    json,
+    getEvents,
 } 
+export function IsEventGoing(name : string){
+    return getEvents().includes(name)
+}
