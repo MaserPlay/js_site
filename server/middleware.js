@@ -3,7 +3,7 @@ const config = require("../config")
 * Returns a random number between min (inclusive) and max (exclusive)
 */
 function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min;
 }
 
 /**
@@ -14,9 +14,9 @@ function getRandomArbitrary(min, max) {
  * Using Math.round() will give you a non-uniform distribution!
  */
 function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
@@ -48,10 +48,10 @@ function main(request, response, next) {
         return style_name + ".min.css";
       }
     },
-    lang: function () { 
+    lang: function () {
       return request.cookies.lang
     },
-    themes: function () { 
+    themes: function () {
       return config.json.themes
     },
     event: function () {
@@ -61,8 +61,8 @@ function main(request, response, next) {
     useAd: function () {
       return !request.query.hasOwnProperty("noad")
     },
-    IsFirefox: function () { 
-      return request.headers["user-agent"].includes("Firefox")
+    userAgent: function () {
+      return request.headers["user-agent"]
     }
   });
   return next()
