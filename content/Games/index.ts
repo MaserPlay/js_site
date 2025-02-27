@@ -119,7 +119,7 @@ function RunTetris(canvasId: string, onGameOver: () => void = () => { alert("gam
     ]
 
     const squareSize: Vector = [50, 50]
-    const canvas = document.getElementById(canvasId)! as HTMLCanvasElement
+    const canvas = $(`#${canvasId}`)[0] as HTMLCanvasElement
     const context = canvas.getContext('2d')!;
 
     let currentFigure = new Figure(FiguresMasks[Math.floor(Math.random() * FiguresMasks.length)], Colors[Math.floor(Math.random() * Colors.length)])
@@ -182,6 +182,7 @@ RunTetris("canvas", () => {
     alert(game_over)
     RunTetris("canvas")
 })
+
 if ($("#fullscreen_div")[0].requestFullscreen == null) {
     $("#fullscreen").remove();
     $("#exit_fullscreen").hide();
