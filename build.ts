@@ -46,6 +46,10 @@ async function copyFiles(src: string, dest: string) {
     if (entry.isDirectory()) {
       await copyFiles(srcPath, destPath); // Рекурсивно обрабатываем папки
     } else if (!entry.name.endsWith('.ts')) {
+      if (entry.name.toLowerCase() == "readme.md" || entry.name.toLowerCase() == "tsconfig.json" || entry.name.toLowerCase() == "build.js" || entry.name.toLowerCase() == "js_final.zip" || entry.name.toLowerCase() == "update_and_release.bat" || entry.name.toLowerCase() == ".gitignore")
+      {
+        continue
+      }
       await fs.promises.copyFile(srcPath, destPath); // Копируем файлы, кроме .ts
       console.log(`Copied: ${srcPath} -> ${destPath}`);
     }
