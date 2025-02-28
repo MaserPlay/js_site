@@ -4,6 +4,9 @@ declare global {
         format(): string;
     }
 }
+interface Localization{
+    [key: string] : string
+}
 declare function __(code: string, lang? : string): Promise<string>;
 declare function getLocale(): string;
 declare function escapeHtml(str: string): string;

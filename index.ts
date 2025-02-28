@@ -31,6 +31,9 @@ app.use(expressLayouts.default);
 app.engine("ejs", ejs.renderFile);
 app.set("view engine", "ejs");
 app.set("layout", "./base/main.ejs");
+app.set("layout extractScripts", true);
+app.set("layout extractStyles", true);
+app.set("layout extractMetas", true);
 app.use(morgan.default('combined'))
 app.use(cookie_parser.default())
 app.use(i18n.init)
