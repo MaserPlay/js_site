@@ -8,7 +8,4 @@ export default class extends Content {
     createdAt(){
         return new Date(2025, 2, 14)
     }
-    lastModification(){
-        return new Date(2025, 2, 26)
-    }
 }
