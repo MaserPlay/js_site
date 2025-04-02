@@ -1,22 +1,29 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import * as pathh from 'path';
-
+import * as processThis from 'process';
+import * as UglifyJS from 'uglify-js';
+import { styleText } from 'node:util';
+import * as process from "node:child_process";
 const srcDir = './';      // Исходная папка
 const destDir = './build'; // Папка назначения
 
+const args = {
+  watch: processThis.argv.some((e)=>e=="-watch"),
+  clear: processThis.argv.some((e)=>e=="-clear")
+}
+
 function deleteFolderInit() {
-  var deleteFolderRecursive = function (path: string) {
-    if (fs.existsSync(path)) {
-      fs.readdirSync(path).forEach(function (file, index) {
-        var curPath = pathh.join(path, file);
+  var deleteFolderRecursive = function (recursePath: string) {
+    if (fs.existsSync(recursePath)) {
+      fs.readdirSync(recursePath).forEach(function (file, index) {
+        var curPath = path.join(recursePath, file);
         if (fs.lstatSync(curPath).isDirectory()) { // recurse
           deleteFolderRecursive(curPath);
         } else { // delete file
           fs.unlinkSync(curPath);
         }
       });
-      fs.rmdirSync(path);
+      fs.rmdirSync(recursePath);
     }
   };
   if (fs.existsSync(destDir)) {
@@ -24,7 +31,7 @@ function deleteFolderInit() {
     deleteFolderRecursive(destDir)
     console.log("Deleting complete!")
   } else {
-    console.log("Dir not need to be deleted")
+    console.error("Dir not need to be deleted")
   }
 }
 
@@ -46,9 +53,11 @@ async function copyFiles(src: string, dest: string) {
     if (entry.isDirectory()) {
       await copyFiles(srcPath, destPath); // Рекурсивно обрабатываем папки
     } else if (!entry.name.endsWith('.ts')) {
-      if (entry.name.toLowerCase() == "readme.md" || entry.name.toLowerCase() == "tsconfig.json" || entry.name.toLowerCase() == "build.js" || entry.name.toLowerCase() == "js_final.zip" || entry.name.toLowerCase() == "update_and_release.bat" || entry.name.toLowerCase() == ".gitignore")
+      const ignoredFiles = ["readme.md", "tsconfig.json", "build.js", "js_final.zip", "update_and_release.bat", ".gitignore"];
+
+      if (ignoredFiles.includes(entry.name.toLowerCase())) 
       {
-        continue
+          continue;
       }
       await fs.promises.copyFile(srcPath, destPath); // Копируем файлы, кроме .ts
       console.log(`Copied: ${srcPath} -> ${destPath}`);
@@ -61,22 +70,26 @@ async function copyFilesInit() {
   console.log('Copying completed.')
 }
 
-import * as process from "node:child_process";
 
 function runTscInit() {
   console.log("Run tsc...")
-  process.execSync("tsc")
+  var execCommand = "tsc";
+  if (args.watch)
+  {
+    execCommand += " --watch";
+  }
+  process.execSync(execCommand, {stdio: 'inherit'})
   console.log("tsc completed!")
 }
 
-import * as UglifyJS from 'uglify-js';
 
 function miniBuildJsInit() {
   const dir = destDir;
   //mini js
   var minijs = (name: string) => {
-    console.log("Minimizing: " + name)
-    fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(name + ".js", "utf8")).code, "utf8");
+    var realName = name + ".js"
+    console.log("Minimizing: " + realName + " to " + name + ".min.js")
+    fs.writeFileSync(name + ".min.js", UglifyJS.minify(fs.readFileSync(realName, "utf8")).code, "utf8");
   }
 
   const filePath = path.join(dir, `/static/index.js`);
@@ -93,14 +106,49 @@ function miniBuildJsInit() {
   console.log("Minimizing complete!")
 }
 
+function clearBuildDir() {
+  var deleteFolderRecursive = function (recursePath: string) {
+    if (fs.existsSync(recursePath)) {
+      fs.readdirSync(recursePath).forEach(function (file, index) {
+        var curPath = path.join(recursePath, file);
+        const ignoredFiles = ["build.js", "node_modules", "build", "js_final.zip", "update_and_release.bat", "package.json", "package-lock.json"];
+
+        if (ignoredFiles.includes(curPath.toLowerCase())) {
+          return;
+        }
+        if (fs.lstatSync(curPath).isDirectory()) { // recurse
+          deleteFolderRecursive(curPath);
+        } else { // delete file
+          fs.unlinkSync(curPath);
+        }
+      });
+      fs.rmdirSync(recursePath, {force: true});
+    }
+  };
+  if (fs.existsSync(srcDir)) {
+    console.log("Deleting...")
+    deleteFolderRecursive(srcDir)
+    console.log("Deleting complete!")
+  } else {
+    console.error("Dir not need to be deleted")
+  }
+}
+
 (async function () {
   deleteFolderInit()
-  console.log("")
   await copyFilesInit()
-  console.log("")
   runTscInit()
-  console.log("")
   miniBuildJsInit()
-  console.log("")
+  if (args.clear) {
+    try {
+      clearBuildDir()
+    } catch (e) {
+      if (e instanceof Error) {
+        console.error(e.name + "\n" + e.message + "\n" + e.stack)
+      } else {
+        console.error(e);
+      }
+    }
+  }
   console.log("Finish!")
 })().catch(console.error);
