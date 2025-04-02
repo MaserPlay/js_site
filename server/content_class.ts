@@ -32,13 +32,13 @@ export class Content implements IContent{
         const githubCommitInfo = await fetch(`https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}`);
         if (!githubCommitInfo.ok)
         {
-            console.error(`Github sent an unsuccessful response to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text()}`)
+            console.error(`Github sent an unsuccessful response to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
             return
         }
-        const data : GitHubCommits | undefined = await githubCommitInfo.json()
-        if (typeof data == 'undefined')
+        const data : GitHubCommits | undefined | any = await githubCommitInfo.json()
+        if (!isGitHubCommits(data))
         {
-            console.error(`Github sent not GitHubCommits to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text()}`)
+            console.error(`Github sent not GitHubCommits to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
             return
         }
         this.lastModificationDate = new Date(data[0].commit.committer.date)
@@ -47,4 +47,20 @@ export class Content implements IContent{
         console.log(`Creation date of ${this.name} (from github) is ${this.createdAtDate}`)
         console.log("")
     }
+}
+function isGitHubCommit(obj: any): obj is GitHubCommit {
+    return obj && typeof obj === 'object' &&
+        typeof obj.sha === 'string' &&
+        typeof obj.node_id === 'string' &&
+        typeof obj.commit === 'object' &&
+        typeof obj.url === 'string' &&
+        typeof obj.html_url === 'string' &&
+        typeof obj.comments_url === 'string' &&
+        // Можно добавить более детальные проверки для вложенных объектов
+        // если это критично для вашего приложения
+        Array.isArray(obj.parents);
+}
+function isGitHubCommits(data: any): data is GitHubCommits {
+    return Array.isArray(data) && 
+           (data.length === 0 || isGitHubCommit(data[0]));
 }
