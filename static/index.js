@@ -27,6 +27,21 @@ getLocale = () => {
   const lang = cookie?.[1];
   return !lang || lang === "auto_locale" ? navigator.language : lang;
 }
+setupFullscreen = (fullscreenButton, fullscreenexitButton, fullscreenDiv) => {
+  if ($(fullscreenDiv)[0].requestFullscreen == null) {
+      $(fullscreenButton).remove();
+      $(fullscreenexitButton).hide();
+  } else {
+      $(fullscreenButton).on('click', () => {
+          $(fullscreenDiv)[0].requestFullscreen()
+          $(fullscreenexitButton).show();
+      })
+      $(fullscreenexitButton).on('click', () => {
+          document.exitFullscreen()
+          $(fullscreenexitButton).hide();
+      })
+  }
+}
 (() => {
   $('.scChngThm').on('click', function () {
     document.cookie = `theme=${$(this).attr("val")};path=/`; document.location.reload()

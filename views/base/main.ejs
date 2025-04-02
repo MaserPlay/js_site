@@ -39,42 +39,93 @@
         <link rel="stylesheet" href="/snow.css">
     <% } %>
     <%- style %>
+    <% if (styleOfPage == pageStyle().Fullscreen) { %>
+        <style>
+            footer {
+                bottom: 0 !important;
+                position: fixed !important;
+                width: 100% !important;
+                backdrop-filter: blur(3px);
+                transition: transform 0.5s ease-in-out;
+                transform: translateY(90%);
+                z-index: 999;
+            }
+            footer:hover {
+                transform: translateY(0%);
+            }
+            header {
+                backdrop-filter: blur(2px);
+                position: fixed !important;
+                z-index: 999;
+            }
+        </style>
+    <% } %>
     <%- meta %>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <header class="navbar border-bottom">
-        <div class="container">
-            <div class="branding">
-                <a class="navbar-brand logo" href="/">
-                    <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
-                    <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
-                </a>
-                <noscript class="text-white"><%= __('! Warning Javascript is disabled ! Some things may not work properly') %></noscript>
+    <% if (styleOfPage == pageStyle().Standart) { %>
+        <header class="navbar border-bottom">
+            <div class="container">
+                <div class="branding">
+                    <a class="navbar-brand logo" href="/">
+                        <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
+                        <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
+                    </a>
+                    <noscript class="text-white"><%= __('! Warning Javascript is disabled ! Some things may not work properly') %></noscript>
+                </div>
+                <div class="actions">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-patch-question-fill" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change theme') %></span></button>
+                            <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                                <% themes().forEach(themeThis => { %>
+                                    <li><a class="dropdown-item scChngThm <%= theme() == themeThis ? "active" : "" %>" val="<%= themeThis %>" style="cursor: pointer;"><%= __(themeThis) %></a></li>
+                                <% }) %>
+                            </ul>
+                            <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn bi bi-globe" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change Language') %></span></button>
+                            <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                                <% (["auto_locale"].concat(getLocales())).forEach(local => { %>
+                                    <li><a class="dropdown-item scChngLang <%= (lang()&&(getLocale() === local)||(!lang()&&local==="auto_locale")) ? "active" : "" %>" val="<%= local %>" style="cursor: pointer;"><%= __({ phrase: local, locale: local==="auto_locale"?getLocale():local }) %></a></li>
+                                <% }) %>
+                            </ul>
+                            <button type="button" class="btn bi bi-question-lg popovers_cls" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="<%= description %>">
+                                <span class="visually-hidden"><%= __('About Project') %></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="actions">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-patch-question-fill" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change theme') %></span></button>
-                        <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
-                            <% themes().forEach(themeThis => { %>
-                                <li><a class="dropdown-item scChngThm <%= theme() == themeThis ? "active" : "" %>" val="<%= themeThis %>" style="cursor: pointer;"><%= __(themeThis) %></a></li>
-                            <% }) %>
-                        </ul>
-                        <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn bi bi-globe" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change Language') %></span></button>
-                        <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
-                            <% (["auto_locale"].concat(getLocales())).forEach(local => { %>
-                                <li><a class="dropdown-item scChngLang <%= (lang()&&(getLocale() === local)||(!lang()&&local==="auto_locale")) ? "active" : "" %>" val="<%= local %>" style="cursor: pointer;"><%= __({ phrase: local, locale: local==="auto_locale"?getLocale():local }) %></a></li>
-                            <% }) %>
-                        </ul>
-                        <button type="button" class="btn bi bi-question-lg popovers_cls" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="<%= description %>">
-                            <span class="visually-hidden"><%= __('About Project') %></span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+        </header>
+    <% } else { %>
+        <header style="font-size: 1.5rem; top: 10px;left: 30px;">
+            <a class="text-decoration-none" style="color: var(--bs-emphasis-color-rgb);" href="/">
+                <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
+                <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
+            </a>
+        </header>
+        <header style="font-size: 1.5rem; top: 10px;right: 30px;">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-patch-question-fill" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change theme') %></span></button>
+                    <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                        <% themes().forEach(themeThis => { %>
+                            <li><a class="dropdown-item scChngThm <%= theme() == themeThis ? "active" : "" %>" val="<%= themeThis %>" style="cursor: pointer;"><%= __(themeThis) %></a></li>
+                        <% }) %>
+                    </ul>
+                    <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn bi bi-globe" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change Language') %></span></button>
+                    <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                        <% (["auto_locale"].concat(getLocales())).forEach(local => { %>
+                            <li><a class="dropdown-item scChngLang <%= (lang()&&(getLocale() === local)||(!lang()&&local==="auto_locale")) ? "active" : "" %>" val="<%= local %>" style="cursor: pointer;"><%= __({ phrase: local, locale: local==="auto_locale"?getLocale():local }) %></a></li>
+                        <% }) %>
+                    </ul>
+                    <button type="button" class="btn bi bi-question-lg popovers_cls" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="<%= description %>">
+                        <span class="visually-hidden"><%= __('About Project') %></span>
+                    </button>
+                </li>
+            </ul>
+        </header>
+    <% } %>
     <% if (eventGoingSnow()) { %>
         <div class="snow-main">
             <% function getRandomArbitrary(min, max) {
@@ -86,24 +137,28 @@
         </div>    
     <% } %>
 
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            <noscript>
-                <section class="jumbotron text-center">
+    <% if (styleOfPage == pageStyle().Standart) { %>
+        <div class="container-fluid">
+            <main role="main" class="pb-3">
+                <noscript>
+                    <section class="jumbotron text-center">
+                        <div class="container">
+                            <h1><%= __('Please enable JavaScript. This is a website written entirely in JavaScript.') %></h1>
+                        </div>
+                    </section>
+                </noscript>
+
+                <div class="py-4">
                     <div class="container">
-                        <h1><%= __('Please enable JavaScript. This is a website written entirely in JavaScript.') %></h1>
+                        <%- body %>
                     </div>
-                </section>
-            </noscript>
-
-            <div class="py-4">
-                <div class="container">
-                    <%- body %>
                 </div>
-            </div>
 
-        </main>
-    </div>
+            </main>
+        </div>
+    <% } else { %>
+        <%- body %>
+    <% } %>
 
     <footer class="text-muted text-secondary mt-auto">
         <div class="container footer-container">

@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as config from '../config';
+import * as content from './content_class'
 /**
 * Returns a random number between min (inclusive) and max (exclusive)
 */
@@ -60,6 +61,9 @@ export default function (request : Request, response : Response, next : NextFunc
     },
     userAgent: function () {
       return request.headers["user-agent"]!
+    },
+    pageStyle: function () {
+      return content.Style
     }
   });
   return next()
