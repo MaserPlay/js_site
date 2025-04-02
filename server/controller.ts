@@ -25,7 +25,7 @@ app.use("/", express.static("static"));
 app.use("/content", express.static("content"));
 
 app.get("/", (req, res) => {
-    const content = fs.readdirSync("./content").map(dirent => ({ id: dirent, name: res.__(dirent) })).filter(item => getContentClass(item.id).mayShow(req))
+    const content = fs.readdirSync("./content").filter(item => getContentClass(item).mayShow(req)).map(dirent => ({ id: dirent, name: res.__(dirent) }))
     content.sort((a,b)=>{
         return getContentClass(a.id).createdAt() < getContentClass(b.id).createdAt() ? 1 : -1
     })
@@ -35,6 +35,19 @@ app.get("/", (req, res) => {
         "description": res.__("Things in Javascript")
     });
 });
+
+app.get("/sitemap.xml", (req, res) => {
+    const content = fs.readdirSync("./content").filter(item => getContentClass(item).mayShow(req));
+    var returnXml = "<?xml version='1.0' encoding='UTF-8' ?>";
+    returnXml += "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>";
+    returnXml += "<url><loc>https://js.maserplay.ru</loc><priority>1.0</priority></url>";
+    content.forEach(cont => {
+        returnXml += `<url><loc>https://js.maserplay.ru/content/${cont}</loc><priority>0.8</priority></url>`;
+    });
+    returnXml += "</urlset>";
+    res.type('application/xml');
+    res.send(returnXml);
+})
 
 app.get('/content/*',async (req, res, next) => {
     const paramPage = (<string[]>req.params)[0];
