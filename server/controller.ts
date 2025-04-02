@@ -2,7 +2,7 @@ import * as index from '../index';
 import * as fs from 'fs';
 import express from "express";
 import * as path from 'path';
-import { Content, IContent } from "./content_class";
+import { Content, IContent, Style } from "./content_class";
 
 const app = index.default.app
 
@@ -32,7 +32,8 @@ app.get("/", (req, res) => {
     res.render("index", {
         "eachcontent": content,
         "name": res.__("Index"),
-        "description": res.__("Things in Javascript")
+        "description": res.__("Things in Javascript"),
+        "styleOfPage": Style.Standart
     });
 });
 
@@ -62,7 +63,8 @@ app.get('/content/*',async (req, res, next) => {
         } else if (typeof mayShow == 'boolean' && mayShow) {
             res.render("../content/" + name, Object.assign({
                 "name": res.__(name),
-                "description": res.__(`${name} description`)
+                "description": res.__(`${name} description`),
+                "styleOfPage": contentClass.style(req)
             }, await contentClass.extendedOptions(req)))
             return
         }

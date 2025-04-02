@@ -1,10 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
+export enum Style {
+    Standart,
+    Fullscreen
+}
 export interface IContent{
     name : Readonly<string>;
     mayShow(req: Readonly<Request>) : boolean | number;
     extendedOptions(req: Readonly<Request>) : Promise<object>;
     lastModification() : Date;
     createdAt() : Date;
+    style(req: Readonly<Request>) : Style;
 }
 export class Content implements IContent{
     name;
@@ -14,10 +19,10 @@ export class Content implements IContent{
         this.name = name;
         this.calcDates();
     }
-    mayShow(req: Readonly<Request>){
+    mayShow(_req: Readonly<Request>){
         return true
     }
-    async extendedOptions(req: Readonly<Request>){
+    async extendedOptions(_req: Readonly<Request>){
         return {}
     }
     createdAt(){
@@ -25,6 +30,9 @@ export class Content implements IContent{
     }
     lastModification(){
         return this.lastModificationDate ?? new Date(0)
+    }
+    style(_req: Readonly<Request>): Style {
+        return Style.Standart;
     }
     private async calcDates() {
         console.log("")
@@ -41,8 +49,11 @@ export class Content implements IContent{
             console.error(`Github sent not GitHubCommits to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
             return
         }
-        this.lastModificationDate = new Date(data[0].commit.committer.date)
-        this.createdAtDate = new Date(data.at(-1)!.commit.committer.date)
+        if (data.length > 0)
+        {
+            this.lastModificationDate = new Date(data[0].commit.committer.date)
+            this.createdAtDate = new Date(data.at(-1)!.commit.committer.date)
+        }
         console.log(`Last modification date of ${this.name} (from github) is ${this.lastModificationDate}`)
         console.log(`Creation date of ${this.name} (from github) is ${this.createdAtDate}`)
         console.log("")

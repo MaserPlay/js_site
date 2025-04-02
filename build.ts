@@ -122,7 +122,7 @@ function clearBuildDir() {
           fs.unlinkSync(curPath);
         }
       });
-      fs.rmdirSync(recursePath, {force: true});
+      fs.rmdirSync(recursePath);
     }
   };
   if (fs.existsSync(srcDir)) {

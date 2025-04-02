@@ -182,17 +182,4 @@ RunTetris("canvas", () => {
     alert(game_over)
     RunTetris("canvas")
 })
-
-if ($("#fullscreen_div")[0].requestFullscreen == null) {
-    $("#fullscreen").remove();
-    $("#exit_fullscreen").hide();
-} else {
-    $("#fullscreen").on('click', () => {
-        $("#fullscreen_div")[0].requestFullscreen()
-        $("#exit_fullscreen").show();
-    })
-    $("#exit_fullscreen").on('click', () => {
-        document.exitFullscreen()
-        $("#exit_fullscreen").hide();
-    })
-}
+setupFullscreen("#fullscreen", "#fullscreen_div", "#exit_fullscreen")
