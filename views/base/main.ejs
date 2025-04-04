@@ -58,6 +58,17 @@
                 position: fixed !important;
                 z-index: 999;
             }
+            .right_panel{
+                font-size: 1.5rem; 
+                padding: 10px 30px; 
+                top: 0px;
+                right: 0px;
+                transform: translateX(90%);
+                transition: transform 0.5s ease-in-out;
+            }
+            .right_panel:hover{
+                transform: translateX(0%);
+            }
         </style>
     <% } %>
     <%- meta %>
@@ -98,13 +109,13 @@
             </div>
         </header>
     <% } else { %>
-        <header style="font-size: 1.5rem; top: 10px;left: 30px;">
+        <header style="font-size: 1.5rem; top:0px; padding: 10px 30px;">
             <a class="text-decoration-none" style="color: var(--bs-emphasis-color-rgb);" href="/">
                 <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
                 <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
             </a>
         </header>
-        <header style="font-size: 1.5rem; top: 10px;right: 30px;">
+        <header class="right_panel">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-patch-question-fill" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change theme') %></span></button>
