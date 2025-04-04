@@ -32,14 +32,22 @@ setupFullscreen = (fullscreenButton, fullscreenexitButton, fullscreenDiv) => {
       $(fullscreenButton).remove();
       $(fullscreenexitButton).hide();
   } else {
-      $(fullscreenButton).on('click', () => {
-          $(fullscreenDiv)[0].requestFullscreen()
-          $(fullscreenexitButton).show();
-      })
-      $(fullscreenexitButton).on('click', () => {
-          document.exitFullscreen()
-          $(fullscreenexitButton).hide();
-      })
+    function changeHandlerCallback(_event) {
+      if (document.fullscreenElement) {
+        $(fullscreenButton).hide();
+        $(fullscreenexitButton).show();
+      } else {
+        $(fullscreenexitButton).hide();
+        $(fullscreenButton).show();
+      }
+    }
+    $(fullscreenDiv)[0].addEventListener('fullscreenchange', changeHandlerCallback, false);
+    $(fullscreenButton).on('click', () => {
+        $(fullscreenDiv)[0].requestFullscreen()
+    })
+    $(fullscreenexitButton).on('click', () => {
+        document.exitFullscreen()
+    })
   }
 }
 (() => {
