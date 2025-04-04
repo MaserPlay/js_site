@@ -1,0 +1,87 @@
+<style>
+    .editor-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    .canvas-container {
+        flex: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+
+    .sidebar {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .elements-list {
+        margin-top: 20px;
+    }
+
+    .element-item {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    #fileInput {
+        position: absolute;
+        width: 300px;
+    }
+
+    .full_screen_button{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        margin: 10px;
+    }
+    canvas{
+        /* object-fit: contain; */
+        width: 100%;
+        /* height: 100%; */
+    }
+    main {
+        height: 100vh;
+    }
+
+    /* To remove the scrollbars */
+</style>
+
+<main role="main" id="fullscreen_div" class="bg-body">
+    <div class="editor-container">
+        <div class="d-flex justify-content-center py-3" style="position: fixed; width: 100%;">
+            <ul class="nav nav-pills border rounded-4 bg-body" style="padding: 5px;">
+                <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false">File</button>
+                  <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                        <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="import_json">Import as .json</button></li>
+                        <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="import_nvidia">Import as Nvidia format</button></li>
+                      <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="export_json" disabled>Export as .json</button></li>
+                      <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="export_nvidia" disabled>Export as Nvidia format</button></li>
+                  </ul>
+              <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false">Help</button>
+                <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                    <li><a class="dropdown-item">NeuroZoneEditor by Maserplay</a></li>
+                    <li><a class="dropdown-item" href="https://js.maserplay.ru/content/NeuroZoneEditor">From https://js.maserplay.ru/content/NeuroZoneEditor</a></li>
+                </ul>
+            </ul>
+        </div>
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+            <input class="form-control" type="file" id="fileInput" accept="image/*">
+        </div>
+
+        <div class="sidebar bg-body-tertiary border" style="z-index: 1;">
+            <button type="button" class="btn btn-primary w-100" id="addZone" disabled>Add zone</button>
+            <div class="elements-list">
+                <!-- Список элементов будет генерироваться здесь -->
+            </div>
+        </div>
+    </div>
+    <button type="button" id="fullscreen" class="btn btn-outline-secondary bi bi-arrows-fullscreen full_screen_button"></button>
+    <button type="button" id="exit_fullscreen" class="btn btn-outline-secondary bi bi-fullscreen-exit full_screen_button" style="display: none;"></button>
+</main>
