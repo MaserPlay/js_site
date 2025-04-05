@@ -4,6 +4,7 @@ import * as processThis from 'process';
 import * as UglifyJS from 'uglify-js';
 import { styleText } from 'node:util';
 import * as process from "node:child_process";
+import { exit } from 'node:process';
 const srcDir = './';      // Исходная папка
 const destDir = './build'; // Папка назначения
 
@@ -11,6 +12,18 @@ const args = {
   watch: processThis.argv.some((e)=>e=="-watch"),
   clear: processThis.argv.some((e)=>e=="-clear")
 }
+
+function printTips() {
+  function getScriptName(): string {
+      // В Node.js имя файла можно получить из process.argv[1]
+      const path = processThis.argv[0].split(/[\\/]/).pop() + " " + processThis.argv[1].split(/[\\/]/).pop();
+      return path || styleText("bold",'Unknow script name');
+  }
+  console.log(`Usage ${styleText("blue",getScriptName())}:`);
+  console.log(`\t${styleText("green", "-watch")} to use --watch in the typescript. (Copying and minification are disabled. I want to add this in future)`);
+  console.log(`\t${styleText("green", "-clear")} to clear build repo`);
+}
+printTips()
 
 function deleteFolderInit() {
   var deleteFolderRecursive = function (recursePath: string) {
@@ -43,8 +56,9 @@ async function copyFiles(src: string, dest: string) {
 
   for (const entry of entries) {
     //ignores 
-    if (entry.isDirectory() && (entry.name == ".git" || entry.name == "build" || entry.name == "node_modules")) {
-      continue
+    const ignoredDirs = new Set([".git", "build", "node_modules", "images_for_readme"]);
+    if (entry.isDirectory() && ignoredDirs.has(entry.name)) {
+      continue;
     }
 
     const srcPath = path.join(src, entry.name);

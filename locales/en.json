@@ -86,5 +86,16 @@
 	"game_over": "Game over",
 	"Your browser dont support canvas": "Your browser dont support canvas",
 	"Your browser dont support this game": "Your browser dont support this game",
-	"Only pc": "Only pc"
+	"Only pc": "Only pc",
+	"NeuroZoneEditor": "Neural Network Zone Editor",
+	"NeuroZoneEditor description": "This is a zone editor for neural networks created for my dad. It allows you to mark zones in photos.",
+	"Content/NeuroZoneEditor/Author": "%s by %s",
+	"Content/NeuroZoneEditor/File": "File",
+	"Content/NeuroZoneEditor/Import_Json": "Import as .json",
+	"Content/NeuroZoneEditor/Import_Nvidia": "Import as Nvidia format",
+	"Content/NeuroZoneEditor/Export_Json": "Export as .json",
+	"Content/NeuroZoneEditor/Export_Nvidia": "Export as Nvidia format",
+	"Content/NeuroZoneEditor/Help": "Help",
+	"Content/NeuroZoneEditor/From_site": "From %s",
+	"Content/NeuroZoneEditor/Add_zone": "Add zone"
 }
