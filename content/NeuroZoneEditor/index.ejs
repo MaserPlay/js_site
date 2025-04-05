@@ -56,17 +56,17 @@
     <div class="editor-container">
         <div class="d-flex justify-content-center py-3" style="position: fixed; width: 100%;">
             <ul class="nav nav-pills border rounded-4 bg-body" style="padding: 5px;">
-                <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false">File</button>
+                <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false"><%= __("Content/NeuroZoneEditor/File") %></button>
                   <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
-                        <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="import_json">Import as .json</button></li>
-                        <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="import_nvidia">Import as Nvidia format</button></li>
-                      <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="export_json" disabled>Export as .json</button></li>
-                      <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="export_nvidia" disabled>Export as Nvidia format</button></li>
+                        <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="import_json"><%= __("Content/NeuroZoneEditor/Import_Json") %></button></li>
+                        <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="import_nvidia"><%= __("Content/NeuroZoneEditor/Import_Nvidia") %></button></li>
+                      <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="export_json" disabled><%= __("Content/NeuroZoneEditor/Export_Json") %></button></li>
+                      <li><button type="button" class="dropdown-item" style="cursor: pointer;" id="export_nvidia" disabled><%= __("Content/NeuroZoneEditor/Export_Nvidia") %></button></li>
                   </ul>
-              <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false">Help</button>
+              <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false"><%= __("Content/NeuroZoneEditor/Help") %></button>
                 <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
-                    <li><a class="dropdown-item">NeuroZoneEditor by Maserplay</a></li>
-                    <li><a class="dropdown-item" href="https://js.maserplay.ru/content/NeuroZoneEditor">From https://js.maserplay.ru/content/NeuroZoneEditor</a></li>
+                    <li><a class="dropdown-item"><%= format(__("Content/NeuroZoneEditor/Author"), "NeuroZoneEditor", "Maserplay") %></a></li>
+                    <li><a class="dropdown-item" href="https://js.maserplay.ru/content/NeuroZoneEditor"><%= format(__("Content/NeuroZoneEditor/From_site"), "https://js.maserplay.ru/content/NeuroZoneEditor") %></a></li>
                 </ul>
             </ul>
         </div>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="sidebar bg-body-tertiary border" style="z-index: 1;">
-            <button type="button" class="btn btn-primary w-100" id="addZone" disabled>Add zone</button>
+            <button type="button" class="btn btn-primary w-100" id="addZone" disabled><%= __("Content/NeuroZoneEditor/Add_zone") %></button>
             <div class="elements-list">
                 <!-- Список элементов будет генерироваться здесь -->
             </div>

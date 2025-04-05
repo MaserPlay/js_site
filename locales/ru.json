@@ -85,5 +85,16 @@
 	"game_over": "Игра окончена",
 	"Your browser dont support canvas": "Your browser dont support canvas",
 	"Your browser dont support this game": "Your browser dont support this game",
-	"Only pc": "Only pc"
+	"Only pc": "Only pc",
+	"NeuroZoneEditor": "Редактор зон нейросетей",
+	"NeuroZoneEditor description": "Это редактор зон для нейросетей созданный для моего папы. Он позволяет помечать зоны на фотографиях",
+	"Content/NeuroZoneEditor/Author": "%s от %s",
+	"Content/NeuroZoneEditor/File": "Файл",
+	"Content/NeuroZoneEditor/Import_Json": "Ипортировать как .json",
+	"Content/NeuroZoneEditor/Import_Nvidia": "Ипортировать как Nvidia формат",
+	"Content/NeuroZoneEditor/Export_Json": "Экспортировать как .json",
+	"Content/NeuroZoneEditor/Export_Nvidia": "Экспортировать как Nvidia формат",
+	"Content/NeuroZoneEditor/Help": "Помощь",
+	"Content/NeuroZoneEditor/From_site": "Из %s",
+	"Content/NeuroZoneEditor/Add_zone": "Добавить зону"
 }
