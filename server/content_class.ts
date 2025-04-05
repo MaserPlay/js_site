@@ -12,7 +12,7 @@ export interface IContent{
     style(req: Readonly<Request>) : Style;
 }
 export class Content implements IContent{
-    name;
+    name : string;
     private lastModificationDate : Date | undefined
     private createdAtDate : Date | undefined
     constructor(name : Readonly<string>){
@@ -33,6 +33,12 @@ export class Content implements IContent{
     }
     style(_req: Readonly<Request>): Style {
         return Style.Standart;
+    }
+    protected isPc(req: Readonly<Request>){
+        return !this.isPhone(req)
+    }
+    protected isPhone(req: Readonly<Request>){
+        return req.get('User-Agent')!.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
     }
     private async calcDates() {
         console.log("")
