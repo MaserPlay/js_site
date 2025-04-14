@@ -281,6 +281,17 @@
         canvas.onmousedown = (e)=>{
             const rect = canvas.getBoundingClientRect();
             const mouse: Vector2 = convertViewToImageCords(new Vector2(e.clientX - rect.left, e.clientY - rect.top));
+            deviceDown(mouse);
+        }
+        canvas.ontouchstart = (e) => {
+            for (let touchId = 0; touchId < e.touches.length; touchId++) {
+                const touch = e.touches[touchId];
+                const rect = canvas.getBoundingClientRect();
+                const mouse: Vector2 = convertViewToImageCords(new Vector2(touch.clientX - rect.left, touch.clientY - rect.top));
+                deviceDown(mouse);
+            }
+        }
+        function deviceDown(mouse:Vector2) {
             for (let i = 0; i < zoneList.length; i++) {
                 for (let posi = 0; posi < zoneList[i].positions.length; posi++) {
                     if (Vector2.distance(mouse, zoneList[i].positions[posi]) <= 30)
@@ -297,12 +308,36 @@
             }
         }
         canvas.onmouseup = (e)=>{
+            const rect = canvas.getBoundingClientRect();
+            const mouse: Vector2 = convertViewToImageCords(new Vector2(e.clientX - rect.left, e.clientY - rect.top));
+            deviceUp(mouse);
+        }
+        canvas.ontouchend = (e) => {
+            for (let touchId = 0; touchId < e.touches.length; touchId++) {
+                const touch = e.touches[touchId];
+                const rect = canvas.getBoundingClientRect();
+                const mouse: Vector2 = convertViewToImageCords(new Vector2(touch.clientX - rect.left, touch.clientY - rect.top));
+                deviceUp(mouse);
+            }
+        }
+        function deviceUp(_mouse:Vector2) {
             dragPointIndexes[0] = -1;
             dragPointIndexes[1] = -1;
         }
         canvas.onmousemove = (e)=>{
             const rect = canvas.getBoundingClientRect();
             const mouse: Vector2 = convertViewToImageCords(new Vector2(e.clientX - rect.left, e.clientY - rect.top));
+            deviceMoved(mouse);
+        }
+        canvas.ontouchmove = (e) => {
+            for (let touchId = 0; touchId < e.touches.length; touchId++) {
+                const touch = e.touches[touchId];
+                const rect = canvas.getBoundingClientRect();
+                const mouse: Vector2 = convertViewToImageCords(new Vector2(touch.clientX - rect.left, touch.clientY - rect.top));
+                deviceMoved(mouse);
+            }
+        }
+        function deviceMoved(mouse:Vector2) {
             if (zoneList[dragPointIndexes[0]] != null && zoneList[dragPointIndexes[0]].positions[dragPointIndexes[1]] != null)
             {
                 zoneList[dragPointIndexes[0]].positions[dragPointIndexes[1]] = mouse
