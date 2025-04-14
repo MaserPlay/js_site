@@ -5,7 +5,4 @@ export default class extends Content{
     style(_req: Readonly<Request>): Style {
         return Style.Fullscreen
     }
-    mayShow(req: Readonly<Request>) : boolean{
-        return this.isPc(req);
-    }
 }
