@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import express from "express";
 import * as path from 'path';
 import { Content, IContent, Style } from "./content_class";
+import getByReq from './device';
 
 const app = index.default.app
 
@@ -21,10 +22,25 @@ function getContentClass(name: string): IContent {
     return content_classes.get(name)!
 }
 
+function isSiteSupport(req: express.Request) {
+    const device = getByReq.getByReq(req)
+    return !(device?.bot || ["desktop", "smartphone", "tablet"].includes(device?.device?.type ?? ""))
+}
+function sendSiteSupportStatus(req: express.Request, res: express.Response, next : express.NextFunction) {
+    if (isSiteSupport(req))
+    {
+        res.status(400)
+        next()
+        return true
+    }
+}
+
 app.use("/", express.static("static"));
 app.use("/content", express.static("content"));
 
-app.get("/", (req, res) => {
+app.get("/", (req, res, next) => {
+    if (sendSiteSupportStatus(req,res, next)) return
+    
     const content = fs.readdirSync("./content").filter(item => getContentClass(item).mayShow(req)).map(dirent => ({ id: dirent, name: res.__(dirent) }))
     content.sort((a,b)=>{
         return getContentClass(a.id).createdAt() < getContentClass(b.id).createdAt() ? 1 : -1
@@ -51,6 +67,7 @@ app.get("/sitemap.xml", (req, res) => {
 })
 
 app.get('/content/*',async (req, res, next) => {
+    if (sendSiteSupportStatus(req,res, next)) return
     const paramPage = (<string[]>req.params)[0];
     const name = paramPage.replace("/", "")
     if (fs.existsSync("./content/" + name)) {
@@ -58,7 +75,7 @@ app.get('/content/*',async (req, res, next) => {
         const mayShow = contentClass.mayShow(req)
         if (typeof mayShow == 'number')
         {
-            res.sendStatus(mayShow)
+            res.statusCode = (mayShow)
             return
         } else if (typeof mayShow == 'boolean' && mayShow) {
             res.render("../content/" + name, Object.assign({
@@ -74,6 +91,7 @@ app.get('/content/*',async (req, res, next) => {
 
 
 app.get('/api/locale', (req, res, next) => {
+    if (sendSiteSupportStatus(req,res, next)) return
     if (req.query == null || req.query.code == null || req.query.lang == null) {
         next()
     } else {
@@ -81,7 +99,9 @@ app.get('/api/locale', (req, res, next) => {
     }
 })
 
-app.use(function (req, res) {
-    const status = 404
-    res.status(status).render(status.toString(), { "name": status.toString(), "description": res.__(`${status}/Text`) });
+app.use(function (req, res, next) {
+    if (res.headersSent) return; // We don't do anything if the response has already been sent.
+
+    const status = res.statusCode === 200 ? 404 : res.statusCode;
+    return res.render("error", { "name": status.toString(), "description": res.__(`${status}/Text`), "styleOfPage": Style.Standart});
 });
