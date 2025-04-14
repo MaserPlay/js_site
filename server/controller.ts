@@ -99,9 +99,23 @@ app.get('/api/locale', (req, res, next) => {
     }
 })
 
-app.use(function (req, res, next) {
+app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
     if (res.headersSent) return; // We don't do anything if the response has already been sent.
+    res.statusCode = res.statusCode === 200 ? 404 : res.statusCode;
+    type ErrorInfo = {name: string, description:string}
 
-    const status = res.statusCode === 200 ? 404 : res.statusCode;
-    return res.render("error", { "name": status.toString(), "description": res.__(`${status}/Text`), "styleOfPage": Style.Standart});
+    let status : ErrorInfo;
+    if (err)
+    {
+        res.status(500)
+        if (err instanceof Error)
+        {
+            status = {"name": err.name + ": " + err.message, "description": (err.stack ?? "")}
+        } else {
+            status = {"name": `${res.statusCode}`, "description": `${err}`}
+        }
+    } else {
+        status = {"name": res.statusCode.toString(), "description": res.__(`${res.statusCode}/Text`)}
+    }
+    return res.render("error", Object.assign(status, {"styleOfPage": Style.Standart}));
 });
