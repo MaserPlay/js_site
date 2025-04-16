@@ -1,3 +1,19 @@
+<style>
+    .c{
+        transition: all 0.3s ease-in-out;
+        padding: calc(var(--bs-gutter-x)* .5);
+    }
+    <%# .c > *{
+        transition: all 0.3s ease-in-out;
+        padding: .25rem;
+    }
+    .c > *:hover{
+        padding: calc(var(--bs-gutter-x)* .5);
+    }
+    .c:hover{
+        padding: 0;
+    } %>
+</style>
 <section class="jumbotron">
     <div class="container">
         <ul class="nav nav-tabs justify-content-center" style="margin-bottom: 16px;">
@@ -15,7 +31,7 @@
 </div> %>
 <div class="row">
     <% eachcontent.forEach(content => { %>
-    <div class="col-md-4 bg-body">
+    <div class="col-md-4 bg-body c" >
         <a class="btn btn-sm btn-outline-primary w-100 h-100"
             href="/content/<%=content.id%>">
             <div class="mb-4">
