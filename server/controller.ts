@@ -70,23 +70,24 @@ app.get('/content/*',async (req, res, next) => {
     if (sendSiteSupportStatus(req,res, next)) return
     const paramPage = (<string[]>req.params)[0];
     const name = paramPage.replace("/", "")
-    if (fs.existsSync("./content/" + name)) {
-        const contentClass = getContentClass(name)
-        const mayShow = contentClass.mayShow(req)
-        if (typeof mayShow == 'number')
-        {
-            res.statusCode = (mayShow)
-            return
-        } else if (typeof mayShow == 'boolean' && mayShow) {
-            res.render("../content/" + name, Object.assign({
-                "name": res.__(name),
-                "description": res.__(`${name} description`),
-                "styleOfPage": contentClass.style(req)
-            }, await contentClass.extendedOptions(req)))
-            return
-        }
+    if (!fs.existsSync("./content/" + name)) {
+        next()
+        return
     }
-    next()
+    const contentClass = getContentClass(name)
+    const mayShow = contentClass.mayShow(req)
+    if (typeof mayShow == 'number')
+    {
+        res.statusCode = (mayShow)
+        return
+    } else if (typeof mayShow == 'boolean' && mayShow) {
+        res.render("../content/" + name, Object.assign({
+            "name": res.__(name),
+            "description": res.__(`${name} description`),
+            "styleOfPage": contentClass.style(req)
+        }, await contentClass.extendedOptions(req)))
+        return
+    }
 })
 
 
@@ -99,7 +100,13 @@ app.get('/api/locale', (req, res, next) => {
     }
 })
 
-app.use(function (err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
+app.use(function (req, res, next) {
+    errorHandler(null, req, res, next)
+});
+
+app.use(errorHandler);
+function errorHandler(err: any, req: express.Request, res: express.Response, next: express.NextFunction)
+{
     if (res.headersSent) return; // We don't do anything if the response has already been sent.
     res.statusCode = res.statusCode === 200 ? 404 : res.statusCode;
     type ErrorInfo = {name: string, description:string}
@@ -118,4 +125,4 @@ app.use(function (err: any, req: express.Request, res: express.Response, next: e
         status = {"name": res.statusCode.toString(), "description": res.__(`${res.statusCode}/Text`)}
     }
     return res.render("error", Object.assign(status, {"styleOfPage": Style.Standart}));
-});
+}
