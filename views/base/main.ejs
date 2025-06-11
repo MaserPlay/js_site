@@ -1,3 +1,7 @@
+<% if (!styleOfPage)
+{
+    var styleOfPage = pageStyle().Standart
+}%>
 <!DOCTYPE html>
 <html lang='<%= getLocale() %>' data-bs-theme='<%= theme() %>' data-bs-event-theme='<%= event() %>'> 
 <head>
