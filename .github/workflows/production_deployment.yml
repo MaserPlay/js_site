@@ -1,0 +1,72 @@
+name: Build and deploy to Production
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '11.3.0'
+        cache: 'npm'
+
+    - name: Clean and install
+      run: |
+        rm -rf build
+        npm ci
+
+    - name: Build project
+      run: npm run build
+
+    - name: Verify build
+      run: |
+        if [ ! -d "build" ] || [ -z "$(ls -A build)" ]; then
+          echo "Build directory is empty or missing"
+          exit 1
+        fi
+
+    - name: Create archive
+      run: |
+        cd build
+        zip -r ../js_final.zip . -x "*.git*"
+        cd ..
+        ls -lh js_final.zip
+
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.8.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to production server
+      run: |
+        # Upload archive
+        scp js_final.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }}:~/docker/js_maserplay_ru/app/
+        
+        # Deploy and restart
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }} '
+          set -e
+          cd ~/docker/js_maserplay_ru/app &&
+          unzip -o js_final.zip &&
+          cd .. &&
+          docker compose down &&
+          docker rmi js_node_server || true &&
+          docker build -t js_node_server . &&
+          docker compose up -d &&
+          echo "Deployment completed successfully"
+        '
+
+    - name: Cleanup
+      if: always()
+      run: |
+        rm -f js_final.zip
