@@ -50,6 +50,14 @@ jobs:
 
     - name: Deploy to production server
       run: |
+        # Настройка SSH
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+
+        # Добавляем known_hosts
+        ssh-keyscan ${{ secrets.SSH_HOST_NAME }} >> ~/.ssh/known_hosts 2>/dev/null
+        chmod 644 ~/.ssh/known_hosts
+      
         # Upload archive
         scp js_final.zip ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_NAME }}:~/docker/js_maserplay_ru/app/
         
