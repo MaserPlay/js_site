@@ -66,9 +66,10 @@ app.get("/sitemap.xml", (req, res) => {
     res.send(returnXml);
 })
 
-app.get('/content/*',async (req, res, next) => {
+app.get('/content/:path',async (req, res, next) => {
     if (sendSiteSupportStatus(req,res, next)) return
-    const paramPage = (<string[]>req.params)[0];
+    
+    const paramPage = req.params['path'];
     const name = paramPage.replace("/", "")
     if (!fs.existsSync("./content/" + name)) {
         next()
