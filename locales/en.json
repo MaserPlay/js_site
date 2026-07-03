@@ -97,5 +97,14 @@
 	"Content/NeuroZoneEditor/Export_Nvidia": "Export as Nvidia format",
 	"Content/NeuroZoneEditor/Help": "Help",
 	"Content/NeuroZoneEditor/From_site": "From %s",
-	"Content/NeuroZoneEditor/Add_zone": "Add zone"
+	"Content/NeuroZoneEditor/Add_zone": "Add zone",
+	"CalcAnimationEditor": "Calc Animation Editor",
+	"CalcAnimationEditor description": "This is a formula-based animation editor. It's needed for my game engine. Probably a strong development will make it easier",
+	"Content/CalcAnimationEditor/Help": "Help",
+	"Content/CalcAnimationEditor/Author": "%s by %s",
+	"Content/CalcAnimationEditor/From_site": "From %s",
+	"Content/CalcAnimationEditor/Add": "Add GameObject",
+	"Content/CalcAnimationEditor/Formula/Scale": "Formula for size",
+	"Content/CalcAnimationEditor/Formula/X": "Formula for x",
+	"Content/CalcAnimationEditor/Formula/Y": "Formula for y"
 }
