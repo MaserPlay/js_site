@@ -1,0 +1,76 @@
+<style>
+    .editor-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
+    .canvas-container {
+        flex: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+
+    .sidebar {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .elements-list {
+        margin-top: 20px;
+    }
+
+    .element-item {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    #fileInput {
+        position: absolute;
+        width: 300px;
+    }
+
+    .full_screen_button{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        margin: 10px;
+    }
+    main {
+        height: 100vh;
+    }
+    .evals > * {
+       margin: 1em 0em; 
+    }
+</style>
+
+<main role="main" id="fullscreen_div" class="bg-body">
+    <div class="editor-container">
+        <div class="d-flex justify-content-center py-3" style="position: fixed; width: 100%;">
+            <ul class="nav nav-pills border rounded-4 bg-body" style="padding: 5px;">
+              <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false"><%= __("Content/CalcAnimationEditor/Help") %></button>
+                <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                    <li><a class="dropdown-item"><%= format(__("Content/CalcAnimationEditor/Author"), "NeuroZoneEditor", "Maserplay") %></a></li>
+                    <li><a class="dropdown-item" href="https://js.maserplay.ru/content/CalcAnimationEditor"><%= format(__("Content/CalcAnimationEditor/From_site"), "https://js.maserplay.ru/content/CalcAnimationEditor") %></a></li>
+                </ul>
+            </ul>
+        </div>
+        <div class="canvas-container" id="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <div class="sidebar bg-body-tertiary border" style="z-index: 1;">
+            <button type="button" class="btn btn-primary w-100" id="add"><%= __("Content/CalcAnimationEditor/Add") %></button>
+            <p id="time">t=0</p>
+            <div class="elements-list">
+                <!-- The list of items will be generated here -->
+            </div>
+        </div>
+    </div>
+    <button type="button" id="fullscreen" class="btn btn-outline-secondary bi bi-arrows-fullscreen full_screen_button"></button>
+    <button type="button" id="exit_fullscreen" class="btn btn-outline-secondary bi bi-fullscreen-exit full_screen_button" style="display: none;"></button>
+</main>

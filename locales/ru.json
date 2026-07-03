@@ -96,5 +96,14 @@
 	"Content/NeuroZoneEditor/Export_Nvidia": "Экспортировать как Nvidia формат",
 	"Content/NeuroZoneEditor/Help": "Помощь",
 	"Content/NeuroZoneEditor/From_site": "Из %s",
-	"Content/NeuroZoneEditor/Add_zone": "Добавить зону"
+	"Content/NeuroZoneEditor/Add_zone": "Добавить зону",
+	"CalcAnimationEditor": "Редактор формул анимаций",
+	"CalcAnimationEditor description": "Это редактор анимаций на основе формул. Нужен для моего игрового движка. Наверное сильное разработку облегчит",
+	"Content/CalcAnimationEditor/Help": "Помощь",
+	"Content/CalcAnimationEditor/Author": "%s от %s",
+	"Content/CalcAnimationEditor/From_site": "Из %s",
+	"Content/CalcAnimationEditor/Add": "Добавить игровой объект",
+	"Content/CalcAnimationEditor/Formula/Scale": "Формула для размера",
+	"Content/CalcAnimationEditor/Formula/X": "Формула для x",
+	"Content/CalcAnimationEditor/Formula/Y": "Формула для y"
 }
