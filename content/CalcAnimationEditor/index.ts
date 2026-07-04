@@ -1,18 +1,31 @@
 (() => {
-    function runEval(text:string, time:number) {
+    function runEvalNumber(text:string, time:number) {
         const x = time
         const t = time
 
-        const { PI, sin, cos } = Math;
-        try {
-            return eval(text) as number;
-        } catch (e : any) {
-            console.error(e)
-            return 0
+        const evalFunc = new Function('time', 'text', `const { PI, sin, cos } = Math; const x = time; const t = time; return eval(text);`);
+        const returnVal = evalFunc(time, text);
+        if (typeof returnVal == 'number')
+        {
+            return returnVal
         }
+        throw new Error(returnVal + " not a number")
     }
     function getValue(id: string) {
         return (document.getElementById(id) as HTMLInputElement).value
+    }
+    function getAndShowErrorIdNeed(id_val: string, time: number) {
+        document.getElementById(id_val)!.classList.remove("is-invalid")
+        
+        try {
+            return runEvalNumber(getValue(id_val), time)
+        } catch (e:unknown) {
+            const error = e instanceof Error ? e.message : String(e);
+            document.getElementById(id_val)?.classList.add("is-invalid")
+            document.getElementById(id_val + "-error")!.textContent = error
+            console.error(error)
+            return 0
+        }
     }
     const canvas = $('#canvas')[0] as HTMLCanvasElement
     const context = canvas.getContext('2d')!;
@@ -40,6 +53,7 @@
             if (index !== -1) {
                 objects.splice(index, 1);
             }
+            document.getElementById(id + "-div")?.remove()
         })
     })
 
@@ -64,9 +78,9 @@
         time_show.textContent = "t=" + time
         for (const obj of objects) {
             context.beginPath();
-            const x = runEval(getValue(obj + "-x"), time)
-            const y = runEval(getValue(obj + "-y"), time)
-            const scaleE = runEval(getValue(obj + "-scale"), time)
+            const x = getAndShowErrorIdNeed((obj + "-x"), time)
+            const y = getAndShowErrorIdNeed((obj + "-y"), time)
+            const scaleE = getAndShowErrorIdNeed((obj + "-scale"), time)
             context.arc(
                 x * scale + canvas.width / 2, 
                 y * scale + canvas.height / 2, 
@@ -86,8 +100,11 @@
                             <span class="badge"><input type="color" id="${idNamePrefix}-color" style="width: 1.5rem; height: 1.5rem;"></span>
                             <div class="evals">
                                 <input type="text" class="form-control flex-grow-1" placeholder="${await __("Content/CalcAnimationEditor/Formula/X")}" id="${idNamePrefix}-x">
+                                <div class="invalid-feedback" id="${idNamePrefix}-x-error"></div>
                                 <input type="text" class="form-control flex-grow-1" placeholder="${await __("Content/CalcAnimationEditor/Formula/Y")}" id="${idNamePrefix}-y">
+                                <div class="invalid-feedback" id="${idNamePrefix}-y-error"></div>
                                 <input type="text" class="form-control flex-grow-1" placeholder="${await __("Content/CalcAnimationEditor/Formula/Scale")}" id="${idNamePrefix}-scale">
+                                <div class="invalid-feedback" id="${idNamePrefix}-scale-error"></div>
                             </div>
                         </h5>
                         <button type="button" class="btn btn-secondary bi bi-trash3" id="${idNamePrefix}-trash">

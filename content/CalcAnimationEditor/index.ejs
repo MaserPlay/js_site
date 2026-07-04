@@ -46,6 +46,23 @@
     .evals > * {
        margin: 1em 0em; 
     }
+    @media (max-width: 768px) {
+        .editor-container {
+            flex-direction: column;
+        }
+
+        .canvas-container {
+            flex: 1;
+            min-height: 60vh;
+        }
+
+        .sidebar {
+            flex: none;
+            height: 40%;
+            width: 100%;
+            overflow-y: auto;
+        }
+    }
 </style>
 
 <main role="main" id="fullscreen_div" class="bg-body">
