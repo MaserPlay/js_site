@@ -12,6 +12,7 @@
   "license": "MIT",
   "keywords": [],
   "dependencies": {
+    "@types/bootstrap": "^5.2.11",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.7",
     "device-detector-js": "^3.0.3",

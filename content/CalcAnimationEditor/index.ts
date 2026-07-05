@@ -102,6 +102,9 @@
         canvas.width = canvas_container.clientWidth;
         canvas.height = canvas_container.clientHeight;
     }
+    __("Content/CalcAnimationEditor/Formula/X")
+    __("Content/CalcAnimationEditor/Formula/Y")
+    __("Content/CalcAnimationEditor/Formula/Scale")
     async function genGameObjectHtml(idNamePrefix: string) {
         return `<div class="card w-100" id="${idNamePrefix}-div">
                     <div class="card-body">

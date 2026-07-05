@@ -1,3 +1,12 @@
+String.prototype.capitalize = String.prototype.capitalize || function () {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+String.prototype.format = String.prototype.format ||
+  function () {
+    var args = Array.prototype.slice.call(arguments);
+    var replacer = function (a) { return args[a.substr(1) - 1]; };
+    return this.replace(/(\$\d+)/gm, replacer)
+  };
 var changeRoom = (to) => { }
 (async () => {
   var lang = await (await langpromize).json()
