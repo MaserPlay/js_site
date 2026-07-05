@@ -9,7 +9,7 @@ export default class extends Content {
     }
     async extendedOptions(req: Readonly<Request>) : Promise<object>{
         var paramPage = req.params[0];
-        paramPage = paramPage.substring(paramPage.indexOf('/'))
+        paramPage = paramPage?.substring(paramPage.indexOf('/')) ?? "Main"
         return {
             "Main": await ejs.renderFile("./content/voice_chat/content/main.ejs", {
                 __: req.__
