@@ -34,11 +34,17 @@
         width: 300px;
     }
 
-    .full_screen_button{
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        margin: 10px;
+    .down_buttons{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+    }
+    .down_buttons > * {
+        margin: 10px 0px;
     }
     canvas{
         <%# object-fit: contain; %>
@@ -88,6 +94,10 @@
         <div class="canvas-container">
             <canvas id="canvas"></canvas>
             <input class="form-control" type="file" id="fileInput" accept="image/*">
+            <div class="down_buttons">
+                <button type="button" id="fullscreen" class="btn btn-outline-secondary bg-body bi bi-arrows-fullscreen"></button>
+                <button type="button" id="exit_fullscreen" class="btn btn-outline-secondary bg-body bi bi-fullscreen-exit" style="display: none;"></button>
+            </div>
         </div>
 
         <div class="sidebar bg-body-tertiary border" style="z-index: 1;">
@@ -97,6 +107,4 @@
             </div>
         </div>
     </div>
-    <button type="button" id="fullscreen" class="btn btn-outline-secondary bi bi-arrows-fullscreen full_screen_button"></button>
-    <button type="button" id="exit_fullscreen" class="btn btn-outline-secondary bi bi-fullscreen-exit full_screen_button" style="display: none;"></button>
 </main>
