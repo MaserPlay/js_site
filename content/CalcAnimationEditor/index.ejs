@@ -9,8 +9,15 @@
         flex: 3;
         display: flex;
         justify-content: center;
+        position: relative;
         align-items: center;
         overflow: auto;
+    }
+    canvas {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        touch-action: none;
     }
 
     .sidebar {
@@ -34,11 +41,17 @@
         width: 300px;
     }
 
-    .full_screen_button{
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        margin: 10px;
+    .down_buttons{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+    }
+    .down_buttons > * {
+        margin: 10px 0px;
     }
     main {
         height: 100vh;
@@ -67,7 +80,7 @@
 
 <main role="main" id="fullscreen_div" class="bg-body">
     <div class="editor-container">
-        <div class="d-flex justify-content-center py-3" style="position: fixed; width: 100%;">
+        <!-- <div class="d-flex justify-content-center py-3" style="position: fixed; width: 100%;">
             <ul class="nav nav-pills border rounded-4 bg-body" style="padding: 5px;">
               <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn text-primary" data-bs-toggle="dropdown" aria-expanded="false"><%= __("Content/CalcAnimationEditor/Help") %></button>
                 <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
@@ -75,19 +88,25 @@
                     <li><a class="dropdown-item" href="https://js.maserplay.ru/content/CalcAnimationEditor"><%= format(__("Content/CalcAnimationEditor/From_site"), "https://js.maserplay.ru/content/CalcAnimationEditor") %></a></li>
                 </ul>
             </ul>
-        </div>
+        </div> -->
         <div class="canvas-container" id="canvas-container">
             <canvas id="canvas"></canvas>
+            <div class="down_buttons">
+                <button type="button" id="fullscreen" class="btn btn-outline-secondary bg-body bi bi-arrows-fullscreen"></button>
+                <button type="button" id="exit_fullscreen" class="btn btn-outline-secondary bg-body bi bi-fullscreen-exit" style="display: none;"></button>
+                <button type="button" id="to_home" class="btn btn-outline-secondary bg-body bi bi-house"></button>
+            </div>
         </div>
 
         <div class="sidebar bg-body-tertiary border" style="z-index: 1;">
             <button type="button" class="btn btn-primary w-100" id="add"><%= __("Content/CalcAnimationEditor/Add") %></button>
-            <p id="time">t=0</p>
+            <div class="d-flex align-items-center justify-content-center gap-2 m-2">
+                <button type="button" id="reset_t" class="btn btn-outline-secondary bi bi-house"></button>
+                <p id="time" class="mb-0">t=0.000</p>
+            </div>
             <div class="elements-list">
                 <!-- The list of items will be generated here -->
             </div>
         </div>
     </div>
-    <button type="button" id="fullscreen" class="btn btn-outline-secondary bi bi-arrows-fullscreen full_screen_button"></button>
-    <button type="button" id="exit_fullscreen" class="btn btn-outline-secondary bi bi-fullscreen-exit full_screen_button" style="display: none;"></button>
 </main>
