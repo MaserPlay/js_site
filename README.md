@@ -13,7 +13,7 @@ and run following commands:
 - `git clone https://github.com/MaserPlay/js_site.git`  To clone git repository
 - `npm i`  To init nodejs solution
 - `npm install typescript --save-dev`  To install typescript. It is not set by default because I am using global typescript.
-- `npm run build -- ` To build server to build dir. Add the following args, if need: `-clear` to clear build repo *or* `-watch` to use `--watch` in the typescript. (Copying and minification are disabled. I want to add this in future)
+- `npm run build -- ` To build server to build dir. Add the following args, if need: `--clear` to clear build repo *or* `--watch` to enable incremental watch mode
 - `npm start` To run server
 
 # Main website

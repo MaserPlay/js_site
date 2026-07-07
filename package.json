@@ -36,6 +36,7 @@
     "@types/jquery": "^3.5.32",
     "@types/morgan": "^1.9.9",
     "@types/uglify-js": "^3.17.5",
+    "chokidar": "^5.0.0",
     "mocha": "^11.0.1",
     "supertest": "^7.0.0"
   }
