@@ -30,7 +30,8 @@ const __ = (()=>{
         })
         .fail((err: any) => {
           pending.delete(key);
-          reject(err)
+          console.error(err)
+          resolve("Error requesting __: " + code)
         });
     });
 
