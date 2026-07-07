@@ -11,7 +11,7 @@ const srcDir = './';      // Исходная папка
 const destDir = './build'; // Папка назначения
 
 const ignoredFiles = new Set(["readme.md", "tsconfig.json", "build.js", "js_final.zip", "update_and_release.bat", ".gitignore"]);
-const ignoredDirs = new Set([".git", "build", "node_modules", "images_for_readme"]);
+const ignoredDirs = new Set([".git", "build", "node_modules", "images_for_readme", ".github"]);
 
 const args = {
   watch: processThis.argv.some((e) => e == "--watch" || e == "-w"),
