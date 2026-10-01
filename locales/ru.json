@@ -30,7 +30,7 @@
 	"Main Site": "Основной сайт",
 	"Donate me )": "Donate me )",
 	"Max bytes": "Максимальное количество байт",
-	"Сan store a value up to": "Может хранить значение до",
+	"Сan store a value up to": "Может хранить значение от",
 	"Can store a value up": "Может хранить значение до",
 	"The data you want to save": "Данные, которые вы хотите сохранить",
 	"Nothing selected": "Ничего не выбрано",
@@ -105,5 +105,12 @@
 	"Content/CalcAnimationEditor/Add": "Добавить игровой объект",
 	"Content/CalcAnimationEditor/Formula/Scale": "Формула для размера",
 	"Content/CalcAnimationEditor/Formula/X": "Формула для x",
-	"Content/CalcAnimationEditor/Formula/Y": "Формула для y"
+	"Content/CalcAnimationEditor/Formula/Y": "Формула для y",
+	"Enter whole numbers in all fields": "Введите целые числа во всех полях",
+	"Max bytes must be greater than zero": "Максимальное количество байтов должно быть больше нуля",
+	"Lower bound must not exceed upper bound": "Нижняя граница не должна превышать верхнюю",
+	"Nothing was found": "Подходящий тип не найден",
+	"Platform and compiler": "Платформа и компилятор",
+	"Choose the target platform, not the computer running this website": "Выберите платформу, для которой компилируется программа",
+	"Choose a supported platform": "Выберите поддерживаемую платформу"
 }

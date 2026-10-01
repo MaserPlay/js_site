@@ -4,32 +4,44 @@
             <div class="card-body">
                 <div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"><%= __('Max bytes') %></label>
+                        <label for="platform" class="form-label"><%= __('Platform and compiler') %></label>
+                        <select class="form-select" id="platform" aria-describedby="platform-help">
+                            <option value="windows-msvc-x64">Windows x64 — MSVC</option>
+                            <option value="windows-clang-x64">Windows x64 — Clang (clang-cl)</option>
+                            <option value="windows-mingw-x64">Windows x64 — GCC (MinGW-w64)</option>
+                            <option value="windows-msvc-x86">Windows x86 — MSVC</option>
+                            <option value="linux-gcc-x64">Linux x64 — GCC</option>
+                            <option value="linux-clang-x64">Linux x64 — Clang</option>
+                            <option value="linux-gcc-x86">Linux x86 — GCC (-m32)</option>
+                            <option value="macos-clang-arm64">macOS ARM64 — Apple Clang</option>
+                            <option value="macos-clang-x64">macOS x64 — Apple Clang</option>
+                        </select>
+                        <div class="form-text" id="platform-help"><%= __('Choose the target platform, not the computer running this website') %></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bytes" class="form-label"><%= __('Max bytes') %></label>
                         <div class="input-group">
-                            <input type="number" class="form-control" id="bytes"
+                            <input type="number" class="form-control" id="bytes" min="1" step="1"
                                 aria-describedby="basic-addon3 basic-addon4" value="16">
                             <span class="input-group-text">B</span><!-- Byte -->
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"><%= __('Сan store a value up to') %></label>
-                        <input type="number" class="form-control" id="StoreTo"
+                        <label for="StoreTo" class="form-label"><%= __('Сan store a value up to') %></label>
+                        <input type="text" inputmode="numeric" class="form-control" id="StoreTo"
                             aria-describedby="basic-addon3 basic-addon4" value="18446744073709551615">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"><%= __('Can store a value up') %></label>
-                        <input type="number" class="form-control" id="StoreUp"
+                        <label for="StoreUp" class="form-label"><%= __('Can store a value up') %></label>
+                        <input type="text" inputmode="numeric" class="form-control" id="StoreUp"
                             aria-describedby="basic-addon3 basic-addon4" value="0">
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"><%= __('The data you want to save') %></label>
-                        <select class="form-select" aria-label="Default select example" id="sel">
-                            <option selected><%= __('Nothing selected') %></option>
-                            <option value="char"><%= __('Char') %></option>
-                            <option value="number"><%= __('Number') %></option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="btn"><%= __('Calc') %></button>
+                    <button type="submit" class="btn btn-primary" id="btn"
+                        data-error-platform="<%= __('Choose a supported platform') %>"
+                        data-error-integer="<%= __('Enter whole numbers in all fields') %>"
+                        data-error-bytes="<%= __('Max bytes must be greater than zero') %>"
+                        data-error-range="<%= __('Lower bound must not exceed upper bound') %>"
+                        data-not-found="<%= __('Nothing was found') %>"><%= __('Calc') %></button>
                 </div>
             </div>
         </div>

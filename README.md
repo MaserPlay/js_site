@@ -7,12 +7,11 @@ The main page uses the GitHub API to parse the /content folder and convert the r
 - All my experiments are stored in the /content folder.
 
 # Building
-To build this site install `node.js`, `git`
+To build this site install Node.js 20.19.0 or newer (Node.js 24 LTS recommended) and `git`
 and run following commands:
 
 - `git clone https://github.com/MaserPlay/js_site.git`  To clone git repository
-- `npm i`  To init nodejs solution
-- `npm install typescript --save-dev`  To install typescript. It is not set by default because I am using global typescript.
+- `npm ci`  To install the locked project dependencies
 - `npm run build -- ` To build server to build dir. Add the following args, if need: `--clear` to clear build repo *or* `--watch` to enable incremental watch mode
 - `npm start` To run server
 
