@@ -106,5 +106,12 @@
 	"Content/CalcAnimationEditor/Add": "Add GameObject",
 	"Content/CalcAnimationEditor/Formula/Scale": "Formula for size",
 	"Content/CalcAnimationEditor/Formula/X": "Formula for x",
-	"Content/CalcAnimationEditor/Formula/Y": "Formula for y"
+	"Content/CalcAnimationEditor/Formula/Y": "Formula for y",
+	"Enter whole numbers in all fields": "Enter whole numbers in all fields",
+	"Max bytes must be greater than zero": "Max bytes must be greater than zero",
+	"Lower bound must not exceed upper bound": "Lower bound must not exceed upper bound",
+	"Nothing was found": "Nothing was found",
+	"Platform and compiler": "Platform and compiler",
+	"Choose the target platform, not the computer running this website": "Choose the target platform, not the computer running this website",
+	"Choose a supported platform": "Choose a supported platform"
 }
