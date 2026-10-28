@@ -70,7 +70,7 @@ async function copyFiles(src: string, dest: string) {
 
     if (entry.isDirectory()) {
       await copyFiles(srcPath, destPath); // Рекурсивно обрабатываем папки
-    } else if (!entry.name.endsWith('.ts')) {
+    } else if (!entry.name.endsWith('.ts') && !entry.name.endsWith('.mts')) {
 
       if (ignoredFiles.has(entry.name.toLowerCase())) {
         continue;
@@ -100,13 +100,13 @@ function runTscWatch() {
 
 
 function miniBuildJsSignle(fullPath: string) {
-      const minPath = fullPath.replace(/\.js$/, '.min.js');
+      const minPath = fullPath.replace(/\.(m?js)$/, '.min.$1');
 
       console.log(`Minimizing: ${fullPath} -> ${minPath}`);
 
       try {
         const originalCode = fs.readFileSync(fullPath, "utf8");
-        const minified = UglifyJS.minify(originalCode);
+        const minified = UglifyJS.minify(originalCode, { module: fullPath.endsWith('.mjs') });
 
         if (minified.error) {
           console.error(`[Uglify Error] inside ${fullPath}:`, minified.error);
@@ -133,9 +133,9 @@ function miniBuildJs() {
   const allFiles = fs.readdirSync(dir, { recursive: true, withFileTypes: true });
 
   for (const entry of allFiles) {
-    // Нам нужны только файлы, которые заканчиваются на .js, 
-    // но при этом мы игнорируем уже минифицированные (.min.js)
-    if (entry.isFile() && entry.name.endsWith('.js') && !entry.name.endsWith('.min.js')) {
+    // Минифицируем скрипты .js и модули .mjs, 
+    // исключая уже минифицированные файлы.
+    if (entry.isFile() && /\.(m?js)$/.test(entry.name) && !/\.min\.(m?js)$/.test(entry.name)) {
 
       // entry.parentPath содержит путь к папке файла относительно исходной точки (в Node v20+)
       // Если у вас старая нода, можно собирать путь через path.join(dir, entry.path, entry.name)
@@ -192,7 +192,7 @@ function clearBuildDir() {
 
     async function onChange(srcPath: string) {
       // Если это TS файл — его обработает сам tsc --watch, этот скрипт его игнорирует
-      if (srcPath.endsWith('.ts')) return;
+      if (srcPath.endsWith('.ts') || srcPath.endsWith('.mts')) return;
 
       // Вычисляем путь назначения в папке build
       const relativePath = path.relative(srcDir, srcPath);
@@ -218,7 +218,7 @@ function clearBuildDir() {
 
     async function onBuildChange(srcPath: string) {
       // Если tsc обновил index.js в билде и это не минифицированный файл
-      if (srcPath.endsWith('.js') && !srcPath.endsWith('.min.js')) {
+      if (/\.(m?js)$/.test(srcPath) && !/\.min\.(m?js)$/.test(srcPath)) {
         console.log(`[Watch] Updated js file: ${srcPath}. Reminifying...`);
         miniBuildJsSignle(srcPath);
       }
