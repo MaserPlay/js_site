@@ -1,0 +1,1394 @@
+/* R16 sky glass: one language for every control floating over the garden. Translucent glass with a hairline
+   edge, a light that follows the mouse (--pointer-x/y from bindPointerLight or attachActionFeedback), a lift on
+   hover, a press, and spring-like state changes. Idle motion is limited to the entry button in the overview. */
+:root {
+  --glass-top: rgba(70, 58, 102, 0.62);
+  --glass-bottom: rgba(31, 25, 50, 0.74);
+  --glass-solid-top: rgba(56, 45, 82, 0.93);
+  --glass-solid-bottom: rgba(27, 21, 43, 0.95);
+  --glass-edge: rgba(238, 228, 255, 0.19);
+  --glass-edge-lit: rgba(228, 212, 255, 0.6);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  --glass-shadow: 0 10px 28px rgba(10, 5, 30, 0.3);
+  --glass-blur: blur(18px) saturate(165%);
+  --glass-ink: #f6f0ff;
+  --glass-glow: rgba(176, 138, 255, 0.34);
+  --thumb-fill: linear-gradient(180deg, rgba(204, 180, 255, 0.46), rgba(128, 94, 222, 0.38));
+  --orb-fill: radial-gradient(circle at 34% 28%, #a88cff, #6440d0 58%, #3c2393);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --glide: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Floating chips: header, "Whole garden", announcements, footer. */
+#garden-app
+  :is(
+    .header-actions #settings,
+    .header-actions .picker-trigger,
+    .top-context > button,
+    .garden-utilities > button,
+    .garden-footer a,
+    .movement-help summary
+  ) {
+  position: relative;
+  background: linear-gradient(180deg, var(--glass-top), var(--glass-bottom)) !important;
+  border: 1px solid var(--glass-edge) !important;
+  border-radius: 999px;
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--glass-ink);
+  transition:
+    translate 0.4s var(--spring),
+    scale 0.18s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app .header-actions .picker-trigger {
+  border-radius: 16px;
+}
+/* The light itself: a soft spot under the mouse, faded in on hover. */
+#garden-app
+  :is(
+    .header-actions #settings,
+    .top-context > button,
+    .garden-utilities > button,
+    .garden-footer a,
+    .movement-help summary,
+    .journey-bar > button,
+    .sort-direction,
+    #sort-key.sort-dial > button
+  )::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    90px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgba(255, 255, 255, 0.24),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s var(--glide);
+}
+#garden-app :is(.header-actions #settings[aria-expanded='true'], .movement-help[open] summary) {
+  background: linear-gradient(180deg, #faf6ff, #dccbfb) !important;
+  border-color: #fff !important;
+  color: #24173a;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 8px 26px rgba(150, 110, 240, 0.4);
+}
+#garden-app .movement-help > div {
+  border-radius: 22px;
+  background: linear-gradient(180deg, var(--glass-solid-top), var(--glass-solid-bottom));
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    var(--glass-highlight),
+    0 22px 50px rgba(8, 4, 24, 0.45);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* The dock: one glass bar; its buttons are clear pills that light up under the mouse. Any button another
+   feature adds to the bar (music, observatory) gets the same shape, light, lift and press. */
+#garden-app .journey-bar {
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(66, 54, 96, 0.58), rgba(28, 22, 46, 0.72));
+  border: 1px solid rgba(240, 230, 255, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18),
+    0 18px 44px rgba(10, 5, 30, 0.4);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+}
+#garden-app .journey-bar > button,
+#garden-app .dock-button {
+  position: relative;
+  border-radius: 999px;
+  transition:
+    translate 0.4s var(--spring),
+    scale 0.18s var(--glide),
+    background-color 0.25s,
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide),
+    color 0.25s,
+    opacity 0.25s;
+}
+/* :where keeps this fill below the hover and lit states while still beating the older class rules. */
+#garden-app .journey-bar > :where(#arrange, #portal, .portal-button, .music-button) {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(240, 230, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+#garden-app .journey-bar > :is(#previous, #next, #arrange, #portal) {
+  color: var(--glass-ink);
+}
+#garden-app .journey-bar > .portal-button {
+  min-height: 44px;
+  padding: 0 14px 0 9px;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+#garden-app .journey-bar > #arrange {
+  min-height: 44px;
+  padding: 0 14px 0 11px;
+  font-size: 13px;
+  font-weight: 600;
+}
+#garden-app .journey-bar > .music-button {
+  width: 44px;
+  height: 44px;
+}
+/* A hairline separates the project strip from the actions. */
+#garden-app .journey-bar > #arrange {
+  margin-left: 7px;
+}
+#garden-app .journey-bar > #arrange::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 9px;
+  bottom: 9px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.16);
+}
+#garden-app .journey-bar > :is(#previous, #next) svg {
+  stroke-width: 2;
+  transition: translate 0.4s var(--spring);
+}
+#garden-app .journey-bar > button:disabled {
+  opacity: 0.38;
+}
+#garden-app .journey-bar > button:focus-visible,
+#garden-app .dock-button:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: 2px;
+}
+/* Open panel, open portal chooser, or a toggle that is on: a lit pill. */
+#garden-app .journey-bar > :is(button[aria-expanded='true'], button[aria-pressed='true']),
+#garden-app:has(.portal-dialog[open]) .journey-bar > #portal {
+  background-color: rgba(198, 168, 255, 0.2);
+  border-color: rgba(228, 212, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 18px var(--glass-glow);
+}
+#garden-app .journey-bar > .arrange-button.is-filtered {
+  border-color: rgba(214, 190, 255, 0.55);
+}
+
+/* Order icon: three bars re-sort themselves on hover; the arrow nods. */
+#garden-app .arrange-icon .arrange-bar,
+#garden-app .arrange-icon .arrange-arrow {
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+/* Portal icon: the real portal in miniature, a swirling disc in two beaded arcs. */
+#garden-app .journey-bar .portal-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+}
+#garden-app .journey-bar .portal-icon::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(170, 130, 255, 0.55), transparent 68%);
+  opacity: 0.5;
+  transition:
+    opacity 0.3s,
+    scale 0.45s var(--spring);
+}
+#garden-app .journey-bar .portal-icon svg.portal-swirl {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  overflow: visible;
+}
+#garden-app .portal-swirl .swirl-disc {
+  fill: url(#portal-swirl-fill);
+  stroke: rgba(240, 230, 255, 0.5);
+  stroke-width: 0.8;
+}
+#garden-app .portal-swirl .swirl-arms {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+#garden-app .portal-swirl .swirl-ring {
+  fill: none;
+  stroke: #cdb6ff;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+#garden-app .portal-swirl .swirl-ring circle {
+  fill: #9fd0ff;
+  stroke: none;
+}
+#garden-app .portal-swirl :is(.swirl-arms, .swirl-ring) {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  transition: rotate 0.7s var(--spring);
+}
+#garden-app:has(.portal-dialog[open]) .portal-swirl .swirl-arms {
+  animation: swirl-spin 7s linear infinite;
+}
+#garden-app:has(.portal-dialog[open]) .journey-bar .portal-icon::before {
+  opacity: 0.95;
+}
+@keyframes swirl-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes bar-shuffle-long {
+  45% {
+    scale: 0.35 1;
+  }
+}
+@keyframes bar-shuffle-mid {
+  45% {
+    scale: 1.4 1;
+  }
+}
+@keyframes bar-shuffle-short {
+  45% {
+    scale: 2.4 1;
+  }
+}
+@keyframes arrow-nod {
+  45% {
+    translate: 0 2px;
+  }
+}
+
+/* Previous / next show where they lead: the project name floats above the arrow. */
+#garden-app .journey-bar > #previous > #previous-name,
+#garden-app .journey-bar > #next > #next-name {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #garden-app
+    :is(
+      .header-actions #settings,
+      .header-actions .picker-trigger,
+      .top-context > button,
+      .garden-utilities > button,
+      .garden-footer a,
+      .movement-help summary
+    ):hover {
+    translate: 0 -2px;
+    border-color: var(--glass-edge-lit) !important;
+    box-shadow:
+      var(--glass-highlight),
+      0 12px 30px rgba(10, 5, 30, 0.36),
+      0 0 22px var(--glass-glow);
+  }
+  #garden-app .garden-footer a:hover,
+  #garden-app .movement-help summary:hover {
+    background: linear-gradient(180deg, rgba(84, 68, 120, 0.7), rgba(38, 30, 60, 0.78)) !important;
+  }
+  #garden-app
+    :is(
+      .header-actions #settings,
+      .top-context > button,
+      .garden-utilities > button,
+      .garden-footer a,
+      .movement-help summary,
+      .journey-bar > button:not(:disabled),
+      .sort-direction,
+      #sort-key.sort-dial > button
+    ):hover::after {
+    opacity: 1;
+  }
+  #garden-app .journey-bar > button:not(:disabled):hover {
+    translate: 0 -2px;
+    background-color: rgba(255, 255, 255, 0.09);
+    border-color: rgba(228, 212, 255, 0.45);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 8px 20px rgba(110, 70, 220, 0.28);
+  }
+  #garden-app .journey-bar > #previous:not(:disabled):hover svg {
+    translate: -2px 0;
+  }
+  #garden-app .journey-bar > #next:not(:disabled):hover svg {
+    translate: 2px 0;
+  }
+  #garden-app .journey-bar > #arrange:hover .arrange-bar:nth-child(1) {
+    animation: bar-shuffle-long 0.7s var(--glide);
+  }
+  #garden-app .journey-bar > #arrange:hover .arrange-bar:nth-child(2) {
+    animation: bar-shuffle-mid 0.7s var(--glide) 0.04s;
+  }
+  #garden-app .journey-bar > #arrange:hover .arrange-bar:nth-child(3) {
+    animation: bar-shuffle-short 0.7s var(--glide) 0.08s;
+  }
+  #garden-app .journey-bar > #arrange:hover .arrange-arrow {
+    animation: arrow-nod 0.7s var(--spring);
+  }
+  #garden-app .journey-bar > #portal:not(:disabled):hover .swirl-arms {
+    animation: swirl-spin 1.8s linear infinite;
+  }
+  #garden-app .journey-bar > #portal:not(:disabled):hover .swirl-ring {
+    rotate: -35deg;
+  }
+  #garden-app .journey-bar > #portal:not(:disabled):hover .portal-icon::before {
+    opacity: 1;
+    scale: 1.25;
+  }
+  #garden-app .journey-bar > #previous > #previous-name,
+  #garden-app .journey-bar > #next > #next-name {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 14px);
+    max-width: 240px;
+    padding: 7px 12px;
+    border-radius: 12px;
+    background: rgba(34, 27, 54, 0.94);
+    border: 1px solid var(--glass-edge);
+    box-shadow: 0 10px 26px rgba(8, 4, 24, 0.45);
+    color: #fbf7ff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+    opacity: 0;
+    translate: -50% 6px;
+    scale: 0.96;
+    transition:
+      opacity 0.2s var(--glide),
+      translate 0.35s var(--spring),
+      scale 0.35s var(--spring);
+  }
+  #garden-app .journey-bar > #previous:not(:disabled):is(:hover, :focus-visible) > #previous-name,
+  #garden-app .journey-bar > #next:not(:disabled):is(:hover, :focus-visible) > #next-name {
+    opacity: 1;
+    translate: -50% 0;
+    scale: 1;
+    transition-delay: 0.12s;
+  }
+  #garden-app .journey-bar > :is(#previous, #next) > span:empty {
+    display: none;
+  }
+}
+#garden-app
+  :is(
+    .header-actions #settings,
+    .top-context > button,
+    .garden-utilities > button,
+    .garden-footer a,
+    .movement-help summary,
+    .journey-bar > button,
+    .sort-direction
+  ):not(:disabled):active {
+  scale: 0.95;
+  translate: 0 0;
+  transition-duration: 0.08s;
+}
+
+/* Entry: a luminous pill that breathes, with a sheen passing over it and a dive into the garden on press. */
+#garden-app #start {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  width: auto;
+  min-width: 270px;
+  min-height: 66px;
+  padding: 8px 9px 8px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      170px circle at var(--pointer-x, 22%) var(--pointer-y, -10%),
+      rgba(255, 255, 255, 0.85),
+      transparent 70%
+    ),
+    linear-gradient(135deg, #fefcff 0%, #ede3ff 48%, #cfbaff 100%);
+  color: #22163a;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -3px 8px rgba(118, 84, 196, 0.2),
+    0 12px 32px rgba(36, 16, 86, 0.38),
+    0 2px 6px rgba(36, 16, 86, 0.2);
+  filter: none;
+  transition:
+    translate 0.45s var(--spring),
+    scale 0.25s var(--glide),
+    box-shadow 0.35s var(--glide);
+}
+#garden-app #start .entry-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: #22163a;
+}
+#garden-app #start .entry-copy small {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #5d4880;
+}
+#garden-app #start .entry-orb {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--orb-fill);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 4px 14px rgba(76, 44, 170, 0.45);
+  transition:
+    scale 0.45s var(--spring),
+    box-shadow 0.35s var(--glide);
+}
+#garden-app #start .entry-orb svg {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#garden-app #start .entry-halo {
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(222, 202, 255, 0.55),
+    0 0 30px 5px rgba(186, 146, 255, 0.6);
+  opacity: 0.45;
+  animation: entry-breathe 3.6s ease-in-out infinite alternate;
+}
+#garden-app #start .entry-sheen {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+}
+#garden-app #start .entry-sheen::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  bottom: -30%;
+  left: 0;
+  width: 34%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.85), transparent);
+  transform: translateX(-170%) skewX(-18deg);
+  animation: entry-sheen 6s var(--glide) 1.8s infinite;
+}
+#garden-app #start:focus-visible {
+  outline: 3px solid #f4ecff;
+  outline-offset: 5px;
+}
+#garden-app #start:focus-visible .entry-halo {
+  opacity: 1;
+}
+#garden-app #start:not(:disabled):active {
+  scale: 0.97;
+  translate: 0 0;
+  transition-duration: 0.1s;
+}
+#garden-app #start:disabled .entry-halo,
+#garden-app #start:disabled .entry-sheen {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app #start:not(:disabled):hover {
+    translate: 0 -3px;
+    scale: 1.015;
+    box-shadow:
+      inset 0 1px 0 #fff,
+      inset 0 -3px 8px rgba(118, 84, 196, 0.2),
+      0 18px 40px rgba(36, 16, 86, 0.45),
+      0 0 34px rgba(186, 146, 255, 0.55);
+  }
+  #garden-app #start:not(:disabled):hover .entry-orb {
+    scale: 1.08;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 6px 20px rgba(110, 70, 230, 0.6);
+  }
+  #garden-app #start:not(:disabled):hover .entry-orb svg {
+    animation: entry-arrow 0.65s var(--glide);
+  }
+}
+/* The press: the pill swells, the orb flares and the halo ripples outward while the intro steps away. */
+#garden-app #start.is-diving {
+  scale: 1.05;
+  transition: scale 0.5s var(--glide);
+}
+#garden-app #start.is-diving .entry-orb {
+  scale: 1.3;
+  box-shadow: 0 0 46px rgba(170, 130, 255, 0.95);
+}
+#garden-app #start.is-diving .entry-halo {
+  animation: entry-dive 0.8s var(--glide) forwards;
+}
+@keyframes entry-breathe {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 0.85;
+  }
+}
+@keyframes entry-sheen {
+  0% {
+    transform: translateX(-170%) skewX(-18deg);
+  }
+  28%,
+  100% {
+    transform: translateX(420%) skewX(-18deg);
+  }
+}
+@keyframes entry-arrow {
+  45% {
+    translate: 150% 0;
+    opacity: 0;
+  }
+  46% {
+    translate: -150% 0;
+    opacity: 0;
+  }
+}
+@keyframes entry-dive {
+  from {
+    opacity: 1;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 2.6 3.4;
+  }
+}
+/* The intro dissolves forward (as if the camera passes through it) and returns softly. */
+#garden-app .hero {
+  transition:
+    opacity 0.5s var(--glide),
+    scale 0.6s var(--glide),
+    transform 0.6s var(--glide),
+    display 0.6s allow-discrete;
+}
+/* Over the bright day scene the white headline lost its edge and spread over a third of the garden: a
+   narrower column with a soft dusk veil behind the copy (not a box) keeps it legible and frees the islands. */
+@media (min-width: 741px) {
+  #garden-app .hero {
+    --hero-column: 400px;
+    max-width: var(--hero-column);
+  }
+  #garden-app .hero h1 {
+    max-width: var(--hero-column);
+    font-size: clamp(38px, 3.7vw, 56px);
+    text-shadow:
+      0 1px 2px rgba(22, 14, 44, 0.35),
+      0 6px 30px rgba(22, 14, 44, 0.42);
+  }
+  #garden-app .hero-description {
+    text-shadow: 0 1px 10px rgba(22, 14, 44, 0.55);
+  }
+  #garden-app .hero > .eyebrow {
+    text-shadow: 0 1px 8px rgba(22, 14, 44, 0.6);
+  }
+  #garden-app .hero::before {
+    display: block;
+    content: '';
+    position: absolute;
+    inset: -64px -90px -56px -120px;
+    z-index: -1;
+    border: 0;
+    box-shadow: none;
+    background: radial-gradient(
+      ellipse 62% 58% at 38% 46%,
+      rgba(24, 16, 48, 0.5),
+      rgba(24, 16, 48, 0.26) 52%,
+      transparent 78%
+    );
+    pointer-events: none;
+  }
+  /* While exploring only the entry button stays, which needs no veil. */
+  #garden-app.is-exploring .hero::before {
+    display: none;
+  }
+}
+#garden-app .hero[hidden] {
+  opacity: 0;
+  scale: 1.04;
+  pointer-events: none;
+}
+#garden-app .hero[hidden] > * {
+  pointer-events: none;
+}
+@starting-style {
+  #garden-app .hero:not([hidden]) {
+    opacity: 0;
+    scale: 0.98;
+  }
+}
+#garden-app .hero-hint button {
+  text-decoration-color: rgba(240, 230, 250, 0.45);
+  transition: text-decoration-color 0.25s;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app .hero-hint button:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+/* Island order: a dial of three tiles (sprout = created, cycle = updated, Aa = name) under a sliding glass
+   thumb, and a direction chip whose arrow flips. One tap per mode; aria-pressed announces the current one. */
+#garden-app #sort-key.sort-dial {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+  min-height: 0;
+  padding: 5px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(12, 8, 24, 0.55), rgba(20, 15, 34, 0.7));
+  border: 1px solid rgba(238, 228, 255, 0.12);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.06);
+}
+#garden-app #sort-key.sort-dial::before {
+  left: 5px;
+  top: 5px;
+  bottom: 5px;
+  width: calc((100% - 18px) / 3);
+  translate: calc(var(--season-preview-index, var(--segment-index, 0)) * (100% + 4px)) 0;
+  border-radius: 17px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.28), transparent 60%), var(--thumb-fill);
+  border: 1px solid rgba(234, 218, 255, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 6px 18px rgba(110, 70, 230, 0.35),
+    0 0 22px rgba(170, 130, 255, 0.25);
+  transition: translate 0.5s var(--spring);
+}
+#garden-app #sort-key.sort-dial > button {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 6px;
+  min-height: 70px;
+  padding: 9px 4px 8px;
+  border: 0;
+  border-radius: 17px;
+  background: transparent !important;
+  color: rgba(240, 230, 255, 0.72) !important;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  transition:
+    color 0.3s,
+    scale 0.2s var(--glide);
+}
+#garden-app #sort-key.sort-dial > button[aria-pressed='true'] {
+  color: #fff !important;
+}
+#garden-app #sort-key.sort-dial > button:active {
+  scale: 0.95;
+}
+#garden-app #sort-key.sort-dial > button:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: -2px;
+}
+#garden-app #sort-key .sort-glyph {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+  transition: scale 0.45s var(--spring);
+}
+#garden-app #sort-key > button[aria-pressed='true'] .sort-glyph {
+  scale: 1.1;
+  filter: drop-shadow(0 0 6px rgba(214, 186, 255, 0.85));
+}
+#garden-app #sort-key .glyph-leaf {
+  transform-box: fill-box;
+  transform-origin: 100% 100%;
+}
+#garden-app #sort-key .glyph-leaf-late {
+  transform-origin: 0% 100%;
+}
+#garden-app #sort-key > button[aria-pressed='true'] .glyph-leaf {
+  animation: glyph-sprout 0.7s var(--spring) backwards;
+}
+#garden-app #sort-key > button[aria-pressed='true'] .glyph-leaf-late {
+  animation-delay: 0.1s;
+}
+#garden-app #sort-key > button[aria-pressed='true'] .glyph-updated {
+  animation: glyph-cycle 0.8s var(--glide);
+}
+#garden-app #sort-key > button[aria-pressed='true'] .glyph-small {
+  animation: glyph-hop 0.6s var(--spring) 0.05s;
+}
+@keyframes glyph-sprout {
+  from {
+    scale: 0.2;
+    opacity: 0;
+  }
+}
+@keyframes glyph-cycle {
+  from {
+    rotate: -180deg;
+  }
+}
+@keyframes glyph-hop {
+  40% {
+    translate: 0 -3px;
+  }
+}
+#garden-app .sort-direction {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 54px;
+  margin: 10px 0 6px;
+  padding: 6px 16px 6px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-edge);
+  background: linear-gradient(180deg, rgba(74, 60, 106, 0.55), rgba(36, 28, 58, 0.65));
+  box-shadow: var(--glass-highlight);
+  color: var(--glass-ink);
+  font-size: 13px;
+  font-weight: 600;
+  transition:
+    scale 0.18s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app .sort-direction .sort-direction-orb {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--orb-fill);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 12px rgba(90, 60, 190, 0.45);
+}
+#garden-app .sort-direction .sort-direction-orb svg {
+  width: 20px;
+  height: 20px;
+  stroke: #fff;
+  stroke-width: 2.1;
+  transition: rotate 0.6s var(--spring);
+}
+#garden-app .sort-direction[data-descend='false'] .sort-direction-orb svg {
+  rotate: 180deg;
+}
+#garden-app .sort-direction .sort-direction-swap {
+  width: 18px;
+  height: 18px;
+  margin-left: auto;
+  opacity: 0.55;
+  transition: opacity 0.25s;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app #sort-key.sort-dial > button:not([aria-pressed='true']):hover {
+    color: #fff !important;
+  }
+  #garden-app #sort-key.sort-dial > button:not([aria-pressed='true']):hover .sort-glyph {
+    scale: 1.08;
+  }
+  #garden-app .sort-direction:hover {
+    border-color: var(--glass-edge-lit);
+    box-shadow:
+      var(--glass-highlight),
+      0 0 20px var(--glass-glow);
+  }
+  #garden-app .sort-direction:hover .sort-direction-swap {
+    opacity: 1;
+  }
+}
+
+/* Switches: label left, a springy knob on the right. */
+#garden-app .preferences label {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+#garden-app .preferences input[type='checkbox'] {
+  width: 46px;
+  height: 28px;
+  border-radius: 999px;
+  background: rgba(10, 6, 22, 0.6);
+  border: 1px solid rgba(238, 228, 255, 0.22);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+#garden-app .preferences input[type='checkbox']::before {
+  width: 22px;
+  height: 22px;
+  top: 2px;
+  left: 2px;
+  background: linear-gradient(180deg, #fff, #e4d9f4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transform: none;
+  transition: translate 0.45s var(--spring);
+}
+#garden-app .preferences input[type='checkbox']:checked {
+  background: linear-gradient(135deg, #bea2ff, #8a64e6);
+  border-color: rgba(242, 232, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 16px rgba(160, 120, 255, 0.45);
+}
+#garden-app .preferences input[type='checkbox']:checked::before {
+  transform: none;
+  translate: 18px 0;
+}
+/* Season, time and light switches share the dial's dark track and glass thumb (geometry stays as it was). */
+#garden-app .preferences .segmented-choice:not(.sort-dial) {
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(12, 8, 24, 0.55), rgba(20, 15, 34, 0.7));
+  border: 1px solid rgba(238, 228, 255, 0.12);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.35),
+    0 1px 0 rgba(255, 255, 255, 0.06);
+}
+#garden-app .preferences .segmented-choice:not(.sort-dial) button {
+  border-radius: 13px;
+  background: transparent !important;
+  color: rgba(240, 230, 255, 0.78) !important;
+}
+#garden-app .preferences .segmented-choice:not(.sort-dial) button[aria-pressed='true'],
+#garden-app .preferences :is(.season-switch, .time-switch, #light-style)::before {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255, 255, 255, 0.28), transparent 60%), var(--thumb-fill) !important;
+  border: 1px solid rgba(234, 218, 255, 0.62);
+  border-radius: 13px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 4px 14px rgba(110, 70, 230, 0.3);
+}
+#garden-app .preferences .segmented-choice:not(.sort-dial) button[aria-pressed='true'] {
+  color: #fff !important;
+}
+#garden-app .preferences .segmented-choice.is-dragging:not(.sort-dial) button.drag-choice {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 0 0 2px rgba(234, 218, 255, 0.7);
+}
+
+/* Panels: glass sheets that settle in and fade out instead of vanishing. */
+#garden-app :is(#preferences, #arrange-panel) {
+  border-radius: 26px;
+  background: linear-gradient(180deg, var(--glass-solid-top), var(--glass-solid-bottom));
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    var(--glass-highlight),
+    0 24px 60px rgba(8, 4, 24, 0.5);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  transition:
+    opacity 0.26s var(--glide),
+    transform 0.32s var(--glide),
+    display 0.32s allow-discrete;
+}
+#garden-app :is(#preferences, #arrange-panel)[hidden] {
+  opacity: 0;
+  transform: translateY(10px) scale(0.97);
+  pointer-events: none;
+}
+#garden-app .preferences-heading .icon-button {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(238, 228, 255, 0.14);
+  transition:
+    background-color 0.25s,
+    scale 0.18s var(--glide);
+}
+#garden-app .preferences-heading .icon-button:active {
+  scale: 0.92;
+}
+#garden-app .portal-dialog {
+  transition:
+    opacity 0.24s var(--glide),
+    transform 0.3s var(--glide),
+    display 0.3s allow-discrete;
+}
+#garden-app .portal-dialog:not([open]) {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  pointer-events: none;
+}
+/* The loading veil fades away instead of cutting to the garden. */
+#garden-app .loader {
+  transition:
+    opacity 0.6s ease,
+    display 0.6s allow-discrete;
+}
+#garden-app .loader[hidden] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Arrival: chrome and the intro settle in once the garden is ready. */
+@keyframes ui-rise {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+}
+@keyframes ui-drop {
+  from {
+    opacity: 0;
+    translate: 0 -14px;
+  }
+}
+@keyframes ui-fade {
+  from {
+    opacity: 0;
+  }
+}
+#garden-app[data-ready='true'] .garden-header {
+  animation: ui-drop 0.7s var(--glide) 0.1s backwards;
+}
+#garden-app[data-ready='true'] .hero > * {
+  animation: ui-rise 0.8s var(--glide) backwards;
+}
+#garden-app[data-ready='true'] .hero > :nth-child(1) {
+  animation-delay: 0.15s;
+}
+#garden-app[data-ready='true'] .hero > :nth-child(2) {
+  animation-delay: 0.23s;
+}
+#garden-app[data-ready='true'] .hero > :nth-child(3) {
+  animation-delay: 0.31s;
+}
+#garden-app[data-ready='true'] .hero > :nth-child(4) {
+  animation-delay: 0.39s;
+}
+#garden-app[data-ready='true'] .hero > :nth-child(5) {
+  animation-delay: 0.47s;
+}
+#garden-app[data-ready='true'] .journey-bar {
+  animation: ui-rise 0.8s var(--glide) 0.4s backwards;
+}
+#garden-app[data-ready='true'] :is(.garden-footer, .top-context) {
+  animation: ui-fade 0.9s ease 0.55s backwards;
+}
+
+/* Phones: full-width entry pill inside the compact card; a tighter dock without the divider. */
+@media (max-width: 740px) {
+  #garden-app #start {
+    width: 100%;
+    min-width: 0;
+    min-height: 58px;
+    padding: 6px 6px 6px 22px;
+  }
+  #garden-app #start .entry-copy {
+    font-size: 16px;
+  }
+  #garden-app #start .entry-copy small {
+    font-size: 11px;
+  }
+  #garden-app #start .entry-orb {
+    width: 44px;
+    height: 44px;
+  }
+  #garden-app .journey-bar {
+    border-radius: 26px;
+  }
+  #garden-app .journey-bar > #arrange {
+    margin-left: 0;
+    min-height: 40px;
+    padding: 0 10px;
+  }
+  #garden-app .journey-bar > #arrange::before {
+    display: none;
+  }
+  /* Portal keeps its word on phones, stacked under the swirl like a tab-bar label, so the strip keeps room. */
+  #garden-app .journey-bar > .portal-button {
+    flex: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    min-width: 54px;
+    min-height: 44px;
+    padding: 2px 8px;
+    border-radius: 18px;
+    font-size: 10px;
+    line-height: 1.1;
+  }
+  #garden-app .journey-bar > .portal-button > span:last-child {
+    font-size: 10px;
+  }
+  #garden-app .journey-bar .portal-icon,
+  #garden-app .journey-bar .portal-icon svg.portal-swirl {
+    width: 22px;
+    height: 22px;
+  }
+  #garden-app .journey-bar > .music-button {
+    width: 40px;
+    height: 40px;
+  }
+  #garden-app #sort-key.sort-dial > button {
+    min-height: 66px;
+  }
+}
+/* Tablets: the ride and portal buttons stack their word under the icon as on phones, and no dock button shrinks;
+   the project strip (it scrolls) gives way instead. Round 21: at 760-900 px the buttons were squeezed to their
+   minimum width and «Полёт на шаре» ran over Observatory. */
+@media (min-width: 741px) and (max-width: 1000px) {
+  #garden-app .journey-bar > .portal-button {
+    flex: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    min-width: 62px;
+    min-height: 44px;
+    padding: 2px 10px;
+    border-radius: 18px;
+    font-size: 11px;
+    line-height: 1.1;
+  }
+  #garden-app .journey-bar > .portal-button > span:last-child {
+    font-size: 11px;
+  }
+  #garden-app .journey-bar .portal-icon,
+  #garden-app .journey-bar .portal-icon svg.portal-swirl {
+    width: 22px;
+    height: 22px;
+  }
+  #garden-app .journey-bar > :is(#arrange, .music-button) {
+    flex: none;
+  }
+}
+
+/* Economy: no blur behind the glass, no idle sheen or breathing. */
+#garden-app.is-economy
+  :is(
+    .journey-bar,
+    #preferences,
+    #arrange-panel,
+    .movement-help > div,
+    .header-actions #settings,
+    .header-actions .picker-trigger,
+    .top-context > button,
+    .garden-utilities > button,
+    .garden-footer a,
+    .movement-help summary
+  ) {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+#garden-app.is-economy #start .entry-halo,
+#garden-app.is-economy #start .entry-sheen::before {
+  animation: none;
+}
+
+/* Reduced motion (the app's setting or the system's): every state still changes, but at once, in place. */
+#garden-app.reduce-motion
+  :is(
+    #start,
+    #start *,
+    .hero,
+    .hero > *,
+    .garden-header,
+    .garden-footer,
+    .top-context,
+    .journey-bar,
+    .journey-bar > button,
+    .journey-bar > button *,
+    .header-actions #settings,
+    .header-actions .picker-trigger,
+    .top-context > button,
+    .garden-utilities > button,
+    .garden-footer a,
+    .movement-help summary,
+    #sort-key,
+    #sort-key *,
+    .sort-direction,
+    .sort-direction *,
+    .preferences input,
+    #preferences,
+    #arrange-panel,
+    .portal-dialog,
+    .loader
+  ),
+#garden-app.reduce-motion :is(#start .entry-sheen, #sort-key, .journey-bar .portal-icon)::before,
+#garden-app.reduce-motion :is(.journey-bar > button, .sort-direction, #sort-key > button)::after,
+#garden-app.reduce-motion .preferences input::before {
+  animation: none !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+#garden-app.reduce-motion
+  :is(#start, .journey-bar > button, .journey-bar > button svg, .top-context > button),
+#garden-app.reduce-motion :is(.garden-footer a, .movement-help summary, .header-actions #settings) {
+  translate: none !important;
+  scale: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #garden-app
+    :is(
+      #start,
+      #start *,
+      .hero,
+      .hero > *,
+      .garden-header,
+      .garden-footer,
+      .top-context,
+      .journey-bar,
+      .journey-bar > button,
+      .journey-bar > button *,
+      #sort-key,
+      #sort-key *,
+      .sort-direction *,
+      .preferences input,
+      #preferences,
+      #arrange-panel,
+      .portal-dialog,
+      .loader
+    ),
+  #garden-app :is(#start .entry-sheen, #sort-key, .journey-bar .portal-icon)::before,
+  #garden-app .preferences input::before {
+    animation: none !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* A narrow phone (the project icons step aside there, garden-controls.css): the ride names wrap in two short
+   lines, so Balloon flight, Observatory and Portal all fit the dock instead of the Portal being cut at the edge. */
+@media (max-width: 460px) {
+  #garden-app .journey-bar {
+    column-gap: 1px;
+  }
+  #garden-app .journey-bar > .portal-button {
+    padding-inline: 5px;
+  }
+  #garden-app .journey-bar > .portal-button > span:last-child {
+    max-width: 60px;
+    /* A single long word (Обсерватория) keeps its own width instead of running past the button. */
+    min-width: min-content;
+    white-space: normal;
+    text-align: center;
+  }
+}
+/* Small phones: at 360 px the dock was 28 px wider than the screen (the arrows and the Portal cut at the edges) and
+   at 320 px 68 px wider; the 350 px rules in garden.css lose to garden-controls.css (round 21). */
+@media (max-width: 380px) {
+  #garden-app .journey-bar > :is(#previous, #next) {
+    flex-basis: 30px;
+    width: 30px;
+    min-width: 30px;
+  }
+  #garden-app .journey-bar > :is(#arrange, .music-button) {
+    width: 34px;
+    min-width: 34px;
+    padding: 0;
+    justify-content: center;
+  }
+  #garden-app .journey-bar > .portal-button {
+    min-width: 46px;
+    padding-inline: 3px;
+  }
+  #garden-app .journey-bar > .portal-button > span:last-child {
+    font-size: 9.5px;
+  }
+}
+/* The smallest phones keep the rides' icons only; the word stays for screen readers. */
+@media (max-width: 340px) {
+  #garden-app .journey-bar > .portal-button {
+    min-width: 38px;
+  }
+  #garden-app .journey-bar > .portal-button > span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-width: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+/* Phones: the dock in two even rows. Owner, 2026-10-31: the rides had three widths, heights and wraps, and the two
+   arrows said nothing about switching projects. Row 1 chooses the project (the arrows around the loop's name and
+   number), the order and the sound; row 2 holds the rides and the portal as equal thirds, the word under the icon.
+   These rules come last so the 380 and 340 px squeezes above (9.5 px words, icon-only rides) no longer apply. */
+@media (max-width: 460px) {
+  #garden-app .journey-bar {
+    flex-wrap: wrap;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    gap: 6px;
+    padding: 6px;
+    border-radius: 24px;
+  }
+  #garden-app .journey-bar > :is(#previous, #next) {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+  #garden-app .journey-center,
+  #garden-app .journey-center:not(:has(.has-birthday)) {
+    display: flex;
+    flex: 1 0 96px;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    max-width: none;
+  }
+  #garden-app .route-dots:not(:has(.has-birthday)) {
+    display: none;
+  }
+  #garden-app .journey-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: var(--glass-ink, var(--ink));
+  }
+  #garden-app .journey-caption > span:last-child {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  #garden-app .journey-bar > :is(#arrange, .music-button) {
+    flex: 0 0 44px;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+  #garden-app .journey-bar > .portal-button {
+    flex: 1 1 28%;
+    min-width: 0;
+    min-height: 54px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 5px 6px;
+    border-radius: 18px;
+    font-size: 11px;
+    line-height: 1.15;
+  }
+  #garden-app .journey-bar > .portal-button > span:last-child {
+    position: static;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    clip-path: none;
+    font-size: 11px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  #garden-app .journey-bar .portal-icon,
+  #garden-app .journey-bar .portal-icon svg.portal-swirl,
+  #garden-app .journey-bar > .portal-button > .ride-glyph {
+    width: 22px;
+    height: 22px;
+  }
+  /* The two-row dock is 56 px taller; what stood on it moves up by as much (entry, project card, walk buttons,
+     order panel, portal chooser), so nothing slides under the dock. */
+  #garden-app.is-overview #hero {
+    bottom: 180px;
+  }
+  /* The tagline is text over the scene: a drag that starts on it turns the camera like anywhere else. */
+  #garden-app #hero h1 {
+    pointer-events: none;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card {
+    bottom: 182px;
+  }
+  #garden-app #walk-controls {
+    bottom: 186px;
+  }
+  #garden-app #arrange-panel {
+    bottom: 174px;
+  }
+  #garden-app #portal-dialog {
+    bottom: 245px;
+  }
+  /* Settings: the tabs say what each part holds, so the two-line cue gives its room to the Look controls. */
+  #garden-app #preferences .settings-cue {
+    display: none;
+  }
+  #garden-app #preferences #settings-look.settings-section > .setting-heading:first-child {
+    margin-top: 8px;
+  }
+}
+/* Phones: no frosted glass. Each blurred surface re-blurs the moving scene behind it every frame at the screen's
+   full density; measured on the Realme 11 Pro+ (Mali-G68, 2026-10-31) it halved the frame rate (about 15 → 30 fps
+   at full quality). The glass keeps its tint, made denser so the words stay readable over a bright sky. */
+@media (max-width: 740px) {
+  #garden-app {
+    --glass-top: rgba(70, 58, 102, 0.88);
+    --glass-bottom: rgba(31, 25, 50, 0.92);
+    /* Sheets (settings, order): without the blur a bright project card showed through the 5–7 % left clear. */
+    --glass-solid-top: rgb(56, 45, 82);
+    --glass-solid-bottom: rgb(27, 21, 43);
+  }
+  #garden-app *,
+  #garden-app *::before,
+  #garden-app *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  #garden-app .journey-bar {
+    background: linear-gradient(180deg, rgba(66, 54, 96, 0.9), rgba(28, 22, 46, 0.94));
+  }
+}
