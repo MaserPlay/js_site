@@ -1,0 +1,6 @@
+Waterfall Small with Water Stream — jusufa, Freesound sound 200276.
+Source: https://freesound.org/people/jusufa/sounds/200276/
+Downloaded preview: https://cdn.freesound.org/previews/200/200276_563844-hq.mp3
+License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+SHA-256: C6DD26F8D23DABE49673D4A87EAA71C19E77611CA6A9155FF0ED746ED6E2B5FA
+The file is unmodified; playback applies a one-second in-memory loop crossfade.

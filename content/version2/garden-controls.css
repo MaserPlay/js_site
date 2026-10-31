@@ -1,0 +1,3629 @@
+/* R11b — readable, stable controls shared by entry, pavilion and preferences. */
+:root {
+  --control-surface: #292337;
+  --control-raised: #3b314b;
+  --control-selected: #dbc8f1;
+  --control-ink: #281d36;
+  --control-edge: #e8d9fa30;
+  --control-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+#garden-app {
+  min-height: 100svh;
+}
+button,
+a,
+input,
+summary {
+  outline-offset: 3px;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #e9d5ff;
+}
+.garden-header {
+  padding: 20px 28px;
+}
+.header-actions {
+  gap: 8px;
+}
+.header-actions #settings {
+  width: auto;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  border-radius: 14px;
+  background: var(--control-surface);
+  border: 1px solid var(--control-edge);
+}
+.header-actions #settings svg {
+  width: 19px;
+  height: 19px;
+}
+.settings-label {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.picker-trigger {
+  min-height: 44px;
+  padding: 10px 14px;
+  background: var(--control-surface);
+  border: 1px solid var(--control-edge);
+  border-radius: 14px;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.language-picker .picker-trigger {
+  min-width: 64px;
+}
+.language-picker .picker-menu {
+  right: 0;
+  left: auto;
+  min-width: 210px;
+  max-width: calc(100vw - 24px);
+}
+.picker-menu {
+  padding: 6px;
+  background: #292337;
+  border: 1px solid #d9c7f14d;
+  border-radius: 17px;
+  box-shadow: 0 12px 32px #140f2940;
+  backdrop-filter: none;
+}
+.picker-menu button {
+  min-height: 44px;
+  padding: 11px 14px;
+  border-radius: 11px;
+  font-size: 13px;
+  white-space: normal;
+  line-height: 1.35;
+}
+.picker-menu button[aria-checked='true'] {
+  background: var(--control-selected);
+  color: var(--control-ink);
+}
+.preferences {
+  width: 390px;
+  max-width: calc(100vw - 32px);
+  padding: 22px;
+  right: 28px;
+  top: 78px;
+  border-radius: 22px;
+  background: var(--control-surface);
+  border: 1px solid var(--control-edge);
+  box-shadow: 0 14px 40px #15102745;
+  backdrop-filter: none;
+  max-height: calc(100svh - 96px);
+  overflow: auto;
+}
+.preferences-heading {
+  align-items: center;
+  margin-bottom: 8px;
+}
+.preferences-heading h2 {
+  font-size: 23px;
+  font-weight: 600;
+  margin: 0;
+}
+.preferences-heading .icon-button,
+.portal-title .icon-button {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  flex: none;
+}
+.settings-cue {
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #d5c7e2;
+}
+.setting-heading {
+  display: block;
+  margin: 16px 0 9px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.preferences .segmented-choice {
+  position: relative;
+  display: flex;
+  width: 100%;
+  gap: 3px;
+  min-height: 52px;
+  margin: 0;
+  padding: 4px;
+  background: #171321;
+  border: 1px solid #e4d2f526;
+  border-radius: 15px;
+  box-shadow: none;
+  backdrop-filter: none;
+  touch-action: pan-y;
+  user-select: none;
+  isolation: isolate;
+}
+.preferences .segmented-choice::before {
+  display: none !important;
+}
+.preferences .segmented-choice button {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: #171321 !important;
+  color: #f3eafa !important;
+  font-size: 12px;
+  font-weight: 550;
+  line-height: 1.3;
+  transition:
+    box-shadow 0.16s,
+    transform 0.16s;
+  touch-action: pan-y;
+}
+.preferences .segmented-choice button > span:first-child:not(.season-label) {
+  display: none;
+}
+.preferences .segmented-choice button[aria-pressed='true'] {
+  background: #665077 !important;
+  color: #fff !important;
+  border-color: #bea0d2;
+}
+.preferences .segmented-choice.is-dragging button.drag-choice {
+  background: #554365 !important;
+  color: #fff !important;
+  box-shadow: inset 0 0 0 2px #e6d3f5;
+}
+.preferences .segmented-choice button:active {
+  transform: scale(0.97);
+}
+.preferences .segmented-choice .season-label {
+  color: inherit !important;
+  display: block;
+}
+.season-calendar,
+.time-calendar {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 9px 0 17px;
+  min-height: 0;
+  color: #cebfdb;
+}
+.preferences .lighting-control {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.preferences .lighting-control > span {
+  font-size: 14px;
+  padding: 0;
+  display: block;
+  margin: 16px 0 9px;
+}
+.time-picker {
+  display: none;
+}
+.time-switch button {
+  gap: 4px;
+}
+.quality-state {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  margin: 20px 0 4px;
+  padding-top: 16px;
+  color: #d4c5e1;
+  border-top: 1px solid var(--control-edge);
+}
+.preferences label {
+  min-height: 48px !important;
+  padding: 10px 0 !important;
+  font-size: 14px !important;
+  gap: 12px !important;
+  justify-content: space-between;
+}
+.preferences label > span {
+  line-height: 1.4;
+}
+.preferences input {
+  flex: none;
+}
+.economy-hint {
+  padding: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #cbbbd9;
+}
+.preferences > a {
+  min-height: 44px;
+  padding-top: 14px;
+  font-size: 13px;
+}
+
+/* A whole, readable announcement card opens the exact existing record. */
+.overview-announcement {
+  position: absolute;
+  z-index: 5;
+  top: 22px;
+  left: 50%;
+  translate: -50% 0;
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  min-height: 116px;
+  padding: 16px 18px;
+  background: #292337f5;
+  border: 1px solid #ecd8fa45;
+  border-radius: 20px;
+  text-align: left;
+  box-shadow: 0 8px 24px #170e2926;
+  color: #f5edf9;
+  transition:
+    background 0.18s,
+    box-shadow 0.18s;
+}
+/* Wide windows: in the header row, a fixed gap left of the language, view and settings controls (it stood centred,
+   leaving a wide, width-dependent hole beside them; round 4). garden.mjs keeps --header-actions-width current. */
+@media (min-width: 1101px) {
+  .overview-announcement {
+    left: auto;
+    right: calc(28px + var(--header-actions-width, 270px) + 16px);
+    translate: 0;
+  }
+}
+.overview-announcement > img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.announcement-copy {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.announcement-kicker {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d1bddf;
+}
+.announcement-copy strong {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.announcement-excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #e0d4e9;
+}
+.announcement-read {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ebd5ff;
+}
+.announcement-total {
+  font-size: 10px;
+  color: #cfbade;
+  background: #50415f;
+  border-radius: 6px;
+  padding: 1px 5px;
+}
+#garden-app:not(.is-overview) .overview-announcement,
+.is-scenic .overview-announcement,
+.is-portal .overview-announcement,
+#garden-app:has(#preferences:not([hidden])) .overview-announcement,
+/* A holiday greeting takes the top of the screen for its few seconds; the card sat right on it (round 5). */
+#garden-app:has(#celebration:not([hidden])) .overview-announcement {
+  display: none;
+}
+.is-overview:not(.is-scenic) #banners-entry,
+.is-portal #banners-entry {
+  display: none;
+}
+.announcements-entry {
+  min-height: 44px;
+  border: 1px solid var(--control-edge);
+  border-radius: 14px;
+  background: var(--control-surface);
+  padding: 8px 12px;
+  gap: 8px;
+  font-size: 13px;
+  top: 82px;
+  right: 28px;
+  left: auto;
+}
+.announcements-entry > svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.announcements-count {
+  min-width: 21px;
+  border-radius: 7px;
+  background: #584266;
+  color: #fff;
+  font-size: 11px;
+}
+.banners-dialog {
+  width: min(700px, calc(100vw - 28px));
+  max-height: calc(100svh - 40px);
+  padding: 24px;
+  background: var(--control-surface);
+  color: #f5edf9;
+  backdrop-filter: none;
+  border-radius: 24px;
+  border: 1px solid var(--control-edge);
+}
+.banners-dialog::backdrop {
+  background: #120c24a6;
+  backdrop-filter: blur(4px);
+}
+.banners-dialog .portal-title {
+  gap: 12px;
+  position: sticky;
+  top: -24px;
+  background: var(--control-surface);
+  z-index: 1;
+  padding: 0 0 12px;
+}
+.banners-dialog h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+  outline: none;
+}
+.banners-dialog #banners-back {
+  min-height: 44px;
+  padding: 8px 0;
+  font-size: 13px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.banners-dialog #banners-back svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+.banners-dialog .banner {
+  display: block;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--control-edge);
+}
+.banners-dialog .banner-summary {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: transparent;
+  color: #f5edf9;
+  text-align: left;
+}
+.banner-copy {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+}
+.banner-name {
+  font-size: 19px;
+  line-height: 1.3;
+}
+.banner-excerpt {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #dccfe5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.banner-read {
+  font-size: 13px;
+  color: #e2bfff;
+}
+.banners-dialog .banner img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+}
+.banners-dialog .banner-detail-image {
+  float: left;
+  margin: 4px 20px 10px 0;
+  width: 88px;
+  height: 88px;
+}
+.banners-dialog .banner-detail p {
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0;
+  color: #f0e6f6;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.banners-dialog .banner-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 12px 12px 0;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px solid #c7a4df;
+}
+
+/* Entry reads as a destination choice, with a shared portal identity. */
+.hero {
+  max-width: 475px;
+}
+.hero h1 {
+  max-width: 475px;
+  font-size: clamp(42px, 4.3vw, 62px);
+  line-height: 1.05;
+}
+.hero-description {
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 330px;
+  color: #f0e6f5;
+}
+.hero > .eyebrow {
+  font-size: 11px;
+  color: #ecdcfa;
+}
+#start {
+  min-height: 78px;
+  gap: 18px;
+  padding: 14px 24px 14px 18px;
+  border-radius: 20px;
+  justify-content: flex-start;
+  background: #ead9fc;
+  color: #2e203c;
+  box-shadow: 0 8px 28px #1f0b3c40;
+}
+#start .entry-icon {
+  width: 40px;
+  height: 44px;
+  fill: none;
+  stroke: #745092;
+  stroke-width: 1.7;
+  flex: none;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+#start .entry-copy {
+  display: grid;
+  gap: 5px;
+  text-align: left;
+  font-size: 18px;
+}
+#start .entry-copy small {
+  font-size: 12px;
+  font-weight: 450;
+  color: #5a436c;
+}
+.hero-hint {
+  font-size: 13px;
+  line-height: 1.5;
+  max-width: 330px;
+  color: #f0e6f5;
+  margin-top: 15px;
+}
+.hero-hint button {
+  min-height: 44px;
+  padding: 6px 0;
+  background: transparent;
+  color: #f0e6f5;
+  font-size: 12px;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Destination cards scroll without committing a trip. Only the main action travels. */
+.portal-dialog {
+  inset: 90px 28px auto auto;
+  width: 540px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100svh - 118px);
+  padding: 24px;
+  border-radius: 24px;
+  background: #292337fa;
+  border: 1px solid var(--control-edge);
+  box-shadow: 0 18px 50px #17102e60;
+  backdrop-filter: none;
+  overflow: auto;
+}
+.portal-dialog::backdrop {
+  background: #110c2028;
+}
+.portal-title {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.portal-title > .eyebrow {
+  flex: 1;
+  font-size: 11px;
+}
+.portal-title #portal-collapse {
+  min-height: 44px;
+  margin-left: auto;
+  padding: 8px;
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #d6c3e7;
+}
+.portal-dialog h2 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  margin: 10px 0 10px;
+  white-space: normal;
+  line-height: 1.12;
+}
+.portal-hint {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #d6c7e2;
+  margin: 0 0 20px;
+}
+.portal-scroll-hint {
+  display: block;
+  font-size: 12px;
+  color: #cab7dc;
+  margin: -8px 0 20px;
+}
+.portal-selection-hint,
+.portal-endpoint {
+  display: none;
+}
+#portal-body,
+.portal-body-scroll {
+  display: block;
+}
+.portal-body-scroll {
+  max-height: none;
+  overflow: visible;
+  scrollbar-gutter: auto;
+}
+
+/* One pavilion header and one section rail; content changes underneath. */
+.project-card,
+.project-card:has(#zone-description:not([hidden])),
+.project-card:has(#zone-comments:not([hidden])) {
+  width: 442px;
+  left: 28px;
+  bottom: 138px;
+  padding: 20px;
+  border-radius: 22px;
+  background: #292337fa;
+  border: 1px solid var(--control-edge);
+  backdrop-filter: none;
+  box-shadow: 0 10px 35px #17102935;
+  max-height: calc(100svh - 276px);
+  overflow: auto;
+}
+.project-heading {
+  min-height: 16px;
+  margin: 0 0 10px;
+  gap: 8px;
+}
+.project-heading .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.project-status {
+  font-size: 11px;
+  color: #d5c1e3;
+}
+.exhibit-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+.exhibit-heading > img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex: none;
+}
+.project-card h2,
+.project-card h2.long-name {
+  flex: 1;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-wrap: pretty;
+}
+.exhibit-heading #project-link {
+  min-height: 44px;
+  padding: 10px 18px;
+  flex: none;
+  border-radius: 13px;
+  font-size: 14px;
+}
+.project-card > p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 14px 0 0;
+  -webkit-line-clamp: 2;
+  color: #dccfe7;
+}
+.project-card .island-sections,
+#garden-app[data-area='gallery'] .project-card .island-sections {
+  position: static;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  flex-direction: row;
+  gap: 3px;
+  width: auto;
+  max-width: none;
+  margin: 17px -4px 0;
+  padding: 0 0 2px;
+  border: 0;
+  border-bottom: 1px solid var(--control-edge);
+  border-radius: 0;
+  background: transparent;
+  transform: none;
+  box-shadow: none;
+  overflow: visible;
+}
+.project-card .island-sections button,
+#garden-app[data-area='gallery'] .project-card .island-sections button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  min-height: 67px;
+  padding: 9px 2px 12px;
+  border: 0;
+  border-radius: 10px 10px 0 0;
+  background: transparent;
+  font-size: 12px;
+  line-height: 1.25;
+  white-space: normal;
+  color: #d8c9e5;
+  transition:
+    background 0.18s,
+    box-shadow 0.18s;
+  box-shadow: none;
+}
+.island-sections button svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.project-card .island-sections button[aria-pressed='true'],
+#garden-app[data-area='gallery'] .project-card .island-sections button[aria-pressed='true'] {
+  background: #b992db1a;
+  color: #fff;
+  box-shadow: inset 0 -3px #d4acef;
+}
+.project-card .island-sections button::after {
+  display: none;
+}
+.project-footer {
+  display: flex;
+  gap: 14px;
+  padding-top: 10px;
+  align-items: center;
+  border: 0;
+}
+.project-footer > span {
+  flex: 1;
+}
+.project-footer .date-row {
+  font-size: 11px;
+  line-height: 1.5;
+  display: block;
+  margin: 0 !important;
+}
+.project-footer b {
+  display: inline;
+  font-size: 11px;
+  line-height: 1.5;
+  margin: 0 0 0 3px;
+}
+.project-footer .repository {
+  margin: 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #ead8f6;
+}
+.repository svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+}
+/* The card's × returns from Description and Comments to the pavilion; the gallery has its own × on the viewer. */
+.exhibit-heading .detail-close {
+  margin-left: 4px;
+}
+.media-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  background: #1d1830e6;
+  color: #f1e8ff;
+}
+.media-close svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.zone-content {
+  margin: 12px 0 0;
+}
+.project-card .zone-content {
+  max-height: 36svh;
+  padding: 0;
+}
+.zone-content p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.zone-content #comments-link {
+  font-size: 14px;
+  min-height: 44px;
+  padding-top: 12px;
+}
+.zone-content #comments-list p {
+  font-size: 14px;
+}
+#garden-app[data-area='gallery'] .project-card {
+  display: block;
+  top: 138px;
+  bottom: auto;
+  left: 28px;
+  right: auto;
+  width: 442px;
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: #292337fa;
+  overflow: visible;
+}
+#garden-app[data-area='gallery'] .project-heading {
+  display: none;
+}
+#garden-app[data-area='gallery'] .exhibit-heading {
+  display: flex;
+  min-height: 44px;
+  width: 100%;
+  justify-content: flex-start;
+}
+#garden-app[data-area='gallery'] .project-card h2 {
+  font-size: 22px;
+}
+#garden-app[data-area='gallery'] #project-link {
+  display: none;
+}
+.media-viewer {
+  left: calc(50% + 170px);
+  max-width: calc(100vw - 520px);
+  /* The whole viewer is the picture's swipe surface: sideways moves come to the gallery gesture instead of
+     being taken (and cancelled) by the browser; vertical panning and the dots rail still scroll natively. */
+  touch-action: pan-y;
+}
+.gallery-image {
+  touch-action: pan-y;
+}
+.gallery-image img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.gallery-dots {
+  touch-action: pan-x pan-y;
+}
+.gallery-dots button {
+  min-height: 44px;
+  height: 44px;
+  width: 48px;
+  flex-basis: 48px;
+  border-radius: 8px;
+}
+.media-viewer #gallery-controls {
+  background: #292337f5;
+  backdrop-filter: none;
+  border: 1px solid var(--control-edge);
+  border-radius: 16px;
+  box-shadow: none;
+}
+.gallery-navigation > .icon-button {
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+}
+.journey-bar {
+  width: min(640px, calc(100vw - 48px));
+  gap: 5px;
+  padding: 7px;
+  border-radius: 20px;
+  background: #292337f5;
+  backdrop-filter: none;
+  border: 1px solid var(--control-edge);
+  bottom: 65px;
+}
+.journey-bar > #previous,
+.journey-bar > #next {
+  width: 44px;
+  min-width: 44px;
+  flex: 0 0 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+}
+.journey-bar .icon-button svg,
+.gallery-navigation > .icon-button svg,
+.video-bottom > .icon-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.journey-center {
+  flex: 1;
+  min-width: 0;
+}
+.route-dots {
+  overflow-x: auto;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 4px;
+  scroll-padding-inline: 4px;
+  gap: 3px;
+}
+/* overflow-x:auto also clips vertically. Keep the birthday badge and its halo
+   inside the scrollport, including its first and last items. */
+.route-dots:has(.has-birthday) {
+  padding: 18px 12px 10px;
+  gap: 10px;
+  scroll-padding-inline: 12px;
+}
+/* Leave a complete phone-sized icon and both glow gutters visible. */
+@media (max-width: 420px) {
+  #garden-app .journey-bar:has(.has-birthday) {
+    gap: 0;
+    padding-inline: 3px;
+    max-width: calc(100vw - 16px);
+  }
+  .journey-center:has(.has-birthday) {
+    min-width: 64px;
+  }
+}
+/* At the smallest widths keep navigation together on the first row instead of clipping it. */
+@media (max-width: 360px) {
+  #garden-app .journey-bar:has(.has-birthday) {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+  .journey-center:has(.has-birthday) {
+    flex: 1 0 calc(100% - 88px);
+  }
+}
+.route-dots button.has-birthday {
+  box-shadow:
+    0 0 0 2px #ffd36b,
+    0 0 6px #ffbf2e99;
+}
+.route-dots .birthday-mark {
+  box-shadow: 0 0 6px #ffbf2ecc;
+}
+.route-dots button {
+  flex: 0 0 44px;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+.route-dots button img {
+  width: 26px;
+  height: 26px;
+  transition:
+    transform 0.25s var(--ease),
+    filter 0.25s;
+}
+/* A project's icon rises under the pointer (owner, round 9: the lift had gone). The button and its selection
+   ring stay put: lifting the button itself pushed the ring out of the scroll strip, which clips vertically. */
+@media (hover: hover) {
+  .route-dots button:hover img {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 4px 3px #0f082b73);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-dots button:hover img {
+    transform: none;
+  }
+}
+.portal-button {
+  min-width: 94px;
+  min-height: 44px;
+  padding: 0 12px;
+  gap: 7px;
+  font-size: 13px;
+}
+.portal-button svg {
+  width: 23px;
+  height: 28px;
+}
+.portal-button > span:last-child {
+  display: inline !important;
+}
+.walk-controls {
+  bottom: 136px;
+  background: #292337ed;
+  backdrop-filter: none;
+  border: 1px solid var(--control-edge);
+}
+.walk-controls button {
+  min-width: 44px;
+  min-height: 44px;
+}
+.walk-controls span {
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+#garden-app:has(#project-card:not([hidden])) #walk-controls {
+  display: none;
+}
+.travel-status {
+  bottom: 144px;
+  font-size: 13px;
+  padding: 8px 14px;
+  max-width: calc(100vw - 24px);
+  background: #292337;
+}
+.travel-status button {
+  font-size: 13px;
+  min-height: 44px;
+  flex: none;
+}
+.travel-status #skip svg {
+  width: 18px;
+  height: 18px;
+}
+
+.garden-footer {
+  bottom: 7px;
+  left: 28px;
+  right: 28px;
+  align-items: center;
+  gap: 18px;
+  font-size: 13px;
+  line-height: 1.5;
+  z-index: 6;
+}
+.garden-footer > div {
+  gap: 12px;
+  align-items: center;
+}
+.garden-footer a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  background: #292337e8 !important;
+  border: 1px solid #ead6fc24 !important;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #ede0f7;
+  white-space: nowrap;
+}
+.garden-footer a svg,
+.movement-help summary svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.garden-footer .email-contact {
+  display: none;
+}
+.movement-help {
+  position: relative;
+  flex: none;
+}
+.movement-help summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: #292337e8;
+  color: #f0e4fa;
+  border: 1px solid #ead6fc24;
+  border-radius: 12px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 13px;
+}
+.movement-help summary::-webkit-details-marker {
+  display: none;
+}
+.movement-help > div {
+  position: absolute;
+  left: 0;
+  bottom: 54px;
+  width: 320px;
+  max-width: calc(100vw - 24px);
+  padding: 18px;
+  background: #292337;
+  border: 1px solid var(--control-edge);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px #11091e55;
+}
+.garden-footer #input-hint {
+  display: block;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #f1e6fa;
+  margin: 0 0 12px;
+}
+.movement-help .help-settings {
+  display: block;
+  font-size: 13px;
+  color: #d5c1e3;
+  line-height: 1.55;
+}
+.top-context {
+  top: 84px;
+  left: 28px;
+  right: auto;
+}
+.top-context > button {
+  min-height: 44px;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: #292337;
+}
+/* From a project or the observatory terrace the button leads to the whole garden; in the overview itself it only
+   puts the camera back, and says so. Owner, 2026-10-31: «Обзор сада» while already in the overview confused. */
+.top-context > #overview > .overview-reset,
+.is-overview:not(.is-scenic) .top-context > #overview > .overview-leave {
+  display: none;
+}
+.is-overview:not(.is-scenic) .top-context > #overview > .overview-reset {
+  display: block;
+}
+@media (hover: hover) and (pointer: fine) {
+  .preferences .segmented-choice button:hover {
+    box-shadow: inset 0 0 0 2px #b795cf;
+  }
+  .project-card .island-sections button:hover,
+  .picker-menu button:not([aria-checked='true']):hover,
+  .banner-summary:hover {
+    background: #d9b9f41c;
+  }
+  .overview-announcement:hover {
+    background: #3b2c48;
+    box-shadow: 0 8px 30px #170e2944;
+  }
+  .garden-footer a:hover,
+  .movement-help summary:hover {
+    background: #473454 !important;
+    color: #fff;
+  }
+}
+@media (max-width: 1100px) and (min-width: 741px) {
+  .overview-announcement {
+    top: 84px;
+    width: 400px;
+    left: auto;
+    right: 28px;
+    translate: 0;
+  }
+  .hero {
+    top: 26%;
+  }
+  .project-card,
+  #garden-app[data-area='gallery'] .project-card {
+    width: 380px;
+  }
+  .media-viewer {
+    left: calc(50% + 180px);
+    max-width: calc(100vw - 450px);
+  }
+  .garden-footer a {
+    font-size: 12px;
+    gap: 6px;
+    padding: 7px;
+  }
+  .garden-footer > div {
+    gap: 6px;
+  }
+}
+@media (max-width: 740px) {
+  .garden-header {
+    padding: 14px 16px;
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand > span {
+    font-size: 11px;
+  }
+  .brand small {
+    font-size: 8px;
+  }
+  .header-actions {
+    gap: 6px;
+  }
+  .header-actions #settings {
+    padding: 0 10px;
+    gap: 6px;
+  }
+  .settings-label {
+    font-size: 12px;
+  }
+  .language-picker .picker-trigger {
+    min-width: 56px;
+    min-height: 44px;
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+  .language-picker .picker-menu {
+    right: 0;
+  }
+  .overview-announcement {
+    top: 78px;
+    width: calc(100vw - 32px);
+    padding: 13px 14px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 11px;
+    min-height: 118px;
+    border-radius: 17px;
+  }
+  .overview-announcement > img {
+    width: 34px;
+    height: 34px;
+  }
+  .announcement-copy {
+    gap: 5px;
+  }
+  .announcement-copy strong {
+    font-size: 17px;
+  }
+  .announcement-excerpt {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  .announcement-kicker {
+    font-size: 9px;
+  }
+  .announcement-read {
+    font-size: 12px;
+  }
+  .is-overview:not(.is-scenic) .hero {
+    top: 234px;
+    left: 24px;
+    right: 24px;
+    max-width: none;
+  }
+  .hero h1 {
+    font-size: 43px;
+    max-width: 350px;
+    margin: 13px 0 16px;
+  }
+  .hero-description {
+    font-size: 14px;
+    max-width: 295px;
+    margin-bottom: 21px;
+  }
+  .hero > .eyebrow {
+    font-size: 9px;
+    margin-bottom: 13px;
+  }
+  .hero-hint {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  #start {
+    min-height: 74px;
+    padding: 12px 18px;
+    gap: 14px;
+  }
+  #start .entry-copy {
+    font-size: 17px;
+  }
+  #start .entry-copy small {
+    font-size: 12px;
+  }
+  #start .entry-icon {
+    width: 31px;
+    height: 39px;
+  }
+  .announcements-entry,
+  .is-journey .announcements-entry {
+    left: auto;
+    right: 16px;
+    top: 76px;
+    min-height: 44px;
+    padding: 8px 11px;
+    gap: 7px;
+    font-size: 12px;
+  }
+  .announcements-entry .announcements-text {
+    display: inline;
+  }
+  .top-context {
+    top: 76px;
+    left: 16px;
+    right: auto;
+  }
+  .top-context > button {
+    min-height: 44px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  .preferences {
+    top: 74px;
+    right: 12px;
+    width: calc(100vw - 24px);
+    max-width: none;
+    padding: 18px;
+    max-height: calc(100svh - 88px);
+  }
+  .preferences .segmented-choice button {
+    font-size: 11px;
+  }
+  .preferences-heading h2 {
+    font-size: 22px;
+  }
+  .settings-cue {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .preferences label {
+    font-size: 13px !important;
+  }
+  .preferences label > span {
+    max-width: 240px;
+  }
+  .portal-dialog {
+    top: 76px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100svh - 94px);
+    padding: 18px;
+    border-radius: 22px;
+  }
+  .portal-dialog h2 {
+    font-size: 27px;
+    margin: 7px 0 10px;
+  }
+  .portal-hint {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .portal-scroll-hint {
+    font-size: 11px;
+    margin-bottom: 16px;
+  }
+  .portal-title #portal-collapse {
+    font-size: 11px;
+    padding: 6px;
+  }
+  .project-card,
+  .project-card:has(#zone-description:not([hidden])),
+  .project-card:has(#zone-comments:not([hidden])) {
+    left: 12px;
+    right: 12px;
+    bottom: 126px;
+    width: auto;
+    padding: 14px 16px;
+    max-height: calc(100svh - 258px);
+    border-radius: 20px;
+  }
+  .project-heading {
+    margin-bottom: 8px;
+  }
+  .project-card .project-heading .eyebrow {
+    font-size: 9px;
+  }
+  .project-card h2,
+  .project-card h2.long-name {
+    font-size: 20px;
+  }
+  .exhibit-heading {
+    gap: 9px;
+    margin: 0;
+  }
+  .exhibit-heading > img {
+    width: 30px;
+    height: 30px;
+  }
+  .exhibit-heading #project-link {
+    font-size: 12px;
+    padding: 9px 13px;
+    min-height: 44px;
+  }
+  .project-card > p {
+    display: none;
+  }
+  .project-card .island-sections,
+  #garden-app[data-area='gallery'] .project-card .island-sections {
+    margin-top: 12px;
+    gap: 2px;
+  }
+  .project-card .island-sections button,
+  #garden-app[data-area='gallery'] .project-card .island-sections button {
+    font-size: 11px;
+    min-height: 63px;
+    padding: 8px 1px 10px;
+    gap: 6px;
+    overflow-wrap: normal;
+  }
+  .island-sections button svg {
+    width: 20px;
+    height: 20px;
+  }
+  .project-footer {
+    padding-top: 8px;
+    gap: 10px;
+  }
+  .project-footer .date-row,
+  .project-footer b {
+    font-size: 10px;
+  }
+  .project-footer .repository {
+    font-size: 11px;
+    gap: 4px;
+  }
+  .project-card .zone-content {
+    max-height: calc(100svh - 485px);
+  }
+  .zone-content p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .zone-content #comments-list p {
+    font-size: 13px;
+  }
+  #garden-app[data-area='gallery'] .project-card {
+    top: 130px;
+    left: 12px;
+    right: 12px;
+    bottom: auto;
+    width: auto;
+    padding: 12px 16px;
+    max-height: none;
+  }
+  #garden-app[data-area='gallery'] .project-card h2 {
+    font-size: 18px;
+  }
+  .media-viewer {
+    top: 278px;
+    bottom: 126px;
+    left: 50%;
+    width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px);
+    min-height: 0;
+    max-height: none;
+    justify-content: center;
+    transform: translateX(-50%);
+    padding: 8px;
+    --media-room: calc(100svh - 495px);
+  }
+  .media-viewer .gallery-image {
+    max-height: var(--media-room);
+  }
+  .media-viewer .gallery-image img {
+    max-height: var(--media-room);
+  }
+  .media-viewer #gallery-controls {
+    padding: 5px;
+  }
+  .gallery-navigation {
+    gap: 3px;
+  }
+  .gallery-dots button {
+    flex-basis: 44px;
+    width: 44px;
+  }
+  .journey-bar {
+    width: calc(100vw - 24px);
+    max-width: none;
+    gap: 2px;
+    padding: 5px;
+    bottom: 63px;
+  }
+  .journey-bar > #previous,
+  .journey-bar > #next {
+    flex-basis: 40px;
+    min-width: 40px;
+    width: 40px;
+  }
+  .route-dots button {
+    flex-basis: 40px;
+    min-width: 40px;
+    height: 44px;
+  }
+  .route-dots button img {
+    width: 25px;
+    height: 25px;
+  }
+  .journey-bar .portal-button {
+    min-width: 78px;
+    padding: 0 8px;
+    gap: 5px;
+  }
+  .portal-button > span:last-child {
+    font-size: 12px;
+  }
+  .walk-controls {
+    bottom: 130px;
+  }
+  .walk-controls span {
+    font-size: 12px;
+  }
+  .travel-status {
+    bottom: 131px;
+    font-size: 12px;
+    gap: 8px;
+  }
+  .travel-status button {
+    font-size: 12px;
+  }
+  .garden-footer {
+    left: 12px;
+    right: 12px;
+    bottom: 7px;
+    gap: 5px;
+    display: flex;
+    align-items: stretch;
+  }
+  .garden-footer > div {
+    display: flex;
+    flex: 1;
+    gap: 4px;
+    min-width: 0;
+  }
+  .garden-footer a {
+    flex: 1;
+    min-width: 0;
+    min-height: 46px;
+    padding: 4px 3px;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 10px;
+    gap: 3px;
+    white-space: nowrap;
+    line-height: 1.1;
+    border-radius: 10px;
+  }
+  .garden-footer a svg {
+    width: 17px;
+    height: 17px;
+  }
+  .garden-footer .email-contact {
+    display: none;
+  }
+  .movement-help {
+    flex: 0 0 62px;
+  }
+  .movement-help summary {
+    min-height: 46px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 4px 3px;
+    font-size: 10px;
+    line-height: 1.1;
+    border-radius: 10px;
+  }
+  .movement-help summary svg {
+    width: 17px;
+    height: 17px;
+  }
+  .movement-help > div {
+    bottom: 57px;
+    width: 300px;
+    padding: 17px;
+  }
+  .garden-footer #input-hint {
+    display: block;
+    font-size: 14px;
+  }
+  .banners-dialog {
+    padding: 18px;
+  }
+  .banners-dialog .portal-title {
+    top: -18px;
+    flex-wrap: wrap;
+  }
+  .banners-dialog h2 {
+    font-size: 22px;
+  }
+  .banners-dialog #banners-back {
+    font-size: 12px;
+  }
+  .banners-dialog .banner-summary {
+    padding: 8px 0;
+    gap: 12px;
+  }
+  .banners-dialog .banner img {
+    width: 46px;
+    height: 46px;
+  }
+  .banner-name {
+    font-size: 17px;
+  }
+  .banner-excerpt {
+    font-size: 14px;
+  }
+  .banners-dialog .banner-detail p {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .banners-dialog .banner-detail-image {
+    width: 70px;
+    height: 70px;
+    margin-right: 14px;
+  }
+}
+@media (max-width: 350px) {
+  .garden-header {
+    padding: 12px;
+  }
+  .brand > span {
+    font-size: 10px;
+    max-width: 97px;
+  }
+  .brand small {
+    font-size: 7px;
+  }
+  .brand > b {
+    font-size: 27px;
+  }
+  .header-actions {
+    gap: 4px;
+  }
+  .header-actions #settings {
+    padding: 0 7px;
+    gap: 4px;
+  }
+  .settings-label {
+    font-size: 11px;
+  }
+  .header-actions #settings svg {
+    width: 16px;
+  }
+  .language-picker .picker-trigger {
+    min-width: 50px;
+    padding: 9px;
+    font-size: 11px;
+  }
+  .overview-announcement {
+    top: 76px;
+    width: calc(100vw - 24px);
+    max-width: none;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 9px;
+    padding: 12px;
+  }
+  .overview-announcement > img {
+    width: 28px;
+    height: 28px;
+  }
+  .is-overview:not(.is-scenic) .hero {
+    top: 226px;
+    left: 20px;
+    right: 20px;
+  }
+  .hero h1 {
+    font-size: 36px;
+  }
+  .hero-description {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+  .hero > .eyebrow {
+    font-size: 8px;
+  }
+  #start {
+    min-height: 66px;
+  }
+  #start .entry-copy {
+    font-size: 16px;
+  }
+  #start .entry-copy small {
+    font-size: 11px;
+  }
+  .hero-hint button {
+    font-size: 11px;
+  }
+  .preferences {
+    padding: 15px;
+  }
+  .preferences .segmented-choice {
+    gap: 1px;
+  }
+  .preferences .segmented-choice button {
+    font-size: 10px;
+  }
+  .project-card,
+  .project-card:has(#zone-description:not([hidden])),
+  .project-card:has(#zone-comments:not([hidden])) {
+    padding: 12px;
+  }
+  .project-card h2,
+  .project-card h2.long-name {
+    font-size: 18px;
+  }
+  .project-card .island-sections button,
+  #garden-app[data-area='gallery'] .project-card .island-sections button {
+    font-size: 10px;
+  }
+  .exhibit-heading > img {
+    width: 26px;
+    height: 26px;
+  }
+  .exhibit-heading #project-link {
+    padding: 9px 11px;
+  }
+  .project-footer .date-row,
+  .project-footer b {
+    font-size: 9px;
+  }
+  .project-footer .repository {
+    font-size: 10px;
+  }
+  .announcements-entry .announcements-text {
+    font-size: 11px;
+  }
+  .top-context {
+    left: 12px;
+  }
+  .announcements-entry,
+  .is-journey .announcements-entry {
+    right: 12px;
+  }
+  .top-context > button {
+    font-size: 11px;
+  }
+  .portal-dialog {
+    padding: 16px;
+  }
+  .portal-dialog h2 {
+    font-size: 25px;
+  }
+  .portal-title #portal-collapse {
+    font-size: 10px;
+  }
+  .journey-bar .portal-button {
+    min-width: 75px;
+    padding: 0 6px;
+  }
+  .movement-help {
+    flex-basis: 57px;
+  }
+}
+@media (max-height: 690px) {
+  .portal-dialog {
+    top: 18px;
+    max-height: calc(100svh - 36px);
+  }
+  .preferences {
+    top: 18px;
+    max-height: calc(100svh - 36px);
+  }
+  .is-overview:not(.is-scenic) .hero {
+    top: 218px;
+  }
+  .hero h1 {
+    font-size: 34px;
+    margin: 10px 0;
+  }
+  .hero-description {
+    display: none;
+  }
+  .hero-hint {
+    margin-top: 2px;
+  }
+  .hero-hint button {
+    font-size: 11px;
+  }
+  .project-card,
+  .project-card:has(#zone-description:not([hidden])),
+  .project-card:has(#zone-comments:not([hidden])) {
+    max-height: calc(100svh - 251px);
+  }
+  .project-card .zone-content {
+    max-height: none;
+  }
+  .media-viewer {
+    top: 272px;
+    --media-room: calc(100svh - 476px);
+  }
+}
+@media (max-height: 500px) and (min-width: 741px) {
+  .overview-announcement {
+    top: 85px;
+    width: 390px;
+    right: 28px;
+    left: auto;
+    translate: 0;
+  }
+  .is-overview:not(.is-scenic) .hero {
+    top: 104px;
+    left: 28px;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+  .hero-description,
+  .hero > .eyebrow {
+    display: none;
+  }
+  .project-card {
+    top: 132px;
+    bottom: 130px;
+    max-height: none;
+    padding: 12px 18px;
+  }
+  .project-card > p {
+    display: none;
+  }
+}
+.reduce-motion .island-sections button,
+.reduce-motion .segmented-choice button,
+.reduce-motion .overview-announcement {
+  transition: none !important;
+}
+.reduce-motion .portal-dialog[open],
+.reduce-motion .banners-dialog[open],
+.reduce-motion .preferences {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .segmented-choice button,
+  .overview-announcement {
+    transition: none !important;
+  }
+}
+#video-close,
+#image-close {
+  position: relative;
+  font-size: 0;
+}
+#video-close::before,
+#video-close::after,
+#image-close::before,
+#image-close::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 13px;
+  height: 1.5px;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#video-close::after,
+#image-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.preferences {
+  z-index: 9;
+}
+.banners-dialog .portal-title {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  align-items: center;
+}
+.banners-dialog #banners-back {
+  grid-column: 1;
+  grid-row: 1;
+}
+.banners-dialog #banners-close {
+  grid-column: 2;
+  grid-row: 1;
+}
+.banners-dialog h2 {
+  grid-column: 1/-1;
+  grid-row: 2;
+  margin-top: 6px;
+}
+.banners-dialog:has(#banners-back[hidden]) h2 {
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 0;
+}
+.scenic-cue.is-edge,
+.scenic-cue.is-edge:active {
+  bottom: 136px;
+}
+/* Fit the seven project icons; retain both navigation arrows at every width. */
+.journey-bar {
+  width: max-content;
+  max-width: calc(100vw - 48px);
+}
+.journey-center {
+  flex: 0 1 auto;
+}
+@media (max-width: 740px) {
+  .journey-bar {
+    width: max-content;
+    max-width: calc(100vw - 24px);
+  }
+}
+@media (min-width: 600px) and (max-width: 740px) and (max-height: 600px) {
+  .overview-announcement {
+    left: auto;
+    right: 16px;
+    translate: 0;
+    width: 290px;
+    top: 82px;
+  }
+  .is-overview:not(.is-scenic) .hero {
+    left: 24px;
+    right: auto;
+    top: 95px;
+    width: 280px;
+  }
+  .hero h1 {
+    font-size: 33px;
+  }
+  .hero > .eyebrow {
+    font-size: 8px;
+  }
+  .hero-hint button {
+    font-size: 10px;
+    min-height: 32px;
+  }
+  #start {
+    min-height: 62px;
+    padding: 10px 16px;
+  }
+  #garden-app[data-area='gallery'] .project-card {
+    left: 12px;
+    right: auto;
+    top: 132px;
+    width: 286px;
+    padding: 12px;
+  }
+  .media-viewer {
+    top: 132px;
+    bottom: 126px;
+    left: calc(50% + 151px);
+    width: calc(100vw - 326px);
+    max-width: calc(100vw - 326px);
+    --media-room: calc(100svh - 350px);
+  }
+}
+@media (min-width: 600px) and (max-width: 740px) and (max-height: 600px) {
+  .overview-announcement {
+    width: calc(50% - 28px);
+  }
+  .is-overview:not(.is-scenic) .hero {
+    width: calc(50% - 40px);
+  }
+}
+
+/* R11c: keep long identities intact and give one movement state one control surface. */
+.exhibit-heading:has(.long-name) {
+  flex-wrap: wrap;
+  row-gap: 8px;
+}
+.exhibit-heading:has(.long-name) #project-link {
+  margin-left: auto;
+}
+.project-card h2.long-name {
+  flex-shrink: 0;
+  flex-basis: auto;
+  font-size: 18px;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: nowrap;
+}
+.travel-status {
+  width: max-content;
+  max-width: min(560px, calc(100vw - 24px));
+  white-space: normal;
+  gap: 12px;
+  align-items: center;
+}
+#travel-message {
+  min-width: 0;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+#skip {
+  white-space: nowrap;
+}
+@media (max-width: 740px) {
+  .exhibit-heading:has(.long-name) {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .exhibit-heading h2.long-name {
+    flex-basis: calc(100% - 42px);
+    font-size: 18px;
+  }
+  .exhibit-heading:has(.long-name) #project-link {
+    margin-left: auto;
+  }
+  .travel-status {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 14px;
+    gap: 4px 12px;
+  }
+  #travel-message {
+    flex-basis: 100%;
+  }
+}
+@media (max-width: 350px) {
+  .exhibit-heading h2.long-name {
+    font-size: 16px;
+  }
+}
+
+/* R11d: one readable collection; no nested detail/list disclosure. */
+.banners-dialog .banner-complete {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 20px;
+  padding: 22px 0;
+}
+.banners-dialog .banner-complete:last-child {
+  border-bottom: 0;
+  padding-bottom: 6px;
+}
+.banners-dialog .banner-complete:not(:has(> img)) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.banners-dialog .banner-body {
+  min-width: 0;
+}
+.banners-dialog .banner-body h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  line-height: 1.3;
+}
+.banners-dialog .banner-body p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.7;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  color: #f0e6f6;
+}
+.banners-dialog .banner-complete .banner-link {
+  margin: 12px 0 0;
+}
+.banners-dialog {
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+.banners-dialog .portal-title {
+  padding-top: 8px;
+}
+@media (max-width: 740px) {
+  .banners-dialog .banner-complete {
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 14px;
+    padding: 20px 0;
+  }
+  .banners-dialog .banner-body h3 {
+    font-size: 18px;
+  }
+  .banners-dialog .banner-body p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .banners-dialog .banner-complete:not(:has(> img)) .banner-body {
+    padding-left: 60px;
+  }
+}
+@media (max-width: 350px) {
+  .banners-dialog .banner-complete {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .banners-dialog .banner-complete > img {
+    display: none;
+  }
+  .banners-dialog .banner-complete:not(:has(> img)) .banner-body {
+    padding-left: 0;
+  }
+}
+
+/* R12 buttons: open-gate entry and compact destination tabs. Selection mechanics stay shared. */
+#start {
+  min-height: 62px;
+  gap: 12px;
+  padding: 10px 20px 10px 14px;
+  border: 1px solid #f8efff99;
+  border-radius: 20px 9px 20px 9px;
+  background: linear-gradient(125deg, #f2e6ff, #d8c3ed);
+  box-shadow:
+    0 4px 0 #9176aa,
+    0 8px 22px #1f0b3c30;
+  transition:
+    box-shadow 0.18s,
+    filter 0.18s,
+    translate 0.18s;
+}
+#start .entry-icon {
+  width: 30px;
+  height: 32px;
+  stroke: #684a82;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+#start .entry-copy {
+  gap: 3px;
+  font-size: 17px;
+}
+#start .entry-copy small {
+  font-size: 11px;
+  color: #584065;
+}
+#start .gate-leaf {
+  transform-origin: 12px 16px;
+  transition: transform 0.22s var(--control-ease);
+}
+#start .gate-path {
+  transition: transform 0.22s var(--control-ease);
+}
+#start:active {
+  translate: 0 3px;
+  box-shadow:
+    0 1px 0 #9176aa,
+    0 3px 10px #1f0b3c30;
+}
+#start:focus-visible .gate-leaf {
+  transform: translateX(-2px);
+}
+#start:focus-visible .gate-path {
+  transform: translateY(-2px);
+}
+@media (hover: hover) {
+  #start:hover {
+    filter: brightness(1.035);
+    translate: 0 -1px;
+    box-shadow:
+      0 5px 0 #9176aa,
+      0 10px 24px #1f0b3c40;
+  }
+  #start:hover .gate-leaf {
+    transform: translateX(-2px);
+  }
+  #start:hover .gate-path {
+    transform: translateY(-2px);
+  }
+}
+@media (max-width: 740px) {
+  #start {
+    min-height: 60px;
+    padding: 10px 17px 10px 13px;
+  }
+  #start .entry-copy {
+    font-size: 16px;
+  }
+}
+.reduce-motion #start,
+.reduce-motion #start .gate-leaf,
+.reduce-motion #start .gate-path {
+  transition: none !important;
+  transform: none !important;
+  translate: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #start,
+  #start .gate-leaf,
+  #start .gate-path {
+    transition: none !important;
+    transform: none !important;
+    translate: none !important;
+  }
+}
+/* Keep long portal preview identities intact at the narrowest supported width. */
+@media (max-width: 350px) {
+  #portal-preview-name.long-name {
+    font-size: 16px;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: nowrap;
+  }
+}
+/* Keep narrow intro copy readable across bright snow and moving scenery. */
+@media (max-width: 740px) {
+  #hero {
+    isolation: isolate;
+  }
+  #hero::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: -14px -12px -8px;
+    z-index: -1;
+    border-radius: 18px;
+    background: linear-gradient(90deg, #20192feb, #20192fe0 78%, #20192fc2);
+    pointer-events: none;
+  }
+  #hero .hero-description,
+  #hero .hero-hint button {
+    color: #f1e9f8;
+  }
+}
+
+/* Keep the existing mobile card below the exhibit, with independently scrolling copy. */
+@media (max-width: 740px) and (orientation: portrait) {
+  .project-card,
+  .project-card:has(#zone-description:not([hidden])),
+  .project-card:has(#zone-comments:not([hidden])) {
+    padding: 10px 12px;
+    max-height: 44svh;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+  .project-card .project-heading {
+    min-height: 44px;
+    margin: 0 88px 4px 0;
+    gap: 7px;
+    flex: none;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+  }
+  .project-card .exhibit-heading {
+    min-height: 30px;
+    flex: none;
+    gap: 8px;
+  }
+  .project-card .exhibit-heading #project-link {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    margin: 0;
+    min-height: 44px;
+  }
+  .project-card .exhibit-heading h2.long-name {
+    flex: 1;
+    font-size: 18px;
+  }
+  .project-card .island-sections,
+  #garden-app[data-area='gallery'] .project-card .island-sections {
+    flex: none;
+    margin: 6px -4px 0;
+  }
+  .project-card .island-sections button,
+  #garden-app[data-area='gallery'] .project-card .island-sections button {
+    min-height: 48px;
+    padding: 5px 1px;
+    gap: 3px;
+    font-size: 11px;
+  }
+  .project-card .island-sections svg {
+    width: 16px;
+    height: 16px;
+  }
+  .project-card .project-footer {
+    flex: none;
+    padding-top: 6px;
+  }
+  .project-card .zone-content {
+    min-height: 0;
+    max-height: none;
+    margin-top: 8px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    touch-action: pan-y;
+  }
+  .project-card .zone-content p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  #garden-app[data-area='gallery'] .project-card {
+    top: 130px;
+    padding: 10px 12px;
+    max-height: none;
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+  #garden-app[data-area='gallery'] .project-card .zone-content {
+    display: none;
+  }
+  #garden-app[data-area='gallery'] .project-card .exhibit-heading {
+    min-height: 30px;
+  }
+  #garden-app[data-area='gallery'] .project-card h2 {
+    font-size: 18px;
+  }
+  .inline-video-sources button,
+  .inline-video-sources a {
+    min-height: 44px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .media-viewer {
+    top: 246px;
+    --media-room: calc(100svh - 463px);
+  }
+}
+@media (max-width: 350px) and (orientation: portrait) {
+  .project-card .exhibit-heading h2.long-name,
+  #garden-app[data-area='gallery'] .project-card h2.long-name {
+    font-size: 16px;
+  }
+  .project-card .island-sections button,
+  #garden-app[data-area='gallery'] .project-card .island-sections button {
+    font-size: 10px;
+  }
+}
+
+.zone-content:focus-visible {
+  outline: 2px solid #e9d5ff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* A full touch target for the compact fullscreen Close glyph, clear of media. */
+.image-dialog #image-close {
+  position: absolute;
+  top: 1px;
+  right: 5px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+.image-dialog #image-close:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Restore held season feedback and the selection slide at the existing contrast. */
+.preferences .season-switch {
+  --season-gap: 3px;
+}
+.preferences .season-switch::before {
+  display: block !important;
+  left: calc(
+    5px + var(--season-preview-index, var(--season-index, 0)) * ((100% - 10px + var(--season-gap)) / 5)
+  );
+  top: 5px;
+  bottom: 5px;
+  width: calc((100% - 10px - 4 * var(--season-gap)) / 5);
+  transform: none;
+  background: #665077;
+  border: 1px solid #bea0d2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: none;
+  transition: left 0.28s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+.preferences .season-switch button,
+.preferences .season-switch button[aria-pressed='true'],
+.preferences .season-switch.is-dragging button.drag-choice {
+  background: transparent !important;
+  border-color: transparent;
+  box-shadow: none;
+}
+.preferences .season-switch.is-dragging::before {
+  transition: none;
+}
+.reduce-motion .preferences .season-switch::before {
+  transition: none !important;
+}
+@media (max-width: 740px) {
+  .preferences .season-switch {
+    --season-gap: 1px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preferences .season-switch::before {
+    transition: none !important;
+  }
+}
+/* The complete destination set fits the existing panel, with a travelling selection. */
+.portal-dialog {
+  padding: 18px;
+  width: 540px;
+  bottom: auto;
+}
+.portal-dialog h2 {
+  font-size: 26px;
+  margin: 4px 0 8px;
+}
+.portal-hint {
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.portal-scroll-hint {
+  display: none;
+}
+@media (max-width: 740px) {
+  .portal-dialog {
+    inset: 76px 12px auto;
+    width: auto;
+    padding: 14px;
+    max-height: calc(100svh - 94px);
+  }
+  .portal-dialog h2 {
+    font-size: 24px;
+  }
+  .portal-hint {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
+@media (max-height: 690px) {
+  .portal-dialog {
+    top: 14px;
+    max-height: calc(100svh - 28px);
+  }
+}
+/* Time and palette share the seasonal held preview, while retaining their own selection. */
+.preferences .time-switch {
+  --segment-count: 4;
+}
+.preferences #light-style {
+  --segment-count: 2;
+}
+.preferences .time-switch::before,
+.preferences #light-style::before {
+  content: '';
+  display: block !important;
+  position: absolute;
+  z-index: -1;
+  left: calc(
+    5px + var(--season-preview-index, var(--segment-index, 0)) * ((100% - 10px + 3px) / var(--segment-count))
+  );
+  top: 5px;
+  bottom: 5px;
+  width: calc((100% - 10px - (var(--segment-count) - 1) * 3px) / var(--segment-count));
+  background: #665077;
+  border: 1px solid #bea0d2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transform: none;
+  box-shadow: none;
+  transition: left 0.28s var(--control-ease);
+}
+.preferences .time-switch button,
+.preferences .time-switch button[aria-pressed='true'],
+.preferences #light-style button,
+.preferences #light-style button[aria-pressed='true'],
+.preferences .time-switch.is-dragging button.drag-choice,
+.preferences #light-style.is-dragging button.drag-choice {
+  background: transparent !important;
+  border-color: transparent;
+  box-shadow: none;
+}
+.preferences .time-switch.is-dragging::before,
+.preferences #light-style.is-dragging::before {
+  transition: none;
+}
+.reduce-motion .preferences .segmented-choice::before {
+  transition: none !important;
+  scale: 1 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .preferences .segmented-choice::before {
+    transition: none !important;
+    scale: 1 !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .preferences .time-switch::before,
+  .preferences #light-style::before {
+    left: calc(
+      5px + var(--season-preview-index, var(--segment-index, 0)) *
+        ((100% - 10px + 1px) / var(--segment-count))
+    );
+    width: calc((100% - 10px - (var(--segment-count) - 1) * 1px) / var(--segment-count));
+  }
+}
+
+/* The portal is a modeless chooser; global chrome remains reachable. */
+.portal-dialog[open] {
+  z-index: 5;
+}
+#portal-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.top-context,
+.journey-bar,
+.walk-controls {
+  z-index: 7;
+}
+.walk-controls {
+  width: max-content;
+}
+.walk-controls #look-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  min-width: 44px;
+  flex: none;
+  padding: 0 10px;
+}
+.walk-controls #look-reset span {
+  padding: 0;
+}
+#look-reset[hidden] {
+  display: none;
+}
+#look-reset span:last-child {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.is-portal .walk-controls:not([hidden]) {
+  display: flex;
+}
+.is-portal #input-hint {
+  display: block;
+}
+@media (max-height: 690px) {
+  .portal-dialog {
+    top: 90px;
+    max-height: calc(100svh - 220px);
+  }
+  .preferences {
+    top: 76px;
+    max-height: calc(100svh - 90px);
+  }
+}
+@media (max-width: 740px) {
+  .portal-dialog {
+    top: 138px;
+    max-height: calc(100svh - 270px);
+  }
+  .walk-controls {
+    max-width: calc(100vw - 24px);
+    gap: 4px;
+  }
+  .walk-controls #walk-label {
+    font-size: 10px;
+  }
+  #look-reset {
+    padding: 0 6px;
+  }
+}
+/* Site versions: the former footer list chip, now a secondary Settings entry. */
+.site-versions {
+  margin: 20px 0 0;
+  padding-top: 4px;
+  border-top: 1px solid var(--control-edge);
+}
+.preferences .site-version-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  margin: 0;
+  padding: 10px 14px;
+  border: 1px solid #ead6fc24;
+  border-radius: 12px;
+  background-color: #292337e8;
+  color: #ede0f7;
+  font-size: 14px;
+  line-height: 1.35;
+  text-decoration: none;
+  scroll-margin: 12px 0;
+}
+.site-version-link svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Projects in the garden: order, direction, filters, their live status and garden states. */
+.preferences #sort-key {
+  --segment-count: 3;
+}
+.preferences #sort-key::before {
+  content: '';
+  display: block !important;
+  position: absolute;
+  z-index: -1;
+  left: calc(
+    5px + var(--season-preview-index, var(--segment-index, 0)) * ((100% - 10px + 3px) / var(--segment-count))
+  );
+  top: 5px;
+  bottom: 5px;
+  width: calc((100% - 10px - (var(--segment-count) - 1) * 3px) / var(--segment-count));
+  background: #665077;
+  border: 1px solid #bea0d2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transform: none;
+  box-shadow: none;
+  transition: left 0.28s var(--control-ease);
+}
+.preferences #sort-key button,
+.preferences #sort-key button[aria-pressed='true'],
+.preferences #sort-key.is-dragging button.drag-choice {
+  background: transparent !important;
+  border-color: transparent;
+  box-shadow: none;
+}
+.preferences #sort-key.is-dragging::before,
+.reduce-motion .preferences #sort-key::before {
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .preferences #sort-key::before {
+    transition: none !important;
+  }
+}
+@media (max-width: 350px) {
+  .preferences #sort-key::before {
+    left: calc(
+      5px + var(--season-preview-index, var(--segment-index, 0)) *
+        ((100% - 10px + 1px) / var(--segment-count))
+    );
+    width: calc((100% - 10px - (var(--segment-count) - 1) * 1px) / var(--segment-count));
+  }
+}
+.sort-direction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  margin: 8px 0 4px;
+  padding: 8px 12px;
+  border: 1px solid #ead6fc24;
+  border-radius: 12px;
+  background: #292337e8;
+  color: #ede0f7;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+}
+.sort-direction svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.filter-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 44px;
+  margin: 2px 0 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #cebfdb;
+}
+.filter-status .text-button {
+  font-size: 12px;
+  min-height: 44px;
+  padding: 0 2px;
+  white-space: nowrap;
+}
+.project-filters[aria-busy='true'] #filter-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #c9b3ff;
+  animation: filter-pulse 1s ease-in-out infinite;
+}
+@keyframes filter-pulse {
+  50% {
+    opacity: 0.25;
+  }
+}
+.reduce-motion .project-filters[aria-busy='true'] #filter-status::before {
+  animation: none;
+}
+.relayout-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 1;
+}
+/* The old frame is wiped away by a ripple of light from the focus outward (set from garden.mjs). */
+.relayout-overlay.is-wiping {
+  -webkit-mask-image: radial-gradient(
+    circle at var(--wipe-x, 50%) var(--wipe-y, 50%),
+    transparent calc(var(--wipe, 0px) - 48px),
+    #000 calc(var(--wipe, 0px) + 48px)
+  );
+  mask-image: radial-gradient(
+    circle at var(--wipe-x, 50%) var(--wipe-y, 50%),
+    transparent calc(var(--wipe, 0px) - 48px),
+    #000 calc(var(--wipe, 0px) + 48px)
+  );
+}
+.relayout-ripple {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle at var(--wipe-x, 50%) var(--wipe-y, 50%),
+    transparent calc(var(--wipe, 0px) - 110px),
+    rgba(126, 146, 255, 0.18) calc(var(--wipe, 0px) - 58px),
+    rgba(186, 166, 255, 0.62) calc(var(--wipe, 0px) - 8px),
+    rgba(246, 240, 255, 0.85) var(--wipe, 0px),
+    rgba(150, 196, 255, 0.32) calc(var(--wipe, 0px) + 16px),
+    transparent calc(var(--wipe, 0px) + 56px)
+  );
+}
+.garden-empty {
+  position: absolute;
+  left: max(28px, 7%);
+  top: 30%;
+  width: min(430px, calc(100vw - 32px));
+  padding: 22px;
+  border-radius: 22px;
+  background: var(--control-surface);
+  border: 1px solid var(--control-edge);
+  box-shadow: 0 14px 40px #15102745;
+  z-index: 5;
+}
+.garden-empty h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.garden-empty p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #d5c7e2;
+}
+.garden-notice {
+  position: absolute;
+  left: 50%;
+  top: 84px;
+  translate: -50% 0;
+  width: max-content;
+  max-width: min(520px, calc(100vw - 32px));
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: #2c223cf2;
+  border: 1px solid var(--control-edge);
+  box-shadow: 0 8px 30px #11091e55;
+  font-size: 13px;
+  line-height: 1.5;
+  z-index: 8;
+}
+.filtered-out {
+  margin: 10px 0 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #3a2c46;
+  border: 1px solid #f0c27b55;
+}
+.filtered-out p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #f4e6d3;
+}
+.filtered-out small {
+  display: block;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #d9c8b6;
+  margin-bottom: 10px;
+}
+.filtered-out-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+.filtered-out-actions .primary-button {
+  width: auto;
+  gap: 8px;
+}
+.filtered-out-actions .text-button {
+  font-size: 12px;
+  min-height: 44px;
+}
+.fixture-note {
+  position: absolute;
+  left: 28px;
+  bottom: 60px;
+  margin: 0;
+  padding: 5px 9px;
+  border-radius: 9px;
+  border: 1px dashed #f0c27b99;
+  background: #2a2033e0;
+  color: #f6d7a7;
+  font-size: 11px;
+  line-height: 1.35;
+  max-width: 300px;
+  z-index: 6;
+  pointer-events: none;
+}
+.filter-source {
+  display: block;
+  margin: 2px 0 4px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #f6d7a7;
+}
+.project-status.is-hidden-project {
+  color: #f6d7a7;
+}
+.is-relayout #previous,
+.is-relayout #next,
+.is-relayout #portal,
+.is-relayout #route-dots,
+.is-relayout #start,
+.is-relayout .walk-controls {
+  pointer-events: none;
+  opacity: 0.55;
+}
+@media (max-width: 740px) {
+  .fixture-note {
+    display: none;
+  }
+  .garden-empty {
+    left: 16px;
+    top: auto;
+    bottom: 150px;
+    padding: 18px;
+  }
+  .garden-empty h2 {
+    font-size: 19px;
+  }
+  .garden-notice {
+    top: 128px;
+  }
+}
+.project-card.is-filtered-out {
+  overflow: auto;
+}
+@media (max-width: 740px) {
+  .project-card.is-filtered-out #project-description,
+  .project-card.is-filtered-out .island-sections,
+  .project-card.is-filtered-out .project-videos {
+    display: none;
+  }
+}
+/* Island order lives on the project bar, not in Settings: one obvious place, applied in view. */
+.arrange-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ead6fc33;
+  border-radius: 12px;
+  background: #2b2440e6;
+  color: #efe3fb;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  flex: none;
+}
+.arrange-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.arrange-button:hover,
+.arrange-button[aria-expanded='true'] {
+  background: #463660;
+  border-color: #bea0d2;
+}
+/* A changed order or filter shows as a calm "set" state (lighter frame and icon), not a notification dot. */
+.arrange-button.is-filtered {
+  border-color: #bea0d2b3;
+  background: #352a4ee6;
+}
+.arrange-button.is-filtered svg {
+  color: #dcc6ff;
+}
+/* Music toggle beside Order: a warm note while it plays, a dimmed, crossed-out note when off.
+   Fill, border, hover and the lit state come from the shared dock-button styles (garden-ui.css). */
+.music-button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #f3dcb4;
+  cursor: pointer;
+}
+.music-button svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.music-button .music-slash {
+  display: none;
+}
+.music-button[aria-pressed='false'] {
+  color: #efe3fb80;
+}
+.music-button[aria-pressed='false'] .music-slash {
+  display: inline;
+  stroke: #efe3fb;
+}
+#arrange-panel {
+  top: auto;
+  right: auto;
+  left: 50%;
+  translate: -50% 0;
+  bottom: 122px;
+  width: min(380px, calc(100vw - 32px));
+  max-height: calc(100svh - 200px);
+  overflow: auto;
+  z-index: 9;
+}
+#arrange-panel .settings-cue {
+  margin: 0 0 12px;
+}
+.island-tags {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  overflow: hidden;
+}
+.island-tags.is-visible {
+  opacity: 1;
+}
+.island-tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px 4px 4px;
+  border-radius: 999px;
+  background: #1d1830d9;
+  border: 1px solid #c9b3ff55;
+  color: #f2e9ff;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px #0c081a66;
+  opacity: 0.4;
+  scale: 0.86;
+  transition:
+    opacity 0.35s ease,
+    scale 0.35s cubic-bezier(0.2, 1.6, 0.4, 1),
+    background-color 0.35s,
+    border-color 0.35s;
+}
+.island-tag b {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #7c62d6;
+  color: #fff;
+  font-size: 12px;
+}
+.island-tag.is-lit {
+  opacity: 1;
+  scale: 1;
+  border-color: #e3d4ff;
+  background-color: #2a2146ee;
+}
+.island-tag.is-lit b {
+  background: #a58bff;
+  box-shadow: 0 0 12px #b9a3ff;
+}
+/* Observatory telescope: a tag is the way to fly to its island. */
+#garden-app.is-sky-tags .island-tag {
+  pointer-events: auto;
+  cursor: pointer;
+}
+#garden-app.is-sky-tags .island-tag:hover {
+  border-color: #fff;
+  background-color: #3a2d62f2;
+}
+.arrange-caption {
+  position: absolute;
+  left: 50%;
+  top: 24px;
+  translate: -50% 0;
+  width: max-content;
+  max-width: min(560px, calc(100vw - 32px));
+  margin: 0;
+  padding: 9px 16px;
+  border-radius: 12px;
+  background: #2c223cf2;
+  border: 1px solid var(--control-edge);
+  box-shadow: 0 8px 30px #11091e55;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #efe3fb;
+  z-index: 8;
+  text-align: center;
+}
+#garden-app.is-showcase .overview-announcement {
+  display: none;
+}
+.reduce-motion .island-tag,
+.reduce-motion .island-tags {
+  transition: none;
+}
+@media (max-width: 740px) {
+  .arrange-button span {
+    display: none;
+  }
+  .arrange-button {
+    padding: 0 9px;
+    min-height: 36px;
+    border-radius: 11px;
+  }
+  .music-button {
+    width: 36px;
+    height: 36px;
+  }
+  .music-button svg {
+    width: 18px;
+    height: 18px;
+  }
+  #arrange-panel {
+    left: 12px;
+    right: 12px;
+    translate: none;
+    width: auto;
+    bottom: 118px;
+    max-height: 56svh;
+  }
+  .island-tag {
+    font-size: 10px;
+    padding: 3px 8px 3px 3px;
+    gap: 5px;
+  }
+  .island-tag b {
+    min-width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+  .island-tag > span {
+    max-width: 92px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .arrange-caption {
+    top: 70px;
+    font-size: 11px;
+    padding: 7px 12px;
+  }
+}
+/* Phone overview: a compact entry card at the bottom keeps the garden itself in view. */
+@media (max-width: 740px) {
+  .is-overview #hero {
+    top: auto;
+    bottom: 124px;
+    left: 14px;
+    right: 14px;
+    max-width: none;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #1d1830d6;
+    border: 1px solid #ead6fc26;
+    backdrop-filter: blur(10px);
+  }
+  .is-overview #hero > .eyebrow,
+  .is-overview #hero > .hero-description,
+  .is-overview #hero > .hero-hint {
+    display: none;
+  }
+  .is-overview #hero h1 {
+    font-size: 22px;
+    line-height: 1.15;
+    margin: 0 0 10px;
+    max-width: none;
+  }
+  .is-overview #hero .primary-button {
+    min-height: 42px;
+    width: 100%;
+    justify-content: center;
+  }
+  .overview-announcement {
+    min-height: 0;
+    padding: 8px 12px;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 9px;
+    align-items: center;
+  }
+  .overview-announcement > img {
+    width: 24px;
+    height: 24px;
+  }
+  .overview-announcement .announcement-excerpt,
+  .overview-announcement .announcement-kicker {
+    display: none;
+  }
+}
+/* Comments: write in place, with the new comment flying into the list. */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.comment-form {
+  margin: 10px 0 6px;
+  display: grid;
+  gap: 8px;
+}
+.comment-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 54px;
+  max-height: 160px;
+  resize: vertical;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #ead6fc33;
+  background: #1e1830;
+  color: #f2e9ff;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.comment-form textarea:focus {
+  outline: none;
+  border-color: #c9b3ff;
+  box-shadow: 0 0 0 3px #8f74e544;
+}
+.comment-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.comment-hint {
+  font-size: 11px;
+  color: #bfb0cf;
+  line-height: 1.4;
+}
+.comment-actions .primary-button {
+  width: auto;
+  min-height: 38px;
+  gap: 7px;
+  padding: 8px 14px;
+  flex: none;
+}
+.comment-actions .primary-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.comment-actions .primary-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.comment-status {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #d9c8f0;
+}
+.comment-status:empty {
+  display: none;
+}
+.comment-form.is-sending textarea {
+  opacity: 0.7;
+}
+.comment-form.is-error textarea {
+  border-color: #f0a07b;
+  animation: comment-shake 0.32s;
+}
+@keyframes comment-shake {
+  25% {
+    translate: -4px 0;
+  }
+  75% {
+    translate: 4px 0;
+  }
+}
+#comments-list article.is-new {
+  animation: comment-arrive 1.2s ease-out;
+  border-radius: 10px;
+}
+@keyframes comment-arrive {
+  0% {
+    background: #8f74e566;
+    box-shadow: 0 0 0 2px #c9b3ff;
+  }
+  100% {
+    background: transparent;
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.comment-flight {
+  position: fixed;
+  z-index: 30;
+  pointer-events: none;
+  max-width: 320px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #3a2c5cf0;
+  border: 1px solid #c9b3ff;
+  color: #f6efff;
+  font-size: 12px;
+  box-shadow: 0 0 24px #9f86ff88;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.reduce-motion .comment-form.is-error textarea,
+.reduce-motion #comments-list article.is-new {
+  animation: none;
+}
+@media (max-width: 740px) {
+  .comment-hint {
+    font-size: 10px;
+  }
+  .comment-form textarea {
+    font-size: 14px;
+    min-height: 46px;
+  }
+}
+/* While the order is shown, the intro text steps back so the numbered islands read clearly. */
+#garden-app.is-showcase #hero {
+  opacity: 0.18;
+}
+@media (max-width: 740px) {
+  .is-overview .scenic-cue.is-edge,
+  .is-overview .scenic-cue.is-edge:active {
+    bottom: 300px;
+    right: 16px;
+  }
+}
+.comment-note {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.comment-form.has-status .comment-hint {
+  display: none;
+}
+.comment-actions .primary-button {
+  font-size: 13px;
+}
+
+/* R13 UI audit: overlay collisions found by the viewport x state matrix (ui-audit/report.md).
+   Kept as designed: Order button on the project bar, compact phone entry card at the bottom, compact phone announcements. */
+/* Help popover opens over the project bar (not under it); on phones its hint text stays inside the popover. */
+.garden-footer:has(.movement-help[open]) {
+  z-index: 8;
+}
+.garden-footer .movement-help #input-hint {
+  position: static;
+  inset: auto;
+  padding: 0;
+  background: none;
+  text-align: left;
+  pointer-events: auto;
+}
+#garden-app:has(.movement-help[open]) .fixture-note {
+  visibility: hidden;
+}
+@media (max-width: 740px) {
+  /* One row under the header: "Whole garden" left, "Announcements" right, same top, no second halo box. */
+  .is-journey .top-context {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
+  .garden-utilities {
+    top: 76px;
+  }
+  /* The row is the container's; the chip's own phone offset (top 76px) put it a second row down, mid-screen. */
+  .garden-utilities .announcements-entry {
+    top: 0;
+  }
+  /* The overview shows the same compact «Объявления» chip as a project, in the same place, instead of the
+     greeting card. Owner, 2026-10-31: the card jumped from full width to the side after the first camera turn,
+     and «Привет! Все объявления» looked out of place on a phone. */
+  #garden-app .overview-announcement {
+    display: none;
+  }
+  #garden-app.is-overview:not(.is-scenic) #banners-entry:not([hidden]) {
+    display: flex;
+  }
+  /* The same chip as in a project: an older overview rule kept it at 34 px and 10 px text. */
+  .is-overview .garden-utilities .announcements-entry {
+    min-height: 44px;
+    padding: 8px 11px;
+    gap: 7px;
+    font-size: 12px;
+  }
+  /* «Войти в сад» already leads on from the overview; a «Вернуть вид» beside it was one button too many (owner,
+     2026-10-31). The terrace keeps its way back, and a project its «Обзор сада». */
+  #garden-app.is-overview:not(.is-scenic):has(#hero:not([hidden])) .top-context {
+    display: none;
+  }
+  /* The compact entry card has its own surface; drop the older backdrop that framed it twice and touched the bar. */
+  .is-overview #hero::before {
+    display: none;
+  }
+  /* The repository link sits in the card footer row, not over the section tabs and zone text. */
+  .project-card .project-footer .repository {
+    position: static;
+    right: auto;
+    bottom: auto;
+    margin: 0;
+  }
+  /* Filtered-out card: the section tabs really step aside (an !important grid rule beat the intended hide). */
+  #garden-app .project-card.is-filtered-out .island-sections {
+    display: none !important;
+  }
+  /* Settings sheet: no chrome peeks out above or below it. */
+  #garden-app:has(#preferences:not([hidden])) :is(.garden-utilities, .top-context, .garden-footer) {
+    visibility: hidden;
+  }
+  /* Empty garden: the edge cue moves above the reset card. */
+  #garden-app:has(#garden-empty:not([hidden])) .scenic-cue.is-edge {
+    top: 150px !important;
+    bottom: auto !important;
+  }
+  /* Walking to the portal: the chooser leaves room for the walking status and its Skip button. */
+  #garden-app:has(#travel-status:not([hidden])) .portal-dialog[open] {
+    max-height: calc(100svh - 362px);
+  }
+}
+@media (max-width: 350px) {
+  .is-overview.is-exploring .overview-announcement {
+    right: 12px;
+    width: calc(100vw - 152px);
+  }
+}
+@media (min-width: 741px) and (min-height: 501px) {
+  /* Settings and the portal chooser end above the project bar: Portal, Order and the footer links stay visible. */
+  #preferences {
+    max-height: calc(100svh - 213px);
+  }
+  .portal-dialog {
+    max-height: calc(100svh - 225px);
+  }
+  /* Gallery viewer keeps to the free area: right of the card, below the top row, above the project bar. */
+  #garden-app .media-viewer {
+    top: 140px;
+    bottom: 135px;
+    left: 486px;
+    right: 28px;
+    width: min(820px, calc(100vw - 514px));
+    max-width: none;
+    min-height: 0;
+    max-height: none;
+    margin: 0 auto;
+    transform: none;
+    translate: none;
+    justify-content: center;
+    --media-room: calc(100svh - 387px);
+  }
+}
+@media (min-width: 741px) and (max-width: 1100px) {
+  #garden-app .media-viewer {
+    left: 424px;
+    width: min(820px, calc(100vw - 452px));
+  }
+  #arrange-panel {
+    left: 424px;
+    translate: none;
+    width: min(380px, calc(100vw - 452px));
+  }
+  #preferences {
+    width: min(390px, calc(100vw - 444px));
+  }
+}
+/* Order panel opens beside the project card, above the Order button, wherever a centred panel would cover the card. */
+@media (min-width: 1101px) and (max-width: 1351px) {
+  #arrange-panel {
+    left: 486px;
+    translate: none;
+    width: min(380px, calc(100vw - 514px));
+  }
+}
+/* Order caption and the preview fixture note never sit on the language/settings buttons or the project bar. */
+@media (min-width: 741px) and (max-width: 1276px) and (min-height: 501px) {
+  .arrange-caption {
+    top: 84px;
+  }
+  .fixture-note {
+    top: 8px;
+    bottom: auto;
+    left: 50%;
+    translate: -50% 0;
+    max-width: min(300px, calc(100vw - 460px));
+  }
+}
+/* Portal walk: the status moves into the free area left of the chooser. */
+@media (min-width: 901px) {
+  #garden-app:has(.portal-dialog[open]) .travel-status {
+    left: calc((100vw - 568px) / 2);
+    max-width: calc(100vw - 624px);
+  }
+}
+@media (min-width: 741px) and (max-width: 900px) and (min-height: 501px) {
+  #garden-app:has(#travel-status:not([hidden])) .portal-dialog[open] {
+    max-height: calc(100svh - 300px);
+  }
+}
+/* While the numbered order is shown, the "Coming soon" cue steps back like the intro text, so tags read over it. */
+#garden-app.is-showcase .scenic-cue {
+  opacity: 0.18;
+}
+/* Phone landscape: "Whole garden" and "Announcements" join the header row, freeing a band for card, gallery and chooser. */
+@media (min-width: 741px) and (max-height: 500px) {
+  .garden-header {
+    pointer-events: none;
+  }
+  .garden-header > * {
+    pointer-events: auto;
+  }
+  .top-context {
+    top: 22px;
+    left: 188px;
+  }
+  .garden-utilities {
+    top: 22px;
+    right: 232px;
+  }
+  .is-overview:not(.is-scenic) .hero {
+    top: 80px;
+  }
+  .is-overview.is-exploring .hero {
+    top: auto;
+    bottom: 133px;
+  }
+  .hero-hint,
+  .fixture-note {
+    display: none;
+  }
+  .overview-announcement {
+    min-height: 0;
+    padding: 10px 14px;
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+  .overview-announcement > img {
+    width: 28px;
+    height: 28px;
+  }
+  .overview-announcement .announcement-excerpt,
+  .overview-announcement .announcement-kicker {
+    display: none;
+  }
+  .project-card,
+  .project-card:has(#zone-description:not([hidden])),
+  .project-card:has(#zone-comments:not([hidden])) {
+    top: 80px;
+    bottom: 133px;
+    max-height: none;
+  }
+  #garden-app[data-area='gallery'] .project-card {
+    top: 80px;
+    bottom: auto;
+    padding: 12px 18px;
+  }
+  .project-card .island-sections,
+  #garden-app[data-area='gallery'] .project-card .island-sections {
+    margin-top: 8px;
+  }
+  .project-card .island-sections button,
+  #garden-app[data-area='gallery'] .project-card .island-sections button {
+    min-height: 48px;
+    padding: 5px 1px;
+    gap: 3px;
+  }
+  .project-card .island-sections svg {
+    width: 16px;
+    height: 16px;
+  }
+  #garden-app .media-viewer {
+    top: 80px;
+    bottom: 133px;
+    left: 424px;
+    right: 28px;
+    width: min(820px, calc(100vw - 452px));
+    max-width: none;
+    min-height: 0;
+    max-height: none;
+    margin: 0 auto;
+    padding: 8px;
+    transform: none;
+    translate: none;
+    justify-content: center;
+    --media-room: calc(100svh - 287px);
+  }
+  .media-viewer #gallery-controls {
+    padding: 4px 8px;
+    margin-top: 6px;
+  }
+  .portal-dialog {
+    top: 76px;
+    max-height: calc(100svh - 209px);
+    padding: 10px 16px;
+  }
+  .portal-dialog h2 {
+    font-size: 20px;
+    margin: 0 0 8px;
+  }
+  .portal-dialog .portal-hint {
+    display: none;
+  }
+  #arrange-panel {
+    bottom: 133px;
+    max-height: calc(100svh - 213px);
+  }
+  .arrange-caption {
+    top: 18px;
+    max-width: calc(100vw - 470px);
+  }
+  .garden-empty {
+    top: 76px;
+    left: 28px;
+    width: min(380px, calc(50vw - 40px));
+    padding: 14px 16px;
+  }
+  .garden-empty h2 {
+    font-size: 19px;
+  }
+  .garden-empty p {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  #garden-app:has(.portal-dialog[open]) .travel-status {
+    left: calc((100vw - 568px) / 2);
+    max-width: calc(100vw - 600px);
+  }
+}
+/* A notice raised during the order showcase sits below the order caption instead of on top of it. */
+#garden-app.is-showcase .garden-notice {
+  translate: -50% 58px;
+}
+/* Greenhouse gallery (greenhouse.mjs): three tabs, Gallery · Description · Comments; the main tab is the gallery. */
+#garden-app.is-greenhouse .project-card .island-sections {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+#garden-app.is-greenhouse .project-card .island-sections button[data-zone='gallery'] {
+  display: none;
+}
+
+/* On a narrow phone the dock has no room for the project icons: they shrank to an 8 px sliver and pushed the
+   Portal button past the edge. The arrows, the card's project list, the portal and the island tags choose a
+   project there; a birthday keeps its marked icon (above: min-width 64px). Owner, round 9. */
+@media (max-width: 460px) {
+  #garden-app .journey-center:not(:has(.has-birthday)) {
+    display: none;
+  }
+}

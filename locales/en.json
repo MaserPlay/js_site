@@ -89,6 +89,8 @@
 	"Only pc": "Only pc",
 	"NeuroZoneEditor": "Neural Network Zone Editor",
 	"NeuroZoneEditor description": "This is a zone editor for neural networks created for my dad. It allows you to mark zones in photos.",
+	"version2": "3D version 2",
+	"version2 description": "maserplay.ru in 3D: a floating garden with all the projects",
 	"Content/NeuroZoneEditor/Author": "%s by %s",
 	"Content/NeuroZoneEditor/File": "File",
 	"Content/NeuroZoneEditor/Import_Json": "Import as .json",
