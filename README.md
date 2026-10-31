@@ -12,7 +12,7 @@ and run following commands:
 
 - `git clone https://github.com/MaserPlay/js_site.git`  To clone git repository
 - `npm ci`  To install the locked project dependencies
-- `npm run build -- ` To build server to build dir. Add the following args, if need: `--clear` to clear build repo *or* `--watch` to enable incremental watch mode
+- `npm run build -- ` To build server to build dir. Add the following args, if need: `--clear` to clear build repo *or* `--watch` to enable incremental watch mode *or* `--start` to start server
 - `npm start` To run server
 
 # Main website
