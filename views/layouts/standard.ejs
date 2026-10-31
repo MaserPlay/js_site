@@ -18,8 +18,14 @@
                     </ul>
                     <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn bi bi-globe" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change Language') %></span></button>
                     <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
-                        <% (["auto_locale"].concat(getLocales())).forEach(local => { %>
-                            <li><a class="dropdown-item scChngLang <%= (lang()&&(getLocale() === local)||(!lang()&&local==="auto_locale")) ? "active" : "" %>" val="<%= local %>" style="cursor: pointer;"><%= __({ phrase: local, locale: local==="auto_locale"?getLocale():local }) %></a></li>
+                        <% locales.forEach(option => { %>
+                            <li>
+                                <a class="dropdown-item scChngLang <%= option.selected ? 'active' : '' %>"
+                                val="<%= option.value %>"
+                                href="#">
+                                    <%= option.label %>
+                                </a>
+                            </li>
                         <% }) %>
                     </ul>
                     <button type="button" class="btn bi bi-question-lg popovers_cls" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="<%= description %>">

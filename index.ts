@@ -4,7 +4,8 @@ import * as ejs from 'ejs';
 import * as path from 'path';
 import * as I18n from 'i18n';
 import * as config from './config';
-import * as fs from 'fs';
+import { loadContentClasses } from './server/content-registry';
+import { registerRoutes } from './server/controller';
 import * as morgan from 'morgan';
 import * as node_http from 'node:http';
 import * as compression from 'compression';
@@ -53,14 +54,24 @@ const ex = {
   httpServer: httpServer,
   i18n: i18n,
   io: io,
-  Server: httpServer.listen(config.json.port, () => { console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`); })
+  Server: httpServer
 };
 
 export default ex;
 
-fs.readdirSync(path.resolve(__dirname, "./server")).forEach((file : string) => { // import all modules
-  if (file.endsWith(".js")) {
-    const filePath = path.join(__dirname, "server", file);
-    require(filePath);
-  }
+// The voice-chat module still uses the existing exported io instance.
+require('./server/voice_chat');
+
+async function start(): Promise<void> {
+  await loadContentClasses();
+  registerRoutes(app);
+  httpServer.listen(config.json.port, () => {
+    console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`);
+  });
+}
+
+void start().catch(error => {
+  console.error('Unable to start site:', error);
+  process.exitCode = 1;
+  io.close();
 });

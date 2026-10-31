@@ -161,7 +161,12 @@ function setupFullscreen(
     });
 
     $('.scChngLang').on('click', function () {
-        document.cookie = `lang=${$(this).attr("val")};path=/`;
+        const lang = $(this).attr("val")
+        
+        document.cookie = lang === "auto_locale"
+            ? "lang=; Max-Age=0; path=/"
+            : `lang=${lang}; path=/`;
+
         document.location.reload();
         return false;
     });
