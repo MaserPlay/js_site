@@ -1,0 +1,3077 @@
+/* M17 sky glass, second pass: the language menu, the Settings sheet and the remaining plain buttons (close,
+   primary, text, announcement) in the same language as the dock and the entry pill. Loads after garden-ui.css.
+   Hover light: --pointer-x/y come from bindPointerLight (garden.mjs groups) and --glow fades the spot in. */
+@property --glow {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+:root {
+  --icon-globe: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'><circle cx='12' cy='12' r='8.5'/><path d='M3.5 12h17M12 3.5c2.8 3 2.8 14 0 17M12 3.5c-2.8 3-2.8 14 0 17'/></svg>");
+  --icon-check: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='m5.5 12.5 4 4 9-9.5'/></svg>");
+  --icon-close: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'><path d='m6.5 6.5 11 11m0-11-11 11'/></svg>");
+  --icon-calendar: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='4' y='5.5' width='16' height='14.5' rx='3.5'/><path d='M4 10.5h16M9 3.5v4M15 3.5v4'/><circle cx='12' cy='15.2' r='1.3' fill='black'/></svg>");
+  --icon-blossom: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linejoin='round'><path d='M12 9.6C10.2 6.6 10.9 4 12 3c1.1 1 1.8 3.6 0 6.6ZM14.4 12c3-1.8 5.6-1.1 6.6 0-1 1.1-3.6 1.8-6.6 0ZM12 14.4c1.8 3 1.1 5.6 0 6.6-1.1-1-1.8-3.6 0-6.6ZM9.6 12C6.6 13.8 4 13.1 3 12c1-1.1 3.6-1.8 6.6 0Z'/><circle cx='12' cy='12' r='1.6' fill='black'/></svg>");
+  --icon-sun: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'><circle cx='12' cy='12' r='4.2' fill='black'/><path d='M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3 7 7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7'/></svg>");
+  --icon-leaf: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 19C5 10.5 10.5 5 19.5 4.5 19 13.5 13.5 19 5 19Z'/><path d='M5 19 14 10'/></svg>");
+  --icon-flake: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2.8v18.4M4 7.4l16 9.2M4 16.6l16-9.2M9.4 4.3 12 5.9l2.6-1.6M9.4 19.7 12 18.1l2.6 1.6M3.9 10.6l2.7.4-.9 2.7M20.1 10.6l-2.7.4.9 2.7'/></svg>");
+  --icon-dusk: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'><path d='M3 16.5h18M7 16.5a5 5 0 0 1 10 0M12 4v4.5M9.6 6.3 12 8.7l2.4-2.4M5.4 9l1.9 1.9M18.6 9l-1.9 1.9M7 20h10'/></svg>");
+  --icon-dawn: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3 16.5h18M7.5 16.5a4.5 4.5 0 0 1 9 0' fill='black'/><path d='M12 8.5V3.5M9.6 5.9 12 3.5l2.4 2.4M5.2 10.2l1.7 1.6M18.8 10.2l-1.7 1.6M8 20h8'/></svg>");
+  --icon-moon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M19.5 14.6A7.8 7.8 0 1 1 9.4 4.5a6.2 6.2 0 0 0 10.1 10.1Z' fill='black'/><circle cx='17' cy='5' r='1' fill='black'/><circle cx='20.5' cy='9' r='.7' fill='black'/></svg>");
+  --icon-dial: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'><circle cx='12' cy='12' r='8.5'/><path d='M12 3.5a8.5 8.5 0 0 0 0 17Z' fill='black'/></svg>");
+  --icon-bulb: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M9.5 18h5M10.5 21h3M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3Z'/></svg>");
+  --icon-neon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='2.5' y='4.5' width='19' height='15' rx='5'/><path d='M7.5 15.5v-7l5 7v-7M16.5 8.5v7'/></svg>");
+  --icon-battery: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><rect x='2.5' y='7' width='16.5' height='10' rx='2.8'/><path d='M21.5 10.5v3M6.5 10v4M10 10v4'/></svg>");
+  --icon-eye: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round'><path d='M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z'/><circle cx='12' cy='12' r='3'/></svg>");
+  --icon-branch: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'><circle cx='7' cy='5' r='2.2'/><circle cx='7' cy='19' r='2.2'/><circle cx='17' cy='8' r='2.2'/><path d='M7 7.2v9.6M17 10.2c0 4-4 4.3-9.4 6.6'/></svg>");
+  --arrow-white: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h13m-5.5-5.5L18 12l-5.5 5.5'/></svg>");
+  --arrow-ink: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23efe6ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 5.5 15.5 12 9 18.5'/></svg>");
+  --check-ink: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a52dc' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='m6 12.5 4 4 8-9'/></svg>");
+  --well: linear-gradient(180deg, rgba(12, 8, 24, 0.55), rgba(20, 15, 34, 0.7));
+  --sheet-in: 0.42s;
+}
+
+/* ---------- Shared: glass chip, luminous primary, glass orb ---------- */
+#garden-app
+  :is(
+    .text-button,
+    #portal-overview,
+    .overview-announcement,
+    #preferences .settings-section > label,
+    .project-filters > label,
+    #preferences .site-version-link,
+    #language-menu > button
+  ) {
+  --glow: 0;
+}
+/* Secondary actions: a clear glass pill with a hairline edge. */
+#garden-app :is(.text-button, #portal-overview) {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--glass-edge) !important;
+  border-radius: 999px !important;
+  background:
+    radial-gradient(
+      110px circle at var(--pointer-x, 50%) var(--pointer-y, 40%),
+      rgb(255 255 255 / calc(var(--glow) * 0.24)),
+      transparent 70%
+    ),
+    linear-gradient(180deg, rgba(86, 70, 124, 0.5), rgba(38, 30, 62, 0.62)) !important;
+  box-shadow: var(--glass-highlight);
+  color: var(--glass-ink) !important;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    --glow 0.3s var(--glide),
+    translate 0.4s var(--spring),
+    scale 0.18s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app .text-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Main actions: the entry pill in small, with an orb carrying the arrow. */
+#garden-app :is(#project-link, #portal-go, #filtered-show, #empty-reset, #comment-send) {
+  --glow: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.78) !important;
+  border-radius: 999px !important;
+  background:
+    radial-gradient(
+      120px circle at var(--pointer-x, 30%) var(--pointer-y, -10%),
+      rgb(255 255 255 / calc(0.55 + var(--glow) * 0.35)),
+      transparent 70%
+    ),
+    linear-gradient(135deg, #fefcff 0%, #ede3ff 50%, #cfbaff 100%) !important;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -3px 7px rgba(118, 84, 196, 0.2),
+    0 8px 22px rgba(36, 16, 86, 0.32);
+  color: #22163a !important;
+  font-size: 14px;
+  font-weight: 650;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    --glow 0.3s var(--glide),
+    translate 0.4s var(--spring),
+    scale 0.18s var(--glide),
+    box-shadow 0.3s var(--glide),
+    opacity 0.25s;
+}
+#garden-app :is(#project-link, #portal-go, #filtered-show) {
+  padding: 0 6px 0 20px;
+}
+#garden-app :is(#project-link, #portal-go, #filtered-show)::after {
+  content: '';
+  flex: none;
+  width: 34px;
+  height: 34px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background:
+    var(--arrow-white) center / 17px no-repeat,
+    var(--orb-fill);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 3px 10px rgba(76, 44, 170, 0.45);
+  transition:
+    scale 0.45s var(--spring),
+    background-position 0.45s var(--spring);
+}
+#garden-app #comment-send svg {
+  stroke: #5b3cc4;
+}
+#garden-app :is(#project-link, #portal-go, #filtered-show, #empty-reset, #comment-send):disabled {
+  opacity: 0.45;
+  box-shadow: inset 0 1px 0 #fff;
+}
+/* Close and step buttons: a round glass orb; the cross turns a quarter on hover. */
+#garden-app
+  :is(
+    #preferences-close,
+    #arrange-close,
+    #portal-close,
+    #banners-close,
+    #video-close,
+    #image-close,
+    #detail-close,
+    #media-close,
+    #gallery-previous,
+    #gallery-next,
+    #video-previous,
+    #video-next
+  ) {
+  --glow: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 0;
+  border: 1px solid var(--glass-edge) !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(
+      60px circle at var(--pointer-x, 50%) var(--pointer-y, 30%),
+      rgb(255 255 255 / calc(var(--glow) * 0.3)),
+      transparent 72%
+    ),
+    linear-gradient(180deg, rgba(92, 76, 132, 0.62), rgba(36, 28, 58, 0.74)) !important;
+  box-shadow:
+    var(--glass-highlight),
+    0 4px 14px rgba(10, 5, 30, 0.28);
+  color: var(--glass-ink) !important;
+  font-size: 0 !important;
+  transition:
+    --glow 0.3s var(--glide),
+    scale 0.18s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app
+  :is(
+    #preferences-close,
+    #arrange-close,
+    #portal-close,
+    #banners-close,
+    #video-close,
+    #image-close,
+    #detail-close,
+    #media-close
+  )::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  transform: none;
+  background: currentColor;
+  -webkit-mask: var(--icon-close) center / 18px no-repeat;
+  mask: var(--icon-close) center / 18px no-repeat;
+  transition: rotate 0.5s var(--spring);
+}
+#garden-app
+  :is(
+    #preferences-close,
+    #arrange-close,
+    #portal-close,
+    #banners-close,
+    #video-close,
+    #image-close,
+    #detail-close,
+    #media-close
+  )::after {
+  content: none;
+}
+#garden-app :is(#detail-close, #media-close) > svg {
+  display: none;
+}
+#garden-app :is(#gallery-previous, #gallery-next, #video-previous, #video-next) svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+  transition: translate 0.4s var(--spring);
+}
+#garden-app
+  :is(
+    .text-button,
+    #portal-overview,
+    #project-link,
+    #portal-go,
+    #filtered-show,
+    #empty-reset,
+    #comment-send,
+    #preferences-close,
+    #arrange-close,
+    #portal-close,
+    #banners-close,
+    #video-close,
+    #image-close,
+    #detail-close,
+    #media-close,
+    #gallery-previous,
+    #gallery-next,
+    #video-previous,
+    #video-next,
+    .overview-announcement
+  ):focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app :is(.text-button, #portal-overview):hover {
+    --glow: 1;
+    translate: 0 -2px;
+    border-color: var(--glass-edge-lit) !important;
+    box-shadow:
+      var(--glass-highlight),
+      0 8px 20px rgba(10, 5, 30, 0.3),
+      0 0 18px var(--glass-glow);
+  }
+  #garden-app
+    :is(#project-link, #portal-go, #filtered-show, #empty-reset, #comment-send):not(:disabled):hover {
+    --glow: 1;
+    translate: 0 -2px;
+    box-shadow:
+      inset 0 1px 0 #fff,
+      inset 0 -3px 7px rgba(118, 84, 196, 0.2),
+      0 12px 28px rgba(36, 16, 86, 0.4),
+      0 0 26px rgba(186, 146, 255, 0.5);
+  }
+  #garden-app :is(#project-link, #portal-go, #filtered-show):hover::after {
+    scale: 1.08;
+    background-position:
+      calc(50% + 2px) center,
+      center;
+  }
+  #garden-app
+    :is(
+      #preferences-close,
+      #arrange-close,
+      #portal-close,
+      #banners-close,
+      #video-close,
+      #image-close,
+      #detail-close,
+      #media-close,
+      #gallery-previous,
+      #gallery-next,
+      #video-previous,
+      #video-next
+    ):not(:disabled):hover {
+    --glow: 1;
+    border-color: var(--glass-edge-lit) !important;
+    box-shadow:
+      var(--glass-highlight),
+      0 6px 18px rgba(10, 5, 30, 0.32),
+      0 0 18px var(--glass-glow);
+  }
+  #garden-app
+    :is(
+      #preferences-close,
+      #arrange-close,
+      #portal-close,
+      #banners-close,
+      #video-close,
+      #image-close,
+      #detail-close,
+      #media-close
+    ):hover::before {
+    rotate: 90deg;
+  }
+  #garden-app :is(#gallery-previous, #video-previous):not(:disabled):hover svg {
+    translate: -2px 0;
+  }
+  #garden-app :is(#gallery-next, #video-next):not(:disabled):hover svg {
+    translate: 2px 0;
+  }
+}
+#garden-app
+  :is(
+    .text-button,
+    #portal-overview,
+    #project-link,
+    #portal-go,
+    #filtered-show,
+    #empty-reset,
+    #comment-send,
+    #preferences-close,
+    #arrange-close,
+    #portal-close,
+    #banners-close,
+    #video-close,
+    #image-close,
+    #detail-close,
+    #media-close,
+    #gallery-previous,
+    #gallery-next,
+    #video-previous,
+    #video-next
+  ):not(:disabled):active {
+  scale: 0.94;
+  translate: 0 0;
+  transition-duration: 0.08s;
+}
+
+/* Announcement card: a glass card that lights under the mouse; its cue becomes a small chip with an arrow. */
+#garden-app .overview-announcement {
+  background:
+    radial-gradient(
+      220px circle at var(--pointer-x, 50%) var(--pointer-y, 30%),
+      rgb(255 255 255 / calc(var(--glow) * 0.16)),
+      transparent 70%
+    ),
+    linear-gradient(180deg, var(--glass-solid-top), var(--glass-solid-bottom));
+  border: 1px solid var(--glass-edge);
+  border-radius: 22px;
+  box-shadow:
+    var(--glass-highlight),
+    0 14px 36px rgba(8, 4, 24, 0.38);
+  transition:
+    --glow 0.3s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app .overview-announcement > img {
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+#garden-app .overview-announcement .announcement-read {
+  justify-self: start;
+  padding: 5px 6px 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 216, 255, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  color: #f3eaff;
+}
+#garden-app .overview-announcement .announcement-read::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background:
+    var(--arrow-white) center / 12px no-repeat,
+    var(--orb-fill);
+  transition: translate 0.4s var(--spring);
+}
+#garden-app .overview-announcement .announcement-total {
+  border-radius: 999px;
+  padding: 1px 7px;
+  background: rgba(198, 168, 255, 0.28);
+  color: #fff;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app .overview-announcement:hover {
+    --glow: 1;
+    border-color: var(--glass-edge-lit);
+    box-shadow:
+      var(--glass-highlight),
+      0 18px 40px rgba(8, 4, 24, 0.42),
+      0 0 24px var(--glass-glow);
+  }
+  #garden-app .overview-announcement:hover .announcement-read::after {
+    translate: 3px 0;
+  }
+}
+
+/* ---------- Language: a globe pill and a glass menu with script glyphs ---------- */
+#garden-app .header-actions #language-trigger {
+  --glow: 0;
+  gap: 8px;
+  padding: 0 12px 0 10px;
+  min-width: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(
+      70px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgb(255 255 255 / calc(var(--glow) * 0.24)),
+      transparent 70%
+    ),
+    linear-gradient(180deg, var(--glass-top), var(--glass-bottom)) !important;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  transition:
+    --glow 0.3s var(--glide),
+    translate 0.4s var(--spring),
+    scale 0.18s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app .header-actions #language-trigger::before {
+  content: '';
+  flex: none;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: var(--icon-globe) center / contain no-repeat;
+  mask: var(--icon-globe) center / contain no-repeat;
+  transition: rotate 0.7s var(--spring);
+}
+#garden-app .header-actions #language-trigger::after {
+  border-color: rgba(240, 230, 255, 0.75);
+  transition: transform 0.4s var(--spring);
+}
+#garden-app .header-actions #language-trigger[aria-expanded='true'] {
+  background: linear-gradient(180deg, #faf6ff, #dccbfb) !important;
+  border-color: #fff !important;
+  color: #24173a;
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 8px 26px rgba(150, 110, 240, 0.4);
+}
+#garden-app .header-actions #language-trigger[aria-expanded='true']::before {
+  rotate: 180deg;
+}
+#garden-app .header-actions #language-trigger[aria-expanded='true']::after {
+  border-color: #5d4880;
+}
+/* The menu stays laid out while hidden so it can fade and shrink back to the pill instead of vanishing. */
+#garden-app #language-menu,
+#garden-app #language-menu[hidden] {
+  display: grid !important;
+}
+#garden-app #language-menu {
+  gap: 3px;
+  width: 256px;
+  min-width: 0;
+  padding: 8px;
+  top: calc(100% + 10px);
+  right: 0;
+  border-radius: 24px;
+  background: linear-gradient(180deg, var(--glass-solid-top), var(--glass-solid-bottom));
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    var(--glass-highlight),
+    0 22px 50px rgba(8, 4, 24, 0.5);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transform-origin: calc(100% - 30px) -6px;
+  animation: none;
+  transition:
+    opacity 0.22s var(--glide),
+    transform 0.42s var(--spring),
+    visibility 0s;
+}
+#garden-app #language-menu[hidden] {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px) scale(0.9);
+  pointer-events: none;
+  transition:
+    opacity 0.16s var(--glide),
+    transform 0.2s var(--glide),
+    visibility 0s 0.2s;
+}
+#garden-app #language-menu::before {
+  content: attr(aria-label);
+  padding: 6px 10px 6px;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(226, 212, 248, 0.62);
+}
+#garden-app #language-menu > button {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 6px 10px 6px 6px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: radial-gradient(
+    120px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    rgb(255 255 255 / calc(var(--glow) * 0.14)),
+    transparent 70%
+  ) !important;
+  color: rgba(244, 236, 255, 0.86);
+  font-size: 14px;
+  font-weight: 550;
+  transition:
+    --glow 0.25s var(--glide),
+    background-color 0.25s,
+    border-color 0.25s,
+    color 0.25s,
+    translate 0.4s var(--spring);
+}
+/* The radio dot of the old list becomes a check orb at the row's end. */
+#garden-app #language-menu > button::before {
+  grid-column: 3;
+  grid-row: 1;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(232, 216, 255, 0.24);
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  scale: 0.75;
+  opacity: 0.6;
+  transition:
+    scale 0.45s var(--spring),
+    opacity 0.25s,
+    background-color 0.25s;
+}
+#garden-app #language-menu .picker-glyph {
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  background: var(--well);
+  border: 1px solid rgba(238, 228, 255, 0.14);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+  color: #e9dcff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  transition:
+    scale 0.45s var(--spring),
+    background-color 0.25s,
+    box-shadow 0.3s var(--glide);
+}
+#garden-app #language-menu .picker-glyph.is-auto::before {
+  content: '';
+  width: 19px;
+  height: 19px;
+  background: currentColor;
+  -webkit-mask: var(--icon-globe) center / contain no-repeat;
+  mask: var(--icon-globe) center / contain no-repeat;
+}
+#garden-app #language-menu .picker-option-name {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+#garden-app #language-menu > button[aria-checked='true'] {
+  border-color: rgba(228, 212, 255, 0.4);
+  background-color: rgba(198, 168, 255, 0.16) !important;
+  color: #fff;
+}
+#garden-app #language-menu > button[aria-checked='true'] .picker-glyph {
+  background: var(--orb-fill);
+  border-color: rgba(240, 228, 255, 0.6);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 4px 14px rgba(110, 70, 230, 0.45);
+}
+#garden-app #language-menu > button[aria-checked='true']::before {
+  scale: 1;
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.9);
+  background:
+    var(--check-ink) center / 15px no-repeat,
+    linear-gradient(180deg, #fff, #e6dafb);
+  box-shadow: 0 0 12px rgba(190, 160, 255, 0.6);
+}
+#garden-app #language-menu > button:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: -2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app .header-actions #language-trigger:hover {
+    --glow: 1;
+  }
+  #garden-app .header-actions #language-trigger:hover::before {
+    rotate: 30deg;
+  }
+  #garden-app #language-menu > button:hover {
+    --glow: 1;
+    color: #fff;
+    border-color: rgba(228, 212, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.06) !important;
+  }
+  #garden-app #language-menu > button:hover .picker-glyph {
+    scale: 1.08;
+  }
+}
+/* Rows arrive one after another as the menu unfolds. */
+#garden-app #language-menu > button {
+  transition-delay: 0s;
+}
+#garden-app #language-menu:not([hidden]) > button {
+  animation: panel-row-in 0.42s var(--glide) backwards;
+}
+#garden-app #language-menu:not([hidden]) > button:nth-of-type(2) {
+  animation-delay: 0.04s;
+}
+#garden-app #language-menu:not([hidden]) > button:nth-of-type(3) {
+  animation-delay: 0.08s;
+}
+#garden-app #language-menu:not([hidden]) > button:nth-of-type(n + 4) {
+  animation-delay: 0.12s;
+}
+@keyframes panel-row-in {
+  from {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+}
+
+/* ---------- Settings: a glass sheet of tiles, a sky dial and lit switches ---------- */
+#garden-app #preferences,
+#garden-app #preferences[hidden] {
+  display: block !important;
+}
+#garden-app #preferences {
+  width: 404px;
+  padding: 20px 20px 18px;
+  border-radius: 28px;
+  transform-origin: calc(100% - 50px) -10px;
+  animation: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 200, 255, 0.35) transparent;
+  transition:
+    opacity 0.26s var(--glide),
+    transform var(--sheet-in) var(--spring),
+    visibility 0s;
+}
+#garden-app #preferences[hidden] {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.94);
+  pointer-events: none;
+  transition:
+    opacity 0.18s var(--glide),
+    transform 0.24s var(--glide),
+    visibility 0s 0.24s;
+}
+/* Content settles in a beat after the sheet. */
+#garden-app #preferences > * {
+  transition:
+    opacity 0.32s var(--glide),
+    translate 0.5s var(--glide);
+  transition-delay: calc(var(--row, 0) * 28ms + 70ms);
+}
+#garden-app #preferences[hidden] > * {
+  opacity: 0;
+  translate: 0 8px;
+  transition-delay: 0s;
+}
+#garden-app #preferences > :nth-child(2) {
+  --row: 1;
+}
+#garden-app #preferences > :nth-child(3) {
+  --row: 2;
+}
+#garden-app #preferences > :nth-child(4) {
+  --row: 3;
+}
+#garden-app #preferences > :nth-child(5) {
+  --row: 4;
+}
+#garden-app #preferences > :nth-child(6) {
+  --row: 5;
+}
+#garden-app #preferences > :nth-child(7) {
+  --row: 6;
+}
+#garden-app #preferences > :nth-child(8) {
+  --row: 7;
+}
+#garden-app #preferences > :nth-child(9) {
+  --row: 8;
+}
+#garden-app #preferences > :nth-child(10) {
+  --row: 9;
+}
+#garden-app #preferences > :nth-child(n + 11) {
+  --row: 10;
+}
+/* Heading: a small lit badge with the sliders glyph, title and the glass close orb. */
+#garden-app #preferences .preferences-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+#garden-app #preferences .preferences-heading::before {
+  content: '';
+  flex: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  background:
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.9' stroke-linecap='round'><path d='M4 7h16M4 17h16'/><circle cx='9' cy='7' r='2.6' fill='%237a55e0'/><circle cx='15' cy='17' r='2.6' fill='%237a55e0'/></svg>")
+      center / 20px no-repeat,
+    var(--orb-fill);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 4px 14px rgba(110, 70, 230, 0.4);
+}
+#garden-app #preferences .preferences-heading h2 {
+  flex: 1;
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+#garden-app #preferences .settings-cue {
+  margin: 0 0 6px;
+  font-size: 12.5px;
+  color: rgba(226, 212, 248, 0.78);
+}
+#garden-app :is(#preferences, #arrange-panel) .setting-heading,
+#garden-app #preferences .lighting-control > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 9px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 252, 0.72);
+}
+#garden-app :is(#preferences, #arrange-panel) :is(.setting-heading, .lighting-control > span)::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(232, 216, 255, 0.22), transparent);
+}
+#garden-app #preferences :is(.season-calendar, .time-calendar) {
+  margin: 8px 2px 0;
+  font-size: 11.5px;
+  color: rgba(214, 198, 236, 0.72);
+}
+
+/* Season tiles: a glyph over each name; the thumb takes the season's tint and the glyph does a small dance. */
+#garden-app #preferences .season-switch {
+  --season-tint: 214, 196, 255;
+  min-height: 0;
+  padding: 5px;
+  border-radius: 22px;
+}
+#garden-app #preferences .season-switch:has(#spring[aria-pressed='true']) {
+  --season-tint: 255, 176, 214;
+}
+#garden-app #preferences .season-switch:has(#summer[aria-pressed='true']) {
+  --season-tint: 255, 212, 110;
+}
+#garden-app #preferences .season-switch:has(#autumn[aria-pressed='true']) {
+  --season-tint: 255, 156, 92;
+}
+#garden-app #preferences .season-switch:has(#winter[aria-pressed='true']) {
+  --season-tint: 168, 218, 255;
+}
+#garden-app #preferences .season-switch::before {
+  border-radius: 17px;
+  background:
+    radial-gradient(110% 80% at 50% 0%, rgba(var(--season-tint), 0.5), transparent 70%), var(--thumb-fill) !important;
+  border: 1px solid rgba(var(--season-tint), 0.75) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 6px 18px rgba(110, 70, 230, 0.32),
+    0 0 20px rgba(var(--season-tint), 0.3) !important;
+  transition:
+    left 0.55s var(--spring),
+    border-color 0.4s,
+    box-shadow 0.4s;
+}
+#garden-app #preferences .season-switch button {
+  flex-direction: column;
+  gap: 6px;
+  min-height: 66px;
+  padding: 8px 2px 7px;
+  border-radius: 17px;
+  font-size: 11.5px;
+  font-weight: 600;
+  transition:
+    color 0.3s,
+    scale 0.2s var(--glide);
+}
+#garden-app #preferences .season-switch button > span:first-child {
+  display: block !important;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--season-icon) center / contain no-repeat;
+  mask: var(--season-icon) center / contain no-repeat;
+  opacity: 0.8;
+  transition:
+    scale 0.45s var(--spring),
+    opacity 0.3s,
+    background-color 0.3s,
+    filter 0.3s;
+}
+#garden-app #preferences #season-auto {
+  --season-icon: var(--icon-calendar);
+  --tint: 214, 196, 255;
+}
+#garden-app #preferences #spring {
+  --season-icon: var(--icon-blossom);
+  --tint: 255, 176, 214;
+}
+#garden-app #preferences #summer {
+  --season-icon: var(--icon-sun);
+  --tint: 255, 212, 110;
+}
+#garden-app #preferences #autumn {
+  --season-icon: var(--icon-leaf);
+  --tint: 255, 156, 92;
+}
+#garden-app #preferences #winter {
+  --season-icon: var(--icon-flake);
+  --tint: 168, 218, 255;
+}
+#garden-app #preferences .season-switch button[aria-pressed='true'] > span:first-child {
+  opacity: 1;
+  background-color: rgb(var(--tint));
+  filter: drop-shadow(0 0 6px rgba(var(--tint), 0.9));
+  scale: 1.12;
+}
+#garden-app #preferences #season-auto[aria-pressed='true'] > span:first-child {
+  animation: glyph-pop 0.6s var(--spring);
+}
+#garden-app #preferences #spring[aria-pressed='true'] > span:first-child {
+  animation: glyph-bloom 0.8s var(--spring);
+}
+#garden-app #preferences #summer[aria-pressed='true'] > span:first-child {
+  animation: glyph-turn 0.9s var(--glide);
+}
+#garden-app #preferences #autumn[aria-pressed='true'] > span:first-child {
+  animation: glyph-sway 0.9s var(--glide);
+}
+#garden-app #preferences #winter[aria-pressed='true'] > span:first-child {
+  animation: glyph-turn 1s var(--glide) reverse;
+}
+@keyframes glyph-pop {
+  from {
+    scale: 0.6;
+  }
+}
+@keyframes glyph-bloom {
+  from {
+    scale: 0.2;
+    rotate: -90deg;
+  }
+}
+@keyframes glyph-turn {
+  from {
+    rotate: -120deg;
+  }
+}
+@keyframes glyph-sway {
+  0% {
+    translate: 0 -6px;
+    rotate: -24deg;
+  }
+  45% {
+    rotate: 16deg;
+  }
+  75% {
+    rotate: -6deg;
+  }
+}
+
+/* Time of day: a little sky above the four tiles; the sun (or moon) swings along its arc to the chosen hour. */
+#garden-app #preferences .time-sky {
+  --sky-top: #8a74d8;
+  --sky-bottom: #d9c4f4;
+  --orb-angle: 32deg;
+  position: relative;
+  height: 64px;
+  margin: 0 0 6px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(238, 228, 255, 0.16);
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -10px 18px rgba(20, 12, 40, 0.25);
+  transition:
+    --sky-top 0.7s var(--glide),
+    --sky-bottom 0.7s var(--glide);
+}
+@property --sky-top {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #8a74d8;
+}
+@property --sky-bottom {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #d9c4f4;
+}
+/* The arc the orb travels and the stars that only night shows. */
+#garden-app #preferences .time-sky::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 12px;
+  width: 168px;
+  height: 168px;
+  margin-left: -84px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.45);
+  box-shadow:
+    -150px 8px 0 -83px rgba(255, 255, 255, 0.9),
+    -96px -2px 0 -83.5px rgba(255, 255, 255, 0.8),
+    120px 4px 0 -83px rgba(255, 255, 255, 0.85),
+    66px -6px 0 -83.5px rgba(255, 255, 255, 0.7);
+}
+/* Rolling hills in front: the sinking sun goes behind them. */
+#garden-app #preferences .time-sky::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 20px;
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M0 12C25 4 45 6 70 11s50 6 75-2 40-4 55 1V20H0Z' fill='%23271d3f' fill-opacity='.85'/><path d='M0 16c30-6 60-5 95 0s70 2 105-3V20H0Z' fill='%23180f2b'/></svg>")
+    bottom / 100% 100% no-repeat;
+}
+#garden-app #preferences .time-orb {
+  position: absolute;
+  z-index: 1;
+  left: calc(50% - 12px);
+  top: calc(12px + 84px - 12px);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #ffe08a 50%, #e8ecff 50%);
+  box-shadow: 0 0 16px 4px rgba(255, 240, 200, 0.55);
+  transform: rotate(var(--orb-angle)) translateY(-84px) rotate(calc(-1 * var(--orb-angle)));
+  transition:
+    transform 0.9s var(--spring),
+    background 0.5s,
+    box-shadow 0.5s;
+}
+/* Morning: a pale rose-and-gold dawn with the sun just clearing the hills on the left. */
+#garden-app #preferences .lighting-control:has([data-value='morning'][aria-pressed='true']) .time-sky {
+  --sky-top: #8fa6e8;
+  --sky-bottom: #ffcfae;
+}
+#garden-app #preferences .lighting-control:has([data-value='morning'][aria-pressed='true']) .time-orb {
+  --orb-angle: -50deg;
+  background: radial-gradient(circle at 40% 38%, #fffaf0, #ffd9a0 58%, #ff9fb0);
+  box-shadow: 0 0 22px 8px rgba(255, 196, 170, 0.65);
+}
+#garden-app #preferences .lighting-control:has([data-value='day'][aria-pressed='true']) .time-sky {
+  --sky-top: #6fb7ff;
+  --sky-bottom: #d6ecff;
+}
+#garden-app #preferences .lighting-control:has([data-value='day'][aria-pressed='true']) .time-orb {
+  --orb-angle: 0deg;
+  background: radial-gradient(circle at 40% 38%, #fff7cf, #ffd25c 60%, #ffb12e);
+  box-shadow: 0 0 22px 7px rgba(255, 214, 102, 0.7);
+}
+#garden-app #preferences .lighting-control:has([data-value='sunset'][aria-pressed='true']) .time-sky {
+  --sky-top: #4f3f9e;
+  --sky-bottom: #ffad86;
+}
+#garden-app #preferences .lighting-control:has([data-value='sunset'][aria-pressed='true']) .time-orb {
+  --orb-angle: 66deg;
+  background: radial-gradient(circle at 40% 38%, #ffe2b0, #ff8c4a 62%, #e85a3a);
+  box-shadow: 0 0 22px 8px rgba(255, 130, 80, 0.6);
+}
+#garden-app #preferences .lighting-control:has([data-value='night'][aria-pressed='true']) .time-sky {
+  --sky-top: #0c1031;
+  --sky-bottom: #2c2a66;
+}
+#garden-app #preferences .lighting-control:has([data-value='night'][aria-pressed='true']) .time-orb {
+  --orb-angle: -28deg;
+  background: transparent;
+  box-shadow:
+    inset -7px -3px 0 0 #eef0ff,
+    0 0 16px 2px rgba(200, 210, 255, 0.35);
+}
+#garden-app #preferences .time-sky::before {
+  transition: box-shadow 0.6s;
+}
+#garden-app
+  #preferences
+  .lighting-control:not(:has([data-value='night'][aria-pressed='true']))
+  .time-sky::before {
+  box-shadow: none;
+}
+/* Time and light tiles: a glyph beside each name. */
+#garden-app #preferences :is(#time-switch, #light-style) {
+  min-height: 0;
+  padding: 5px;
+  border-radius: 20px;
+}
+#garden-app #preferences :is(#time-switch, #light-style)::before {
+  border-radius: 15px !important;
+  transition: left 0.55s var(--spring) !important;
+}
+#garden-app #preferences :is(#time-switch, #light-style) button {
+  gap: 6px;
+  min-height: 44px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+#garden-app #preferences :is(#time-switch, #light-style) button::before {
+  content: '';
+  flex: none;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--tile-icon) center / contain no-repeat;
+  mask: var(--tile-icon) center / contain no-repeat;
+  opacity: 0.75;
+  transition:
+    scale 0.45s var(--spring),
+    opacity 0.3s;
+}
+#garden-app #preferences #time-switch [data-value='auto'] {
+  --tile-icon: var(--icon-dial);
+}
+#garden-app #preferences #time-switch {
+  --segment-count: 5;
+}
+#garden-app #preferences #time-switch [data-value='morning'] {
+  --tile-icon: var(--icon-dawn);
+}
+#garden-app #preferences #time-switch [data-value='day'] {
+  --tile-icon: var(--icon-sun);
+}
+#garden-app #preferences #time-switch [data-value='sunset'] {
+  --tile-icon: var(--icon-dusk);
+}
+#garden-app #preferences #time-switch [data-value='night'] {
+  --tile-icon: var(--icon-moon);
+}
+#garden-app #preferences #light-natural {
+  --tile-icon: var(--icon-bulb);
+}
+#garden-app #preferences #light-neon {
+  --tile-icon: var(--icon-neon);
+}
+#garden-app #preferences :is(#time-switch, #light-style) button[aria-pressed='true']::before {
+  opacity: 1;
+  scale: 1.15;
+}
+#garden-app #preferences #light-neon[aria-pressed='true'] {
+  color: #fff !important;
+  text-shadow:
+    0 0 6px #ff7ae0,
+    0 0 14px rgba(120, 220, 255, 0.8);
+}
+#garden-app #preferences #light-neon[aria-pressed='true']::before {
+  filter: drop-shadow(0 0 4px #ff8ae6) drop-shadow(0 0 8px rgba(120, 220, 255, 0.9));
+}
+#garden-app #preferences :is(.season-switch, #time-switch, #light-style) button:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: -2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app
+    #preferences
+    :is(.season-switch, #time-switch, #light-style)
+    button:not([aria-pressed='true']):hover {
+    color: #fff !important;
+    box-shadow: none;
+  }
+  #garden-app #preferences .season-switch button:not([aria-pressed='true']):hover > span:first-child {
+    opacity: 1;
+    scale: 1.12;
+    background-color: rgb(var(--tint));
+  }
+  #garden-app #preferences :is(#time-switch, #light-style) button:not([aria-pressed='true']):hover::before {
+    opacity: 1;
+    scale: 1.12;
+  }
+}
+
+/* Quality: a status chip with a live dot instead of a ruled caption. */
+#garden-app #preferences .quality-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0 8px;
+  padding: 6px 12px 6px 10px;
+  border: 1px solid rgba(232, 216, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(236, 226, 252, 0.85);
+}
+#garden-app #preferences .quality-state::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9df0c4;
+  box-shadow: 0 0 8px #6fe0a8;
+}
+#garden-app.is-economy #preferences .quality-state::before {
+  background: #ffd27a;
+  box-shadow: 0 0 8px #ffbf4a;
+}
+
+/* Switch rows (Settings and Order): glass cards with a glyph chip, the name and a lit switch. */
+#garden-app :is(#preferences .settings-section > label, .project-filters > label) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px !important;
+  min-height: 56px !important;
+  margin: 0 0 6px;
+  padding: 8px 10px 8px 8px !important;
+  border: 1px solid rgba(238, 228, 255, 0.12);
+  border-radius: 18px;
+  background:
+    radial-gradient(
+      160px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgb(255 255 255 / calc(var(--glow) * 0.1)),
+      transparent 70%
+    ),
+    rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition:
+    --glow 0.3s var(--glide),
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label)::before {
+  content: '';
+  order: 1;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--well);
+  border: 1px solid rgba(238, 228, 255, 0.12);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition:
+    background 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label) > span {
+  order: 2;
+  flex: 1;
+  min-width: 0;
+  max-width: none !important;
+  font-size: 14px;
+  font-weight: 550;
+  color: #f4ecff;
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label) > input {
+  order: 3;
+}
+/* The glyph sits on its own layer so the chip can light up behind it. */
+#garden-app :is(#preferences .settings-section > label, .project-filters > label) {
+  position: relative;
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label)::after {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background: rgba(236, 226, 255, 0.8);
+  -webkit-mask: var(--row-icon) center / contain no-repeat;
+  mask: var(--row-icon) center / contain no-repeat;
+  pointer-events: none;
+  transition:
+    background-color 0.3s,
+    scale 0.45s var(--spring);
+}
+/* Adaptive resolution: a viewfinder's corners round a sharp point (sharpness follows the load). */
+#garden-app #preferences .settings-section > label:has(#auto-quality) {
+  --row-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M4 9V5h4M20 9V5h-4M4 15v4h4M20 15v4h-4'/><path d='M12 8.5 15.5 12 12 15.5 8.5 12Z'/></svg>");
+}
+#garden-app #preferences .settings-section > label:has(#sound-music) {
+  --row-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M9 17.5v-11l10-2.5v11'/><circle cx='6.5' cy='17.5' r='2.5'/><circle cx='16.5' cy='15' r='2.5'/></svg>");
+}
+#garden-app #preferences .settings-section > label:has(#sound-nature) {
+  --row-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 19c0-8 5-13 14-14 0 9-5 14-12 14H5Z'/><path d='M5 19c3-4 6-7 10-9'/></svg>");
+}
+#garden-app .project-filters > label:has(#filter-hidden) {
+  --row-icon: var(--icon-eye);
+}
+#garden-app .project-filters > label:has(#filter-github) {
+  --row-icon: var(--icon-branch);
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label):has(input:checked) {
+  border-color: rgba(222, 202, 255, 0.4);
+  background-color: rgba(198, 168, 255, 0.1);
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label):has(input:checked)::before {
+  background: var(--orb-fill);
+  border-color: rgba(240, 228, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 3px 12px rgba(110, 70, 230, 0.45);
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label):has(input:checked)::after {
+  background-color: #fff;
+  scale: 1.08;
+}
+#garden-app :is(#preferences .settings-section > label, .project-filters > label):has(input:focus-visible) {
+  outline: 2px solid #f4ecff;
+  outline-offset: 2px;
+}
+#garden-app :is(#preferences, .project-filters) input[type='checkbox']:focus-visible {
+  outline: none;
+}
+/* The switch: a deeper track, a knob that springs across and shows a check when on. */
+#garden-app .preferences input[type='checkbox'] {
+  width: 50px;
+  height: 30px;
+  background: rgba(8, 4, 20, 0.62);
+  border: 1px solid rgba(238, 228, 255, 0.22);
+}
+#garden-app .preferences input[type='checkbox']::before {
+  width: 24px;
+  height: 24px;
+  top: 2px;
+  left: 2px;
+  background: linear-gradient(180deg, #fff, #ddd0f2);
+  transition:
+    translate 0.5s var(--spring),
+    scale 0.2s var(--glide),
+    background 0.3s;
+}
+#garden-app .preferences input[type='checkbox']:active::before {
+  scale: 1.12 0.92;
+}
+#garden-app .preferences input[type='checkbox']:checked::before {
+  translate: 20px 0;
+  background:
+    var(--check-ink) center / 14px no-repeat,
+    linear-gradient(180deg, #fff, #efe6ff);
+}
+#garden-app #preferences .economy-hint {
+  display: block;
+  margin: -2px 6px 4px 56px;
+  font-size: 11.5px;
+  color: rgba(214, 198, 236, 0.72);
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app :is(#preferences .settings-section > label, .project-filters > label):hover {
+    --glow: 1;
+    border-color: rgba(228, 212, 255, 0.32);
+  }
+  #garden-app :is(#preferences .settings-section > label, .project-filters > label):hover::after {
+    scale: 1.1;
+  }
+}
+/* Site versions: a glass row with a chip and an arrow. */
+#garden-app #preferences .site-versions {
+  border-top: 0;
+  margin-top: 14px;
+}
+#garden-app #preferences .site-version-link {
+  position: relative;
+  gap: 12px;
+  min-height: 56px;
+  padding: 8px 12px 8px 8px;
+  border: 1px solid rgba(238, 228, 255, 0.14);
+  border-radius: 18px;
+  background:
+    var(--arrow-ink) right 14px center / 16px no-repeat,
+    radial-gradient(
+      160px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+      rgb(255 255 255 / calc(var(--glow) * 0.12)),
+      transparent 70%
+    ),
+    rgba(255, 255, 255, 0.04);
+  color: #f4ecff;
+  font-weight: 550;
+  transition:
+    --glow 0.3s var(--glide),
+    border-color 0.3s,
+    translate 0.4s var(--spring),
+    background-position 0.4s var(--spring);
+}
+#garden-app #preferences .site-version-link svg {
+  box-sizing: content-box;
+  width: 18px;
+  height: 18px;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--well);
+  border: 1px solid rgba(238, 228, 255, 0.12);
+}
+#garden-app #preferences .site-version-link:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app #preferences .site-version-link:hover {
+    --glow: 1;
+    border-color: rgba(228, 212, 255, 0.36);
+    background-position:
+      right 10px center,
+      0 0,
+      0 0;
+  }
+}
+
+/* Benchmark: the same glass row as the site versions, as a button (garden-bench.mjs opens its card). */
+#garden-app #preferences .bench-entry {
+  margin-top: 14px;
+  padding-top: 4px;
+}
+#garden-app #preferences button.site-version-link {
+  width: 100%;
+  font-family: inherit;
+  font-weight: 550;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Order panel heading shares the Settings heading rhythm. */
+#garden-app #arrange-panel .preferences-heading {
+  gap: 12px;
+}
+#garden-app #arrange-panel .preferences-heading h2 {
+  flex: 1;
+}
+
+/* ---------- Phones: Settings becomes a bottom sheet with a grab handle ---------- */
+@media (max-width: 740px) {
+  #garden-app #preferences {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    width: auto;
+    max-width: none;
+    max-height: min(84svh, calc(100svh - 70px));
+    padding: 26px 16px calc(18px + env(safe-area-inset-bottom, 0px));
+    border-radius: 30px 30px 0 0;
+    border-bottom: 0;
+    overscroll-behavior: contain;
+    transform-origin: 50% 100%;
+    box-shadow:
+      var(--glass-highlight),
+      0 -18px 50px rgba(8, 4, 24, 0.5);
+  }
+  #garden-app #preferences[hidden] {
+    transform: translateY(104%);
+    opacity: 1;
+    transition:
+      transform 0.3s var(--glide),
+      visibility 0s 0.3s;
+  }
+  #garden-app #preferences:not([hidden]) {
+    transition:
+      transform 0.5s var(--glide),
+      visibility 0s;
+  }
+  /* Grab handle. */
+  #garden-app #preferences .preferences-heading {
+    position: relative;
+  }
+  #garden-app #preferences .preferences-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -17px;
+    width: 40px;
+    height: 4px;
+    margin-left: -20px;
+    border-radius: 2px;
+    background: rgba(240, 230, 255, 0.35);
+  }
+  #garden-app #preferences .preferences-heading h2 {
+    font-size: 21px;
+  }
+  #garden-app #preferences .season-switch button {
+    min-height: 62px;
+    font-size: 11px;
+  }
+  #garden-app #preferences :is(#time-switch, #light-style) button {
+    font-size: 11px;
+    gap: 4px;
+  }
+  #garden-app #preferences :is(#time-switch, #light-style) button::before {
+    width: 14px;
+    height: 14px;
+  }
+  /* Behind the sheet the garden dims a little, so the sheet reads as the one thing in focus. */
+  #garden-app:has(#preferences:not([hidden])) .scene-shade {
+    opacity: 1;
+    background: rgba(12, 8, 28, 0.35);
+    transition: background-color 0.4s;
+  }
+  #garden-app #language-menu {
+    width: min(256px, calc(100vw - 24px));
+  }
+}
+@media (max-width: 350px) {
+  #garden-app #preferences .season-switch button {
+    font-size: 10px;
+  }
+  #garden-app #preferences :is(#time-switch, #light-style) button::before {
+    display: none;
+  }
+}
+
+/* Economy: no blur behind the menu; without blur the sheets go fully opaque so the scene text never reads through. */
+#garden-app.is-economy :is(#preferences, #language-menu) {
+  background: linear-gradient(180deg, rgb(56, 45, 82), rgb(27, 21, 43));
+}
+#garden-app.is-economy #language-menu {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Reduced motion: every state still changes, at once and in place. */
+#garden-app.reduce-motion
+  :is(
+    #language-menu,
+    #language-menu *,
+    #language-trigger,
+    #preferences,
+    #preferences *,
+    .time-orb,
+    .project-filters > label,
+    .text-button,
+    #portal-overview,
+    #project-link,
+    #portal-go,
+    #filtered-show,
+    #empty-reset,
+    #comment-send,
+    #preferences-close,
+    #arrange-close,
+    #portal-close,
+    #banners-close,
+    #video-close,
+    #image-close,
+    #detail-close,
+    #media-close,
+    #gallery-previous,
+    #gallery-next,
+    #video-previous,
+    #video-next,
+    .overview-announcement,
+    .overview-announcement *
+  ),
+#garden-app.reduce-motion
+  :is(#language-menu, #language-menu > button, #language-trigger, #preferences *)::before,
+#garden-app.reduce-motion
+  :is(#preferences *, .project-filters > label, #project-link, #portal-go, #filtered-show)::after,
+#garden-app.reduce-motion :is(#preferences-close, #arrange-close, #portal-close, #banners-close)::before {
+  animation: none !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+#garden-app.reduce-motion :is(#preferences > *, .text-button, #portal-overview, .overview-announcement),
+#garden-app.reduce-motion :is(#project-link, #portal-go, #filtered-show, #empty-reset, #comment-send) {
+  translate: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #garden-app
+    :is(
+      #language-menu,
+      #language-menu *,
+      #language-trigger,
+      #preferences,
+      #preferences *,
+      .project-filters > label,
+      .text-button,
+      #portal-overview,
+      #project-link,
+      #portal-go,
+      #filtered-show,
+      #empty-reset,
+      #comment-send,
+      .overview-announcement,
+      .overview-announcement *
+    ),
+  #garden-app :is(#language-menu > button, #language-trigger, #preferences *)::before,
+  #garden-app :is(#preferences *, .project-filters > label)::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* ===== M18 (owner 2026-10-25): clean overview, hidden interface, a calm phone card ===== */
+
+/* Eye in the top bar: hides the interface for looking at the garden (H on a keyboard). */
+#garden-app .header-actions > .ui-hide {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border-radius: 50%;
+}
+#garden-app :is(.ui-hide, .ui-show, .project-switch) svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* The one thing left while the interface is hidden: a small «Показать» where the eye was. */
+#garden-app > .ui-show {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px 0 13px;
+  border: 1px solid rgba(238, 228, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(30, 22, 52, 0.42);
+  color: #f6efff;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+  opacity: 0.72;
+  transition: opacity 0.25s var(--glide);
+}
+#garden-app > .ui-show[hidden] {
+  display: none;
+}
+#garden-app > .ui-show:is(:hover, :focus-visible) {
+  opacity: 1;
+}
+#garden-app.is-ui-hidden
+  > :not(#garden-scene, #relayout-overlay, #relayout-ripple, .scene-shade, #portal-fade, #ui-show, #loader) {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+/* Review chips (preview only) and the frame meter live outside the app; they step aside too. */
+body:has(#garden-app.is-ui-hidden) > :not(#garden-app, script, style) {
+  display: none !important;
+}
+
+/* Clean overview: while the visitor turns or zooms the camera (garden.mjs stirCamera) the intro, announcements
+   and footer fade and sink a little; they return once the camera rests. The intro reuses its own transitions. */
+#garden-app :is(.garden-footer, .garden-utilities) {
+  transition:
+    opacity 0.45s var(--glide),
+    visibility 0.45s;
+}
+#garden-app .overview-announcement {
+  transition:
+    --glow 0.3s var(--glide),
+    border-color 0.25s,
+    box-shadow 0.3s var(--glide),
+    opacity 0.45s var(--glide),
+    scale 0.45s var(--glide),
+    visibility 0.45s;
+}
+#garden-app.is-overview.is-camera-moving
+  :is(.overview-announcement, .garden-utilities, .garden-footer, .fixture-note) {
+  opacity: 0;
+  scale: 0.96;
+  visibility: hidden;
+  pointer-events: none;
+}
+#garden-app.is-overview.is-camera-moving :is(.hero, .scenic-cue) {
+  opacity: 0;
+  pointer-events: none;
+}
+#garden-app.is-overview.is-camera-moving .hero {
+  scale: 0.96;
+}
+/* Fading out is quick; coming back is a touch slower and waits a beat (CAMERA_CALM_MS before it). */
+#garden-app.is-overview.is-camera-moving :is(.overview-announcement, .garden-utilities, .garden-footer) {
+  transition-duration: 0.28s;
+}
+#garden-app.reduce-motion :is(.garden-footer, .garden-utilities, .overview-announcement) {
+  transition-duration: 0s;
+}
+
+/* The phone-only pieces of the card stay out of the desktop layout. */
+#garden-app .project-switch,
+#garden-app .project-switch-list {
+  display: none;
+}
+@media (min-width: 741px) {
+  /* Desktop: the gallery keeps the viewer's own ×; the card's × serves Description and Comments. */
+  #garden-app[data-area='gallery'] #detail-close {
+    display: none;
+  }
+}
+
+@media (max-width: 740px) {
+  /* One clean entry on a phone: no veil, halo, sheen or orb around the button, just the pill and its arrow. */
+  #garden-app .hero,
+  #garden-app #hero {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  #garden-app #hero::before,
+  #garden-app #hero::after {
+    display: none;
+  }
+  #garden-app .hero h1 {
+    text-shadow:
+      0 1px 2px rgba(22, 14, 44, 0.55),
+      0 4px 22px rgba(22, 14, 44, 0.6);
+  }
+  #garden-app #start {
+    border: 0;
+    box-shadow: 0 10px 26px rgba(28, 12, 70, 0.34);
+  }
+  #garden-app #start :is(.entry-halo, .entry-sheen) {
+    display: none;
+  }
+  #garden-app #start .entry-orb {
+    width: 40px;
+    height: 40px;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+  #garden-app #start .entry-orb svg {
+    stroke: #6a46d8;
+    width: 24px;
+    height: 24px;
+  }
+  #garden-app #start.is-diving .entry-orb {
+    box-shadow: none;
+  }
+
+  /* An open card (gallery, description, comments) is the only thing on screen: no top bar, dock, footer,
+     announcements or tags to hit by accident. It keeps its × and one «Другой проект». */
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    :is(
+      .garden-header,
+      .journey-bar,
+      .garden-footer,
+      .garden-utilities,
+      .overview-announcement,
+      .top-context,
+      .island-tags,
+      .walk-controls,
+      .fixture-note,
+      #media-close
+    ) {
+    display: none !important;
+  }
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    .project-card {
+    --card-gap: 10px;
+    left: max(10px, env(safe-area-inset-left)) !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    width: auto !important;
+    max-width: none !important;
+    padding-top: 10px !important;
+    translate: none !important;
+  }
+  #garden-app.is-journey[data-area='gallery'] .project-card {
+    top: max(10px, env(safe-area-inset-top)) !important;
+    bottom: auto !important;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) .project-card {
+    top: auto !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    max-height: 62svh !important;
+  }
+  /* Top row of the card: «Другой проект» on the left, × on the right, both full-size touch targets. */
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    .project-heading {
+    display: flex !important;
+    align-items: center;
+    min-height: 44px;
+    margin: 0 0 6px;
+    padding-right: 52px;
+  }
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    .project-heading
+    > :is(#project-count, #project-status) {
+    display: none;
+  }
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    .project-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px 0 11px;
+    border: 1px solid rgba(238, 228, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    color: #f3eaff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  #garden-app .project-switch[aria-expanded='true'] {
+    background: rgba(186, 150, 255, 0.24);
+    border-color: rgba(222, 202, 255, 0.5);
+  }
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    #detail-close {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px;
+    margin: 0 !important;
+  }
+  /* The compact list drops from the top row over the card; choosing a project starts the trip. */
+  #garden-app .project-switch-list:not([hidden]) {
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    right: 10px;
+    z-index: 5;
+    display: grid;
+    gap: 2px;
+    max-height: min(52svh, 420px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 6px;
+    border: 1px solid var(--glass-edge, rgba(238, 228, 255, 0.19));
+    border-radius: 18px;
+    background: #231b38f7;
+    box-shadow: 0 18px 40px rgba(8, 4, 24, 0.5);
+  }
+  /* At the main stand the card sits at the bottom, over the dock: the list opens upwards over the scene instead
+     of running under the dock (owner, round 9: it covered the card and its last projects could not be reached). */
+  #garden-app.is-journey[data-area='main'] .project-switch-list:not([hidden]) {
+    top: auto;
+    bottom: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    max-height: min(44svh, 360px);
+  }
+  #garden-app .project-switch-list > button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 4px 12px 4px 8px;
+    border: 0;
+    border-radius: 12px;
+    background: none;
+    color: #f3eaff;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: left;
+  }
+  #garden-app .project-switch-list > button > :first-child {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+  #garden-app .project-switch-list > button > span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #garden-app .project-switch-list > button[aria-current='true'] {
+    background: rgba(186, 150, 255, 0.2);
+    font-weight: 650;
+  }
+  #garden-app .project-switch-list > button:is(:hover, :focus-visible) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  /* The gallery fills the rest of the screen under the card, its controls at the thumb's end. */
+  #garden-app.is-journey[data-area='gallery'] .media-viewer {
+    top: calc(max(10px, env(safe-area-inset-top)) + var(--card-height, 170px) + 8px) !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+    left: max(10px, env(safe-area-inset-left)) !important;
+    right: max(10px, env(safe-area-inset-right)) !important;
+    width: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    transform: none !important;
+    translate: none !important;
+    /* Picture height: the room under the card less the counter row and the viewer's padding. */
+    --media-room: calc(100svh - var(--card-height, 170px) - 128px);
+  }
+}
+
+/* Settings → Управление (camera2, M18): the camera direction is a two-tile choice like the light style; the
+   double-click focus is explained under it. */
+#garden-app #preferences .setting-subheading {
+  display: block;
+  margin: 2px 4px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(232, 220, 250, 0.82);
+}
+#garden-app #preferences #camera-direction {
+  --segment-count: 2;
+  min-height: 0;
+  padding: 5px;
+  border-radius: 20px;
+}
+#garden-app #preferences #camera-direction button {
+  min-height: 44px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+/* Settings → Ещё: the graphics quality (low, medium, high) is a three-tile choice like the camera direction; the
+   hint under it explains the chosen level and names the one recommended for this device (owner, 2026-10-31). */
+#garden-app #preferences #graphics-quality {
+  --segment-count: 3;
+  min-height: 0;
+  padding: 5px;
+  border-radius: 20px;
+}
+#garden-app #preferences #graphics-quality button {
+  min-height: 44px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+/* The hint lines up with the tiles, not with the switch rows' text after their icon. */
+#garden-app #preferences #graphics-hint {
+  margin: 6px 6px 8px;
+}
+#garden-app #preferences .camera-focus-hint {
+  display: block;
+  margin: 6px 6px 8px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(214, 198, 236, 0.72);
+}
+
+/* Settings sections (settings-sound, M18): a row of four lit tiles picks «Внешний вид», «Звук», «Управление»
+   or «Ещё»; only that section shows, so neither the desktop sheet nor the phone sheet becomes a long list. */
+#garden-app #preferences .settings-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  margin: 10px 0 4px;
+  padding: 4px;
+  border: 1px solid rgba(238, 228, 255, 0.12);
+  border-radius: 20px;
+  background: var(--well);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+#garden-app #preferences .settings-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  min-height: 56px;
+  padding: 6px 2px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  background: transparent;
+  color: rgba(232, 220, 252, 0.74);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--glide),
+    border-color 0.25s,
+    color 0.25s;
+}
+#garden-app #preferences .settings-tab > span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+#garden-app #preferences .settings-tab svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#garden-app #preferences .settings-tab[aria-selected='true'] {
+  border-color: rgba(240, 228, 255, 0.5);
+  background: var(--orb-fill);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 3px 12px rgba(110, 70, 230, 0.4);
+}
+#garden-app #preferences .settings-tab:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app #preferences .settings-tab:not([aria-selected='true']):hover {
+    border-color: rgba(228, 212, 255, 0.28);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #f4ecff;
+  }
+}
+#garden-app #preferences .settings-section {
+  display: block;
+  min-height: 0;
+}
+#garden-app #preferences .settings-section[hidden] {
+  display: none;
+}
+#garden-app #preferences .settings-section:not([hidden]) {
+  animation: settings-section-in 0.28s var(--glide);
+}
+@keyframes settings-section-in {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+/* The tab already names «Управление»; the heading stays for the camera choice's accessible name only. */
+#garden-app #preferences #settings-control > #controls-heading {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+#garden-app #preferences .settings-section > :first-child:not(#controls-heading),
+#garden-app #preferences #settings-control > #controls-heading + * {
+  margin-top: 14px;
+}
+#garden-app #preferences .sound-hint {
+  display: block;
+  margin: 6px 6px 4px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(214, 198, 236, 0.72);
+}
+#garden-app.is-economy #preferences .settings-section:not([hidden]) {
+  animation: none;
+}
+@media (max-width: 350px) {
+  #garden-app #preferences .settings-tab {
+    font-size: 10px;
+  }
+}
+/* Dock ride buttons (Observatory, balloon flight, zipline): the signposts' pictogram instead of an arrow. */
+#garden-app .journey-bar .ride-glyph {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ===== M18 magic (owner + Dima 2026-10-25): the portal chooser as a rune dial =====
+   Destination sigils float round a rune ring (the whole garden at the bottom), the chosen one glows in its
+   accent and a beam points at it; the middle shows its preview. «Перейти» charges on press-and-hold or click
+   (--charge 0..1 from portal-dial.mjs). Phone: a compact bottom sheet with a swipeable row of sigils. */
+#garden-app .portal-dialog.rune-portal {
+  --dial: 296px;
+  --dial-radius: 124px;
+  --core: 132px;
+  --sigil: 50px;
+  --accent: #b9a2ff;
+  --charge: 0;
+  inset: 84px 28px auto auto;
+  width: 372px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100svh - 222px);
+  padding: 14px 18px 16px;
+  overflow: hidden auto;
+  border-radius: 30px;
+  border: 1px solid var(--glass-edge);
+  background:
+    radial-gradient(90% 46% at 50% 36%, color-mix(in srgb, var(--accent) 17%, transparent), transparent 72%),
+    linear-gradient(180deg, rgba(50, 40, 82, 0.76), rgba(20, 15, 36, 0.86));
+  box-shadow:
+    var(--glass-highlight),
+    0 24px 60px rgba(8, 4, 24, 0.5);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  color: var(--glass-ink);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(220, 200, 255, 0.3) transparent;
+  transition:
+    opacity 0.26s var(--glide),
+    transform 0.34s var(--spring),
+    display 0.34s allow-discrete;
+}
+/* Drawn once while the loader is up (garden.mjs prewarmPortalPaint): over the loader so it is painted at all, all
+   but invisible, no transition, no pointer. */
+#garden-app .portal-dialog.is-prewarm {
+  z-index: 11;
+  opacity: 0.01 !important;
+  transition: none !important;
+  pointer-events: none;
+}
+#garden-app.is-economy .portal-dialog.rune-portal {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: linear-gradient(180deg, rgb(52, 42, 80), rgb(24, 18, 40));
+}
+#garden-app .rune-portal .rune-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 10px;
+}
+#garden-app .rune-portal .rune-head .eyebrow {
+  grid-column: 1;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--accent) 45%, #d8c8f0);
+}
+#garden-app .rune-portal h2 {
+  grid-column: 1;
+  margin: 2px 0 0;
+  font-size: 20px;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  white-space: normal;
+}
+#garden-app .rune-portal h2:focus {
+  outline: none;
+}
+/* The close stays quiet: a small glass orb that brightens when wanted. */
+#garden-app .rune-portal #portal-close.rune-close {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  opacity: 0.72;
+}
+#garden-app .rune-portal #portal-close.rune-close:is(:hover, :focus-visible) {
+  opacity: 1;
+}
+#garden-app .rune-portal #portal-close.rune-close::before {
+  -webkit-mask-size: 15px;
+  mask-size: 15px;
+}
+#garden-app .rune-portal .rune-body {
+  display: block;
+}
+#garden-app .rune-portal .rune-dial {
+  position: relative;
+  width: var(--dial);
+  height: var(--dial);
+  margin: 12px auto 4px;
+  /* The ring is grabbed and turned (portal-dial.mjs): no browser panning or text selection under it. */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+#garden-app .rune-portal .rune-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  rotate: var(--spin, 0deg);
+}
+/* While the ring turns under the pointer or coasts, the sigils follow it directly, not through the spring. */
+#garden-app .rune-portal.is-spinning .rune-dial,
+#garden-app .rune-portal.is-spinning .rune-sigil {
+  cursor: grabbing;
+}
+#garden-app .rune-portal.is-spinning .rune-sigil {
+  transition:
+    box-shadow 0.2s var(--glide),
+    border-color 0.2s,
+    opacity 0.3s;
+}
+#garden-app .rune-portal.is-spinning .rune-sigil::after {
+  opacity: 0 !important;
+}
+#garden-app .rune-portal .rune-ring circle {
+  fill: none;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#garden-app .rune-portal .ring-halo {
+  stroke: color-mix(in srgb, var(--accent) 30%, rgba(238, 228, 255, 0.14));
+  stroke-width: 1;
+}
+/* Carved runes: an irregular dash rhythm reads as glyphs at this size; it turns very slowly. */
+#garden-app .rune-portal .ring-runes {
+  stroke: color-mix(in srgb, var(--accent) 35%, rgba(222, 206, 255, 0.6));
+  stroke-width: 5;
+  stroke-dasharray: 1.5 5 6 4 1.5 9 3 5 1.5 3 1.5 12;
+  opacity: 0.7;
+  animation: rune-turn 120s linear infinite;
+}
+#garden-app .rune-portal .ring-orbit {
+  stroke: rgba(238, 228, 255, 0.13);
+  stroke-width: 1;
+}
+#garden-app .rune-portal .ring-dots {
+  stroke: color-mix(in srgb, var(--accent) 60%, #fff);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 0 13.07;
+  opacity: 0.5;
+  animation: rune-turn 160s linear infinite reverse;
+}
+#garden-app .rune-portal .ring-inner {
+  stroke: color-mix(in srgb, var(--accent) 55%, transparent);
+  stroke-width: 1.4;
+}
+#garden-app .rune-portal.is-charging .ring-runes {
+  opacity: 1;
+  stroke: color-mix(in srgb, var(--accent) 70%, #fff);
+}
+#garden-app .rune-portal.is-charging .ring-dots {
+  opacity: 0.9;
+}
+@keyframes rune-turn {
+  to {
+    rotate: 360deg;
+  }
+}
+/* A beam of light from the preview to the chosen sigil; it swings the short way round (portal-dial turnTo). */
+#garden-app .rune-portal .rune-beam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--dial-radius) - var(--sigil) / 2 - 2px);
+  height: 2px;
+  margin-top: -1px;
+  transform-origin: 0 50%;
+  rotate: var(--beam, 90deg);
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent calc(var(--core) / 2 + 2px),
+    color-mix(in srgb, var(--accent) 40%, transparent) calc(var(--core) / 2 + 6px),
+    color-mix(in srgb, var(--accent) 70%, #fff)
+  );
+  box-shadow: 0 0 calc(6px + var(--charge) * 10px) color-mix(in srgb, var(--accent) 80%, transparent);
+  pointer-events: none;
+  transition: rotate 0.5s var(--spring);
+}
+/* The preview in the middle of the dial, haloed in the accent; the charge runs round it as a ring. */
+#garden-app .rune-portal .rune-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--core);
+  height: var(--core);
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, #1b1332), #110b20 72%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 70%, transparent),
+    0 0 calc(22px + var(--charge) * 26px) color-mix(in srgb, var(--accent) 60%, transparent),
+    inset 0 0 22px rgba(0, 0, 0, 0.45);
+}
+#garden-app .rune-portal .rune-core img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#garden-app .rune-portal .rune-core img:not([src]),
+#garden-app .rune-portal .rune-core .preview-symbol {
+  display: none;
+}
+#garden-app .rune-portal.to-overview .rune-core {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23eef4ff' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 20.5V9.5M12 13c-3.6 0-5.6-2.3-5.6-5.6 3.4 0 5.6 2 5.6 5.6Zm0-2.4c0-3.2 2-5.2 5.4-5.2 0 3.2-2 5.2-5.4 5.2ZM7.5 20.5h9'/%3E%3C/svg%3E")
+      center / 46% no-repeat,
+    radial-gradient(circle, color-mix(in srgb, var(--accent) 34%, #1b1332), #110b20 72%);
+}
+#garden-app .rune-portal .rune-dial::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--core) + 14px);
+  height: calc(var(--core) + 14px);
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--accent) 60%, #fff) calc(var(--charge) * 360deg),
+    rgba(238, 228, 255, 0.1) 0
+  );
+  -webkit-mask: radial-gradient(
+    circle,
+    transparent calc(var(--core) / 2 + 3px),
+    #000 calc(var(--core) / 2 + 4px)
+  );
+  mask: radial-gradient(circle, transparent calc(var(--core) / 2 + 3px), #000 calc(var(--core) / 2 + 4px));
+  pointer-events: none;
+}
+/* Sigils: placed round the orbit by --a (portal-dial.mjs); --s is their scale, so the orbit never stretches. */
+#garden-app .rune-portal .rune-sigils {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+#garden-app .rune-portal .rune-sigil {
+  --s: 1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: var(--sigil);
+  height: var(--sigil);
+  min-width: 0;
+  min-height: 0;
+  margin: calc(var(--sigil) / -2) 0 0 calc(var(--sigil) / -2);
+  padding: 0;
+  border: 1px solid rgba(238, 228, 255, 0.22);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, rgba(104, 88, 150, 0.9), rgba(28, 22, 48, 0.94));
+  box-shadow:
+    var(--glass-highlight),
+    0 4px 12px rgba(8, 4, 24, 0.4);
+  color: var(--glass-ink);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: rotate(var(--a, 90deg)) translateX(var(--dial-radius)) rotate(calc(-1 * var(--a, 90deg)))
+    scale(var(--s));
+  transition:
+    transform 0.4s var(--spring),
+    box-shadow 0.3s var(--glide),
+    border-color 0.3s,
+    opacity 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+#garden-app .rune-portal .rune-sigil.is-home {
+  --sigil-accent: #bcd4ff;
+}
+#garden-app .rune-portal .rune-sigil img {
+  width: 58%;
+  height: 58%;
+  object-fit: contain;
+  border-radius: 7px;
+  pointer-events: none;
+}
+#garden-app .rune-portal .rune-sigil svg {
+  width: 56%;
+  height: 56%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#garden-app .rune-portal .rune-sigil.selected {
+  --s: 1.18;
+  border-color: color-mix(in srgb, var(--sigil-accent, #cfe0ff) 85%, #fff);
+  background: radial-gradient(
+    circle at 34% 28%,
+    color-mix(in srgb, var(--sigil-accent, #cfe0ff) 45%, #6a58a0),
+    rgba(30, 22, 52, 0.95)
+  );
+  box-shadow:
+    var(--glass-highlight),
+    0 0 0 2px color-mix(in srgb, var(--sigil-accent, #cfe0ff) 50%, transparent),
+    0 0 24px color-mix(in srgb, var(--sigil-accent, #cfe0ff) 75%, transparent);
+}
+#garden-app .rune-portal .rune-sigil:focus-visible {
+  outline: 2px solid #f4ecff;
+  outline-offset: 3px;
+}
+/* Name of a sigil under the pointer or keyboard focus (the chosen one is named in the preview). */
+#garden-app .rune-portal .rune-sigil::after {
+  content: attr(data-name);
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  translate: -50% -4px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(20, 14, 36, 0.92);
+  border: 1px solid rgba(238, 228, 255, 0.16);
+  color: #f3ecff;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.2s,
+    translate 0.25s var(--glide);
+  z-index: 3;
+}
+#garden-app .rune-portal .rune-sigil:not(.selected):focus-visible::after {
+  opacity: 1;
+  translate: -50% 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  #garden-app .rune-portal .rune-sigil:not(.selected):hover {
+    --s: 1.1;
+    border-color: color-mix(in srgb, var(--sigil-accent, #cfe0ff) 70%, #fff);
+    box-shadow:
+      var(--glass-highlight),
+      0 0 16px color-mix(in srgb, var(--sigil-accent, #cfe0ff) 55%, transparent);
+  }
+  #garden-app .rune-portal .rune-sigil:not(.selected):hover::after {
+    opacity: 1;
+    translate: -50% 0;
+  }
+}
+#garden-app .rune-portal.is-charging .rune-sigil:not(.selected) {
+  opacity: 0.4;
+}
+/* Opening: the sigils drift out from the middle of the ring. */
+#garden-app .rune-portal[open] .rune-sigil {
+  animation: sigil-out 0.6s var(--spring) backwards;
+}
+@keyframes sigil-out {
+  from {
+    opacity: 0;
+    transform: rotate(var(--a, 90deg)) translateX(calc(var(--dial-radius) * 0.35))
+      rotate(calc(-1 * var(--a, 90deg))) scale(0.4);
+  }
+}
+#garden-app .rune-portal .rune-preview {
+  min-height: 74px;
+  padding: 0 4px;
+  text-align: center;
+}
+#garden-app .rune-portal .rune-preview h3 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.25;
+  color: #fff;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 65%, transparent);
+}
+#garden-app .rune-portal .rune-preview small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  color: #c9b9e0;
+}
+#garden-app .rune-portal .rune-preview small:empty {
+  display: none;
+}
+#garden-app .rune-portal .rune-preview p {
+  display: -webkit-box;
+  margin: 6px 0 0;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #ddd0ee;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+/* «Перейти»: a rune orb that fills with the charge while the light sweeps across the button. */
+#garden-app .rune-portal #portal-go.rune-go {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 56px;
+  margin: 12px 0 0;
+  padding: 0 24px 0 8px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, rgba(255, 255, 255, 0.45)) !important;
+  border-radius: 999px !important;
+  background:
+    radial-gradient(
+      140px circle at var(--pointer-x, 30%) var(--pointer-y, 0%),
+      rgb(255 255 255 / calc(0.1 + var(--glow) * 0.14)),
+      transparent 70%
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--accent) 62%, #2c1d5c) calc(var(--charge) * 100%),
+      transparent calc(var(--charge) * 100%)
+    ),
+    linear-gradient(180deg, rgba(96, 76, 156, 0.95), rgba(44, 30, 88, 0.97)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    0 8px 24px rgba(20, 8, 60, 0.45),
+    0 0 calc(12px + var(--charge) * 30px) color-mix(in srgb, var(--accent) 60%, transparent);
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#garden-app .rune-portal #portal-go.rune-go::after {
+  content: none;
+}
+#garden-app .rune-portal #portal-go.rune-go:disabled {
+  opacity: 0.5;
+}
+#garden-app .rune-portal .rune-go-orb {
+  position: relative;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #fff calc(var(--charge) * 360deg), rgba(255, 255, 255, 0.22) 0);
+}
+#garden-app .rune-portal .rune-go-orb::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background:
+    var(--arrow-white) center / 18px no-repeat,
+    radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--accent) 70%, #fff), #5a36c8 60%, #33208a);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 70%, transparent);
+}
+#garden-app .rune-portal .rune-go-label {
+  margin-right: 28px;
+}
+#garden-app .rune-portal.is-charging .rune-go-orb::after {
+  animation: rune-orb 0.45s ease-in-out infinite alternate;
+}
+@keyframes rune-orb {
+  to {
+    scale: 1.12;
+    box-shadow: 0 0 22px color-mix(in srgb, var(--accent) 90%, #fff);
+  }
+}
+#garden-app .rune-portal .rune-hint {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #bfaed8;
+}
+/* Short desktop windows: a smaller dial, no description. */
+@media (min-width: 741px) and (max-height: 780px) {
+  #garden-app .portal-dialog.rune-portal {
+    --dial: 236px;
+    --dial-radius: 98px;
+    --core: 104px;
+    --sigil: 42px;
+    top: 76px;
+    max-height: calc(100svh - 206px);
+  }
+  #garden-app .rune-portal .rune-preview p,
+  #garden-app .rune-portal .rune-hint {
+    display: none;
+  }
+  #garden-app .rune-portal .rune-preview {
+    min-height: 0;
+  }
+}
+/* Phone: a bottom sheet above the dock; the sigils become a swipeable row, the one in the middle is chosen. */
+@media (max-width: 740px) {
+  #garden-app .portal-dialog.rune-portal {
+    --core: 60px;
+    inset: auto 8px var(--sheet-bottom, 132px) 8px;
+    width: auto;
+    max-width: none;
+    max-height: calc(100svh - var(--sheet-bottom, 132px) - 64px);
+    padding: 12px 14px 14px;
+    border-radius: 26px;
+  }
+  #garden-app .rune-portal h2 {
+    font-size: 17px;
+  }
+  #garden-app .rune-portal .rune-body {
+    display: grid;
+    grid-template-columns: var(--core) minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: center;
+  }
+  #garden-app .rune-portal .rune-dial {
+    display: contents;
+    touch-action: auto;
+    cursor: auto;
+  }
+  #garden-app .rune-portal :is(.rune-ring, .rune-beam),
+  #garden-app .rune-portal .rune-dial::before,
+  #garden-app .rune-portal .rune-hint {
+    display: none;
+  }
+  #garden-app .rune-portal .rune-sigils {
+    --sigil: 50px;
+    position: relative;
+    inset: auto;
+    grid-row: 1;
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    margin: 2px -14px 4px;
+    padding: 12px calc(50% - var(--sigil) / 2);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    touch-action: pan-x;
+    pointer-events: auto;
+    -webkit-mask: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+    mask: linear-gradient(90deg, transparent, #000 16%, #000 84%, transparent);
+  }
+  #garden-app .rune-portal .rune-sigils::-webkit-scrollbar {
+    display: none;
+  }
+  #garden-app .rune-portal .rune-sigil {
+    position: relative;
+    left: auto;
+    top: auto;
+    flex: none;
+    margin: 0;
+    transform: scale(var(--s));
+    scroll-snap-align: center;
+  }
+  #garden-app .rune-portal .rune-sigil::after {
+    content: none;
+  }
+  #garden-app .rune-portal[open] .rune-sigil {
+    animation: none;
+  }
+  #garden-app .rune-portal .rune-core {
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-row: 2;
+    grid-column: 1;
+    translate: none;
+    /* The small preview dial turns like the ring: drag round it to step through the row. */
+    touch-action: none;
+    cursor: grab;
+  }
+  /* Its dotted rim turns with the finger, faint at rest as a hint that it can be turned. */
+  #garden-app .rune-portal .rune-core::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 2px dotted color-mix(in srgb, var(--accent) 70%, #fff);
+    border-radius: 50%;
+    opacity: 0.35;
+    rotate: var(--spin, 0deg);
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  #garden-app .rune-portal.is-spinning .rune-core::after {
+    opacity: 0.95;
+  }
+  #garden-app .rune-portal .rune-preview {
+    grid-row: 2;
+    grid-column: 2;
+    min-height: var(--core);
+    padding: 0;
+    text-align: left;
+    align-self: center;
+  }
+  #garden-app .rune-portal .rune-preview h3 {
+    font-size: 17px;
+  }
+  #garden-app .rune-portal .rune-preview p {
+    margin-top: 3px;
+    font-size: 12.5px;
+  }
+  #garden-app .rune-portal #portal-go.rune-go {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    min-height: 52px;
+    margin-top: 12px;
+  }
+}
+/* Reduced motion: the dial still shows every state, at once and in place. */
+#garden-app.reduce-motion .rune-portal,
+#garden-app.reduce-motion .rune-portal *,
+#garden-app.reduce-motion .rune-portal *::before,
+#garden-app.reduce-motion .rune-portal *::after,
+#garden-app.reduce-motion .rune-portal .rune-dial::before {
+  animation: none !important;
+  transition-duration: 0s !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  #garden-app .rune-portal,
+  #garden-app .rune-portal *,
+  #garden-app .rune-portal *::before,
+  #garden-app .rune-portal *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+  }
+}
+
+/* The holiday preview (the owner's test switch) and the optional solar city wear the same heading, select and
+   hint as the season and time controls beside them, not frames of their own. */
+#garden-app #preferences :is(.holiday-preview-label, .solar-city-label) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 9px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 252, 0.72);
+}
+#garden-app #preferences :is(.holiday-preview-label, .solar-city-label)::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(232, 216, 255, 0.22), transparent);
+}
+#garden-app :is(#holiday-preview, #solar-city) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  margin: 0;
+  padding: 10px 12px;
+  color: #f4efff;
+  border: 1px solid #e4d5ff3d;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff0b, #ffffff00), #211b36;
+  box-shadow:
+    inset 0 1px 0 #ffffff14,
+    0 2px 5px #0a071b26;
+  font: inherit;
+}
+#garden-app :is(#holiday-preview, #solar-city) option {
+  background: #241d3a;
+  color: #f4efff;
+}
+#garden-app :is(#holiday-preview, #solar-city):focus-visible {
+  outline: 2px solid #e7d6ff;
+  outline-offset: 3px;
+}
+#garden-app #holiday-preview-hint {
+  display: block;
+  margin: 8px 2px 0;
+  font-size: 11.5px;
+  color: rgba(214, 198, 236, 0.72);
+}
+/* The city picker (city-picker.mjs, owner, round 18): the select's look as a button with the city's local time, and
+   a panel with a search field over two groups, Russia and the world. */
+#garden-app .city-picker {
+  position: relative;
+}
+#garden-app .city-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  color: #f4efff;
+  border: 1px solid #e4d5ff3d;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff0b, #ffffff00), #211b36;
+  box-shadow:
+    inset 0 1px 0 #ffffff14,
+    0 2px 5px #0a071b26;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#garden-app .city-trigger::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-left: 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  opacity: 0.7;
+}
+#garden-app .city-trigger[aria-expanded='true']::after {
+  transform: translateY(2px) rotate(225deg);
+}
+#garden-app :is(.city-trigger, .city-option) .city-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#garden-app :is(.city-trigger, .city-option) .city-time {
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: rgba(214, 198, 236, 0.78);
+}
+#garden-app .city-panel {
+  margin-top: 6px;
+  padding: 8px;
+  border: 1px solid #e4d5ff33;
+  border-radius: 14px;
+  background: #1b1630f2;
+  box-shadow: 0 14px 32px #06031480;
+}
+#garden-app .city-search {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 12px 8px 34px;
+  color: #f4efff;
+  border: 1px solid #e4d5ff40;
+  border-radius: 10px;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6c6ec' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='6.5'/%3E%3Cpath d='m16 16 4.5 4.5'/%3E%3C/svg%3E")
+      11px 50% / 15px no-repeat,
+    #120e22;
+  font: inherit;
+}
+#garden-app .city-search:focus-visible {
+  outline: 2px solid #e7d6ff;
+  outline-offset: 1px;
+}
+#garden-app .city-list {
+  max-height: min(46vh, 320px);
+  margin-top: 6px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+#garden-app .city-group {
+  position: sticky;
+  top: 0;
+  padding: 8px 8px 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 252, 0.62);
+  background: #1b1630;
+}
+#garden-app .city-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 10px;
+  color: #efe8ff;
+  border: 0;
+  border-radius: 9px;
+  background: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#garden-app .city-option:hover,
+#garden-app .city-option.is-active {
+  background: #ffffff14;
+}
+#garden-app .city-option[aria-selected='true'] {
+  background: #8a6bff33;
+  box-shadow: inset 3px 0 0 #b9a2ff;
+}
+#garden-app .city-empty {
+  margin: 10px 8px 6px;
+  font-size: 12.5px;
+  color: rgba(214, 198, 236, 0.72);
+}
+#garden-app #preferences .solar-city-status {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+/* Project media, one design: every panel and dialog closes from its top corner, and a video plays inside the
+   gallery viewer. The stage below is what goes full screen, so there is no second video window. */
+@media (min-width: 741px) {
+  #garden-app .media-viewer #media-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+  }
+}
+#garden-app .image-dialog #image-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+}
+#garden-app .gallery-video {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+#garden-app .video-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, calc(var(--media-room, 56svh) * 16 / 9));
+  max-height: var(--media-room, 56svh);
+  aspect-ratio: 16 / 9;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--glass-edge, #e1c8f330);
+  border-radius: 14px;
+  background: radial-gradient(ellipse at 30% 20%, #674777, #251b33 75%);
+  color: #f4eaff;
+}
+#garden-app .video-stage > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#garden-app .video-stage iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+#garden-app .video-start,
+#garden-app .video-caption {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 20px 0 14px;
+  border: 1px solid var(--glass-edge, #e1c3ee30);
+  border-radius: 30px;
+  background: #2e203dcc;
+  color: inherit;
+  font: inherit;
+  font-size: 13px;
+}
+#garden-app .video-caption {
+  padding-left: 20px;
+}
+#garden-app .video-start svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+#garden-app .video-start:hover,
+#garden-app .video-start:focus-visible {
+  background: #4a3562e6;
+}
+#garden-app .video-stage.is-playing > .video-start {
+  display: none;
+}
+#garden-app .video-exit {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--glass-edge, #e1c3ee30);
+  border-radius: 50%;
+  background: #1d1830cc;
+  color: #f4eaff;
+}
+#garden-app .video-exit svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+#garden-app .video-stage.is-fullscreen .video-exit {
+  display: grid;
+}
+#garden-app .video-stage:fullscreen {
+  width: 100vw;
+  max-height: none;
+  height: 100vh;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+}
+#garden-app .video-stage:-webkit-full-screen {
+  width: 100vw;
+  max-height: none;
+  height: 100vh;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+}
+#garden-app .video-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+#garden-app .video-providers {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  border: 1px solid var(--glass-edge, #d3ade94d);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+}
+#garden-app .video-providers button {
+  min-height: 38px;
+  padding: 0 15px;
+  border: 0;
+  border-radius: 19px;
+  background: transparent;
+  color: #f0e6fb;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+#garden-app .video-providers button[aria-pressed='true'] {
+  background: #d8bfe8;
+  color: #281b36;
+}
+#garden-app .video-toolbar a.video-open {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--glass-edge, #d3ade936);
+  border-radius: 20px;
+  background: #36263b;
+  color: #e6d7f2;
+  font-size: 12px;
+  text-decoration: none;
+}
+#garden-app .video-full {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--glass-edge, #d3ade936);
+  border-radius: 50%;
+  background: #36263b;
+  color: #f4eaff;
+}
+#garden-app .video-full[hidden] {
+  display: none;
+}
+#garden-app .video-full svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#garden-app .video-full[aria-pressed='true'] {
+  background: #d8bfe8;
+  color: #281b36;
+}
+#garden-app :is(.video-start, .video-providers button, .video-full, .video-exit, a.video-open):focus-visible {
+  outline: 2px solid #e7d6ff;
+  outline-offset: 2px;
+}
+@media (max-width: 740px) {
+  #garden-app .video-toolbar {
+    gap: 6px;
+    padding: 6px 8px;
+  }
+  #garden-app .video-providers button,
+  #garden-app .video-toolbar a.video-open {
+    min-height: 44px;
+    padding-inline: 10px;
+  }
+  #garden-app .video-toolbar a.video-open {
+    font-size: 11px;
+  }
+  #garden-app .video-full {
+    width: 44px;
+    height: 44px;
+  }
+}
+#garden-app .video-start .video-caption {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+#garden-app .video-toolbar {
+  padding: 8px 10px;
+  border: 1px solid var(--control-edge, #ffffff1f);
+  border-radius: 16px;
+  background: #292337f5;
+}
+/* The announcements chip sat on the viewer's corner, where the close button now is. */
+#garden-app.is-journey[data-area='gallery'] .garden-utilities {
+  display: none;
+}

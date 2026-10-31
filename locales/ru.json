@@ -88,6 +88,8 @@
 	"Only pc": "Only pc",
 	"NeuroZoneEditor": "Редактор зон нейросетей",
 	"NeuroZoneEditor description": "Это редактор зон для нейросетей созданный для моего папы. Он позволяет помечать зоны на фотографиях",
+	"version2": "3D версия 2",
+	"version2 description": "maserplay.ru в 3D: парящий сад со всеми проектами",
 	"Content/NeuroZoneEditor/Author": "%s от %s",
 	"Content/NeuroZoneEditor/File": "Файл",
 	"Content/NeuroZoneEditor/Import_Json": "Ипортировать как .json",
