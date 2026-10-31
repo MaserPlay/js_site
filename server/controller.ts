@@ -38,6 +38,20 @@ function sendSiteSupportStatus(req: express.Request, res: express.Response, next
     }
 }
 
+const pageLayouts = {
+    [Style.Standart]: {
+        template: "../layouts/standard",
+        bodyClass: "page-standard",
+    },
+    [Style.Fullscreen]: {
+        template: "../layouts/fullscreen",
+        bodyClass: "page-fullscreen",
+    },
+} satisfies Record<Style, {
+    template: string;
+    bodyClass: string;
+}>;
+
 app.use("/", express.static("static"));
 app.use("/content", express.static("content"));
 
@@ -61,10 +75,11 @@ app.get("/", (req, res, next) => {
         }
     })
     res.render("index", {
-        "eachcontent": content,
-        "name": res.__("Index"),
-        "description": res.__("Things in Javascript"),
-        "styleOfPage": Style.Standart
+        eachcontent: content,
+        name: res.__("Index"),
+        description: res.__("Things in Javascript"),
+        styleOfPage: Style.Standart,
+        pageLayout: pageLayouts[Style.Standart]
     });
 });
 
@@ -104,9 +119,10 @@ app.get('/content/:path', async (req, res, next) => {
     } else if (typeof mayShow == 'boolean' && mayShow) {
         try {
             res.render("../content/" + name, Object.assign({
-                "name": res.__(name),
-                "description": res.__(`${name} description`),
-                "styleOfPage": contentClass.style(req)
+                name: res.__(name),
+                description: res.__(`${name} description`),
+                styleOfPage: contentClass.style(req),
+                pageLayout: pageLayouts[contentClass.style(req)]
             }, await contentClass.extendedOptions(req)))
             return
         } catch (e: any) {
@@ -167,5 +183,8 @@ function errorHandler(err: any, req: express.Request, res: express.Response, nex
     } else {
         status = { "name": res.statusCode.toString(), "description": res.__(`${res.statusCode}/Text`) }
     }
-    return res.render("error", Object.assign(status, { "styleOfPage": Style.Standart }));
+    return res.render("error", Object.assign(status, { 
+        styleOfPage: Style.Standart,
+        pageLayout: pageLayouts[Style.Standart]
+    }));
 }

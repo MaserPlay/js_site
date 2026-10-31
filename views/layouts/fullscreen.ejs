@@ -1,0 +1,56 @@
+
+<header style="background-color: rgba(var(--bs-body-bg), 25);font-size: 1.5rem; top:0px; padding: 10px 30px;">
+    <a class="text-decoration-none" style="color: var(--bs-emphasis-color-rgb);" href="/">
+        <!-- <p class="text-warning-emphasis fs-6">Js things</p> -->
+        <strong class="logo_yellow">js.</strong><strong>maserplay.ru</strong>
+    </a>
+</header>
+<header class="right_panel">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+            <button type="button" id="theme-change" data-bs-toggle="dropdown" class="btn bi bi-patch-question-fill" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change theme') %></span></button>
+            <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                <% themes().forEach(themeThis => { %>
+                    <li><a class="dropdown-item scChngThm <%= theme() == themeThis ? "active" : "" %>" val="<%= themeThis %>" style="cursor: pointer;"><%= __(themeThis) %></a></li>
+                <% }) %>
+            </ul>
+            <button type="button" id="lang-change" data-bs-toggle="dropdown" class="btn bi bi-globe" data-bs-toggle="dropdown" aria-expanded="false"><span class="visually-hidden"><%= __('Change Language') %></span></button>
+            <ul class="dropdown-menu" style="left: auto;right: 0px;position: absolute;">
+                <% (["auto_locale"].concat(getLocales())).forEach(local => { %>
+                    <li><a class="dropdown-item scChngLang <%= (lang()&&(getLocale() === local)||(!lang()&&local==="auto_locale")) ? "active" : "" %>" val="<%= local %>" style="cursor: pointer;"><%= __({ phrase: local, locale: local==="auto_locale"?getLocale():local }) %></a></li>
+                <% }) %>
+            </ul>
+            <button type="button" class="btn bi bi-question-lg popovers_cls" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="<%= description %>">
+                <span class="visually-hidden"><%= __('About Project') %></span>
+            </button>
+        </li>
+    </ul>
+</header>
+    
+<% if (eventGoingSnow()) { %>
+    <div class="snow-main">
+        <% function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        } %>
+        <% for( let i = 0; i < 50; i++ ) { %>
+            <div style="<%= `--size: ${getRandomArbitrary(.1, 1)}vw; --left-ini: ${getRandomArbitrary(-9, 9)}vw; --left-end: ${getRandomArbitrary(-9, 9)}vw; left: ${getRandomArbitrary(100, 5)}vw; animation: snowfall ${getRandomArbitrary(5, 15)}s linear infinite; animation-delay: ${getRandomArbitrary(-1, -10)}s; font-size: ${getRandomArbitrary(30, 60)}px; filter: blur(${getRandomArbitrary(0, 3)}px)` %>" class="bi bi-snow"></div>
+        <% } %>
+    </div>    
+<% } %>
+
+<%- body %>
+
+<footer class="text-muted text-secondary mt-auto">
+    <div class="container footer-container">
+        <div class="my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-body-secondary" href="https://github.com/MaserPlay/js_site" title="<%= __('Source Code on Github') %>" rel="nofollow"><%= __('Source Code') %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 text-body-secondary" href="mailto:admin@maserplay.ru" title="<%= __('Contact us!') %>" rel="nofollow">admin@maserplay.ru</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
