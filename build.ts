@@ -4,11 +4,14 @@ import * as processThis from 'process';
 import * as UglifyJS from 'uglify-js';
 import { styleText } from 'node:util';
 import * as process from "node:child_process";
-import { exit } from 'node:process';
 import chokidar from 'chokidar'; // умного watch
+
+var server: process.ChildProcess | null = null
 
 const srcDir = './';      // Исходная папка
 const destDir = './build'; // Папка назначения
+
+const startScript = "index.js"
 
 const ignoredFiles = new Set(["readme.md", "tsconfig.json", "build.js", "js_final.zip", "update_and_release.bat", ".gitignore"]);
 const ignoredDirs = new Set([".git", "build", "node_modules", "images_for_readme", ".github"]);
@@ -17,6 +20,7 @@ const args = {
   watch: processThis.argv.some((e) => e == "--watch" || e == "-w"),
   clear: processThis.argv.some((e) => e == "--clear" || e == "-c"),
   help: processThis.argv.some((e) => e == "--help" || e == "-h"),
+  start: processThis.argv.some((e) => e == "--start" || e == "-s"),
 }
 
 function printTips() {
@@ -27,6 +31,7 @@ function printTips() {
   }
   console.log(`Usage ${styleText("blue", getScriptName())}:`);
   console.log(`\t${styleText("green", "--watch -w")} to enable incremental watch mode (TS + Static assets)`);
+  console.log(`\t${styleText("green", "--start -s")} start server`);
   console.log(`\t${styleText("green", "--clear -c")} to clear build folder`);
   console.log(`\t${styleText("green", "--help -h")} prints this help text`);
 }
@@ -94,8 +99,34 @@ function runTsc() {
 
 function runTscWatch() {
   console.log("Run tsc in --watch mode...")
-  process.spawn("tsc", ["--watch"], { stdio: 'inherit', shell: true })
-  console.log("tsc --watch completed!")
+  process.spawn(
+    processThis.execPath,
+    [path.resolve("node_modules/typescript/bin/tsc"), "--watch"], { stdio: 'inherit' })
+}
+
+function runServer() {
+
+  const startLambda = () => {
+    console.log("Run server...")
+    server = process.fork(startScript, {
+        cwd: destDir,
+        stdio: "inherit"
+    })
+
+    server.on("error", console.error);
+    server.on("message", console.log)
+  };
+
+  if (server &&
+      server.exitCode === null &&
+      server.signalCode === null
+      ) {
+    console.log("Stopping server...")
+    server?.once("exit", startLambda)
+    server.kill()
+  } else {
+    startLambda()
+  }
 }
 
 
@@ -222,6 +253,13 @@ function clearBuildDir() {
         console.log(`[Watch] Updated js file: ${srcPath}. Reminifying...`);
         miniBuildJsSignle(srcPath);
       }
+
+      if (
+        args.start &&
+        path.resolve(srcPath) === path.resolve(destDir, startScript)
+      ) {
+        runServer()
+      }
     }
 
     // Дополнительный трюк: отслеживаем, когда сам TSC обновляет скомпилированные .js файлы в папке build, 
@@ -229,6 +267,10 @@ function clearBuildDir() {
     const buildWatcher = chokidar.watch(destDir, { persistent: true });
     buildWatcher.on('change', onBuildChange);
     buildWatcher.on('add', onBuildChange);
+
+    if (args.start) {
+      runServer()
+    }
 
   } else if (args.clear) {
     try {
@@ -247,4 +289,9 @@ function clearBuildDir() {
     miniBuildJs()
     console.log("Finish!")
   }
+
+  if (args.start) {
+    runServer()
+  }
+
 })().catch(console.error);
