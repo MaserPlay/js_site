@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 export enum Style {
     Standart,
     Fullscreen,
@@ -8,19 +8,15 @@ export enum Style {
 export const pageLayouts = {
     [Style.Standart]: {
         template: "../layouts/standard",
-        bodyClass: "page-standard",
     },
     [Style.Fullscreen]: {
         template: "../layouts/fullscreen",
-        bodyClass: "page-fullscreen",
     },
     [Style.Bare]: {
         template: "../layouts/bare",
-        bodyClass: "page-bare",
     },
 } satisfies Record<Style, {
     template: string;
-    bodyClass: string;
 }>;
 
 /** Required data for every rendered page; layout details are derived centrally. */
