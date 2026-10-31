@@ -120,11 +120,30 @@ app.get('/content/:path', async (req, res, next) => {
 
 app.get('/api/locale', (req, res, next) => {
     if (sendSiteSupportStatus(req, res, next)) return
-    if (req.query == null || req.query.code == null || req.query.lang == null) {
-        next()
-    } else {
-        res.send(index.default.i18n.__({ phrase: <string>req.query.code, locale: <string>req.query.lang }))
+
+    const { code, lang } = req.query;
+
+    if (code == null || lang == null) return next();
+
+    const codeList = Array.isArray(code) ? code : [code];
+
+    if (
+        typeof lang !== "string" ||
+        !codeList.every(v => typeof v === "string")
+    ) {
+        return res.sendStatus(400);
     }
+
+    const result: Record<string, string> = Object.create(null);
+
+    for (const code of codeList) {
+        result[code] = index.default.i18n.__({
+            phrase: code as string,
+            locale: lang
+        })
+    }
+
+    res.json(result);
 })
 
 app.use(function (req, res, next) {
