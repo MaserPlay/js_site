@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 export enum Style {
     Standart,
-    Fullscreen
+    Fullscreen,
+    // The page alone: no header, side panel, snow or footer around it (a full-window app such as version2).
+    Bare
 }
 export interface IContent{
     name : Readonly<string>;

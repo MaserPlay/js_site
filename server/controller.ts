@@ -47,6 +47,10 @@ const pageLayouts = {
         template: "../layouts/fullscreen",
         bodyClass: "page-fullscreen",
     },
+    [Style.Bare]: {
+        template: "../layouts/bare",
+        bodyClass: "page-bare",
+    },
 } satisfies Record<Style, {
     template: string;
     bodyClass: string;
