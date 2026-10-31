@@ -101,6 +101,15 @@ const __ = (()=>{
     return translate;
 })()
 
+function formatString(
+    template: string,
+    ...args: (string | number)[]
+): string {
+    return template.replace(/\$(\d+)/g, (match, index: string) =>
+        args[Number(index) - 1]?.toString() ?? match
+    );
+}
+
 function getLocale(): string {
     const cookie = document.cookie.match(/lang=([^;]+)/);
     const lang = cookie?.[1];

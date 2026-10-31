@@ -3,9 +3,7 @@ String.prototype.capitalize = String.prototype.capitalize || function () {
 }
 String.prototype.format = String.prototype.format ||
   function () {
-    var args = Array.prototype.slice.call(arguments);
-    var replacer = function (a) { return args[a.substr(1) - 1]; };
-    return this.replace(/(\$\d+)/gm, replacer)
+    return formatString(this, Array.prototype.slice.call(arguments))
   };
 var changeRoom = (to) => { }
 (async () => {
