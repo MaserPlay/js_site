@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import * as config from '../config';
 import * as content from './content_class'
 import { format } from 'util';
+import device from './device';
 /**
 * Returns a random number between min (inclusive) and max (exclusive)
 */
@@ -21,6 +22,59 @@ function getRandomInt(min : number, max : number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+export interface LanguageOption {
+    value: string;
+    label: string;
+    selected: boolean;
+}
+
+/** Common EJS data is prepared for every request, including error pages. */
+export interface PageLocals {
+    locales: LanguageOption[];
+    theme(): string;
+    js_include(name: string): string;
+    css_include(name: string): string;
+    lang(): string | undefined;
+    themes(): string[];
+    event(): string | undefined;
+    eventGoingSnow(): boolean;
+    useAd(): boolean;
+    userAgent(): string;
+    pageStyle(): typeof content.Style;
+    format: typeof format;
+}
+
+/** Applied once after public static files and sitemap, before dynamic routes. */
+export function siteSupport(request: Request, response: Response, next: NextFunction): void {
+    const detected = device.getByReq(request);
+    if (detected?.bot || ['desktop', 'smartphone', 'tablet'].includes(detected?.device?.type ?? '')) {
+        next();
+        return;
+    }
+    response.status(400);
+    content.renderPage(response, 'error', {
+        name: '400', description: response.__('400/Text'), styleOfPage: content.Style.Standart
+    });
+}
+
+function getLanguageOptions(request: Request, response: Response): LanguageOption[] {
+    const cookie = request.cookies.lang;
+    const selected = cookie === "auto_locale" ? undefined : cookie;
+
+    return [
+        {
+            value: "auto_locale",
+            label: response.__("auto_locale"),
+            selected: !selected
+        },
+        ...config.json.locales.map((locale: string) => ({
+            value: locale,
+            label: response.__({ phrase: locale, locale }),
+            selected: selected === locale
+        }))
+    ];
+}
+
 export default function (request : Request, response : Response, next : NextFunction) {
   if (request.cookies.lang&&request.cookies.lang==="auto_locale")
   {
@@ -29,7 +83,8 @@ export default function (request : Request, response : Response, next : NextFunc
   // response.getTheme = function () {
   //   return request.cookies.theme ?? config.json.themes[0]
   // }
-  Object.assign(response.locals, {
+  const pageLocals: PageLocals = {
+    locales: getLanguageOptions(request, response),
     theme: function () {
       return request.cookies.theme ?? config.json.themes[0]
     },
@@ -67,6 +122,7 @@ export default function (request : Request, response : Response, next : NextFunc
       return content.Style
     },
     format: format
-  });
+  };
+  Object.assign(response.locals, pageLocals);
   return next()
 }

@@ -5,6 +5,35 @@ export enum Style {
     // The page alone: no header, side panel, snow or footer around it (a full-window app such as version2).
     Bare
 }
+export const pageLayouts = {
+    [Style.Standart]: {
+        template: "../layouts/standard",
+        bodyClass: "page-standard",
+    },
+    [Style.Fullscreen]: {
+        template: "../layouts/fullscreen",
+        bodyClass: "page-fullscreen",
+    },
+    [Style.Bare]: {
+        template: "../layouts/bare",
+        bodyClass: "page-bare",
+    },
+} satisfies Record<Style, {
+    template: string;
+    bodyClass: string;
+}>;
+
+/** Required data for every rendered page; layout details are derived centrally. */
+export interface PageOptions {
+    name: string;
+    description: string;
+    styleOfPage: Style;
+}
+
+export function renderPage<T extends PageOptions>(response: Response, view: string, options: T): void {
+    response.render(view, { ...options, pageLayout: pageLayouts[options.styleOfPage] });
+}
+
 export interface IContent{
     name : Readonly<string>;
     mayShow(req: Readonly<Request>) : boolean | number;
