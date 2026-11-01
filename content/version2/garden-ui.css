@@ -1388,8 +1388,9 @@
 }
 /* Phones: no frosted glass. Each blurred surface re-blurs the moving scene behind it every frame at the screen's
    full density; measured on the Realme 11 Pro+ (Mali-G68, 2026-10-31) it halved the frame rate (about 15 → 30 fps
-   at full quality). The glass keeps its tint, made denser so the words stay readable over a bright sky. */
-@media (max-width: 740px) {
+   at full quality). The glass keeps its tint, made denser so the words stay readable over a bright sky.
+   Touch screens count too: a phone on its side is wider than 740 px and lost a third of its frames (27 → 40 fps). */
+@media (max-width: 740px), (pointer: coarse) {
   #garden-app {
     --glass-top: rgba(70, 58, 102, 0.88);
     --glass-bottom: rgba(31, 25, 50, 0.92);
@@ -1399,7 +1400,9 @@
   }
   #garden-app *,
   #garden-app *::before,
-  #garden-app *::after {
+  #garden-app *::after,
+  .image-dialog::backdrop,
+  .banners-dialog::backdrop {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
