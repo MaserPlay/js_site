@@ -1279,7 +1279,9 @@
   #garden-app .journey-center,
   #garden-app .journey-center:not(:has(.has-birthday)) {
     display: flex;
-    flex: 1 0 96px;
+    /* What the four buttons and gaps of row 1 leave: a fixed 96 px sent the sound button, then the Portal, to a
+       third row at 320 px, and the dock stood on the entry and the project card. */
+    flex: 1 0 calc(100% - 200px);
     flex-direction: column;
     justify-content: center;
     min-width: 0;
@@ -1342,26 +1344,26 @@
     width: 22px;
     height: 22px;
   }
-  /* The two-row dock is 56 px taller; what stood on it moves up by as much (entry, project card, walk buttons,
-     order panel, portal chooser), so nothing slides under the dock. */
+  /* What stands on the two-row dock follows its measured top (entry, project card, walk buttons, order panel, portal
+     chooser; --journey-bar-top, bindHeaderEvents), so nothing slides under it when it grows. */
   #garden-app.is-overview #hero {
-    bottom: 180px;
+    bottom: var(--journey-bar-top, 181px);
   }
   /* The tagline is text over the scene: a drag that starts on it turns the camera like anywhere else. */
   #garden-app #hero h1 {
     pointer-events: none;
   }
   #garden-app.is-journey[data-area='main'] #project-card {
-    bottom: 182px;
+    bottom: calc(var(--journey-bar-top, 181px) + 1px);
   }
   #garden-app #walk-controls {
-    bottom: 186px;
+    bottom: calc(var(--journey-bar-top, 181px) + 5px);
   }
   #garden-app #arrange-panel {
-    bottom: 174px;
+    bottom: calc(var(--journey-bar-top, 181px) - 7px);
   }
   #garden-app #portal-dialog {
-    bottom: 245px;
+    bottom: calc(var(--journey-bar-top, 181px) + 64px);
   }
   /* Settings: the tabs say what each part holds, so the two-line cue gives its room to the Look controls. */
   #garden-app #preferences .settings-cue {
@@ -1371,10 +1373,24 @@
     margin-top: 8px;
   }
 }
+/* The smallest phones: narrower gaps give the loop's name its whole width (an older 77 px cut it to «Кольцо прое…»). */
+@media (max-width: 340px) {
+  #garden-app .journey-bar {
+    column-gap: 4px;
+  }
+  #garden-app .journey-center,
+  #garden-app .journey-center:not(:has(.has-birthday)) {
+    flex-basis: calc(100% - 192px);
+  }
+  #garden-app .journey-caption > span:first-child {
+    max-width: none;
+  }
+}
 /* Phones: no frosted glass. Each blurred surface re-blurs the moving scene behind it every frame at the screen's
    full density; measured on the Realme 11 Pro+ (Mali-G68, 2026-10-31) it halved the frame rate (about 15 → 30 fps
-   at full quality). The glass keeps its tint, made denser so the words stay readable over a bright sky. */
-@media (max-width: 740px) {
+   at full quality). The glass keeps its tint, made denser so the words stay readable over a bright sky.
+   Touch screens count too: a phone on its side is wider than 740 px and lost a third of its frames (27 → 40 fps). */
+@media (max-width: 740px), (pointer: coarse) {
   #garden-app {
     --glass-top: rgba(70, 58, 102, 0.88);
     --glass-bottom: rgba(31, 25, 50, 0.92);
@@ -1384,7 +1400,9 @@
   }
   #garden-app *,
   #garden-app *::before,
-  #garden-app *::after {
+  #garden-app *::after,
+  .image-dialog::backdrop,
+  .banners-dialog::backdrop {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }

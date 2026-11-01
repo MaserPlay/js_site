@@ -1854,6 +1854,250 @@ body:has(#garden-app.is-ui-hidden) > :not(#garden-app, script, style) {
   }
 }
 
+/* A phone on its side has no band for an open card between the header and the dock (Description's text ran under the
+   dock and past the screen's edge, the gallery's picture was a strip): the same rule as upright, the card and the
+   viewer are the only things on screen and the × closes them. */
+@media (min-width: 741px) and (max-height: 500px) {
+  #garden-app.is-journey:is([data-area='gallery'], [data-area='description'], [data-area='comments'])
+    :is(
+      .garden-header,
+      .journey-bar,
+      .garden-footer,
+      .garden-utilities,
+      .overview-announcement,
+      .top-context,
+      .island-tags,
+      .walk-controls,
+      .fixture-note
+    ) {
+    display: none !important;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card:not([hidden]) {
+    top: max(10px, env(safe-area-inset-top));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card > * {
+    flex: none;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card .zone-content {
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: none;
+    overflow: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+  #garden-app.is-journey[data-area='gallery'] .project-card {
+    top: max(10px, env(safe-area-inset-top));
+  }
+  #garden-app.is-journey[data-area='gallery'] #media-viewer:not([hidden]) {
+    top: max(10px, env(safe-area-inset-top));
+    bottom: max(10px, env(safe-area-inset-bottom));
+    left: 424px;
+    right: max(10px, env(safe-area-inset-right));
+  }
+}
+/* An upright short phone: the card reaches from under the chips to the dock, and what still does not fit scrolls
+   instead of hanging over the dock (the card's overflow is visible for the project list, which this stand has not). */
+@media (max-width: 740px) and (max-height: 600px) and (orientation: portrait) {
+  #garden-app.is-journey[data-area='main'] #project-card {
+    max-height: calc(100svh - var(--journey-bar-top, 181px) - 129px);
+    overflow-y: auto;
+  }
+}
+/* A short screen has no row to spare for the Open button under a long name: it joins the eyebrow's, in the card's
+   corner. Upright only at the stand, where the eyebrow's row is free; on its side the × comes along to the corner. */
+@media (max-width: 740px) and (max-height: 600px) and (orientation: portrait) {
+  #garden-app.is-journey[data-area='main'] #project-card:has(.long-name) .project-heading {
+    margin-right: 140px;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card .exhibit-heading:has(.long-name) #project-link {
+    position: absolute;
+    inset: 10px 12px auto auto;
+  }
+}
+@media (min-width: 741px) and (max-height: 500px) {
+  #garden-app.is-journey[data-area='main'] #project-card:has(.long-name) .project-heading {
+    justify-content: flex-start;
+    min-height: 44px;
+    margin: 0 140px 4px 0;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card .exhibit-heading:has(.long-name) #project-link {
+    position: absolute;
+    inset: 10px 18px auto auto;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments'])
+    #project-card:has(.long-name)
+    .project-heading {
+    justify-content: flex-start;
+    min-height: 44px;
+    margin: 0 190px 4px 0;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments'])
+    #project-card
+    .exhibit-heading:has(.long-name)
+    #project-link {
+    position: absolute;
+    inset: 10px 72px auto auto;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments'])
+    #project-card
+    .exhibit-heading:has(.long-name)
+    #detail-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    margin: 0;
+  }
+}
+/* A phone on its side under 741 px is wide and short, and the upright stack failed it: the card's tabs lay cut off
+   behind the dock, Description had one line and the gallery's picture was a black strip. «Обзор сада» and «Объявления»
+   join the header row as on a wider phone (garden-controls.css), the card stands on the left with the scene beside it,
+   and an open card puts its parts side by side: heading, tabs and dates on the left, the text or picture at full height
+   on the right. One steady card width: .long-name is measured from it (garden.mjs), so it must not depend on the class. */
+@media (max-width: 740px) and (max-height: 500px) and (orientation: landscape) {
+  .garden-header {
+    pointer-events: none;
+  }
+  .garden-header > * {
+    pointer-events: auto;
+  }
+  .top-context {
+    top: 14px;
+    left: 128px;
+  }
+  .garden-utilities {
+    top: 14px;
+    right: calc(16px + var(--header-actions-width, 245px) + 8px);
+  }
+  .garden-utilities .announcements-entry {
+    right: 0;
+  }
+  #garden-app.is-overview #hero {
+    right: auto;
+    bottom: var(--journey-bar-top, 127px);
+    width: 294px;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card {
+    top: 66px;
+    right: auto;
+    bottom: calc(var(--journey-bar-top, 127px) + 8px);
+    width: min(470px, calc(100vw - 24px));
+    max-height: none;
+    padding: 12px 18px;
+  }
+  #garden-app[data-area='main'] .project-footer {
+    display: none;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card .island-sections {
+    margin-top: 8px;
+  }
+  #garden-app.is-journey #project-card .island-sections button {
+    min-height: 48px;
+    padding: 5px 1px;
+    gap: 3px;
+  }
+  #garden-app.is-journey #project-card .island-sections svg {
+    width: 16px;
+    height: 16px;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card:not([hidden]) {
+    top: max(10px, env(safe-area-inset-top)) !important;
+    max-height: none !important;
+    display: grid;
+    grid-template-columns: 276px minmax(0, 1fr);
+    grid-template-rows: auto auto auto minmax(0, 1fr) auto;
+    column-gap: 16px;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card > * {
+    grid-column: 1;
+  }
+  /* The gallery's size: at 20 px the longest name left a single letter on a second line. */
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card h2 {
+    font-size: 18px;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card .zone-content {
+    grid-column: 2;
+    grid-row: 1 / 5;
+    min-height: 0;
+    max-height: none;
+    margin: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
+  }
+  /* The dates and the repository run along the card's foot: in the left column they took the tabs' room. */
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card .project-footer {
+    grid-column: 1 / -1;
+    grid-row: 5;
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+  #garden-app.is-journey:is([data-area='description'], [data-area='comments']) #project-card #detail-close {
+    right: auto;
+    left: 248px;
+  }
+  #garden-app.is-journey[data-area='gallery'] .project-card {
+    right: auto !important;
+    width: 296px !important;
+  }
+  #garden-app.is-journey[data-area='gallery'] #media-viewer:not([hidden]) {
+    top: max(10px, env(safe-area-inset-top)) !important;
+    left: 314px !important;
+    padding: 0 12px 12px;
+    border: 1px solid var(--paper-edge);
+    border-radius: 20px;
+    grid-template-rows: 12px minmax(0, 1fr) auto;
+  }
+  #garden-app.is-journey[data-area='gallery'] #media-viewer :is(#gallery-previous, #gallery-next) {
+    top: calc(12px + (100% - 12px - 82px) / 2);
+  }
+  #garden-app.is-journey[data-area='gallery'] #media-viewer #gallery-controls:not([hidden]) {
+    flex-wrap: nowrap;
+  }
+  #garden-app.is-journey[data-area='gallery'] #media-viewer #gallery-original {
+    flex: none;
+  }
+}
+/* Lower still (a browser's toolbar on such a phone): the card keeps its name and tabs, each tab's word beside its icon,
+   and the entry stands alone, as on a wider phone. */
+@media (max-width: 740px) and (max-height: 359px) and (orientation: landscape) {
+  #garden-app.is-journey[data-area='main'] #project-card {
+    padding-block: 10px;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card .project-heading {
+    display: none;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card .island-sections {
+    margin-top: 6px;
+  }
+  #garden-app.is-journey[data-area='main'] #project-card .island-sections button {
+    flex-direction: row;
+    min-height: 40px;
+    padding: 4px 2px;
+    gap: 6px;
+  }
+}
+@media (max-width: 740px) and (max-height: 339px) and (orientation: landscape) {
+  #garden-app .hero h1 {
+    display: none;
+  }
+}
+/* Narrower, «Обзор сада» gives up its word as well, so both chips fit the row in either language. */
+@media (max-width: 620px) and (max-height: 500px) and (orientation: landscape) {
+  .top-context > #overview > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
 /* Settings → Управление (camera2, M18): the camera direction is a two-tile choice like the light style; the
    double-click focus is explained under it. */
 #garden-app #preferences .setting-subheading {
@@ -1875,10 +2119,10 @@ body:has(#garden-app.is-ui-hidden) > :not(#garden-app, script, style) {
   font-size: 12px;
   font-weight: 600;
 }
-/* Settings → Ещё: the graphics quality (low, medium, high) is a three-tile choice like the camera direction; the
+/* Settings → Ещё: the graphics quality (low, medium, high, ultra) is a four-tile choice like the camera direction; the
    hint under it explains the chosen level and names the one recommended for this device (owner, 2026-10-31). */
 #garden-app #preferences #graphics-quality {
-  --segment-count: 3;
+  --segment-count: 4;
   min-height: 0;
   padding: 5px;
   border-radius: 20px;
@@ -2647,6 +2891,36 @@ body:has(#garden-app.is-ui-hidden) > :not(#garden-app, script, style) {
     grid-column: 1 / -1;
     min-height: 52px;
     margin-top: 12px;
+  }
+}
+/* A phone on its side: stacked, the sheet ran past its own edge and cut the go button off. One wide row instead, the
+   preview and the sigils side by side under the title, and the go button beside the title. */
+@media (max-width: 740px) and (max-height: 500px) and (orientation: landscape) {
+  #garden-app .portal-dialog.rune-portal {
+    max-height: calc(100svh - var(--sheet-bottom, 135px) - 58px);
+    padding: 8px 14px 10px;
+  }
+  #garden-app .rune-portal .rune-body {
+    grid-template-columns: var(--core) minmax(0, 170px) minmax(0, 1fr);
+  }
+  #garden-app .rune-portal .rune-sigils {
+    grid-column: 3;
+    margin: 0;
+    padding-block: 6px;
+  }
+  #garden-app .rune-portal :is(.rune-core, .rune-preview) {
+    grid-row: 1;
+  }
+  #garden-app .rune-portal .rune-preview p {
+    display: none;
+  }
+  #garden-app .rune-portal #portal-go.rune-go {
+    position: absolute;
+    top: 8px;
+    right: 60px;
+    width: 210px;
+    min-height: 44px;
+    margin: 0;
   }
 }
 /* Reduced motion: the dial still shows every state, at once and in place. */
