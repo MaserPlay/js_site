@@ -66,7 +66,7 @@ const __ = (()=>{
                 .done((data: LocaleResponse) => {
                     for (const [code, translation] of Object.entries(data)) {
                         const key = formatKey(lang, code);
-                        localeCache.set(key, translation);
+                                                localeCache.set(key, translation);
                         try {
                             localStorage.setItem(key, translation);
                         } catch (e) {
@@ -152,10 +152,23 @@ function setupFullscreen(
         document.exitFullscreen();
     });
 };
+function escapeHtml(str:string) {
+return String(str)
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/`/g, '&#x60;');
+}
 (() => {
 
     $('.scChngThm').on('click', function () {
-        document.cookie = `theme=${$(this).attr("val")};path=/`;
+        const theme = $(this).attr("val")
+
+        document.cookie = theme === "auto" 
+        ? `theme=; Max-Age=0; path=/` 
+        : `theme=${theme};path=/`;
+        
         document.location.reload();
         return false;
     });
@@ -180,7 +193,7 @@ function setupFullscreen(
     }
 
     function getTheme(): string {
-        return getCookie("theme") ?? "light";
+        return getCookie("theme") ?? "auto";
     }
 
     $('#theme-change')
@@ -194,6 +207,26 @@ function setupFullscreen(
         case 'dark':
             $('#theme-change').addClass("bi-moon-fill");
             break;
+
+        case "auto_theme":{
+            const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+            function setAutoTheme(darkMode:boolean) {
+                document.documentElement.setAttribute(
+                    'data-bs-theme',
+                    darkMode ? 'dark' : 'light'
+                );
+            }
+
+            setAutoTheme(media.matches)
+            
+            media.addEventListener('change', e => {
+                setAutoTheme(e.matches)
+            });
+            
+            $('#theme-change').addClass("bi-display");
+            break;
+        }
 
         default:
             console.error(`cannot find ${getTheme()} in this`);

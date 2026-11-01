@@ -33,6 +33,7 @@ export interface PageLocals {
     locales: LanguageOption[];
     theme(): string;
     js_include(name: string): string;
+    js_module_include(name: string): string;
     css_include(name: string): string;
     lang(): string | undefined;
     themes(): string[];
@@ -93,6 +94,13 @@ export default function (request : Request, response : Response, next : NextFunc
         return script_name + ".js";
       } else {
         return script_name + ".min.js";
+      }
+    },
+    js_module_include: function (script_name : string) {
+      if (request.query.hasOwnProperty("nomini")) {
+        return script_name + ".mjs";
+      } else {
+        return script_name + ".min.mjs";
       }
     },
     css_include: function (style_name : string) {

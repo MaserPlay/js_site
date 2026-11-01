@@ -1,16 +1,4 @@
 (() => {
-  function escapeHtml(str: string): string {
-    return str.replace(/[&<>"']/g, (c) => {
-      switch (c) {
-        case "&": return "&amp;";
-        case "<": return "&lt;";
-        case ">": return "&gt;";
-        case '"': return "&quot;";
-        case "'": return "&#39;";
-        default: return c;
-      }
-    });
-  }
 
   function calc(csv: string): void {
     const separator = ($("#input_sep").val() as string) ?? ",";

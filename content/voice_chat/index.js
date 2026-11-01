@@ -528,14 +528,6 @@ var changeRoom = (to) => { }
   changeRoom = (to) => {
     socket.emit("changeRoom", to)
   }
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
-      .replace(/`/g, '&#x60;');
-  }
   /**
    * @param {string} name 
    */
