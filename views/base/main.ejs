@@ -3,7 +3,7 @@
     var styleOfPage = pageStyle().Standart
 }%>
 <!DOCTYPE html>
-<html lang='<%= getLocale() %>' data-bs-theme='<%= theme() %>' data-bs-event-theme='<%= event() %>'> 
+<html lang='<%= getLocale() %>' data-bs-theme='<%= theme() %>' <%= event() ? `data-bs-event-theme='${event()}'` : ""%>> 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
