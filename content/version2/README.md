@@ -7,20 +7,28 @@ the whole window.
 Everything else in this folder is a static copy of the garden, exported from the maserplay.ru repository. Do not edit
 it here: change the garden there and export again.
 
+## Reading the code
+
+`src/` holds the garden's sources; start with `src/README.md`, the map of its modules. Imports of `vendor/...` are
+three.js r186, which the build takes from npm, so it is not in `src/`.
+
+`garden.bundle.js` is those sources and three.js joined by esbuild and left readable. This site's build (`build.ts`)
+minifies it with uglify-js into `garden.bundle.min.js`, and that is the file the pages load. It exists only in `build/`,
+so the pages need the site's build to run: opening them from this folder finds no script.
+
 ## Updating the copy
 
 In the maserplay.ru repository (`Web/`):
 
 ```
-npm run build:garden
 npm run preview:garden
 node scripts/export-garden-copy.mjs --out <this folder>
 ```
 
 The export renders one page per language from the running preview, makes the garden's own files relative, points
-links, project pictures and the project list at https://maserplay.ru, and copies the bundle, styles, audio and the
-assets the garden loads (trial-only tree models stay out). The garden finds its files beside `garden.bundle.js`, so the
-folder can live under any path.
+links, project pictures and the project list at https://maserplay.ru, builds the readable bundle, and copies the
+sources, styles, audio and the assets the garden loads (trial-only tree models stay out). The garden finds its files
+beside its script, so the folder can live under any path.
 
 ## What the copy needs from maserplay.ru
 
@@ -33,4 +41,5 @@ folder can live under any path.
 
 ## Licenses
 
-`three.licenses.txt` (three.js), `assets/README.md` and the notices in `audio/` and `assets/*/README.md`.
+`three.licenses.txt` (three.js), `third-party-notices.txt` (code in the shaders by David Hoskins and Inigo Quilez),
+`assets/README.md` and the notices in `audio/` and `assets/*/README.md`.
