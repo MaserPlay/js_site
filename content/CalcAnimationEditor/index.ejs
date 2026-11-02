@@ -106,6 +106,10 @@
                 <button type="button" id="reset_t" class="btn btn-outline-secondary bi bi-skip-backward"></button>
                 <p id="time" class="mb-0">t=0.000</p>
             </div>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" id="xss_warning">
+                <%= __("xss_warning") %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
             <div class="elements-list gap-3">
                 <!-- The list of items will be generated here -->
             </div>
