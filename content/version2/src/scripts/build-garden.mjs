@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const args = process.argv.slice(2),
   readable = args.includes('--readable') ? args[args.indexOf('--readable') + 1] : null;
+if (readable === undefined) throw new Error('--readable needs a file');
 const three = path => ({ path: fileURLToPath(new URL('../node_modules/three/' + path, import.meta.url)) });
 const fileName = path => path.split('/').pop();
 
