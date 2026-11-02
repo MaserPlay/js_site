@@ -5458,12 +5458,15 @@ function collapseImage() {
   });
 }
 
+// Every picture read on a canvas asks for CORS: a copy on another site gets them from maserplay.ru, and without it
+// the canvas is tainted, so its pixels cannot be read and it cannot become a texture.
 async function prepareIdentity(list) {
   await Promise.all(
     list.map(
       project =>
         new Promise(resolve => {
           const image = new Image();
+          image.crossOrigin = 'anonymous';
           let settled = false;
           const finish = () => {
             if (settled) return;

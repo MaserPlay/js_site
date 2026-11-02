@@ -113,6 +113,7 @@ export function createZoneScreens(THREE, resources, invalidate, isDisposed, labe
       draw('gallery', title, labels.loading);
       if (!url) return;
       const image = new Image();
+      image.crossOrigin = 'anonymous';
       image.decoding = 'async';
       image.onload = () => {
         if (id === token && !isDisposed()) draw('gallery', title, '', image);

@@ -209,6 +209,7 @@ export function createRearPanel(THREE, project, index, { resources, invalidate, 
   const load = (source, assign) => {
     if (!source) return;
     const image = new Image();
+    image.crossOrigin = 'anonymous';
     image.decoding = 'async';
     image.onload = () => {
       image.onload = image.onerror = null;

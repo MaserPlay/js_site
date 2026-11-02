@@ -215,6 +215,7 @@ export function buildHall(
     loaded = true;
     pictures.forEach((picture, k) => {
       const image = new Image();
+      image.crossOrigin = 'anonymous';
       image.decoding = 'async';
       image.onload = () => {
         image.onload = image.onerror = null;

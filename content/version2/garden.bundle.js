@@ -48805,6 +48805,7 @@ void main() {
         draw("gallery", title, labels2.loading);
         if (!url) return;
         const image = new Image();
+        image.crossOrigin = "anonymous";
         image.decoding = "async";
         image.onload = () => {
           if (id === token && !isDisposed()) draw("gallery", title, "", image);
@@ -48988,6 +48989,7 @@ void main() {
       loaded = true;
       pictures2.forEach((picture, k) => {
         const image = new Image();
+        image.crossOrigin = "anonymous";
         image.decoding = "async";
         image.onload = () => {
           image.onload = image.onerror = null;
@@ -49276,6 +49278,7 @@ void main() {
     draw();
     if (project.ico) {
       const image = new Image();
+      image.crossOrigin = "anonymous";
       image.decoding = "async";
       image.onload = () => {
         image.onload = image.onerror = null;
@@ -49658,6 +49661,7 @@ void main() {
     draw();
     if (project.ico) {
       const image = new Image();
+      image.crossOrigin = "anonymous";
       image.decoding = "async";
       image.onload = () => {
         image.onload = image.onerror = null;
@@ -49976,6 +49980,7 @@ void main() {
       items.forEach((item, k) => {
         if (!item.src) return;
         const image = new Image();
+        image.crossOrigin = "anonymous";
         image.decoding = "async";
         image.onload = () => {
           image.onload = image.onerror = null;
@@ -56185,6 +56190,7 @@ ${AL.on ? `// Rose on the sunlit summit snow at a low sun (ALPINE_B.snow.blush):
         return;
       }
       const image = new Image();
+      image.crossOrigin = "anonymous";
       image.decoding = "async";
       try {
         await new Promise((resolve2, reject) => {
@@ -65497,6 +65503,7 @@ const vec4 PINE_UPPER=${vec([...linear(PINE.upperTone), PINE.upper])};`;
     const load = (source, assign) => {
       if (!source) return;
       const image = new Image();
+      image.crossOrigin = "anonymous";
       image.decoding = "async";
       image.onload = () => {
         image.onload = image.onerror = null;
@@ -91442,6 +91449,7 @@ void main() {
       list.map(
         (project) => new Promise((resolve2) => {
           const image = new Image();
+          image.crossOrigin = "anonymous";
           let settled = false;
           const finish = () => {
             if (settled) return;
@@ -92551,7 +92559,7 @@ void main() {
       console.info("Languages: keeping the built-in list", error2.status || error2.message);
     }
   }
-  var GARDEN_BUILD = true ? "2026-11-02 05:26 UTC" : "dev";
+  var GARDEN_BUILD = true ? "2026-11-02 06:25 UTC" : "dev";
   function bindBench() {
     const button = $("bench-open");
     if (button) {

@@ -121,6 +121,7 @@ function signTexture(THREE, project, { resources, invalidate, isDisposed }) {
   draw();
   if (project.ico) {
     const image = new Image();
+    image.crossOrigin = 'anonymous';
     image.decoding = 'async';
     image.onload = () => {
       image.onload = image.onerror = null;

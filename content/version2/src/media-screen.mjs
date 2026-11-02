@@ -88,6 +88,7 @@ export function createProjectScreen(
       return;
     }
     const image = new Image();
+    image.crossOrigin = 'anonymous';
     image.decoding = 'async';
     try {
       await new Promise((resolve, reject) => {

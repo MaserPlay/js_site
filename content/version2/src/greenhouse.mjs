@@ -397,6 +397,7 @@ function signTexture(THREE, project, accent, { resources, invalidate, isDisposed
   draw();
   if (project.ico) {
     const image = new Image();
+    image.crossOrigin = 'anonymous';
     image.decoding = 'async';
     image.onload = () => {
       image.onload = image.onerror = null;
@@ -815,6 +816,7 @@ export function buildGreenhouse(
     items.forEach((item, k) => {
       if (!item.src) return;
       const image = new Image();
+      image.crossOrigin = 'anonymous';
       image.decoding = 'async';
       image.onload = () => {
         image.onload = image.onerror = null;

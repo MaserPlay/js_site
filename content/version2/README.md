@@ -33,9 +33,9 @@ beside its script, so the folder can live under any path.
 ## What the copy needs from maserplay.ru
 
 - Project pictures (`/upload/...`) and the project list (`/api/projects.json`) already answer other origins
-  (`Access-Control-Allow-Origin: *`), so the gallery panel and the sorting and filters work.
-- The pictures in the 3D scene do not work yet: the garden loads them without `crossOrigin`, so the browser refuses
-  them as textures (`Tainted canvases may not be loaded`) and the frames stay blank.
+  (`Access-Control-Allow-Origin: *`), so the pictures in the 3D scene, the gallery panel and the sorting and filters
+  work. The garden asks for them with `crossOrigin`: without that header the browser would refuse them as textures
+  and the frames in the scene would stay blank.
 - Comments (`/api/comment/list`, `/api/comment/post`) do not yet: until maserplay.ru allows
   `https://js.maserplay.ru` there, the comments section of a project says it could not load them.
 - The project data in the pages is a snapshot taken at export; new projects appear after the next export (or when a
