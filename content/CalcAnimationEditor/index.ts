@@ -1,5 +1,6 @@
 (() => {
-    const canvas = $('#canvas')[0] as HTMLCanvasElement
+    // editor
+    const canvas = $<HTMLCanvasElement>('#canvas')[0]
     const context = canvas.getContext('2d')!;
 
     const canvas_container = document.getElementById("canvas-container")!;
@@ -125,13 +126,35 @@
         ]
 
         inputs = await Promise.all(inputs.map(async v => ([await v[0],v[1]])))
+        const warning = await __("xss_warning")
 
         const outInputsHtml = 
-        (inputs.map(v => 
-            `<div>
-                <input type="text" class="form-control flex-grow-1" placeholder="${v[0]}" id="${idNamePrefix}-${v[1]}">
-                <div class="invalid-feedback" id="${idNamePrefix}-${v[1]}-error"></div>
+        (inputs.map(v => {
+            const inputId = `${idNamePrefix}-${v[1]}`;
+            const warningId = `${inputId}-warning`;
+
+            return `<div>
+        <div class="d-flex align-items-center gap-2">
+                <input type="text" class="form-control flex-grow-1" placeholder="${v[0]}" id="${inputId}">
+            <button type="button"
+                class="btn btn-link text-warning p-0"
+                data-bs-toggle="collapse"
+                data-bs-target="#${warningId}"
+                aria-expanded="false"
+                aria-controls="${warningId}"
+                aria-label="Безопасность формул">
+                <i class="bi bi-info-circle" aria-hidden="true"></i>
+            </button>
+        </div>
+                <div class="invalid-feedback" id="${inputId}-error"></div>
+
+        <div class="collapse small fw-normal" id="${warningId}">
+            <div class="alert alert-warning small mt-2 mb-0">
+                ${warning}
+            </div>
+        </div>
             </div>`
+        }
         )).join("")
         return `<div class="card w-100" id="${idNamePrefix}-div">
                     <div class="card-body">

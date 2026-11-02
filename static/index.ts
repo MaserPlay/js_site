@@ -204,7 +204,7 @@ return String(str)
     }
 
     function getTheme(): string {
-        return getCookie("theme") ?? "auto";
+        return getCookie("theme") ?? "auto_theme";
     }
 
     $('#theme-change')
