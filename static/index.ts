@@ -1,22 +1,26 @@
 const __ = (()=>{
     const localeCache = new Map<string, string>();
     const pending = new Map<string[], Promise<LocaleResponse>>();
-    
+
     interface LocaleResponse {
         [code: string]: string;
     }
-    
-    interface LocalePromises {
-        [code: string]: Promise<string> | null;
+
+    interface TranslateOptions {
+        throwOnError?: boolean;
     }
 
-    function translate(code: string): Promise<string>;
-    function translate(code: string[]): Promise<LocaleResponse>;
+    function translate(code: string, options?: TranslateOptions): Promise<string>;
+    function translate(code: string[], options?: TranslateOptions): Promise<LocaleResponse>;
 
-    function translate(code: string | string[]): Promise<string | LocaleResponse> {
+    function translate(code: string | string[], options?: TranslateOptions): Promise<string | LocaleResponse> {
         const lang = getLocale();
 
         const formatKey = (lang:string, code:string) => `${lang}:${code}`
+
+        const generateFallback = (code:string) => `*${code}*`
+
+        const throwOnError = options?.throwOnError == true
 
         const tryGetLocaleOrNull = (code:string) => {
             const key = formatKey(lang, code)
@@ -38,13 +42,16 @@ const __ = (()=>{
                 const index = keys.indexOf(key);
 
                 if (index !== -1) {
-                    return promise.then(values => values[code]);
+                    const almostResult = promise.then(values => values?.[code] ?? generateFallback(code));
+                    return throwOnError
+                        ? almostResult
+                        : almostResult.catch(() => generateFallback(code));
                 }
             }
             return null
         }
         
-        const result : LocalePromises = Object.fromEntries(
+        const result = Object.fromEntries(
             Array.isArray(code) ? code.map((c) => [c, tryGetLocaleOrNull(c)]) : [[code, tryGetLocaleOrNull(code)]]
         )
 
@@ -66,7 +73,7 @@ const __ = (()=>{
                 .done((data: LocaleResponse) => {
                     for (const [code, translation] of Object.entries(data)) {
                         const key = formatKey(lang, code);
-                                                localeCache.set(key, translation);
+                        localeCache.set(key, translation);
                         try {
                             localStorage.setItem(key, translation);
                         } catch (e) {
@@ -77,7 +84,7 @@ const __ = (()=>{
                     pending.delete(requestKeys);
                     resolve(data)
                 })
-                .fail((err: any) => {
+                .fail((err: unknown) => {
                     pending.delete(requestKeys);
                     console.error(err)
                     reject(err)
@@ -86,7 +93,10 @@ const __ = (()=>{
 
             pending.set(requestKeys, request);
             requestCodes.forEach((reqCode) => {
-                result[reqCode] = request.then((req) => req[reqCode])
+                result[reqCode] = request.then((req) => req?.[reqCode] ?? generateFallback(reqCode));
+                if (!throwOnError) {
+                    result[reqCode] = result[reqCode].catch(() => generateFallback(reqCode))
+                }
             })
         }
         return Array.isArray(code) ? 
@@ -95,7 +105,8 @@ const __ = (()=>{
                     key,
                     await promise
                 ])
-            ).then(entries => Object.fromEntries(entries))
+            )
+            .then(entries => Object.fromEntries(entries))
         : result[code]!
     };
     return translate;
