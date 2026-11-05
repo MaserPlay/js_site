@@ -1534,7 +1534,8 @@ summary:focus-visible {
     font-size: 12px;
   }
   .travel-status {
-    bottom: 131px;
+    /* Above the journey bar, whose height follows the screen (--journey-bar-top, bindHeaderEvents). */
+    bottom: calc(var(--journey-bar-top, 190px) + 8px);
     font-size: 12px;
     gap: 8px;
   }
@@ -3493,9 +3494,15 @@ summary:focus-visible {
     top: 22px;
     left: 188px;
   }
+  /* Left of the header controls, whose width follows the language (--header-actions-width, bindHeaderEvents). */
   .garden-utilities {
     top: 22px;
-    right: 232px;
+    right: calc(28px + var(--header-actions-width, 262px) + 16px);
+  }
+  /* The row is the container's: a computer's offset from it left the chip a row down, in the open card's way. */
+  .garden-utilities .announcements-entry {
+    top: 0;
+    right: 0;
   }
   .is-overview:not(.is-scenic) .hero {
     top: 80px;
@@ -3527,8 +3534,12 @@ summary:focus-visible {
   .project-card:has(#zone-description:not([hidden])),
   .project-card:has(#zone-comments:not([hidden])) {
     top: 80px;
-    bottom: 133px;
+    bottom: calc(var(--journey-bar-top, 133px) + 8px);
     max-height: none;
+  }
+  /* The band above the dock holds the name and the sections, not the dates too; Description shows them. */
+  #garden-app[data-area='main'] .project-footer {
+    display: none;
   }
   #garden-app[data-area='gallery'] .project-card {
     top: 80px;
@@ -3605,6 +3616,24 @@ summary:focus-visible {
   #garden-app:has(.portal-dialog[open]) .travel-status {
     left: calc((100vw - 568px) / 2);
     max-width: calc(100vw - 600px);
+  }
+}
+/* Lower still (a browser's toolbar on a phone on its side) the tagline leaves the entry no room above the dock. */
+@media (min-width: 741px) and (max-height: 386px) {
+  #garden-app .hero h1 {
+    display: none;
+  }
+}
+/* A narrow one: the chip's word stays for screen readers, and the chip fits between «Обзор сада» and the controls. */
+@media (min-width: 741px) and (max-width: 800px) and (max-height: 500px),
+  (max-width: 700px) and (max-height: 500px) and (orientation: landscape) {
+  .announcements-entry .announcements-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
   }
 }
 /* A notice raised during the order showcase sits below the order caption instead of on top of it. */
