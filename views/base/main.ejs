@@ -43,44 +43,9 @@
         <link rel="stylesheet" href="/snow.css">
     <% } %>
     <%- style %>
-    <% if (styleOfPage == pageStyle().Fullscreen) { %>
-        <style>
-            footer {
-                bottom: 0 !important;
-                position: fixed !important;
-                width: 100% !important;
-                backdrop-filter: blur(3px);
-                transition: transform 0.5s ease-in-out;
-                transform: translateY(90%);
-                z-index: 999;
-            }
-            footer:hover {
-                transform: translateY(0%);
-            }
-            header {
-                backdrop-filter: blur(2px);
-                position: fixed !important;
-                z-index: 999;
-            }
-            .right_panel{
-                background-color: rgba(var(--bs-body-bg), 25);
-                font-size: 1.5rem; 
-                padding: 10px 30px; 
-                top: 0px;
-                right: 0px;
-                transform: translateX(90%);
-                transition: transform 0.5s ease-in-out;
-            }
-            .right_panel:hover{
-                transform: translateX(0%);
-            }
-            @media (max-width: 768px) {
-                .right_panel{
-                    transform: unset;
-                }
-            }
-        </style>
-    <% } %>
+<% if (is_static_file_exists(`/layouts/${pageStyle()[styleOfPage].toLowerCase()}.css`)) { %>
+	<link rel="stylesheet" href="/layouts/<%= pageStyle()[styleOfPage].toLowerCase()%>.css">
+<% } %>
     <%- meta %>
 </head>
 
@@ -91,7 +56,12 @@
 <script defer src="<%= js_include('https://code.jquery.com/jquery-3.7.1') %>"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script defer src="<%= js_include('/index') %>"></script>
-<script defer src="<%= js_include('index') %>"></script>
+<% if (is_content_file_exists(js_include("index"))) { %>
+    <script defer src="<%= js_include('index') %>"></script>
+<% } %>
+<% if (is_static_file_exists(js_include(`/layouts/${pageStyle()[styleOfPage].toLowerCase()}`))) { %>
+    <script defer src="<%= js_include(`/layouts/${pageStyle()[styleOfPage].toLowerCase()}`) %>"></script>
+<% } %>
 <%- script %>
 
 </html>

@@ -1,4 +1,7 @@
 import { Request, Response } from 'express';
+
+import * as fs from 'node:fs';
+
 export enum Style {
     Standart,
     Fullscreen,
@@ -24,10 +27,13 @@ export interface PageOptions {
     name: string;
     description: string;
     styleOfPage: Style;
+    is_content_file_exists: (file_name:string) => boolean;
 }
 
 export function renderPage<T extends PageOptions>(response: Response, view: string, options: T): void {
-    response.render(view, { ...options, pageLayout: pageLayouts[options.styleOfPage] });
+    response.render(view, { ...options, 
+        pageLayout: pageLayouts[options.styleOfPage]
+    });
 }
 
 export interface IContent{
@@ -37,6 +43,7 @@ export interface IContent{
     lastModification() : Date;
     createdAt() : Date;
     style(req: Readonly<Request>) : Style;
+    fileExists(file_name:string) : boolean;
 }
 export class Content implements IContent{
     name : string;
@@ -60,6 +67,9 @@ export class Content implements IContent{
     }
     style(_req: Readonly<Request>): Style {
         return Style.Standart;
+    }
+    fileExists(file_name:string) {
+        return fs.existsSync(`./content/${this.name}/${file_name}`)
     }
     protected isPc(req: Readonly<Request>){
         return !this.isPhone(req)

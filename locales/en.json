@@ -1,4 +1,6 @@
 {
+	"show buttons": "Show buttons",
+	"show links": "Show links",
 	"auto_theme": "Auto",
 	"xss_warning": "⚠️ Do not paste code from unknown sources: it may perform malicious actions on your behalf on this website.",
 	"Username": "Username",
