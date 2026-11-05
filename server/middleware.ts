@@ -3,6 +3,8 @@ import * as config from '../config';
 import * as content from './content_class'
 import { format } from 'util';
 import device from './device';
+
+import * as fs from 'node:fs';
 /**
 * Returns a random number between min (inclusive) and max (exclusive)
 */
@@ -43,6 +45,7 @@ export interface PageLocals {
     userAgent(): string;
     pageStyle(): typeof content.Style;
     format: typeof format;
+    is_static_file_exists(file_name:string): boolean;
 }
 
 /** Applied once after public static files and sitemap, before dynamic routes. */
@@ -54,7 +57,10 @@ export function siteSupport(request: Request, response: Response, next: NextFunc
     }
     response.status(400);
     content.renderPage(response, 'error', {
-        name: '400', description: response.__('400/Text'), styleOfPage: content.Style.Standart
+        name: '400', 
+        description: response.__('400/Text'), 
+        styleOfPage: content.Style.Standart,
+        is_content_file_exists: (_) => false
     });
 }
 
@@ -129,7 +135,8 @@ export default function (request : Request, response : Response, next : NextFunc
     pageStyle: function () {
       return content.Style
     },
-    format: format
+    format: format,
+    is_static_file_exists: (file_name:string) => fs.existsSync("./static/" + file_name)
   };
   Object.assign(response.locals, pageLocals);
   return next()

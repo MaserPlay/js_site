@@ -15,7 +15,8 @@ pagesRouter.get('/', (req, res) => {
         eachcontent: content.map(([id]) => ({ id, name: res.__(id) })),
         name: res.__('Index'),
         description: res.__('Things in Javascript'),
-        styleOfPage: Style.Standart
+        styleOfPage: Style.Standart,
+        is_content_file_exists: (_) => false
     });
 });
 
@@ -32,7 +33,8 @@ pagesRouter.get('/content/:path', async (req, res, next) => {
             name: res.__(name),
             description: res.__(`${name} description`),
             styleOfPage: content.style(req),
-            ...await content.extendedOptions(req)
+            ...await content.extendedOptions(req),
+            is_content_file_exists: (fileName:string) => content.fileExists(fileName)
         });
     } catch (error) { next(error); }
 });
@@ -46,19 +48,22 @@ export function errorHandler(error: unknown, req: Request, res: Response, next: 
         renderPage(res, 'error', { 
             name: error.name + ': ' + error.message, 
             description: error.stack ?? '', 
-            styleOfPage: Style.Standart 
+            styleOfPage: Style.Standart ,
+            is_content_file_exists: (_) => false
         });
     } else if (error) {
         renderPage(res, 'error', { 
             name: String(res.statusCode), 
             description: String(error), 
-            styleOfPage: Style.Standart 
+            styleOfPage: Style.Standart ,
+            is_content_file_exists: (_) => false
         });
     } else {
         renderPage(res, 'error', { 
             name: String(res.statusCode), 
             description: res.__(`${res.statusCode}/Text`), 
-            styleOfPage: Style.Standart 
+            styleOfPage: Style.Standart ,
+            is_content_file_exists: (_) => false
         });
     }
 }
