@@ -173,3 +173,12 @@ function CheckUrl(string: string) {
   }
   return !url.protocol || url.protocol == "data:";
 }
+
+function escapeHtml(str: string) {
+    return String(str)
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/`/g, '&#x60;');
+}
