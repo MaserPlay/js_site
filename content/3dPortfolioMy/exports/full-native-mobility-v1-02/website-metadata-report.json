@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "exportId": "full-native-mobility-v1-02",
+  "bytes": 102601284,
+  "ids": 164,
+  "pointIds": [
+    "point.avenue.06",
+    "point.avenue.02",
+    "point.avenue.03",
+    "point.avenue.01",
+    "point.avenue.05",
+    "point.avenue.07",
+    "point.avenue.04",
+    "point.avenue.08"
+  ],
+  "materials": 1077,
+  "pavingPbrMaterials": 9,
+  "shaVerified": true,
+  "endpointsVerified": true,
+  "meshopt": true,
+  "routeStatuses": [
+    "sampled-legacy",
+    "sampled-legacy",
+    "sampled-legacy",
+    "sampled-legacy",
+    "sampled-legacy",
+    "sampled-legacy",
+    "sampled-legacy",
+    "sampled-legacy"
+  ],
+  "validation": "actual website validatePackage/indexObjects; GLB node hierarchy decoded separately; no render",
+  "browserAcceptance": "pending",
+  "frustum": "not checked"
+}

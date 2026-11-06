@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "exportId": "full-native-mobility-v1-02",
+  "assets": {
+    "city": {
+      "url": "city.glb",
+      "sha256": "e9d0aadc177886c1333422905d096573f5ddef9add72ba14f5b6078235989b9d"
+    },
+    "scene": {
+      "url": "scene.json",
+      "sha256": "d5bbc44f692ff01f9f72de6f5c9f6c72572d31b6559765b1f1b2f51f4c161149"
+    },
+    "mobility": {
+      "url": "mobility.json",
+      "sha256": "372a80d264ecafb226b74e0fd54e84f5b33e82fdf13502a9ebc61f3b81536468"
+    }
+  }
+}

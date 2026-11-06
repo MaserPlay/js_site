@@ -1,0 +1,79 @@
+{
+  "source_sha256": "0ed9ee71984e0582c1c25d142c48ff0c261d06a92ea845635d711f9e2c705cdb",
+  "source_node": "Portfolio avenue • generated static road",
+  "baked_node": "STREET_BAKED::Portfolio avenue • generated static road",
+  "receiver_url": "/content/3dPortfolioMy/baked-street-v02/receiver.glb",
+  "lightmap_url": "/content/3dPortfolioMy/baked-street-v02/direct-linear.png",
+  "uv_index_gltf": 1,
+  "encoding_scale": 1.0,
+  "target_materials": [
+    "Cyber Road / Portfolio avenue • reference axes / road_asphalt",
+    "Cyber Road / Portfolio avenue • reference axes / road_sidewalk"
+  ],
+  "lamps": [
+    [
+      3.1491591135660806,
+      5.974999904632568,
+      12.0
+    ],
+    [
+      -3.1491591135660806,
+      5.974999904632568,
+      12.0
+    ],
+    [
+      3.1491591135660806,
+      5.974999904632568,
+      -13.999999046325684
+    ],
+    [
+      -3.1491591135660806,
+      5.974999904632568,
+      -13.999999046325684
+    ],
+    [
+      3.1491591135660806,
+      5.974999904632568,
+      -39.999996185302734
+    ],
+    [
+      -3.1491591135660806,
+      5.974999904632568,
+      -39.999996185302734
+    ],
+    [
+      3.1491586367289224,
+      5.974999904632568,
+      -66.0
+    ],
+    [
+      -3.1491586367289224,
+      5.974999904632568,
+      -66.0
+    ],
+    [
+      3.149158159891764,
+      5.974999904632568,
+      -92.0
+    ],
+    [
+      -3.149158159891764,
+      5.974999904632568,
+      -92.0
+    ]
+  ],
+  "receiver_sha256": "2db01e75afd04435171c73f42e569c938729daae05fde99454ff5c9ebc4c1d67",
+  "lightmap_sha256": "3cf32e7f53056a6852e4fca22d87276bed9fff93e3623055e92f2fd3571863d5",
+  "status": "experimental; Blender preview and geometry checked, browser radiometry not reviewed",
+  "notes": [
+    "Experimental: color/energy only approximate Three.js illumination",
+    "Indirect light, other roads, vehicles and people are excluded",
+    "On crossing roads outside atlas, lightmap samples clamp; validate in browser",
+    "Projected UV maps only upward-facing road surfaces; adjacent vertical sides are not individually baked"
+  ],
+  "web_corrections": [
+    "Clip lightmap outside UV atlas and on downward/vertical faces.",
+    "Reuse original albedo/UV0 and neutral asphalt shader.",
+    "Four realtime fallback lamps for neighbouring streets; map covers project avenue."
+  ]
+}

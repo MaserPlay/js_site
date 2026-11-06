@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "sourceReopened": true,
+  "portableResources": true,
+  "staleProofRejected": true,
+  "compressedGlbReimported": true,
+  "semanticNodes": 164,
+  "physicalLensMeshes": 20,
+  "routeEndpointsVerified": 8,
+  "browserAcceptance": "pending"
+}

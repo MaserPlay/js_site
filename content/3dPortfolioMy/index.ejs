@@ -1,0 +1,83 @@
+<style>
+    #portfolio-canvas { display: block; width: 100%; height: 100vh; touch-action: none; }
+    #loading-status { position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); padding: .6rem 1rem; border-radius: .5rem; background: rgba(20, 28, 36, .85); color: white; z-index: 10; }
+    #debug-panel { position: fixed; right: .75rem; top: 4rem; z-index: 20; width: min(290px, calc(100vw - 1.5rem)); max-height: calc(100vh - 5rem); overflow-y: auto; padding: .7rem .85rem; box-sizing: border-box; color: #eef5ff; background: rgba(18, 27, 36, .92); border: 1px solid #526577; border-radius: .65rem; font: 14px/1.4 system-ui, sans-serif; }
+    #debug-panel summary { cursor: pointer; font-weight: 700; }
+    #debug-panel label { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: .55rem; }
+    #debug-panel select { max-width: 55%; }
+    #debug-panel input[type="range"] { width: 48%; }
+    #fps-value { font-weight: 700; color: #9ee9af; }
+    #fps-chart { display: block; width: 100%; height: 70px; margin-top: .5rem; background: #111b24; border-radius: .25rem; }
+    #fps-chart[hidden], #fps-value[hidden] { display: none; }
+    #debug-panel .hint { color: #aabac9; font-size: 12px; margin: .45rem 0 0; }
+    #project-navigation { position: fixed; left: .75rem; bottom: 1rem; z-index: 20; max-width: min(420px, calc(100vw - 1.5rem)); padding: .6rem .8rem; color: #eef5ff; background: rgba(18,27,36,.92); border-radius: .5rem; font: 14px system-ui, sans-serif; }
+    #project-navigation button { margin-left: .5rem; }
+    #project-summary { max-height: 4.2em; overflow-y: auto; }
+    #project-back[hidden] { display: none; }
+</style>
+    <div id="notifications" class="toast-container position-fixed bottom-0 end-0 p-3"
+         style="max-height:75vh;overflow-y:auto" data-close-label="<%= __('Close') %>"></div>
+<canvas id="portfolio-canvas" tabindex="0" aria-label="<%= __("City: 3D city") %>"></canvas>
+<div id="loading-status" role="status" data-failure-message="<%= __('City: Failed to start 3D in this browser.') %>"><%= __("City: Loading city…") %></div>
+<div id="project-navigation"><span id="project-message"><%= __("City: Click a project building to visit it.") %></span><button id="project-back" type="button" hidden><%= __("City: Back") %></button></div>
+<details id="debug-panel" open>
+  <summary><%= __("City: Settings and diagnostics") %></summary>
+  <label><%= __("City: Visit a project") %> <select id="project-select" disabled><option><%= __("City: Loading…") %></option></select></label>
+  <p id="project-summary" class="hint"></p>
+  <a id="project-page-link" target="_blank" rel="noopener noreferrer" hidden><%= __("City: Project page") %></a>
+  <div id="project-catalog-status" class="hint" role="status"><%= __("City: Projects: waiting for the scene…") %></div>
+  <p id="package-status" class="hint"></p>
+  <p id="warm-status" class="hint"></p>
+  <p id="mobility-status" class="hint"></p>
+  <label><%= __("City: Sort by") %> <select id="project-sort"><option value="created"><%= __("City: Creation date") %></option><option value="last_update"><%= __("City: Last update") %></option><option value="name"><%= __("City: Name") %></option></select></label>
+  <label><%= __("City: Descending") %> <input id="project-descending" type="checkbox"></label>
+  <label><%= __("City: GitHub only") %> <input id="project-github" type="checkbox"></label>
+  <label><%= __("City: Archive") %> <select id="project-archived"><option value="all"><%= __("City: All") %></option><option value="active"><%= __("City: Active") %></option><option value="archived"><%= __("City: Archived") %></option></select></label>
+  <button id="project-refresh" type="button"><%= __("City: Refresh projects from API") %></button>
+  <button id="project-visit" type="button" disabled><%= __("City: Go to entrance") %></button>
+  <label><%= __("City: Street position") %> <input id="street-position" type="range" min="0" max="100" step="0.5" value="0"></label>
+  <div id="street-position-value" class="hint"><%= __("City: Start of street") %></div>
+  <p class="hint"><%= __("City: Street: drag up/down or use ↑/↓. Scroll to zoom. Inside: drag with your mouse or finger to look around.") %></p>
+  <label><%= __("City: Time of day") %> <select id="time-of-day"><option value="night" selected><%= __("City: Night") %></option><option value="day"><%= __("City: Day") %></option></select></label>
+  <label><%= __("City: Resolution") %> <select id="render-quality"><option value="0.75"><%= __("City: Low") %></option><option value="1"><%= __("City: Medium") %></option><option value="2"><%= __("City: High") %></option><option value="3" selected><%= __("City: Maximum") %></option></select></label>
+  <label><%= __("City: Shadows") %> <input id="shadows" type="checkbox" checked></label>
+  <label><%= __("City: Street traffic") %> <input id="street-motion" type="checkbox" checked></label>
+  <label><%= __("City: Traffic density") %> <input id="traffic-density" type="range" min="0" max="100" step="5" value="100"></label>
+  <div id="traffic-density-value" class="hint"><%= __("City: 100% · loading vehicles…") %></div>
+  <details id="traffic-inspector"><summary><%= __("City: Why traffic is waiting") %></summary><pre id="traffic-debug" style="white-space:pre-wrap;font:12px/1.4 system-ui"><%= __("City: Waiting for the scene…") %></pre></details>
+  <label><%= __("City: Headlights") %> <input id="headlights" type="checkbox"></label>
+  <label><%= __("City: Environment instancing") %> <input id="vegetation-instancing" type="checkbox" checked></label>
+  <label><%= __("City: Pedestrian LOD") %> <input id="people-lod" type="checkbox" checked></label>
+  <label><%= __("City: Follow a pedestrian") %> <input id="follow-walker" type="checkbox"></label>
+  <label><%= __("City: Pedestrian") %> <select id="follow-walker-person" disabled><option value="0"><%= __("City: Loading…") %></option></select></label>
+  <div id="walk-status" class="hint"><%= __("City: Walking: loading…") %></div>
+  <label><%= __("City: Exposure") %> <input id="exposure" type="range" min="0.4" max="2" step="0.05" value="1.1"></label>
+  <label><%= __("City: Directional light") %> <input id="sun-intensity" type="range" min="0" max="4" step="0.01" value="0.18"></label>
+  <label><%= __("City: Glow intensity") %> <input id="glow-strength" type="range" min="0" max="5" step="0.1" value="2.5"></label>
+  <label><%= __("City: Streetlight brightness") %> <input id="street-brightness" type="range" min="0" max="3" step="0.1" value="1"></label>
+  <label><%= __("City: Baked street lighting") %> <input id="baked-street-lighting" type="checkbox" checked></label>
+  <div id="baked-street-status" class="hint"><%= __("City: Lightmap: loading…") %></div>
+  <label><%= __("City: Interior lighting") %> <input id="interior-lighting" type="checkbox" checked></label>
+  <label><%= __("City: Interior brightness") %> <input id="interior-brightness" type="range" min="0" max="150" step="5" value="55"></label>
+  <label><%= __("City: Fog") %> <input id="fog-enabled" type="checkbox" checked></label>
+  <label><%= __("City: Fog distance") %> <input id="fog-distance" type="range" min="0.5" max="2" step="0.1" value="1"></label>
+  <label><%= __("City: Show FPS") %> <input id="show-fps" type="checkbox" checked></label>
+  <label><%= __("City: Show frame rate chart") %> <input id="show-chart" type="checkbox" checked></label>
+  <div id="entry-performance" class="hint"></div>
+  <div id="fps-value" aria-live="off">FPS: —</div>
+  <div id="render-stats" class="hint"><%= __("City: Render diagnostics: —") %></div>
+  <canvas id="fps-chart" width="260" height="70" aria-label="<%= __("City: Frame rate chart") %>"></canvas>
+  <p class="hint"><%= __("City: Shadows and high resolution may reduce FPS.") %></p>
+</details>
+<% /* Temporary development CDN; production: https://unpkg.com/three@0.186.1/ */
+   const threeCdnBase = 'https://registry.npmmirror.com/three/0.186.1/files/'; %>
+<script type="importmap">
+{
+  "imports": {
+    "three": "<%= threeCdnBase %>build/three.module.js",
+    "meshoptimizer/meshopt_decoder.js": "<%= threeCdnBase %>examples/jsm/libs/meshopt_decoder.module.js",
+    "three/examples/jsm/": "<%= threeCdnBase %>examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="/content/3dPortfolioMy/viewer<%= js_include('').startsWith('.min.') ? '.min' : '' %>.mjs"></script>

@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "geometryCompression": "none",
+  "embeddedImages": 91,
+  "semanticNodes": 204,
+  "lensMeshes": 48,
+  "glbReimported": true,
+  "browserAcceptance": "not tested",
+  "runtimeAcceptance": "pending"
+}

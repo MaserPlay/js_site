@@ -1,0 +1,187 @@
+{
+  "kind": "uncompressed-geometry-example",
+  "exportId": "avenue-walking-uncompressed-example-v01",
+  "source": "C:\\Users\\super\\Documents\\Codex\\2026-10-14\\fk-x20\\outputs\\City_Web_Contract\\avenue_walking_v05\\Editable_Avenue_Walking.blend",
+  "sourceSha256": "ee391cdedd75e50c3f61bc064b5b1c2969e21a24c4ae23835421ff16491c6158",
+  "citySha256": "790fcea3a409d046fc96566c7e1dd45f0be281365fb6be0e98e7be4cc152ce64",
+  "bytes": 222258572,
+  "geometryCompression": "none",
+  "extensionsUsed": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_transmission",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_specular",
+    "KHR_materials_anisotropy",
+    "KHR_materials_ior",
+    "KHR_texture_transform",
+    "EXT_texture_webp"
+  ],
+  "mobilityStatus": "draft",
+  "runtimeAcceptance": "pending",
+  "productionPackage": false,
+  "assets": {
+    "city.glb": {
+      "url": "city.glb",
+      "sha256": "790fcea3a409d046fc96566c7e1dd45f0be281365fb6be0e98e7be4cc152ce64"
+    },
+    "scene.json": {
+      "url": "scene.json",
+      "sha256": "4929a0b5d29119af7010764365f8bb7afd98952df7ff4e066f4b2119d08cbcf6"
+    },
+    "pedestrian-areas.draft.json": {
+      "url": "pedestrian-areas.draft.json",
+      "sha256": "06ff7137c4f163b00da8c177d230a11e3d274804cf04ec2c0cb8375f82da2034"
+    },
+    "mobility.draft.json": {
+      "url": "mobility.draft.json",
+      "sha256": "33862bb5dac26fca20cc97f311b9ae181e5ad82e9487e159d366d229e0121308"
+    }
+  },
+  "cameraChecks": {
+    "camera.avenue.06.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.02.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.03.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.01.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.05.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.07.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.04.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    },
+    "camera.avenue.08.enter": {
+      "safety": "not certified",
+      "source": "editable migrated legacy path",
+      "endpointCheck": "passed",
+      "frustum": "not checked"
+    }
+  },
+  "materialAdaptations": {
+    "windows": {
+      "meshes": 58,
+      "materials": 64,
+      "palette_colors": 100,
+      "palette_size": [
+        256,
+        1
+      ],
+      "emission_gain": 4.0,
+      "tower_color_choice": "deterministic approximation; light on/off follows source attributes"
+    },
+    "roads": [
+      {
+        "material": "Cyber Road / Portfolio avenue • reference axes / road_asphalt",
+        "original_image": "City Road Paint / Portfolio avenue • reference axes",
+        "portable_image": "web_road_0",
+        "resolution": [
+          4096,
+          1024
+        ]
+      },
+      {
+        "material": "Cyber Road / v12 • green cycle loop / road_asphalt",
+        "original_image": "City Road Paint / v12 • green cycle loop",
+        "portable_image": "web_road_1",
+        "resolution": [
+          4096,
+          512
+        ]
+      },
+      {
+        "material": "Cyber Road / v12 • tree boulevard / road_asphalt",
+        "original_image": "City Road Paint / v12 • tree boulevard",
+        "portable_image": "web_road_2",
+        "resolution": [
+          4096,
+          2048
+        ]
+      },
+      {
+        "material": "Cyber Road / v26 • east road guide / road_asphalt",
+        "original_image": "City Road Paint / v26 • east road guide",
+        "portable_image": "web_road_3",
+        "resolution": [
+          4096,
+          128
+        ]
+      }
+    ],
+    "grass": {
+      "materials": 1,
+      "meshes": 12,
+      "method": "single repeated tile, not the original three-scale procedural blend"
+    },
+    "flat_colors": {
+      "cars": 64,
+      "urban_walls": 15,
+      "sidewalks": 4
+    },
+    "courtyardPaving": [
+      "Cyber Road / Portfolio avenue • reference axes / road_path",
+      "Cyber Road / Portfolio avenue • reference axes / road_sidewalk",
+      "Cyber Road / v12 • green cycle loop / road_path",
+      "Cyber Road / v12 • green cycle loop / road_sidewalk",
+      "Cyber Road / v12 • tree boulevard / road_path",
+      "Cyber Road / v12 • tree boulevard / road_sidewalk",
+      "Cyber Road / v26 • east road guide / road_path",
+      "Cyber Road / v26 • east road guide / road_sidewalk",
+      "Exposition / courtyard pedestrian paving",
+      "Exposition access / concrete",
+      "Mobility / apron / road_sidewalk"
+    ],
+    "natureBaseColors": [
+      "Cyber River / River axes temporary / river_leaf_0",
+      "Cyber River / River axes temporary / river_leaf_1",
+      "Cyber River / River axes temporary / river_leaf_2",
+      "Cyber River / River axes temporary / river_trunk",
+      "Cyber River / River axes temporary / river_water",
+      "Cyber Road / Portfolio avenue • reference axes / road_leaf_0",
+      "Cyber Road / Portfolio avenue • reference axes / road_leaf_1",
+      "Cyber Road / Portfolio avenue • reference axes / road_leaf_2",
+      "Cyber Road / Portfolio avenue • reference axes / road_trunk",
+      "Cyber Road / v12 • green cycle loop / road_leaf_0",
+      "Cyber Road / v12 • green cycle loop / road_leaf_1",
+      "Cyber Road / v12 • green cycle loop / road_leaf_2",
+      "Cyber Road / v12 • green cycle loop / road_trunk",
+      "Cyber Road / v12 • tree boulevard / road_leaf_0",
+      "Cyber Road / v12 • tree boulevard / road_leaf_1",
+      "Cyber Road / v12 • tree boulevard / road_leaf_2",
+      "Cyber Road / v12 • tree boulevard / road_trunk",
+      "Cyber Road / v26 • east road guide / road_leaf_0",
+      "Cyber Road / v26 • east road guide / road_leaf_1",
+      "Cyber Road / v26 • east road guide / road_leaf_2",
+      "Cyber Road / v26 • east road guide / road_trunk"
+    ]
+  }
+}

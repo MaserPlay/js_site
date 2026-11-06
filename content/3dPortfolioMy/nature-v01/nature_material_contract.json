@@ -1,0 +1,2248 @@
+{
+  "source_blend_sha256": "31c2e0414b2c5844b98bb01ad7bb32e7c490f696320b4ede703f6ef3fa9e1253",
+  "source_glb_sha256": "0ed9ee71984e0582c1c25d142c48ff0c261d06a92ea845635d711f9e2c705cdb",
+  "color_space": "linear RGBA; do not interpret as sRGB hex",
+  "source_materials": [
+    {
+      "name": "Cyber River / River axes temporary / river_leaf_0",
+      "source_linear_rgba": [
+        0.054999999701976776,
+        0.23000000417232513,
+        0.10000000149011612,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.054999999701976776,
+            0.23000000417232513,
+            0.10000000149011612,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.02474999986588955,
+                0.10350000113248825,
+                0.04500000178813934,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.0742499977350235,
+                0.31049999594688416,
+                0.13500000536441803,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber River / River axes temporary / river_leaf_1",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.30000001192092896,
+        0.14000000059604645,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.30000001192092896,
+            0.14000000059604645,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.053999997675418854,
+                0.13500000536441803,
+                0.06300000101327896,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.16200000047683716,
+                0.4050000309944153,
+                0.1889999955892563,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber River / River axes temporary / river_leaf_2",
+      "source_linear_rgba": [
+        0.23000000417232513,
+        0.3199999928474426,
+        0.09000000357627869,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.23000000417232513,
+            0.3199999928474426,
+            0.09000000357627869,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.10350000113248825,
+                0.14399999380111694,
+                0.04050000011920929,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.31049999594688416,
+                0.43199998140335083,
+                0.12150000780820847,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber River / River axes temporary / river_trunk",
+      "source_linear_rgba": [
+        0.18000000715255737,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.18000000715255737,
+            0.10000000149011612,
+            0.054999999701976776,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.8799999952316284,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.08100000023841858,
+                0.04500000178813934,
+                0.02474999986588955,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.24300001561641693,
+                0.13500000536441803,
+                0.0742499977350235,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 9.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.3799999952316284,
+          "distance": 0.004000000189989805
+        }
+      ]
+    },
+    {
+      "name": "Cyber River / River axes temporary / river_water",
+      "source_linear_rgba": [
+        0.02500000037252903,
+        0.12999999523162842,
+        0.10999999940395355,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.02800000086426735,
+            0.12999999523162842,
+            0.11500000208616257,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.18000000715255737,
+          "linked": true
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.3799999952316284,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.3329999446868896,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.012000000104308128,
+                0.06499999761581421,
+                0.05999999865889549,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.04500000178813934,
+                0.18000000715255737,
+                0.14499999582767487,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Wave Texture",
+          "type": "ShaderNodeTexWave",
+          "scale": 2.299999952316284,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 19.0,
+          "image": null
+        },
+        {
+          "name": "Noise Texture.001",
+          "type": "ShaderNodeTexNoise",
+          "scale": 0.12999999523162842,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.30000001192092896,
+          "distance": 0.04500000178813934
+        },
+        {
+          "strength": 0.2199999988079071,
+          "distance": 0.014000000432133675
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / Portfolio avenue • reference axes / road_leaf_0",
+      "source_linear_rgba": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.05999999865889549,
+            0.23999999463558197,
+            0.11999999731779099,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.026999998837709427,
+                0.10799999535083771,
+                0.053999997675418854,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.08100000023841858,
+                0.3240000009536743,
+                0.16200000047683716,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / Portfolio avenue • reference axes / road_leaf_1",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.3100000023841858,
+            0.15000000596046448,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.053999997675418854,
+                0.13950000703334808,
+                0.06750000268220901,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.16200000047683716,
+                0.41850000619888306,
+                0.20250001549720764,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / Portfolio avenue • reference axes / road_leaf_2",
+      "source_linear_rgba": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.10000000149011612,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.09000000357627869,
+                0.13500000536441803,
+                0.04500000178813934,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.27000001072883606,
+                0.4050000309944153,
+                0.13500000536441803,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / Portfolio avenue • reference axes / road_trunk",
+      "source_linear_rgba": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.1899999976158142,
+            0.10000000149011612,
+            0.054999999701976776,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.8799999952316284,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.08550000190734863,
+                0.04500000178813934,
+                0.02474999986588955,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.2565000057220459,
+                0.13500000536441803,
+                0.0742499977350235,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 9.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.3799999952316284,
+          "distance": 0.004000000189989805
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • green cycle loop / road_leaf_0",
+      "source_linear_rgba": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.05999999865889549,
+            0.23999999463558197,
+            0.11999999731779099,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.026999998837709427,
+                0.10799999535083771,
+                0.053999997675418854,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.08100000023841858,
+                0.3240000009536743,
+                0.16200000047683716,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • green cycle loop / road_leaf_1",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.3100000023841858,
+            0.15000000596046448,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.053999997675418854,
+                0.13950000703334808,
+                0.06750000268220901,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.16200000047683716,
+                0.41850000619888306,
+                0.20250001549720764,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • green cycle loop / road_leaf_2",
+      "source_linear_rgba": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.10000000149011612,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.09000000357627869,
+                0.13500000536441803,
+                0.04500000178813934,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.27000001072883606,
+                0.4050000309944153,
+                0.13500000536441803,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • green cycle loop / road_trunk",
+      "source_linear_rgba": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.1899999976158142,
+            0.10000000149011612,
+            0.054999999701976776,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.8799999952316284,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.08550000190734863,
+                0.04500000178813934,
+                0.02474999986588955,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.2565000057220459,
+                0.13500000536441803,
+                0.0742499977350235,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 9.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.3799999952316284,
+          "distance": 0.004000000189989805
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • tree boulevard / road_leaf_0",
+      "source_linear_rgba": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.05999999865889549,
+            0.23999999463558197,
+            0.11999999731779099,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.026999998837709427,
+                0.10799999535083771,
+                0.053999997675418854,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.08100000023841858,
+                0.3240000009536743,
+                0.16200000047683716,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • tree boulevard / road_leaf_1",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.3100000023841858,
+            0.15000000596046448,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.053999997675418854,
+                0.13950000703334808,
+                0.06750000268220901,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.16200000047683716,
+                0.41850000619888306,
+                0.20250001549720764,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • tree boulevard / road_leaf_2",
+      "source_linear_rgba": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.10000000149011612,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.09000000357627869,
+                0.13500000536441803,
+                0.04500000178813934,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.27000001072883606,
+                0.4050000309944153,
+                0.13500000536441803,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v12 • tree boulevard / road_trunk",
+      "source_linear_rgba": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.1899999976158142,
+            0.10000000149011612,
+            0.054999999701976776,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.8799999952316284,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.08550000190734863,
+                0.04500000178813934,
+                0.02474999986588955,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.2565000057220459,
+                0.13500000536441803,
+                0.0742499977350235,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 9.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.3799999952316284,
+          "distance": 0.004000000189989805
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v26 • east road guide / road_leaf_0",
+      "source_linear_rgba": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.05999999865889549,
+            0.23999999463558197,
+            0.11999999731779099,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.026999998837709427,
+                0.10799999535083771,
+                0.053999997675418854,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.08100000023841858,
+                0.3240000009536743,
+                0.16200000047683716,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v26 • east road guide / road_leaf_1",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.3100000023841858,
+            0.15000000596046448,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.053999997675418854,
+                0.13950000703334808,
+                0.06750000268220901,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.16200000047683716,
+                0.41850000619888306,
+                0.20250001549720764,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v26 • east road guide / road_leaf_2",
+      "source_linear_rgba": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.20000000298023224,
+            0.30000001192092896,
+            0.10000000149011612,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.699999988079071,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.09000000357627869,
+                0.13500000536441803,
+                0.04500000178813934,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.27000001072883606,
+                0.4050000309944153,
+                0.13500000536441803,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 35.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.1599999964237213,
+          "distance": 0.0007999999797903001
+        }
+      ]
+    },
+    {
+      "name": "Cyber Road / v26 • east road guide / road_trunk",
+      "source_linear_rgba": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.1899999976158142,
+            0.10000000149011612,
+            0.054999999701976776,
+            1.0
+          ],
+          "linked": true
+        },
+        "Roughness": {
+          "value": 0.8799999952316284,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [
+        {
+          "name": "Color Ramp",
+          "elements": [
+            {
+              "position": 0.0,
+              "linear_rgba": [
+                0.08550000190734863,
+                0.04500000178813934,
+                0.02474999986588955,
+                1.0
+              ]
+            },
+            {
+              "position": 1.0,
+              "linear_rgba": [
+                0.2565000057220459,
+                0.13500000536441803,
+                0.0742499977350235,
+                1.0
+              ]
+            }
+          ]
+        }
+      ],
+      "texture_nodes": [
+        {
+          "name": "Texture Coordinate",
+          "type": "ShaderNodeTexCoord",
+          "scale": null,
+          "image": null
+        },
+        {
+          "name": "Noise Texture",
+          "type": "ShaderNodeTexNoise",
+          "scale": 9.0,
+          "image": null
+        }
+      ],
+      "bump": [
+        {
+          "strength": 0.3799999952316284,
+          "distance": 0.004000000189989805
+        }
+      ]
+    },
+    {
+      "name": "v11 plants / road_leaf_0",
+      "source_linear_rgba": [
+        0.054999999701976776,
+        0.1599999964237213,
+        0.04500000178813934,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.054999999701976776,
+            0.1599999964237213,
+            0.04500000178813934,
+            1.0
+          ],
+          "linked": false
+        },
+        "Roughness": {
+          "value": 0.8999999761581421,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [],
+      "texture_nodes": [],
+      "bump": []
+    },
+    {
+      "name": "v11 plants / road_leaf_1",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.25,
+        0.07000000029802322,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.25,
+            0.07000000029802322,
+            1.0
+          ],
+          "linked": false
+        },
+        "Roughness": {
+          "value": 0.8999999761581421,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [],
+      "texture_nodes": [],
+      "bump": []
+    },
+    {
+      "name": "v11 plants / road_leaf_2",
+      "source_linear_rgba": [
+        0.23999999463558197,
+        0.3199999928474426,
+        0.10000000149011612,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.23999999463558197,
+            0.3199999928474426,
+            0.10000000149011612,
+            1.0
+          ],
+          "linked": false
+        },
+        "Roughness": {
+          "value": 0.8999999761581421,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [],
+      "texture_nodes": [],
+      "bump": []
+    },
+    {
+      "name": "v11 plants / road_trunk",
+      "source_linear_rgba": [
+        0.11999999731779099,
+        0.06499999761581421,
+        0.02800000086426735,
+        1.0
+      ],
+      "principled": {
+        "Base Color": {
+          "value": [
+            0.11999999731779099,
+            0.06499999761581421,
+            0.02800000086426735,
+            1.0
+          ],
+          "linked": false
+        },
+        "Roughness": {
+          "value": 0.8999999761581421,
+          "linked": false
+        },
+        "Metallic": {
+          "value": 0.0,
+          "linked": false
+        },
+        "Transmission Weight": {
+          "value": 0.0,
+          "linked": false
+        },
+        "IOR": {
+          "value": 1.5,
+          "linked": false
+        }
+      },
+      "color_ramps": [],
+      "texture_nodes": [],
+      "bump": []
+    }
+  ],
+  "exported_materials": {
+    "Cyber Road / Portfolio avenue • reference axes / road_trunk": {
+      "primitives": 7,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / Portfolio avenue • reference axes / road_leaf_1": {
+      "primitives": 7,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / Portfolio avenue • reference axes / road_leaf_0": {
+      "primitives": 7,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / Portfolio avenue • reference axes / road_leaf_2": {
+      "primitives": 7,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "v11 plants / road_trunk": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": true,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "v11 plants / road_leaf_1": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": true,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "v11 plants / road_leaf_0": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": true,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "v11 plants / road_leaf_2": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": true,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber River / River axes temporary / river_trunk": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber River / River axes temporary / river_leaf_0": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber River / River axes temporary / river_leaf_1": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber River / River axes temporary / river_leaf_2": {
+      "primitives": 4,
+      "uv0_primitives": 0,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber River / River axes temporary / river_water": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • green cycle loop / road_trunk": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • green cycle loop / road_leaf_0": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • green cycle loop / road_leaf_1": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • green cycle loop / road_leaf_2": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • tree boulevard / road_trunk": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • tree boulevard / road_leaf_0": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • tree boulevard / road_leaf_1": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    },
+    "Cyber Road / v12 • tree boulevard / road_leaf_2": {
+      "primitives": 1,
+      "uv0_primitives": 1,
+      "base_factor_present": false,
+      "base_texture_present": false,
+      "normal_texture_present": false
+    }
+  },
+  "overrides": [
+    {
+      "material_name": "Cyber Road / Portfolio avenue • reference axes / road_trunk",
+      "base_color_linear": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "roughness": 0.8799999952316284,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / Portfolio avenue • reference axes / road_leaf_1",
+      "base_color_linear": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / Portfolio avenue • reference axes / road_leaf_0",
+      "base_color_linear": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / Portfolio avenue • reference axes / road_leaf_2",
+      "base_color_linear": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber River / River axes temporary / river_trunk",
+      "base_color_linear": [
+        0.18000000715255737,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "roughness": 0.8799999952316284,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber River / River axes temporary / river_leaf_0",
+      "base_color_linear": [
+        0.054999999701976776,
+        0.23000000417232513,
+        0.10000000149011612,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber River / River axes temporary / river_leaf_1",
+      "base_color_linear": [
+        0.11999999731779099,
+        0.30000001192092896,
+        0.14000000059604645,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber River / River axes temporary / river_leaf_2",
+      "base_color_linear": [
+        0.23000000417232513,
+        0.3199999928474426,
+        0.09000000357627869,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber River / River axes temporary / river_water",
+      "base_color_linear": [
+        0.02500000037252903,
+        0.12999999523162842,
+        0.10999999940395355,
+        1.0
+      ],
+      "roughness": 0.18000000715255737,
+      "kind": "water",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • green cycle loop / road_trunk",
+      "base_color_linear": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "roughness": 0.8799999952316284,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • green cycle loop / road_leaf_0",
+      "base_color_linear": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • green cycle loop / road_leaf_1",
+      "base_color_linear": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • green cycle loop / road_leaf_2",
+      "base_color_linear": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • tree boulevard / road_trunk",
+      "base_color_linear": [
+        0.1899999976158142,
+        0.10000000149011612,
+        0.054999999701976776,
+        1.0
+      ],
+      "roughness": 0.8799999952316284,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • tree boulevard / road_leaf_0",
+      "base_color_linear": [
+        0.05999999865889549,
+        0.23999999463558197,
+        0.11999999731779099,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • tree boulevard / road_leaf_1",
+      "base_color_linear": [
+        0.11999999731779099,
+        0.3100000023841858,
+        0.15000000596046448,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    },
+    {
+      "material_name": "Cyber Road / v12 • tree boulevard / road_leaf_2",
+      "base_color_linear": [
+        0.20000000298023224,
+        0.30000001192092896,
+        0.10000000149011612,
+        1.0
+      ],
+      "roughness": 0.699999988079071,
+      "kind": "vegetation",
+      "base_color_is_approximation": true
+    }
+  ],
+  "water_normal": {
+    "file": "water_ripple_normal.png",
+    "sha256": "ce83b9729a63341cdb50a0107b58e36c6513c633a574b56e154f0c1ed9b4d85b",
+    "size_px": [
+      512,
+      512
+    ],
+    "color_space": "non-color / linear data",
+    "wrap": "repeat",
+    "uv_channel": 0,
+    "uv_units": "metres in original river mesh",
+    "suggested_tile_size_m": 16,
+    "approximation": true
+  },
+  "limitations": [
+    "Source uses procedural noise and bump; normal is an approximation, not a bake.",
+    "Main avenue vegetation has no UV0; this package supplies color, not leaf or bark image mapping.",
+    "Water normals, lighting and visual parity require independent browser verification."
+  ]
+}

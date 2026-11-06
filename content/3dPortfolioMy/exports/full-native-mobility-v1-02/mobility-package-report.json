@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "exportId": "full-native-mobility-v1-02",
+  "citySha256": "e9d0aadc177886c1333422905d096573f5ddef9add72ba14f5b6078235989b9d",
+  "semanticNodes": 164,
+  "actors": 26,
+  "edges": 20,
+  "heads": 8,
+  "lenses": 20,
+  "externalVariants": 4,
+  "consumerSourceSha256": "55d70d8ad1beaa122a3d61dda985bbc33e1d07d05eb9bd1a438cd9f420157ee3",
+  "browserAcceptance": "pending",
+  "steeringDynamics": "not simulated"
+}

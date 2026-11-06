@@ -1,0 +1,4348 @@
+{
+  "ok": true,
+  "staticChecks": "sampled support and body volume probes",
+  "conflictPairsReviewed": [
+    {
+      "junctionId": "junction.avenue.crossing.24",
+      "edges": [
+        "edge.avenue.vehicle.north.1",
+        "edge.avenue.vehicle.south.3"
+      ],
+      "minCenterlineDistance": 3.3399999141693115,
+      "threshold": 3.2,
+      "conflict": false
+    },
+    {
+      "junctionId": "junction.avenue.crossing.24",
+      "edges": [
+        "edge.avenue.vehicle.north.1",
+        "edge.avenue.pedestrian.inner.bottom"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.24",
+      "edges": [
+        "edge.avenue.vehicle.north.1",
+        "edge.avenue.pedestrian.outer.bottom"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.24",
+      "edges": [
+        "edge.avenue.vehicle.south.3",
+        "edge.avenue.pedestrian.inner.bottom"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.24",
+      "edges": [
+        "edge.avenue.vehicle.south.3",
+        "edge.avenue.pedestrian.outer.bottom"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.24",
+      "edges": [
+        "edge.avenue.pedestrian.inner.bottom",
+        "edge.avenue.pedestrian.outer.bottom"
+      ],
+      "minCenterlineDistance": 1.299997329711914,
+      "threshold": 1,
+      "conflict": false
+    },
+    {
+      "junctionId": "junction.avenue.crossing.76",
+      "edges": [
+        "edge.avenue.vehicle.north.3",
+        "edge.avenue.vehicle.south.1"
+      ],
+      "minCenterlineDistance": 3.3399999141693115,
+      "threshold": 3.2,
+      "conflict": false
+    },
+    {
+      "junctionId": "junction.avenue.crossing.76",
+      "edges": [
+        "edge.avenue.vehicle.north.3",
+        "edge.avenue.pedestrian.inner.top"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.76",
+      "edges": [
+        "edge.avenue.vehicle.north.3",
+        "edge.avenue.pedestrian.outer.top"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.76",
+      "edges": [
+        "edge.avenue.vehicle.south.1",
+        "edge.avenue.pedestrian.inner.top"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.76",
+      "edges": [
+        "edge.avenue.vehicle.south.1",
+        "edge.avenue.pedestrian.outer.top"
+      ],
+      "minCenterlineDistance": 0,
+      "threshold": 2.1,
+      "conflict": true
+    },
+    {
+      "junctionId": "junction.avenue.crossing.76",
+      "edges": [
+        "edge.avenue.pedestrian.inner.top",
+        "edge.avenue.pedestrian.outer.top"
+      ],
+      "minCenterlineDistance": 1.3000030517578125,
+      "threshold": 1,
+      "conflict": false
+    }
+  ],
+  "actorCount": 26,
+  "seconds": 3600,
+  "densityCycle": false,
+  "windows": [
+    {
+      "seconds": 120,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 137.22354469814098,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 136.94120040454655,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 130.40822585143923,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 116.21260238208815,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 141.5938099253582,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 178.2253261640281,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 174.36193305017838,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 119.940932736423,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 120.03593051456477,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 134.068905067672,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 142.64328154609242,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 142.41042928327877,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 109.12584397313447,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 103.78703603790623,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 98.51832771118235,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 127.4778536661296,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 122.20357488791645,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 116.8627287289067,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 111.5883317538046,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.5292114400137,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 105.99518165331267,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 100.23171249897267,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 98.2195000718069,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 126.59671044033607,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 121.04378710505848,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 115.29921149929649,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 240,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 112.09103075115672,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 112.09103075115632,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 112.09103075115678,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 136.04593368618288,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 146.30474123126976,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 117.01550251452818,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 126.7069199002546,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 181.13626469738728,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 138.35881079777067,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 115.93035153492474,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 116.05219475793072,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 116.47037350654645,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 114.19786467638517,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 114.01086760518783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 113.75377092548659,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 101.19085021619888,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 101.19085021619954,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 101.19085021619902,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 101.19085021619944,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 92.46818200903336,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 125.04404258257898,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 125.03998899591521,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 121.56033914304201,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.24100554481632,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.25734468073578,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.24102175742968,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 360,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 114.52131770173713,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 114.5213177017358,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 162.05474195613544,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 157.46205807911835,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 113.87167258776589,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 106.24785961535548,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 114.52131770173673,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 114.52131770173753,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 138.45414311250454,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 108.34593043351504,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 107.32480039761009,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 106.70500437592267,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 116.65411499003869,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 116.839073853294,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 117.09042950684051,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 106.00335021613034,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 106.00335021613253,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 106.0033502161327,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 106.00335021613554,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 119.91034130713908,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 121.48727273116901,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 121.50534130711569,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 121.50534130712131,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 115.19068045014365,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 115.23535482866828,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 115.19068045014839,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 480,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 110.46858644596068,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 114.44593368620622,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 109.75820936990942,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 120.92151270895084,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 120.68651374433563,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 120.36637139065385,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 110.46858644595886,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 110.25991092693891,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 133.39238088852187,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 185.52313278916375,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 143.6435968300288,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 119.90922663009042,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 106.19577246289072,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 106.19573737734521,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 106.40210021609141,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 109.56571544042316,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 109.31418921220939,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 109.12923036479299,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 130.7716795067829,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 114.6131804501178,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 115.16318045012139,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 115.16318045011889,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 115.1631804501173,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 117.22772490104512,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 116.7604961322042,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 116.60693045011567,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 600,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 123.35881079779517,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 172.3588082135505,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 134.82145283057503,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 104.29593043351338,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 104.29593043351451,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 104.29593043351474,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 115.97146595974186,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 116.18014147876465,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 116.57964652147984,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 83.18982112113895,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 124.89048711617647,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 104.29593043351446,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 98.44208725221773,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 98.4420872522054,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 98.4483502161425,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 120.92319621853716,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 121.17113725157589,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 121.37124999997792,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 132.0000000000237,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 104.57568045019116,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 92.41095364800827,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 104.0806804502406,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 104.0806804502277,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 88.13831246353016,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 121.15668557986004,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 121.37125000002987,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 720,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 134.44593301777354,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 120.9654324917201,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 115.6570879365944,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 115.65708793659223,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 115.657087936592,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 115.65708793659132,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 106.19593368620451,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 106.19593368620554,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 106.19593368620485,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 139.99167912774988,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 141.19167912774935,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 156.95881079780304,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 104.28397877073894,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 132.0000000001528,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 132.0000000001528,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 130.0909680003956,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 130.09450737294208,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 130.0793934598255,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 132.0000000001528,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 99.26818045033576,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 110.92125000012811,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 101.30318045033675,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 101.30318045033812,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 108.43287792622618,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 75.4145048098801,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 103.5306804503407,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 840,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 136.05474195613135,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 111.18925890219657,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 111.21263035932657,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 111.24834513103326,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 111.30796077818366,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 163.1999351365141,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 118.90880821354006,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 116.41635454517223,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 115.70603014596384,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 114.86202532592313,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 114.14947728377922,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 124.75414311249915,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 120.79835021632573,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 107.64307623519107,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 107.43045043249765,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 103.81086798069612,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 103.84476006054297,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 104.00792950702089,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 98.18422135795913,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 109.0203391431528,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 103.75787778405436,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 101.68818045033538,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 101.68818045033834,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 125.26995237713334,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 125.73722868677805,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 117.84101959338432,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 960,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 129.07854425466007,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 114.44718317864147,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 114.42381172151283,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 114.3880969498058,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 136.0950582135432,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 137.2048067632253,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 181.86182216685575,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 162.1672519837433,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 123.23202235701251,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 117.39756532994943,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 118.110113372093,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 136.6870387776113,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.4879207094034,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 106.38845586984678,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 106.60085021630937,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 107.75697440674708,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 107.72536600073829,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 107.61585021631049,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 102.18085021630407,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 117.44568045035658,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.40863300079286,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.36818045034659,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.36818045034954,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.14818045034633,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.14818045034929,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 116.92318045035597,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1080,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 117.80354090772778,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 117.80354090773028,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 137.74103075109906,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 181.5047418996296,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 166.0486965572768,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 113.04697364928006,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 117.80354090771971,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 127.89653186130568,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 114.75880821350188,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 110.70881079773903,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 110.70881079773153,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 110.70881079770743,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.09835021630397,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 116.91151419788537,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 116.6991707094204,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 107.39631310700952,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 107.3948106882284,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 107.49085021631015,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 116.27460021629565,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 115.93318045035483,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 125.61741508738965,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 125.65783914317058,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 125.46193045036614,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.28568045034649,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.28568045034945,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 120.15784130727457,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1200,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 108.80880754502732,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 108.80880754503778,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 113.35880821345995,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 121.9186535818626,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 115.90542020813632,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 115.90542020813109,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 108.80880754504165,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 120.90284044292594,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 173.6861181166696,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 162.0541431123679,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 160.78021231139792,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 115.90542020813723,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.67585021608795,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.18085021597938,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.18085021599552,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 108.0817631347827,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 108.11487395959057,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 108.12835021595288,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 111.88542950657165,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 115.84034130701139,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 117.41727273095137,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 117.43534130691717,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 117.6312499997473,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.86318044994198,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.86318044995323,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.36818044989286,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1320,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 157.26858903008815,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 187.8171560212147,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 163.32966550943024,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 111.00610899252433,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 110.70881079771675,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 110.70881079772948,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 117.63124486051152,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 117.63124486051083,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 117.63124486051197,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 130.89653186130886,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 79.48818491606812,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 110.70881079771834,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 115.53210021584596,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 101.90585021590323,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 101.90585021588618,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 105.72998223530635,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 105.6960901554562,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 105.53292070897305,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 105.06210021587776,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.28568044989174,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.83568044990352,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.83568044989556,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.8356804498901,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 125.1867067594892,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 124.71943044985073,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.09318044989232,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1440,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 89.85880821348155,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 112.28758587830225,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 115.09248533264281,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 115.09248533264304,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 115.09248533264326,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 160.85414311236877,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 108.80880754503892,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 108.808807545028,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 108.80880754504074,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 117.90395481136716,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 170.5862325575888,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 162.05414311236632,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 114.99417950656243,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.64835021590102,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.6483502158851,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.67585021591071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.67585021590071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.6758502158857,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 102.27710021588541,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.86318044989002,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.3862205311716,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.36818044989695,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.3681804498915,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 117.96147369001551,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 118.42874999964852,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.8356804498901,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1560,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 166.49105490799866,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 113.5137102520705,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 110.70881079771743,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 110.70881079772766,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 110.70881079771607,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 75.69887592601094,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 187.17839974604044,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 163.1165888889459,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 119.17924495778516,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 119.17924495778516,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 119.1792449577872,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 127.09653186131254,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 101.97835021588753,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 116.82850672738186,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 116.57710021584285,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 101.96085021591148,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 101.96085021590238,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 101.96085021588738,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 103.5696002158802,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.14818044989215,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.09318044990573,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.09318044989777,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.09318044989232,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.2856804498972,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.28568044989174,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 125.76443044984762,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1680,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 116.05623399011324,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 116.09585055119214,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 116.16195125595846,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 161.02554240760924,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 162.29164311236786,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 175.6754322436359,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 113.12634215347839,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 84.2588082134871,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 108.80880754504005,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 108.80880754502846,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 108.80880754504096,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 123.07777630832538,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.95335021588448,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 115.10657385303466,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 115.35792950656014,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.19958027343023,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.0983502159022,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.09835021588697,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 104.22042070897896,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.28568044989174,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.83568044990352,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.83568044989556,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.8356804498901,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.86318044989548,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.86318044989002,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 117.60374999965097,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1800,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 110.57702806355746,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 110.53741150248766,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 110.4713107977168,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 76.86262258108582,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 128.35903186130872,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 117.1311304195915,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 113.50691990020323,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 166.43626469727224,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 185.82360929689935,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 166.6482733716582,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 117.13113041959173,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 117.1311304195965,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.86835021588263,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 100.77845586944954,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 100.99085021589008,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 117.26984939922727,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 117.11959905114486,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 116.93460021584224,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 102.18085021588672,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 126.12193044984656,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.36818044990491,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.36818044989695,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.3681804498915,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.14818044989761,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.14818044989215,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.09318044989232,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 1920,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 116.18109851832719,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 161.92424705570215,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 163.5241431123627,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 174.47892812757846,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 121.716418142581,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 108.80880754503914,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 116.16098071162378,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 116.07135646604797,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 115.96920112666771,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 87.57800926505433,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 108.80880754504096,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 108.80880754502891,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 104.46792070897845,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 103.67310741276242,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 103.65960021588194,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 113.87722582052834,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 114.12948748116423,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 114.46417950656382,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 101.90585021588618,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 117.74124999965056,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.13209571948573,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.09318044989777,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.09318044989232,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.2856804498972,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.28568044989174,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.8356804498901,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2040,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 109.75880821345982,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 84.54300433205708,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 135.72653186129696,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 117.99004527173179,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 117.99004527173247,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 117.99004527173065,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 109.77892602017869,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 109.86855026573949,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 109.9707056051268,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 157.53723339196267,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 185.82357806404957,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 166.94176746444873,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.6758502158857,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 103.2360930190257,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.78585021588287,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 101.75676313476106,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 101.7898739595471,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 101.80335021588803,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 114.48710021584884,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.14818044989215,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 124.29443583326088,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 124.14170675949231,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 123.67443044985384,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.86318044989548,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.86318044989002,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.3681804498915,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2160,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 162.52664311235412,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 166.06543249159085,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 113.2820089056795,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 108.80880754503232,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 108.80880754502323,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 108.80880754503733,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 161.22209803557234,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 117.75174146666632,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 117.64719638988208,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 117.58379013936792,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 117.54206898933671,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 90.85880821347973,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 101.96085021588738,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 103.19901419746475,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 103.45042070898012,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.14697440635678,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.11536600033492,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.00585021588745,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 116.82917950655678,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.28568044989174,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 119.48428926540305,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 119.69397369001035,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 120.16124999964336,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.14818044989761,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.14818044989215,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.09318045000168,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2280,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 139.56621559785435,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 116.82763453564439,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 116.8276345356403,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 116.82763453563985,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 164.54421077804272,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 187.0127775116921,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 88.14529902593677,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 110.23631079770712,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 110.3408558745191,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 110.40426212502689,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 110.44598327506355,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 156.0110546505116,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 113.68960021585144,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.648350215954,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.64835021589442,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 105.01326679287945,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 104.75950271340002,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 104.52085021600806,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 102.27710021626945,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.86318045051712,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.36818045073278,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.36818045071527,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.36818045066684,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 123.34420676043214,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 122.87693045074388,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.83568045081074,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2400,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 110.13636051801495,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 108.80880754502596,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 108.80880754502505,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 108.80880754503505,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 89.25880821347619,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 115.73012723938064,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 162.86182216674433,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 162.05414311236154,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 160.85414311236354,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 115.7301272393729,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 115.730127239372,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 115.73012723938155,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 116.8541795074334,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.18085021669413,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.18085021672096,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 103.20644146889254,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 103.45792187450479,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 103.6429207098281,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 100.96335021671393,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.1481804508071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.09318045078362,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.09318045079726,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.09318045080681,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 119.941473690983,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 120.40875000063534,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.36818045080827,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2520,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 118.74498856943228,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 119.09729090770816,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 168.89924084576205,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 187.81527346810526,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 159.64869655724488,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 110.70881079772698,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 118.56520272198804,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 134.29653186129417,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 82.71325418756896,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 110.7088107977147,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 110.70881079772153,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 110.70881079771561,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.95335021672508,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 114.76600672831091,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 114.51460021678986,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.09835021667823,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.09835021669551,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.09835021672006,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 103.81085021673152,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.28568045080783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.85372053205629,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.83568045080119,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.83568045081074,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.86318045080134,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.86318045081089,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 123.70193045087535,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2640,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 107.86735988330202,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 107.51505754503114,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 86.40059811875199,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 116.85542279238189,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 116.85542279237825,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 116.85542279238007,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 108.04714573076899,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 114.5028404429222,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 167.28611811667315,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 166.704143112363,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 164.34406099131866,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 116.8554227923778,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 101.80335021671863,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 115.76667950748106,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 116.2304295075096,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.67585021668583,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.67585021669584,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.67585021672267,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 105.19667070983814,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.86318045081089,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.36818045078508,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.36818045079872,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.36818045080827,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.14818045079755,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.1481804508071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 119.39125000062995,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2760,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 168.22679912480316,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 187.81715602120403,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 159.12966550942065,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 109.75880821346891,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 109.75880821345982,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 109.75880821347391,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 120.82624486049963,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 120.02707911854486,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 119.5419359960415,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 130.446531861302,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 80.1243362361306,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 109.75880821346254,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 103.06710021672734,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 103.67310741356687,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 103.6596002167289,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 114.81357945766194,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 114.56209905207152,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 114.37710021678731,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 101.90585021672132,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 123.56443045087462,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.09318045078362,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.09318045079726,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.09318045080681,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.28568045079828,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.28568045080783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.83568045081074,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 2880,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 95.70059811874216,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 116.08464720447682,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 116.09562362480392,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 116.11223583277433,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 116.139987916888,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 167.72446948479137,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 105.61380754504125,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 106.41297328697556,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 106.89811640950484,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 113.70395481136347,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 166.38623255758102,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 170.4041431123528,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 105.14167070983694,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.28348736628732,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.08460021672227,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 115.51563874025078,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 115.80101122571114,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 116.14917950750942,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 102.64835021672297,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 119.58375000063097,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.8745957203696,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.83568045080119,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.83568045081074,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.86318045080134,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.86318045081089,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.36818045080827,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 3000,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 149.69105490800348,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 109.71664892587933,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 109.70567250555087,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 109.68906029758409,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 109.66130821345769,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 85.62854955356624,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 187.17839974603066,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 169.77479898365618,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 119.58549495777652,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 119.49711597119222,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 119.44354560030752,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 133.2349267071213,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 101.96085021671979,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.22612920186384,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.12585021672248,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.1469744071278,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.1153660011255,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.00585021671895,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 111.9571002167745,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.28568045080783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 121.7644358342709,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 121.6117067605046,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 121.14443045086182,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.14818045079755,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.1481804508071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.09318045080681,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 3120,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 116.88695384020548,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 116.89254401013886,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 116.90070384019418,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 167.86678724126068,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 170.70414311235072,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 158.87543224364936,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 116.88695384020821,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 96.60059811873589,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 108.40255754504051,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 108.49093653161799,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 108.54450690251042,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 108.58938146251694,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 102.09835021672006,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 104.57384086666298,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 104.67417070983493,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.83131310739009,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.82981068862182,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.92585021672494,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 118.98792950752659,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.86318045081089,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 121.54678926636188,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 121.7564736909926,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 122.22375000064494,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.28568045079828,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.28568045080783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.83568045081074,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 3240,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 109.74630821345818,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 109.74071804352025,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 109.73255821345992,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 89.0213777474055,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 133.11696998152684,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 117.45687115948203,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 109.74630821347682,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 147.43626469728906,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 185.82360929689094,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 168.22568451794268,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 117.67488041957904,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 117.55282935949708,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 111.70960021677229,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 102.18085021669413,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 102.18085021672096,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.60388027489853,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.4361172818817,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.22210021672299,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 100.96335021671393,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.1481804508071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.09318045078362,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.09318045079726,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.09318045080681,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 121.3642067605033,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 120.89693045086051,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.36818045080827,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 3360,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 116.18109851831105,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 164.59852653988173,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 167.1041431123558,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 155.4789281275871,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 108.54598002236207,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 108.48306680514543,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 116.18109851831377,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 116.18109851830923,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 116.18109851832196,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 92.40059811874744,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 108.26505754503341,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 108.38710860511537,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 119.68917950752848,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 101.90585021669358,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 101.90585021672132,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 104.88286509676936,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 105.0498468347605,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 105.11417070983725,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 103.49460021672803,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.28568045080783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.83568045078755,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.83568045080119,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.83568045081074,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 122.49897369099654,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 122.96625000064887,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 111.09318045080681,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 3480,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 109.75880821345845,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 88.26872484786145,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 138.54653186129372,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 121.8974393894996,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 121.93831977944774,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 125.4400452717241,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 109.75880821347619,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 109.75880821345754,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 109.75880821347573,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 151.1372333919744,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 185.82357806405435,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 168.8999775591733,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 101.80335021671863,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 112.97850672830054,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 112.72710021677813,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 102.67585021668583,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 102.67585021669584,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 102.67585021672267,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 102.27710021672328,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.86318045081089,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.38622053205381,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.36818045079872,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.36818045080827,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.14818045079755,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.1481804508071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 121.9144304508659,
+          "required": true
+        }
+      ]
+    },
+    {
+      "seconds": 3600,
+      "progress": [
+        {
+          "id": "actor.vehicle.avenue.01.spawn",
+          "metres": 173.90414311235236,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.02.spawn",
+          "metres": 159.66543249159486,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.03.spawn",
+          "metres": 106.8820089056826,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.04.spawn",
+          "metres": 104.90141342726429,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.05.spawn",
+          "metres": 104.86053303729796,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.06.spawn",
+          "metres": 101.35880754504251,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.07.spawn",
+          "metres": 169.2173970615322,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.08.spawn",
+          "metres": 118.51799405092424,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.09.spawn",
+          "metres": 118.45792726618174,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.10.spawn",
+          "metres": 118.42159205283588,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.11.spawn",
+          "metres": 118.39779196626023,
+          "required": true
+        },
+        {
+          "id": "actor.vehicle.avenue.12.spawn",
+          "metres": 93.10059811874862,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.000.spawn",
+          "metres": 101.97835021671881,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.001.spawn",
+          "metres": 119.32143670436471,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.002.spawn",
+          "metres": 119.77167950752892,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.003.spawn",
+          "metres": 101.96085021667886,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.004.spawn",
+          "metres": 101.96085021669342,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.005.spawn",
+          "metres": 101.96085021671979,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.006.spawn",
+          "metres": 105.14167070983967,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.007.spawn",
+          "metres": 111.1481804508071,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.008.spawn",
+          "metres": 111.09318045078362,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.009.spawn",
+          "metres": 111.09318045079726,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.010.spawn",
+          "metres": 111.09318045080681,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.011.spawn",
+          "metres": 111.28568045079828,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.012.spawn",
+          "metres": 111.28568045080783,
+          "required": true
+        },
+        {
+          "id": "actor.pedestrian.avenue.013.spawn",
+          "metres": 121.92125000064334,
+          "required": true
+        }
+      ]
+    }
+  ],
+  "collisions": 0,
+  "redLineCrossings": 0,
+  "maxStepMetres": 0.10000000000001578,
+  "edgeCoverage": [
+    "edge.avenue.vehicle.north.2",
+    "edge.avenue.vehicle.north.4",
+    "edge.avenue.vehicle.south.2",
+    "edge.avenue.vehicle.south.0",
+    "edge.avenue.pedestrian.inner.east",
+    "edge.avenue.pedestrian.outer.west",
+    "edge.avenue.vehicle.south.1",
+    "edge.avenue.vehicle.south.3",
+    "edge.avenue.vehicle.south.4",
+    "edge.avenue.vehicle.turn.north",
+    "edge.avenue.vehicle.turn.south",
+    "edge.avenue.vehicle.north.0",
+    "edge.avenue.vehicle.north.1",
+    "edge.avenue.pedestrian.inner.top",
+    "edge.avenue.pedestrian.outer.top",
+    "edge.avenue.pedestrian.inner.west",
+    "edge.avenue.pedestrian.outer.east",
+    "edge.avenue.vehicle.north.3",
+    "edge.avenue.pedestrian.inner.bottom",
+    "edge.avenue.pedestrian.outer.bottom"
+  ],
+  "actorProgress": [
+    {
+      "id": "actor.vehicle.avenue.01.spawn",
+      "travelled": 3768.983810743429,
+      "edgeId": "edge.avenue.vehicle.south.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.02.spawn",
+      "travelled": 3781.390100485106,
+      "edgeId": "edge.avenue.vehicle.south.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.03.spawn",
+      "travelled": 3774.8571259319547,
+      "edgeId": "edge.avenue.vehicle.south.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.04.spawn",
+      "travelled": 3760.6615024627163,
+      "edgeId": "edge.avenue.vehicle.south.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.05.spawn",
+      "travelled": 3752.476133094998,
+      "edgeId": "edge.avenue.vehicle.south.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.06.spawn",
+      "travelled": 3751.8744552910207,
+      "edgeId": "edge.avenue.vehicle.south.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.07.spawn",
+      "travelled": 3816.0513421938963,
+      "edgeId": "edge.avenue.vehicle.south.0"
+    },
+    {
+      "id": "actor.vehicle.avenue.08.spawn",
+      "travelled": 3765.3602836664795,
+      "edgeId": "edge.avenue.vehicle.north.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.09.spawn",
+      "travelled": 3770.0825611755067,
+      "edgeId": "edge.avenue.vehicle.north.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.10.spawn",
+      "travelled": 3784.07920051513,
+      "edgeId": "edge.avenue.vehicle.north.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.11.spawn",
+      "travelled": 3792.751620130026,
+      "edgeId": "edge.avenue.vehicle.north.2"
+    },
+    {
+      "id": "actor.vehicle.avenue.12.spawn",
+      "travelled": 3750.716152263362,
+      "edgeId": "edge.avenue.vehicle.turn.south"
+    },
+    {
+      "id": "actor.pedestrian.avenue.000.spawn",
+      "travelled": 3207.140016668812,
+      "edgeId": "edge.avenue.pedestrian.inner.west"
+    },
+    {
+      "id": "actor.pedestrian.avenue.001.spawn",
+      "travelled": 3236.2797455387913,
+      "edgeId": "edge.avenue.pedestrian.inner.west"
+    },
+    {
+      "id": "actor.pedestrian.avenue.002.spawn",
+      "travelled": 3231.204183335601,
+      "edgeId": "edge.avenue.pedestrian.inner.west"
+    },
+    {
+      "id": "actor.pedestrian.avenue.003.spawn",
+      "travelled": 3230.3397883010816,
+      "edgeId": "edge.avenue.pedestrian.inner.bottom"
+    },
+    {
+      "id": "actor.pedestrian.avenue.004.spawn",
+      "travelled": 3225.0654637002863,
+      "edgeId": "edge.avenue.pedestrian.inner.bottom"
+    },
+    {
+      "id": "actor.pedestrian.avenue.005.spawn",
+      "travelled": 3219.724657529266,
+      "edgeId": "edge.avenue.pedestrian.inner.bottom"
+    },
+    {
+      "id": "actor.pedestrian.avenue.006.spawn",
+      "travelled": 3252.2354373783337,
+      "edgeId": "edge.avenue.pedestrian.inner.east"
+    },
+    {
+      "id": "actor.pedestrian.avenue.007.spawn",
+      "travelled": 3370.3865655658533,
+      "edgeId": "edge.avenue.pedestrian.outer.bottom"
+    },
+    {
+      "id": "actor.pedestrian.avenue.008.spawn",
+      "travelled": 3399.023367857998,
+      "edgeId": "edge.avenue.pedestrian.outer.west"
+    },
+    {
+      "id": "actor.pedestrian.avenue.009.spawn",
+      "travelled": 3393.2558736117553,
+      "edgeId": "edge.avenue.pedestrian.outer.west"
+    },
+    {
+      "id": "actor.pedestrian.avenue.010.spawn",
+      "travelled": 3387.7640113317493,
+      "edgeId": "edge.avenue.pedestrian.outer.west"
+    },
+    {
+      "id": "actor.pedestrian.avenue.011.spawn",
+      "travelled": 3416.313373112056,
+      "edgeId": "edge.avenue.pedestrian.outer.east"
+    },
+    {
+      "id": "actor.pedestrian.avenue.012.spawn",
+      "travelled": 3410.821510832039,
+      "edgeId": "edge.avenue.pedestrian.outer.east"
+    },
+    {
+      "id": "actor.pedestrian.avenue.013.spawn",
+      "travelled": 3439.9440640667103,
+      "edgeId": "edge.avenue.pedestrian.outer.east"
+    }
+  ],
+  "limitations": [
+    "No continuous swept-volume, tyre steering dynamics or frustum test",
+    "CPU simulation is not browser integration or measured rendering performance",
+    "Side-road traffic at Y55 must remain outside this partial runtime network"
+  ],
+  "graphSha256": "cc3c59ab9172459a33acb417c664dd8e5da042f2b872fffc53436b71c9417d6b",
+  "sourceFingerprint": "4a04215178de9f6fb96e2a390c7a5ce1c308727b930eb2c8dcf5bbc150f21c98",
+  "staticReportSha256": "46b9a6c44ea3eab9901959092b86a1ffdfbea327758f74a5881200462e86607b",
+  "runtimeSourceSha256": "55d70d8ad1beaa122a3d61dda985bbc33e1d07d05eb9bd1a438cd9f420157ee3",
+  "browserAcceptance": "pending"
+}
