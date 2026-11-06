@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "city-actors-runtime-candidate",
+  "exportId": "actors-runtime-candidate-v03",
+  "status": "candidate",
+  "geometryCompression": "none",
+  "assets": {
+    "city.glb": {
+      "url": "city.glb",
+      "sha256": "7be06064b51a2ffe7570288507911b34d16c4743997e31d2a4148d77f69ecb8e"
+    },
+    "scene.json": {
+      "url": "scene.json",
+      "sha256": "45148b6fdbc8f628cd848cf890085027cda1cc723781c90fe2462978a1bf4a04"
+    },
+    "road-network.json": {
+      "url": "road-network.json",
+      "sha256": "53d53b08e9899e5c4d4d93db0ac55e05ff3f56e2e7b0051f543952dc93247dde"
+    },
+    "vehicle-catalog.json": {
+      "url": "vehicle-catalog.json",
+      "sha256": "15fdf99fffc2836835cda797a591fbbcf43382c2f7d27b40ea25e6f3ded328fd"
+    },
+    "demo-vehicles.json": {
+      "url": "demo-vehicles.json",
+      "sha256": "1e37ffd3f5a7430b65962d90e23d81a9deb39a2cf1d3af80b497780665922876"
+    },
+    "legacy-vehicle-map.json": {
+      "url": "legacy-vehicle-map.json",
+      "sha256": "b14353ee9afaef7db5224f434a4444a8172a35997112f15629197229b08d01cd"
+    },
+    "vehicles.glb": {
+      "url": "vehicles.glb",
+      "sha256": "d0f042d5e581b1dcb9f94b085add9f3188f7eb81326aff04d864bdf7d7ca0e21"
+    },
+    "pedestrians.glb": {
+      "url": "pedestrians.glb",
+      "sha256": "3efa09c06e60dbc7ac0110fb85ed2ebdd9d54b1a4790c4baa0c11aa8f59792ca"
+    },
+    "pedestrian-catalog.json": {
+      "url": "pedestrian-catalog.json",
+      "sha256": "14505b36ed12a3b1a688e5bbd6e76095d4b0da591b5d4552bdfdfa23012343fe"
+    },
+    "demo-pedestrians.json": {
+      "url": "demo-pedestrians.json",
+      "sha256": "ddd250e8ff76c0fbe48053b8a9ef342cab1e1b7e65d80a1b6fce442c8d2f53d7"
+    },
+    "ATTRIBUTION_people.md": {
+      "url": "ATTRIBUTION_people.md",
+      "sha256": "d4f7bd860a11fbf1da173e835a3e4ef3efd54b47fa89ba7aa4fa730fade822b1"
+    },
+    "path-simplification-report.json": {
+      "url": "path-simplification-report.json",
+      "sha256": "34078cd66ed14c521d9d314597d07660e0e253567f8074ad46e7f5910a70625a"
+    },
+    "path-verification.json": {
+      "url": "path-verification.json",
+      "sha256": "3d3db2fc975f315372bc4b7d4fce407ba45fe30178d3ab25c983b3129615416b"
+    },
+    "vehicle-paths-overview.svg": {
+      "url": "vehicle-paths-overview.svg",
+      "sha256": "990bb5c158f48eecb5c1c6311dffd348cf27f2b4c6d70e1d2a4ab1fcfa096a89"
+    },
+    "README.md": {
+      "url": "README.md",
+      "sha256": "ea49538362a165c3f886b6ffca24ae63878c617df63f7e3dc8866563657e3117"
+    }
+  },
+  "derivedFrom": {
+    "exportId": "actors-runtime-candidate-v02",
+    "manifestSha256": "e81134d8f35b5ae7b2c915eef1d2929c37565904996132d2fc2cd8eb5b2ba889"
+  }
+}

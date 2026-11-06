@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "actualImports": [
+    "vehicles.glb",
+    "pedestrians.glb",
+    "city.glb"
+  ],
+  "embeddedImagesDecoded": true,
+  "staticMeshNodesPreserved": 2416,
+  "onlyChangedStaticMeshes": [
+    "FS \u2022 Raised approach retaining walls"
+  ],
+  "otherGeometryAttributesAndIndicesIdentical": true,
+  "uvMaxDifference": 5.960464477539063e-08,
+  "uvTolerance": 1e-07,
+  "uvFloatComponentsChanged": 32,
+  "projectPointsAndCameraPreserved": true,
+  "vehicleAndPedestrianGeometryPreserved": true,
+  "physicalLenses": 48,
+  "demoBindingsValid": true,
+  "runtimeAcceptance": "not tested",
+  "browserAcceptance": "not tested"
+}

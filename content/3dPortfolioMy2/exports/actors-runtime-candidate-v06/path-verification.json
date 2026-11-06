@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "exportId": "actors-runtime-candidate-v06",
+  "continuousErrorBoundMetres": 0.019984476807949042,
+  "comparisonSamples": 40665,
+  "distanceBindingsChecked": 24,
+  "maxBindingPositionChangeMetres": 0.00289088413455966,
+  "topologyEndpointsPedestriansSignalsPreserved": true,
+  "glbByteIdentical": true,
+  "sourcePackageUnchanged": true,
+  "browserAcceptance": "not tested"
+}

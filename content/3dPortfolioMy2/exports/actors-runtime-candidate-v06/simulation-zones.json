@@ -1,0 +1,1151 @@
+{
+  "schemaVersion": 1,
+  "kind": "city-simulation-zones",
+  "exportId": "actors-runtime-candidate-v06",
+  "citySha256": "8e356da2b5e532c381099adf29fe139a005a17bbb5658f9fc4e615e4ad61d836",
+  "roadNetwork": {
+    "url": "road-network.json",
+    "sha256": "9960d711e39671ab663924dc681bfb60d090836e916f0354a2d68c2a848f9b0d"
+  },
+  "coordinates": {
+    "units": "metres",
+    "up": "+Y",
+    "forward": "-Z",
+    "space": "world"
+  },
+  "status": "baked-geometry-not-runtime-reviewed",
+  "zones": [
+    {
+      "id": "simulation.portfolio",
+      "name": "SIM • Район проектов — граница симуляции",
+      "boundaryXZ": [
+        [
+          -70.0,
+          105.0
+        ],
+        [
+          65.0,
+          105.0
+        ],
+        [
+          65.0,
+          -115.0
+        ],
+        [
+          -70.0,
+          -115.0
+        ]
+      ],
+      "minHeightMetres": -2.0,
+      "maxHeightMetres": 150.0,
+      "boundaryPolicy": "included",
+      "activationRule": "actor-origin-in-prism",
+      "edgeIntervals": [
+        {
+          "edgeId": "edge.avenue.pedestrian.inner.bottom",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.85501720196384
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.inner.east",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 49.54416042442197
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.inner.top",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.85501244160224
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.inner.west",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 49.544160148202785
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.outer.bottom",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 12.855060234822519
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.outer.east",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 52.13778056784748
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.outer.top",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 12.855058859949471
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.pedestrian.outer.west",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 52.13778078760658
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.north.0",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 4.25
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.north.1",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 3.5
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.north.2",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 22.25000000000008
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.north.3",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 3.5
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.north.4",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 7.250017655746589
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.south.0",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 7.250017654694259
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.south.1",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 3.5
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.south.2",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 12.25000000000015
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.south.3",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 3.5
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.south.4",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 4.25
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.avenue.vehicle.turn.north",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 39.73912446868184
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.back0.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 67.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.back0.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 67.00000000000003
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.back1.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 26.000000000000036,
+              "endDistanceMetres": 37.00000000000005,
+              "entryPortalId": "portal.d934de5a66485c329d31"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.back1.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 11.0,
+              "exitPortalId": "portal.ca23afbc13995e288da9"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.north.after55",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 12.25
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.north.before18",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 9.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.south.after18",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 9.000000000000203
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.avenue.south.after55",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 22.25000000000008
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.east.y0.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 56.0,
+              "exitPortalId": "portal.a4d8c9bae6f55240b124"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.east.y0.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 14.000000000000007,
+              "endDistanceMetres": 70.00000000000003,
+              "entryPortalId": "portal.ac7f5a6ce3d15bd092e5"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.east.y55.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 58.0,
+              "exitPortalId": "portal.45d06b4974dc521d9c1c"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.east.y55.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 241.0,
+              "endDistanceMetres": 299.0,
+              "entryPortalId": "portal.510beea8e38b544d9ba9"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.E.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.26007559053636
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.E.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.848552087640257
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.E.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0010159268728
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.N.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.84855208761134
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.N.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.N.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.26108566187398
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.S.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.260075590498055
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.S.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.S.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.849569049660612
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.W.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.001015987581052
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.W.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.849569109675304
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y0.W.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.261085600054589
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.E.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.013548102786906
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.E.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 16.849804927810574
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.N.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 16.84980519425407
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.N.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.00000000000013
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.N.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.013548113483989
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.S.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.01354782170093
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.S.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.00000000000013
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.S.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 16.84980504793498
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.W.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 16.84980499075101
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y55.W.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.013548165781087
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.E.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.260076645059684
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.E.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.848551333796195
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.E.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.N.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.848552278459554
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.N.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.N.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.26007760800064
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.S.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.260076652499462
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.S.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.S.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.848550415286784
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.W.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 18.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.W.N",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 20.84855216317478
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.junction.y85back.W.S",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.260076216530361
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.west.river0.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 66.12730213887215,
+              "endDistanceMetres": 127.29138465178923,
+              "entryPortalId": "portal.6f9c20b128045bd89cea"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.west.river0.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 61.16402405681872,
+              "exitPortalId": "portal.0a8fccd656c85487aca1"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.west.river55.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 66.12347359328118,
+              "endDistanceMetres": 129.29653674180474,
+              "entryPortalId": "portal.732dee115db65460b74d"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.west.river55.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 63.17306229540241,
+              "exitPortalId": "portal.d84b7df51abb578a8ae9"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.y85back.east.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 56.0,
+              "exitPortalId": "portal.2763594c36da5c99bd70"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.y85back.east.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 74.0,
+              "endDistanceMetres": 130.0,
+              "entryPortalId": "portal.f613796d416c545c8cf4"
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.y85back.west.forward",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 35.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.city.y85back.west.reverse",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 35.0
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.E.0",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.448334930055704
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.E.1",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.448334930055704
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.N.0",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.829368570548596
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.N.1",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.829368570548596
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.S.0",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.829368570548596
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.S.1",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.829368570548596
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.W.0",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.448334930055704
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.crosswalk.W.1",
+          "mode": "pedestrian",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 10.448334930055704
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.vehicle.E",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.000000012165922
+            }
+          ]
+        },
+        {
+          "edgeId": "edge.y55.vehicle.W",
+          "mode": "vehicle",
+          "intervals": [
+            {
+              "startDistanceMetres": 0.0,
+              "endDistanceMetres": 14.000000012245566
+            }
+          ]
+        }
+      ],
+      "portals": [
+        {
+          "id": "portal.d934de5a66485c329d31",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.avenue.back1.forward",
+          "mode": "vehicle",
+          "direction": "entry",
+          "distanceAlongMetres": 26.000000000000036,
+          "position": [
+            1.6699999570846558,
+            0.005999433002560525,
+            105.0
+          ],
+          "tangent": [
+            0.0,
+            5.1549963048986417e-08,
+            -0.9999999999999987
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.ca23afbc13995e288da9",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.avenue.back1.reverse",
+          "mode": "vehicle",
+          "direction": "exit",
+          "distanceAlongMetres": 11.0,
+          "position": [
+            -1.6699999570846558,
+            0.006000000052154064,
+            105.0
+          ],
+          "tangent": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.a4d8c9bae6f55240b124",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.east.y0.forward",
+          "mode": "vehicle",
+          "direction": "exit",
+          "distanceAlongMetres": 56.0,
+          "position": [
+            65.0,
+            0.006000000052154064,
+            1.6699999570846558
+          ],
+          "tangent": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.ac7f5a6ce3d15bd092e5",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.east.y0.reverse",
+          "mode": "vehicle",
+          "direction": "entry",
+          "distanceAlongMetres": 14.000000000000007,
+          "position": [
+            65.0,
+            0.006000381521880626,
+            -1.6699999570846558
+          ],
+          "tangent": [
+            -0.9999999999999996,
+            2.7247837611607132e-08,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.45d06b4974dc521d9c1c",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.east.y55.forward",
+          "mode": "vehicle",
+          "direction": "exit",
+          "distanceAlongMetres": 58.0,
+          "position": [
+            65.0,
+            0.006000000052154064,
+            -53.33000183105469
+          ],
+          "tangent": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.510beea8e38b544d9ba9",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.east.y55.reverse",
+          "mode": "vehicle",
+          "direction": "entry",
+          "distanceAlongMetres": 241.0,
+          "position": [
+            65.0,
+            0.006000000052154064,
+            -56.66999816894531
+          ],
+          "tangent": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.6f9c20b128045bd89cea",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.west.river0.forward",
+          "mode": "vehicle",
+          "direction": "entry",
+          "distanceAlongMetres": 66.12730213887215,
+          "position": [
+            -70.0,
+            3.70536538532802,
+            1.6699999570846558
+          ],
+          "tangent": [
+            0.9999999995828945,
+            -2.8882707856256434e-05,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.0a8fccd656c85487aca1",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.west.river0.reverse",
+          "mode": "vehicle",
+          "direction": "exit",
+          "distanceAlongMetres": 61.16402405681872,
+          "position": [
+            -70.0,
+            3.70536538532802,
+            -1.6699999570846558
+          ],
+          "tangent": [
+            -0.9999999995828946,
+            2.888270785625644e-05,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.732dee115db65460b74d",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.west.river55.forward",
+          "mode": "vehicle",
+          "direction": "entry",
+          "distanceAlongMetres": 66.12347359328118,
+          "position": [
+            -70.0,
+            3.705359935760498,
+            -53.33000183105469
+          ],
+          "tangent": [
+            0.9999999995757093,
+            -2.913041547059478e-05,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.d84b7df51abb578a8ae9",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.west.river55.reverse",
+          "mode": "vehicle",
+          "direction": "exit",
+          "distanceAlongMetres": 63.17306229540241,
+          "position": [
+            -70.0,
+            3.705359935760498,
+            -56.66999816894531
+          ],
+          "tangent": [
+            -0.9999999995757094,
+            2.9130415470594784e-05,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.2763594c36da5c99bd70",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.y85back.east.forward",
+          "mode": "vehicle",
+          "direction": "exit",
+          "distanceAlongMetres": 56.0,
+          "position": [
+            65.0,
+            0.006000000052154064,
+            86.66999816894531
+          ],
+          "tangent": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        },
+        {
+          "id": "portal.f613796d416c545c8cf4",
+          "zoneId": "simulation.portfolio",
+          "edgeId": "edge.city.y85back.east.reverse",
+          "mode": "vehicle",
+          "direction": "entry",
+          "distanceAlongMetres": 74.0,
+          "position": [
+            65.0,
+            0.006000000052154064,
+            83.33000183105469
+          ],
+          "tangent": [
+            -1.0,
+            0.0,
+            0.0
+          ],
+          "intervalIndex": 0,
+          "automaticSpawnAllowed": false
+        }
+      ],
+      "activeJunctionIds": [
+        "junction.avenue.crossing.24",
+        "junction.avenue.crossing.76",
+        "junction.avenue.55.walking",
+        "junction.city.y0",
+        "junction.city.y85back"
+      ],
+      "activeSignalGroupIds": [
+        "group.avenue.24.vehicle",
+        "group.avenue.24.pedestrian",
+        "group.avenue.76.vehicle",
+        "group.avenue.76.pedestrian",
+        "group.y55.pedestrian",
+        "group.y55.vehicle.main",
+        "group.y55.vehicle.side"
+      ],
+      "internalTerminalNodeIds": [
+        "node.city.edge.city.y85back.west.forward.from",
+        "node.city.edge.city.y85back.west.reverse.to"
+      ]
+    }
+  ]
+}

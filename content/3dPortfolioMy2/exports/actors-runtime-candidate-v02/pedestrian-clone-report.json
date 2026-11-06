@@ -1,0 +1,80 @@
+{
+  "ok": true,
+  "actualGLTFLoader": true,
+  "actualSkeletonUtilsClone": true,
+  "independentSkeletons": true,
+  "independentAnimationMixers": true,
+  "variants": [
+    {
+      "id": "city-people.amara.default.high",
+      "samples": 33,
+      "animatedBounds": {
+        "min": [
+          -0.2632793243445622,
+          -0.0006731826922500371,
+          -0.41203672756264803
+        ],
+        "max": [
+          0.26214530137308095,
+          1.6312490701675415,
+          0.42492356541540605
+        ]
+      }
+    },
+    {
+      "id": "city-people.daniel.tint0.high",
+      "samples": 33,
+      "animatedBounds": {
+        "min": [
+          -0.3408685035705233,
+          -0.00021683075936382485,
+          -0.3920901242940881
+        ],
+        "max": [
+          0.3415476951793376,
+          1.7433418035507202,
+          0.46593817946801674
+        ]
+      }
+    },
+    {
+      "id": "city-people.daniel.tint1.high",
+      "samples": 33,
+      "animatedBounds": {
+        "min": [
+          -0.3408685035705233,
+          -0.00021683075936382485,
+          -0.3920901242940881
+        ],
+        "max": [
+          0.3415476951793376,
+          1.7433418035507202,
+          0.46593817946801674
+        ]
+      }
+    },
+    {
+      "id": "city-people.daniel.tint2.high",
+      "samples": 33,
+      "animatedBounds": {
+        "min": [
+          -0.3408685035705233,
+          -0.00021683075936382485,
+          -0.3920901242940881
+        ],
+        "max": [
+          0.3415476951793376,
+          1.7433418035507202,
+          0.46593817946801674
+        ]
+      }
+    }
+  ],
+  "clips": [
+    "Walk",
+    "Idle"
+  ],
+  "textureHandling": "materials omitted only in the in-memory CPU test; original GLB unchanged",
+  "browserRendering": "not tested",
+  "crowdSimulation": "not tested"
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "pedestrian-placement-preset",
+  "exportId": "actors-runtime-candidate-v02",
+  "optional": true,
+  "status": "legacy-example-not-runtime-verified",
+  "pedestrians": [
+    {
+      "id": "actor.pedestrian.avenue.000.spawn",
+      "modelId": "city-people.daniel.tint0.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 4.0
+    },
+    {
+      "id": "actor.pedestrian.avenue.001.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 10.916666666666668
+    },
+    {
+      "id": "actor.pedestrian.avenue.002.spawn",
+      "modelId": "city-people.daniel.tint2.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 17.833333333333336
+    },
+    {
+      "id": "actor.pedestrian.avenue.003.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 24.75
+    },
+    {
+      "id": "actor.pedestrian.avenue.004.spawn",
+      "modelId": "city-people.daniel.tint1.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 31.666666666666668
+    },
+    {
+      "id": "actor.pedestrian.avenue.005.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 38.583333333333336
+    },
+    {
+      "id": "actor.pedestrian.avenue.006.spawn",
+      "modelId": "city-people.daniel.tint0.high",
+      "edgeId": "edge.avenue.pedestrian.inner.east",
+      "distanceAlongMetres": 45.5
+    },
+    {
+      "id": "actor.pedestrian.avenue.007.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 4.0
+    },
+    {
+      "id": "actor.pedestrian.avenue.008.spawn",
+      "modelId": "city-people.daniel.tint2.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 11.350000249920022
+    },
+    {
+      "id": "actor.pedestrian.avenue.009.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 18.700000499840044
+    },
+    {
+      "id": "actor.pedestrian.avenue.010.spawn",
+      "modelId": "city-people.daniel.tint1.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 26.050000749760063
+    },
+    {
+      "id": "actor.pedestrian.avenue.011.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 33.40000099968009
+    },
+    {
+      "id": "actor.pedestrian.avenue.012.spawn",
+      "modelId": "city-people.daniel.tint0.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 40.75000124960011
+    },
+    {
+      "id": "actor.pedestrian.avenue.013.spawn",
+      "modelId": "city-people.amara.default.high",
+      "edgeId": "edge.avenue.pedestrian.outer.west",
+      "distanceAlongMetres": 48.100001499520125
+    }
+  ]
+}

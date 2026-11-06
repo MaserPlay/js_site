@@ -1,0 +1,110 @@
+{
+  "actor.vehicle.avenue.07.model": {
+    "modelId": "vehicle.ambulance.white.v1",
+    "legacyActorId": "actor.vehicle.avenue.07",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "actor.vehicle.avenue.03.model": {
+    "modelId": "vehicle.police.white.v1",
+    "legacyActorId": "actor.vehicle.avenue.03",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0007703304290771484
+    ]
+  },
+  "actor.vehicle.avenue.10.model": {
+    "modelId": "vehicle.police.white.v1",
+    "legacyActorId": "actor.vehicle.avenue.10",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0007703304290771484
+    ]
+  },
+  "actor.vehicle.avenue.02.model": {
+    "modelId": "vehicle.roadster.red.v1",
+    "legacyActorId": "actor.vehicle.avenue.02",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      1.1920928955078125e-07
+    ]
+  },
+  "actor.vehicle.avenue.09.model": {
+    "modelId": "vehicle.roadster.red.v1",
+    "legacyActorId": "actor.vehicle.avenue.09",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      1.1920928955078125e-07
+    ]
+  },
+  "actor.vehicle.avenue.05.model": {
+    "modelId": "vehicle.sedan.electric-silver.v1",
+    "legacyActorId": "actor.vehicle.avenue.05",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0011386871337890625
+    ]
+  },
+  "actor.vehicle.avenue.12.model": {
+    "modelId": "vehicle.sedan.electric-silver.v1",
+    "legacyActorId": "actor.vehicle.avenue.12",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0011386871337890625
+    ]
+  },
+  "actor.vehicle.avenue.04.model": {
+    "modelId": "vehicle.sedan.nordic-burgundy.v1",
+    "legacyActorId": "actor.vehicle.avenue.04",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0005730390548706055
+    ]
+  },
+  "actor.vehicle.avenue.11.model": {
+    "modelId": "vehicle.sedan.nordic-burgundy.v1",
+    "legacyActorId": "actor.vehicle.avenue.11",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0005730390548706055
+    ]
+  },
+  "actor.vehicle.avenue.06.model": {
+    "modelId": "vehicle.suv.classic-olive.v1",
+    "legacyActorId": "actor.vehicle.avenue.06",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0830000638961792
+    ]
+  },
+  "actor.vehicle.avenue.01.model": {
+    "modelId": "vehicle.van.teal.v1",
+    "legacyActorId": "actor.vehicle.avenue.01",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0013276338577270508
+    ]
+  },
+  "actor.vehicle.avenue.08.model": {
+    "modelId": "vehicle.van.teal.v1",
+    "legacyActorId": "actor.vehicle.avenue.08",
+    "oldOriginInCanonicalMetres": [
+      0.0,
+      0.0,
+      0.0013276338577270508
+    ]
+  }
+}

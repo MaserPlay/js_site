@@ -1,0 +1,6179 @@
+{
+  "sourceReopened": true,
+  "vehicleEdges": 121,
+  "unreachableFromAvenue": [
+    "edge.city.boulevard.west.forward",
+    "edge.city.east.y0.reverse",
+    "edge.city.east.y55.reverse",
+    "edge.city.junction.boulevard.W.E",
+    "edge.city.junction.boulevard.W.N",
+    "edge.city.junction.boulevard.W.S",
+    "edge.city.junction.west0.S.E",
+    "edge.city.junction.west0.S.N",
+    "edge.city.junction.west55.N.E",
+    "edge.city.junction.west55.N.S",
+    "edge.city.junction.y0.E.N",
+    "edge.city.junction.y0.E.S",
+    "edge.city.junction.y0.E.W",
+    "edge.city.junction.y140back.E.N",
+    "edge.city.junction.y140back.E.S",
+    "edge.city.junction.y140back.E.W",
+    "edge.city.junction.y140back.W.E",
+    "edge.city.junction.y140back.W.N",
+    "edge.city.junction.y140back.W.S",
+    "edge.city.junction.y55.E.N",
+    "edge.city.junction.y55.E.S",
+    "edge.city.junction.y85back.E.N",
+    "edge.city.junction.y85back.E.S",
+    "edge.city.junction.y85back.E.W",
+    "edge.city.junction.y85back.W.E",
+    "edge.city.junction.y85back.W.N",
+    "edge.city.junction.y85back.W.S",
+    "edge.city.west.north.reverse",
+    "edge.city.west.south.forward",
+    "edge.city.y140back.east.reverse",
+    "edge.city.y140back.west.forward",
+    "edge.city.y85back.east.reverse",
+    "edge.city.y85back.west.forward",
+    "edge.y55.vehicle.E"
+  ],
+  "supportProbes": 2072224,
+  "entryNodes": [
+    "node.city.edge.city.boulevard.west.forward.from",
+    "node.city.edge.city.east.y0.reverse.from",
+    "node.city.edge.city.east.y55.reverse.from",
+    "node.city.edge.city.west.north.reverse.from",
+    "node.city.edge.city.west.south.forward.from",
+    "node.city.edge.city.y140back.east.reverse.from",
+    "node.city.edge.city.y140back.west.forward.from",
+    "node.city.edge.city.y85back.east.reverse.from",
+    "node.city.edge.city.y85back.west.forward.from"
+  ],
+  "exitNodes": [
+    "node.city.edge.city.boulevard.west.reverse.to",
+    "node.city.edge.city.east.y0.forward.to",
+    "node.city.edge.city.east.y55.forward.to",
+    "node.city.edge.city.west.north.forward.to",
+    "node.city.edge.city.west.south.reverse.to",
+    "node.city.edge.city.y140back.east.forward.to",
+    "node.city.edge.city.y140back.west.reverse.to",
+    "node.city.edge.city.y85back.east.forward.to",
+    "node.city.edge.city.y85back.west.reverse.to"
+  ],
+  "allEdgesOnEntryAvenueToExitAvenueRoutes": true,
+  "singleConnectedStreetGraph": true,
+  "allSevenModelsSampledWheelAndBodyPass": true,
+  "pedestrianGeometryUnchanged": true,
+  "semanticReferencesPass": true,
+  "wheelContactPatches": {
+    "vehicle.ambulance.white.v1": [
+      {
+        "minXZ": [
+          -0.9739999771118164,
+          -1.7200000286102295
+        ],
+        "maxXZ": [
+          -0.8939999938011169,
+          -1.7200000286102295
+        ]
+      },
+      {
+        "minXZ": [
+          -0.9739999771118164,
+          1.5299999713897705
+        ],
+        "maxXZ": [
+          -0.8939999938011169,
+          1.5299999713897705
+        ]
+      },
+      {
+        "minXZ": [
+          0.8939999938011169,
+          -1.7200000286102295
+        ],
+        "maxXZ": [
+          0.9739999771118164,
+          -1.7200000286102295
+        ]
+      },
+      {
+        "minXZ": [
+          0.8939999938011169,
+          1.5299999713897705
+        ],
+        "maxXZ": [
+          0.9739999771118164,
+          1.5299999713897705
+        ]
+      }
+    ],
+    "vehicle.police.white.v1": [
+      {
+        "minXZ": [
+          -0.9847699999809265,
+          -1.5077598094940186
+        ],
+        "maxXZ": [
+          -0.7952300310134888,
+          -1.4137810468673706
+        ]
+      },
+      {
+        "minXZ": [
+          -0.9847699999809265,
+          1.4422403573989868
+        ],
+        "maxXZ": [
+          -0.7952300310134888,
+          1.5362192392349243
+        ]
+      },
+      {
+        "minXZ": [
+          0.7952300310134888,
+          -1.5077598094940186
+        ],
+        "maxXZ": [
+          0.9847699999809265,
+          -1.4137810468673706
+        ]
+      },
+      {
+        "minXZ": [
+          0.7952300310134888,
+          1.4422403573989868
+        ],
+        "maxXZ": [
+          0.9847699999809265,
+          1.5362192392349243
+        ]
+      }
+    ],
+    "vehicle.roadster.red.v1": [
+      {
+        "minXZ": [
+          -0.9010000228881836,
+          -1.3823459148406982
+        ],
+        "maxXZ": [
+          -0.8090000152587891,
+          -1.3176546096801758
+        ]
+      },
+      {
+        "minXZ": [
+          -0.9010000228881836,
+          1.3176543712615967
+        ],
+        "maxXZ": [
+          -0.8090000152587891,
+          1.3823456764221191
+        ]
+      },
+      {
+        "minXZ": [
+          0.8090000152587891,
+          -1.3823459148406982
+        ],
+        "maxXZ": [
+          0.9010000228881836,
+          -1.3176546096801758
+        ]
+      },
+      {
+        "minXZ": [
+          0.8090000152587891,
+          1.3176543712615967
+        ],
+        "maxXZ": [
+          0.9010000228881836,
+          1.3823456764221191
+        ]
+      }
+    ],
+    "vehicle.sedan.electric-silver.v1": [
+      {
+        "minXZ": [
+          -0.9573400020599365,
+          -1.5755443572998047
+        ],
+        "maxXZ": [
+          -0.7726600170135498,
+          -1.4867331981658936
+        ]
+      },
+      {
+        "minXZ": [
+          -0.9573400020599365,
+          1.4844558238983154
+        ],
+        "maxXZ": [
+          -0.7726600170135498,
+          1.5732669830322266
+        ]
+      },
+      {
+        "minXZ": [
+          0.7726600170135498,
+          -1.5755443572998047
+        ],
+        "maxXZ": [
+          0.9573400020599365,
+          -1.4867331981658936
+        ]
+      },
+      {
+        "minXZ": [
+          0.7726600170135498,
+          1.4844558238983154
+        ],
+        "maxXZ": [
+          0.9573400020599365,
+          1.5732669830322266
+        ]
+      }
+    ],
+    "vehicle.sedan.nordic-burgundy.v1": [
+      {
+        "minXZ": [
+          -0.9573400020599365,
+          -1.5965038537979126
+        ],
+        "maxXZ": [
+          -0.7726600170135498,
+          -1.504642128944397
+        ]
+      },
+      {
+        "minXZ": [
+          -0.9573400020599365,
+          1.5034960508346558
+        ],
+        "maxXZ": [
+          -0.7726600170135498,
+          1.5953577756881714
+        ]
+      },
+      {
+        "minXZ": [
+          0.7726600170135498,
+          -1.5965038537979126
+        ],
+        "maxXZ": [
+          0.9573400020599365,
+          -1.504642128944397
+        ]
+      },
+      {
+        "minXZ": [
+          0.7726600170135498,
+          1.5034960508346558
+        ],
+        "maxXZ": [
+          0.9573400020599365,
+          1.5953577756881714
+        ]
+      }
+    ],
+    "vehicle.suv.classic-olive.v1": [
+      {
+        "minXZ": [
+          -0.800000011920929,
+          -1.2130000591278076
+        ],
+        "maxXZ": [
+          -0.7200000286102295,
+          -1.2130000591278076
+        ]
+      },
+      {
+        "minXZ": [
+          -0.800000011920929,
+          1.0469999313354492
+        ],
+        "maxXZ": [
+          -0.7200000286102295,
+          1.0469999313354492
+        ]
+      },
+      {
+        "minXZ": [
+          0.7200000286102295,
+          -1.2130000591278076
+        ],
+        "maxXZ": [
+          0.800000011920929,
+          -1.2130000591278076
+        ]
+      },
+      {
+        "minXZ": [
+          0.7200000286102295,
+          1.0469999313354492
+        ],
+        "maxXZ": [
+          0.800000011920929,
+          1.0469999313354492
+        ]
+      }
+    ],
+    "vehicle.van.teal.v1": [
+      {
+        "minXZ": [
+          -1.0396299362182617,
+          -1.7635382413864136
+        ],
+        "maxXZ": [
+          -0.8403699994087219,
+          -1.6591172218322754
+        ]
+      },
+      {
+        "minXZ": [
+          -1.0396299362182617,
+          1.6864619255065918
+        ],
+        "maxXZ": [
+          -0.8403699994087219,
+          1.79088294506073
+        ]
+      },
+      {
+        "minXZ": [
+          0.8403699994087219,
+          -1.7635382413864136
+        ],
+        "maxXZ": [
+          1.0396299362182617,
+          -1.6591172218322754
+        ]
+      },
+      {
+        "minXZ": [
+          0.8403699994087219,
+          1.6864619255065918
+        ],
+        "maxXZ": [
+          1.0396299362182617,
+          1.79088294506073
+        ]
+      }
+    ]
+  },
+  "edges": [
+    {
+      "edgeId": "edge.avenue.vehicle.north.0",
+      "samples": 16,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.1",
+      "samples": 13,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "samples": 76,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.3",
+      "samples": 13,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.4",
+      "samples": 26,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "samples": 26,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.1",
+      "samples": 13,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "samples": 42,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.3",
+      "samples": 13,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.4",
+      "samples": 16,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.turn.north",
+      "samples": 179,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.back0.forward",
+      "samples": 225,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.back0.reverse",
+      "samples": 225,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.back1.forward",
+      "samples": 125,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.back1.reverse",
+      "samples": 125,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.north.after55",
+      "samples": 42,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.north.before18",
+      "samples": 31,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.south.after18",
+      "samples": 32,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.south.after55",
+      "samples": 76,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.taper.forward",
+      "samples": 67,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.avenue.taper.reverse",
+      "samples": 67,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.boulevard.east.forward",
+      "samples": 438,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.boulevard.east.reverse",
+      "samples": 438,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.boulevard.west.forward",
+      "samples": 108,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.boulevard.west.reverse",
+      "samples": 108,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.east.y0.forward",
+      "samples": 235,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.east.y0.reverse",
+      "samples": 235,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.east.y55.forward",
+      "samples": 998,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.east.y55.reverse",
+      "samples": 998,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.E.N",
+      "samples": 59,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.E.S",
+      "samples": 136,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.E.W",
+      "samples": 82,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.N.E",
+      "samples": 142,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.N.S",
+      "samples": 83,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.N.W",
+      "samples": 59,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.S.E",
+      "samples": 56,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.S.N",
+      "samples": 83,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.S.W",
+      "samples": 136,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.W.E",
+      "samples": 81,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.W.N",
+      "samples": 142,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.W.S",
+      "samples": 56,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west0.E.N",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west0.E.S",
+      "samples": 80,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west0.N.E",
+      "samples": 80,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west0.N.S",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west0.S.E",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west0.S.N",
+      "samples": 62,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west55.E.N",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west55.E.S",
+      "samples": 80,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west55.N.E",
+      "samples": 80,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west55.N.S",
+      "samples": 62,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west55.S.E",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.west55.S.N",
+      "samples": 62,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.E.N",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.E.S",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.E.W",
+      "samples": 63,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.N.E",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.N.S",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.N.W",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.S.E",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.S.N",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.S.W",
+      "samples": 90,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.W.E",
+      "samples": 63,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.W.N",
+      "samples": 90,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y0.W.S",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.E.N",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.E.S",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.E.W",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.N.E",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.N.S",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.N.W",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.S.E",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.S.N",
+      "samples": 62,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.S.W",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.W.E",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.W.N",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.W.S",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.E.N",
+      "samples": 50,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.E.S",
+      "samples": 78,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.N.E",
+      "samples": 78,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.N.S",
+      "samples": 48,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.N.W",
+      "samples": 50,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.S.E",
+      "samples": 50,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.S.N",
+      "samples": 48,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.S.W",
+      "samples": 78,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.W.N",
+      "samples": 78,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y55.W.S",
+      "samples": 50,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.E.N",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.E.S",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.E.W",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.N.E",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.N.S",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.N.W",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.S.E",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.S.N",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.S.W",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.W.E",
+      "samples": 61,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.W.N",
+      "samples": 88,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.W.S",
+      "samples": 70,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.southern.loop.forward",
+      "samples": 1467,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.southern.loop.reverse",
+      "samples": 1535,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.between.forward",
+      "samples": 125,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.between.reverse",
+      "samples": 125,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.north.forward",
+      "samples": 425,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.north.reverse",
+      "samples": 425,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.river0.forward",
+      "samples": 437,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.river0.reverse",
+      "samples": 438,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.river55.forward",
+      "samples": 444,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.river55.reverse",
+      "samples": 444,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.south.forward",
+      "samples": 58,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.west.south.reverse",
+      "samples": 58,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y140back.east.forward",
+      "samples": 435,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y140back.east.reverse",
+      "samples": 435,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y140back.west.forward",
+      "samples": 118,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y140back.west.reverse",
+      "samples": 118,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y85back.east.forward",
+      "samples": 435,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y85back.east.reverse",
+      "samples": 435,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y85back.west.forward",
+      "samples": 118,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.city.y85back.west.reverse",
+      "samples": 118,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.y55.vehicle.E",
+      "samples": 48,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    },
+    {
+      "edgeId": "edge.y55.vehicle.W",
+      "samples": 48,
+      "models": [
+        {
+          "modelId": "vehicle.ambulance.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.police.white.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.roadster.red.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.electric-silver.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.sedan.nordic-burgundy.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.suv.classic-olive.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        },
+        {
+          "modelId": "vehicle.van.teal.v1",
+          "supportMisses": [],
+          "obstructionHits": [],
+          "sampledSupportAndFixturePass": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "sampled actual tyre patches and body fixture rays, not continuous swept geometry",
+    "closed bridges/frame 1 only",
+    "no multi-vehicle traffic or signal timing simulation"
+  ]
+}

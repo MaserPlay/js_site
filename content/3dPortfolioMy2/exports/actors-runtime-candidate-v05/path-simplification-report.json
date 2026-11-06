@@ -1,0 +1,1143 @@
+{
+  "algorithm": "arc-correspondence subdivision, per edge, 3D",
+  "toleranceMetres": 0.02,
+  "edges": [
+    {
+      "edgeId": "edge.avenue.vehicle.north.0",
+      "pointsBefore": 23,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 4.250000000000147,
+      "lengthAfterMetres": 4.25,
+      "maxCorrespondenceErrorMetres": 1.1920928955078173e-07
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.1",
+      "pointsBefore": 19,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 3.5000000000001457,
+      "lengthAfterMetres": 3.5,
+      "maxCorrespondenceErrorMetres": 1.1920928955078173e-07
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "pointsBefore": 46,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 22.25000000000368,
+      "lengthAfterMetres": 22.25000000000008,
+      "maxCorrespondenceErrorMetres": 1.864962991372263e-06
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.3",
+      "pointsBefore": 19,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 3.5000000000001457,
+      "lengthAfterMetres": 3.5,
+      "maxCorrespondenceErrorMetres": 1.192092895507821e-07
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.north.4",
+      "pointsBefore": 38,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 7.250652184669021,
+      "lengthAfterMetres": 7.250017655746589,
+      "maxCorrespondenceErrorMetres": 0.013415559216815306
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "pointsBefore": 38,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 7.250652165266129,
+      "lengthAfterMetres": 7.250017654694259,
+      "maxCorrespondenceErrorMetres": 0.013414921224965575
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.1",
+      "pointsBefore": 19,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 3.500000000001315,
+      "lengthAfterMetres": 3.5,
+      "maxCorrespondenceErrorMetres": 2.6656007498500564e-07
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "pointsBefore": 26,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 12.250000000040838,
+      "lengthAfterMetres": 12.25000000000015,
+      "maxCorrespondenceErrorMetres": 1.831054426159949e-06
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.3",
+      "pointsBefore": 19,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 3.5000000000001457,
+      "lengthAfterMetres": 3.5,
+      "maxCorrespondenceErrorMetres": 1.192092895507821e-07
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.south.4",
+      "pointsBefore": 23,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 4.250000000000147,
+      "lengthAfterMetres": 4.25,
+      "maxCorrespondenceErrorMetres": 1.1920928955078173e-07
+    },
+    {
+      "edgeId": "edge.avenue.vehicle.turn.north",
+      "pointsBefore": 226,
+      "pointsAfter": 35,
+      "lengthBeforeMetres": 39.75750386358163,
+      "lengthAfterMetres": 39.73912446868184,
+      "maxCorrespondenceErrorMetres": 0.019984476807949042
+    },
+    {
+      "edgeId": "edge.city.avenue.back0.forward",
+      "pointsBefore": 135,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 67.00000000042928,
+      "lengthAfterMetres": 67.0,
+      "maxCorrespondenceErrorMetres": 3.814697266245327e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.back0.reverse",
+      "pointsBefore": 135,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 67.00000000014916,
+      "lengthAfterMetres": 67.00000000000003,
+      "maxCorrespondenceErrorMetres": 2.946426619444825e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.back1.forward",
+      "pointsBefore": 75,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 37.00000000009095,
+      "lengthAfterMetres": 37.00000000000005,
+      "maxCorrespondenceErrorMetres": 1.8815736512890654e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.back1.reverse",
+      "pointsBefore": 75,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 37.00000000003638,
+      "lengthAfterMetres": 37.0,
+      "maxCorrespondenceErrorMetres": 1.907348632845456e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.north.after55",
+      "pointsBefore": 26,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 12.25000000004455,
+      "lengthAfterMetres": 12.25,
+      "maxCorrespondenceErrorMetres": 1.9073486328582872e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.north.before18",
+      "pointsBefore": 19,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 9.000000000029104,
+      "lengthAfterMetres": 9.0,
+      "maxCorrespondenceErrorMetres": 1.907348632824876e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.south.after18",
+      "pointsBefore": 19,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 9.000000000040018,
+      "lengthAfterMetres": 9.000000000000203,
+      "maxCorrespondenceErrorMetres": 1.8013848198788358e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.south.after55",
+      "pointsBefore": 46,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 22.250000000158195,
+      "lengthAfterMetres": 22.25000000000008,
+      "maxCorrespondenceErrorMetres": 2.9246010843746275e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.taper.forward",
+      "pointsBefore": 40,
+      "pointsAfter": 3,
+      "lengthBeforeMetres": 19.342855459920912,
+      "lengthAfterMetres": 19.342855459687293,
+      "maxCorrespondenceErrorMetres": 4.077053558405625e-06
+    },
+    {
+      "edgeId": "edge.city.avenue.taper.reverse",
+      "pointsBefore": 40,
+      "pointsAfter": 3,
+      "lengthBeforeMetres": 19.342855459957633,
+      "lengthAfterMetres": 19.342855459687293,
+      "maxCorrespondenceErrorMetres": 4.07705355896671e-06
+    },
+    {
+      "edgeId": "edge.city.boulevard.east.forward",
+      "pointsBefore": 263,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 131.00000000038563,
+      "lengthAfterMetres": 131.0,
+      "maxCorrespondenceErrorMetres": 1.9073486334366002e-06
+    },
+    {
+      "edgeId": "edge.city.boulevard.east.reverse",
+      "pointsBefore": 263,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 131.00000000042564,
+      "lengthAfterMetres": 131.0,
+      "maxCorrespondenceErrorMetres": 3.7418976994907763e-06
+    },
+    {
+      "edgeId": "edge.city.boulevard.west.forward",
+      "pointsBefore": 65,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 32.000000000029104,
+      "lengthAfterMetres": 32.0,
+      "maxCorrespondenceErrorMetres": 1.907348632823125e-06
+    },
+    {
+      "edgeId": "edge.city.boulevard.west.reverse",
+      "pointsBefore": 65,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 32.000000000029104,
+      "lengthAfterMetres": 32.0,
+      "maxCorrespondenceErrorMetres": 1.907348632823125e-06
+    },
+    {
+      "edgeId": "edge.city.east.y0.forward",
+      "pointsBefore": 141,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 70.00000000028376,
+      "lengthAfterMetres": 70.0,
+      "maxCorrespondenceErrorMetres": 1.907348633075291e-06
+    },
+    {
+      "edgeId": "edge.city.east.y0.reverse",
+      "pointsBefore": 141,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 70.00000000006912,
+      "lengthAfterMetres": 70.00000000000003,
+      "maxCorrespondenceErrorMetres": 2.92914254330821e-06
+    },
+    {
+      "edgeId": "edge.city.east.y55.forward",
+      "pointsBefore": 599,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 299.0000000013024,
+      "lengthAfterMetres": 299.0,
+      "maxCorrespondenceErrorMetres": 3.814697265719153e-06
+    },
+    {
+      "edgeId": "edge.city.east.y55.reverse",
+      "pointsBefore": 599,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 299.00000000128057,
+      "lengthAfterMetres": 299.0,
+      "maxCorrespondenceErrorMetres": 3.8146972663016506e-06
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 11,
+      "lengthBeforeMetres": 12.937241568860783,
+      "lengthAfterMetres": 12.929437243667987,
+      "maxCorrespondenceErrorMetres": 0.017387573371371694
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.E.S",
+      "pointsBefore": 65,
+      "pointsAfter": 31,
+      "lengthBeforeMetres": 28.22316463887337,
+      "lengthAfterMetres": 28.220280164035444,
+      "maxCorrespondenceErrorMetres": 0.01963567078432891
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.E.W",
+      "pointsBefore": 97,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 24.000000000400178,
+      "lengthAfterMetres": 24.000000000000075,
+      "maxCorrespondenceErrorMetres": 3.2583872477216573e-06
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.N.E",
+      "pointsBefore": 65,
+      "pointsAfter": 25,
+      "lengthBeforeMetres": 31.59233804604538,
+      "lengthAfterMetres": 31.586533748702834,
+      "maxCorrespondenceErrorMetres": 0.01935935072831863
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.N.S",
+      "pointsBefore": 98,
+      "pointsAfter": 3,
+      "lengthBeforeMetres": 24.104590239738194,
+      "lengthAfterMetres": 24.10440893832325,
+      "maxCorrespondenceErrorMetres": 0.009416890824683746
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.N.W",
+      "pointsBefore": 65,
+      "pointsAfter": 11,
+      "lengthBeforeMetres": 12.937239746328018,
+      "lengthAfterMetres": 12.92943747191486,
+      "maxCorrespondenceErrorMetres": 0.017387598713743783
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 11.898899522858054,
+      "lengthAfterMetres": 11.894221949544761,
+      "maxCorrespondenceErrorMetres": 0.013216329938080987
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.S.N",
+      "pointsBefore": 98,
+      "pointsAfter": 3,
+      "lengthBeforeMetres": 24.104590239864297,
+      "lengthAfterMetres": 24.10440893832334,
+      "maxCorrespondenceErrorMetres": 0.009416890819900972
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.S.W",
+      "pointsBefore": 65,
+      "pointsAfter": 31,
+      "lengthBeforeMetres": 28.223165295069176,
+      "lengthAfterMetres": 28.220280182487944,
+      "maxCorrespondenceErrorMetres": 0.019635670761745834
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.W.E",
+      "pointsBefore": 97,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 24.00000000021828,
+      "lengthAfterMetres": 24.0,
+      "maxCorrespondenceErrorMetres": 1.9073486335419512e-06
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.W.N",
+      "pointsBefore": 65,
+      "pointsAfter": 25,
+      "lengthBeforeMetres": 31.59233820159316,
+      "lengthAfterMetres": 31.586532557509457,
+      "maxCorrespondenceErrorMetres": 0.019367095441818298
+    },
+    {
+      "edgeId": "edge.city.junction.boulevard.W.S",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 11.898899139566872,
+      "lengthAfterMetres": 11.894222031937971,
+      "maxCorrespondenceErrorMetres": 0.013216329886967183
+    },
+    {
+      "edgeId": "edge.city.junction.west0.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 14.530705221953161,
+      "lengthAfterMetres": 14.5256640705079,
+      "maxCorrespondenceErrorMetres": 0.015088850022418622
+    },
+    {
+      "edgeId": "edge.city.junction.west0.E.S",
+      "pointsBefore": 65,
+      "pointsAfter": 17,
+      "lengthBeforeMetres": 16.534003012846973,
+      "lengthAfterMetres": 16.527427435165414,
+      "maxCorrespondenceErrorMetres": 0.014600162918499419
+    },
+    {
+      "edgeId": "edge.city.junction.west0.N.E",
+      "pointsBefore": 65,
+      "pointsAfter": 17,
+      "lengthBeforeMetres": 16.534003057573102,
+      "lengthAfterMetres": 16.5274275434309,
+      "maxCorrespondenceErrorMetres": 0.014597885762391915
+    },
+    {
+      "edgeId": "edge.city.junction.west0.N.S",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000298727123663,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 0.00864611105612667
+    },
+    {
+      "edgeId": "edge.city.junction.west0.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 14.530703521267862,
+      "lengthAfterMetres": 14.525659985372815,
+      "maxCorrespondenceErrorMetres": 0.01508875448495039
+    },
+    {
+      "edgeId": "edge.city.junction.west0.S.N",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000428325759195,
+      "lengthAfterMetres": 18.0000000000001,
+      "maxCorrespondenceErrorMetres": 0.010352229626657562
+    },
+    {
+      "edgeId": "edge.city.junction.west55.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 14.528977230610447,
+      "lengthAfterMetres": 14.524043013876087,
+      "maxCorrespondenceErrorMetres": 0.015111769571347897
+    },
+    {
+      "edgeId": "edge.city.junction.west55.E.S",
+      "pointsBefore": 65,
+      "pointsAfter": 17,
+      "lengthBeforeMetres": 16.532389765724584,
+      "lengthAfterMetres": 16.525899356904013,
+      "maxCorrespondenceErrorMetres": 0.01406228322766885
+    },
+    {
+      "edgeId": "edge.city.junction.west55.N.E",
+      "pointsBefore": 65,
+      "pointsAfter": 17,
+      "lengthBeforeMetres": 16.532390237497303,
+      "lengthAfterMetres": 16.525899526692914,
+      "maxCorrespondenceErrorMetres": 0.014067494258450441
+    },
+    {
+      "edgeId": "edge.city.junction.west55.N.S",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000233666548468,
+      "lengthAfterMetres": 18.000000005207262,
+      "maxCorrespondenceErrorMetres": 0.007931486537749234
+    },
+    {
+      "edgeId": "edge.city.junction.west55.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 14.528976443077257,
+      "lengthAfterMetres": 14.524040313842072,
+      "maxCorrespondenceErrorMetres": 0.015110320116335995
+    },
+    {
+      "edgeId": "edge.city.junction.west55.S.N",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000257747368607,
+      "lengthAfterMetres": 18.000000005439183,
+      "maxCorrespondenceErrorMetres": 0.00831742183787635
+    },
+    {
+      "edgeId": "edge.city.junction.y0.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.2643123747097,
+      "lengthAfterMetres": 14.26007559053636,
+      "maxCorrespondenceErrorMetres": 0.009145066093025865
+    },
+    {
+      "edgeId": "edge.city.junction.y0.E.S",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.853762151424327,
+      "lengthAfterMetres": 20.848552087640257,
+      "maxCorrespondenceErrorMetres": 0.01476728290026968
+    },
+    {
+      "edgeId": "edge.city.junction.y0.E.W",
+      "pointsBefore": 73,
+      "pointsAfter": 3,
+      "lengthBeforeMetres": 18.00119274163757,
+      "lengthAfterMetres": 18.0010159268728,
+      "maxCorrespondenceErrorMetres": 0.013279844494035997
+    },
+    {
+      "edgeId": "edge.city.junction.y0.N.E",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.853762151528375,
+      "lengthAfterMetres": 20.84855208761134,
+      "maxCorrespondenceErrorMetres": 0.014767282895882522
+    },
+    {
+      "edgeId": "edge.city.junction.y0.N.S",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.00000000029104,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 1.907348633100521e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y0.N.W",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.265462781841913,
+      "lengthAfterMetres": 14.26108566187398,
+      "maxCorrespondenceErrorMetres": 0.011926940710390084
+    },
+    {
+      "edgeId": "edge.city.junction.y0.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264312374657063,
+      "lengthAfterMetres": 14.260075590498055,
+      "maxCorrespondenceErrorMetres": 0.009145066024843303
+    },
+    {
+      "edgeId": "edge.city.junction.y0.S.N",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000000000800355,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 3.81469727567401e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y0.S.W",
+      "pointsBefore": 97,
+      "pointsAfter": 14,
+      "lengthBeforeMetres": 20.854954892986378,
+      "lengthAfterMetres": 20.849569049660612,
+      "maxCorrespondenceErrorMetres": 0.014767283301594996
+    },
+    {
+      "edgeId": "edge.city.junction.y0.W.E",
+      "pointsBefore": 73,
+      "pointsAfter": 3,
+      "lengthBeforeMetres": 18.001192671785358,
+      "lengthAfterMetres": 18.001015987581052,
+      "maxCorrespondenceErrorMetres": 0.013275078140192296
+    },
+    {
+      "edgeId": "edge.city.junction.y0.W.N",
+      "pointsBefore": 97,
+      "pointsAfter": 14,
+      "lengthBeforeMetres": 20.854954823126494,
+      "lengthAfterMetres": 20.849569109675304,
+      "maxCorrespondenceErrorMetres": 0.014767282944589993
+    },
+    {
+      "edgeId": "edge.city.junction.y0.W.S",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.265462732726942,
+      "lengthAfterMetres": 14.261085600054589,
+      "maxCorrespondenceErrorMetres": 0.011927640901520249
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264315210259973,
+      "lengthAfterMetres": 14.260079846231736,
+      "maxCorrespondenceErrorMetres": 0.009145106234677153
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.E.S",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.85376192174979,
+      "lengthAfterMetres": 20.84855245005884,
+      "maxCorrespondenceErrorMetres": 0.0147677232985301
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.E.W",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.00000000014552,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 1.907348632956584e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.N.E",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.853762860713054,
+      "lengthAfterMetres": 20.848554876734493,
+      "maxCorrespondenceErrorMetres": 0.014767724258684629
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.N.S",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.00000000007276,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 1.907348632822107e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.N.W",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.26431186311034,
+      "lengthAfterMetres": 14.260076691554426,
+      "maxCorrespondenceErrorMetres": 0.009151001225197491
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264311863006741,
+      "lengthAfterMetres": 14.260076691551179,
+      "maxCorrespondenceErrorMetres": 0.009151001203799004
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.S.N",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000000000152795,
+      "lengthAfterMetres": 18.0000000000001,
+      "maxCorrespondenceErrorMetres": 1.8808576795855462e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.S.W",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.853762859729276,
+      "lengthAfterMetres": 20.848554876722826,
+      "maxCorrespondenceErrorMetres": 0.014767724258709529
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.W.E",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.00000000008731,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 1.9073486328510476e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.W.N",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.85376188181216,
+      "lengthAfterMetres": 20.84855245009532,
+      "maxCorrespondenceErrorMetres": 0.014767723372136232
+    },
+    {
+      "edgeId": "edge.city.junction.y140back.W.S",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.26431526264797,
+      "lengthAfterMetres": 14.260079846191289,
+      "maxCorrespondenceErrorMetres": 0.00914510643392061
+    },
+    {
+      "edgeId": "edge.city.junction.y55.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 10.016894038423805,
+      "lengthAfterMetres": 10.013548102786906,
+      "maxCorrespondenceErrorMetres": 0.011409802913147856
+    },
+    {
+      "edgeId": "edge.city.junction.y55.E.S",
+      "pointsBefore": 81,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 16.853761028561223,
+      "lengthAfterMetres": 16.849804927810574,
+      "maxCorrespondenceErrorMetres": 0.008145013930269996
+    },
+    {
+      "edgeId": "edge.city.junction.y55.N.E",
+      "pointsBefore": 81,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 16.85376176675844,
+      "lengthAfterMetres": 16.84980519425407,
+      "maxCorrespondenceErrorMetres": 0.008147124569906884
+    },
+    {
+      "edgeId": "edge.city.junction.y55.N.S",
+      "pointsBefore": 57,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 14.000000000094587,
+      "lengthAfterMetres": 14.00000000000013,
+      "maxCorrespondenceErrorMetres": 1.8732888358059444e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y55.N.W",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 10.016894098164396,
+      "lengthAfterMetres": 10.013548113483989,
+      "maxCorrespondenceErrorMetres": 0.01141362047229529
+    },
+    {
+      "edgeId": "edge.city.junction.y55.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 10.016893349878385,
+      "lengthAfterMetres": 10.01354782170093,
+      "maxCorrespondenceErrorMetres": 0.011409808240989338
+    },
+    {
+      "edgeId": "edge.city.junction.y55.S.N",
+      "pointsBefore": 57,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 14.000000000211003,
+      "lengthAfterMetres": 14.00000000000013,
+      "maxCorrespondenceErrorMetres": 2.8269631524448053e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y55.S.W",
+      "pointsBefore": 81,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 16.85376234491676,
+      "lengthAfterMetres": 16.84980504793498,
+      "maxCorrespondenceErrorMetres": 0.008147124569907778
+    },
+    {
+      "edgeId": "edge.city.junction.y55.W.N",
+      "pointsBefore": 81,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 16.853761714179797,
+      "lengthAfterMetres": 16.84980499075101,
+      "maxCorrespondenceErrorMetres": 0.008145013829158465
+    },
+    {
+      "edgeId": "edge.city.junction.y55.W.S",
+      "pointsBefore": 65,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 10.016894653528025,
+      "lengthAfterMetres": 10.013548165781087,
+      "maxCorrespondenceErrorMetres": 0.011409802889027801
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.E.N",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264313789795171,
+      "lengthAfterMetres": 14.260076645059684,
+      "maxCorrespondenceErrorMetres": 0.009145102859376584
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.E.S",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.85376116825059,
+      "lengthAfterMetres": 20.848551333796195,
+      "maxCorrespondenceErrorMetres": 0.01476772356841197
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.E.W",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000000000189175,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 3.81469726564625e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.N.E",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.853761824495724,
+      "lengthAfterMetres": 20.848552278459554,
+      "maxCorrespondenceErrorMetres": 0.014767724221233047
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.N.S",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000000000130967,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 1.9073486328550007e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.N.W",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264312604537023,
+      "lengthAfterMetres": 14.26007760800064,
+      "maxCorrespondenceErrorMetres": 0.009145106234677153
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.S.E",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264311899038079,
+      "lengthAfterMetres": 14.260076652499462,
+      "maxCorrespondenceErrorMetres": 0.009145106254809255
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.S.N",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000000000130967,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 1.907348632899236e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.S.W",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.85376279455888,
+      "lengthAfterMetres": 20.848550415286784,
+      "maxCorrespondenceErrorMetres": 0.014767724303342361
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.W.E",
+      "pointsBefore": 73,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 18.000000000130967,
+      "lengthAfterMetres": 18.0,
+      "maxCorrespondenceErrorMetres": 3.814697265628903e-06
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.W.N",
+      "pointsBefore": 97,
+      "pointsAfter": 13,
+      "lengthBeforeMetres": 20.853761207552267,
+      "lengthAfterMetres": 20.84855216317478,
+      "maxCorrespondenceErrorMetres": 0.014767723650097344
+    },
+    {
+      "edgeId": "edge.city.junction.y85back.W.S",
+      "pointsBefore": 65,
+      "pointsAfter": 15,
+      "lengthBeforeMetres": 14.264312931524255,
+      "lengthAfterMetres": 14.260076216530361,
+      "maxCorrespondenceErrorMetres": 0.009145102859596653
+    },
+    {
+      "edgeId": "edge.city.southern.loop.forward",
+      "pointsBefore": 975,
+      "pointsAfter": 43,
+      "lengthBeforeMetres": 422.68039644453563,
+      "lengthAfterMetres": 422.65897879755084,
+      "maxCorrespondenceErrorMetres": 0.01900044467842876
+    },
+    {
+      "edgeId": "edge.city.southern.loop.reverse",
+      "pointsBefore": 1015,
+      "pointsAfter": 44,
+      "lengthBeforeMetres": 441.880462416977,
+      "lengthAfterMetres": 441.8597535459864,
+      "maxCorrespondenceErrorMetres": 0.018918767342321813
+    },
+    {
+      "edgeId": "edge.city.west.between.forward",
+      "pointsBefore": 75,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 37.00000008412826,
+      "lengthAfterMetres": 37.00000006695302,
+      "maxCorrespondenceErrorMetres": 0.00045119105088360797
+    },
+    {
+      "edgeId": "edge.city.west.between.reverse",
+      "pointsBefore": 75,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 37.00000002178422,
+      "lengthAfterMetres": 37.00000000436577,
+      "maxCorrespondenceErrorMetres": 0.0004531757252242119
+    },
+    {
+      "edgeId": "edge.city.west.north.forward",
+      "pointsBefore": 255,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 127.00000198835895,
+      "lengthAfterMetres": 127.00000149423227,
+      "maxCorrespondenceErrorMetres": 0.0048320647301059476
+    },
+    {
+      "edgeId": "edge.city.west.north.reverse",
+      "pointsBefore": 255,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 127.00000069524685,
+      "lengthAfterMetres": 127.00000018336107,
+      "maxCorrespondenceErrorMetres": 0.0050205170624668775
+    },
+    {
+      "edgeId": "edge.city.west.river0.forward",
+      "pointsBefore": 256,
+      "pointsAfter": 9,
+      "lengthBeforeMetres": 127.29205567211928,
+      "lengthAfterMetres": 127.29138465178923,
+      "maxCorrespondenceErrorMetres": 0.015639666983063828
+    },
+    {
+      "edgeId": "edge.city.west.river0.reverse",
+      "pointsBefore": 256,
+      "pointsAfter": 9,
+      "lengthBeforeMetres": 127.29205552103295,
+      "lengthAfterMetres": 127.2913261430954,
+      "maxCorrespondenceErrorMetres": 0.015641097490850554
+    },
+    {
+      "edgeId": "edge.city.west.river55.forward",
+      "pointsBefore": 260,
+      "pointsAfter": 10,
+      "lengthBeforeMetres": 129.2973465598421,
+      "lengthAfterMetres": 129.29653674180474,
+      "maxCorrespondenceErrorMetres": 0.017786634893564073
+    },
+    {
+      "edgeId": "edge.city.west.river55.reverse",
+      "pointsBefore": 260,
+      "pointsAfter": 10,
+      "lengthBeforeMetres": 129.2973465383295,
+      "lengthAfterMetres": 129.2965358886836,
+      "maxCorrespondenceErrorMetres": 0.017786634902143154
+    },
+    {
+      "edgeId": "edge.city.west.south.forward",
+      "pointsBefore": 35,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 17.000010748712782,
+      "lengthAfterMetres": 17.000009797475528,
+      "maxCorrespondenceErrorMetres": 0.0016123258566454756
+    },
+    {
+      "edgeId": "edge.city.west.south.reverse",
+      "pointsBefore": 35,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 17.00000223633031,
+      "lengthAfterMetres": 17.0000004531813,
+      "maxCorrespondenceErrorMetres": 0.003117168746729598
+    },
+    {
+      "edgeId": "edge.city.y140back.east.forward",
+      "pointsBefore": 261,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 130.00000000005093,
+      "lengthAfterMetres": 130.0,
+      "maxCorrespondenceErrorMetres": 1.907348632983643e-06
+    },
+    {
+      "edgeId": "edge.city.y140back.east.reverse",
+      "pointsBefore": 261,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 130.00000000006548,
+      "lengthAfterMetres": 130.0,
+      "maxCorrespondenceErrorMetres": 1.907348632962629e-06
+    },
+    {
+      "edgeId": "edge.city.y140back.west.forward",
+      "pointsBefore": 71,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 35.00000000002183,
+      "lengthAfterMetres": 35.0,
+      "maxCorrespondenceErrorMetres": 1.9073486328408083e-06
+    },
+    {
+      "edgeId": "edge.city.y140back.west.reverse",
+      "pointsBefore": 71,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 35.00000000001455,
+      "lengthAfterMetres": 35.0,
+      "maxCorrespondenceErrorMetres": 1.9073486328148823e-06
+    },
+    {
+      "edgeId": "edge.city.y85back.east.forward",
+      "pointsBefore": 261,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 130.00000000005093,
+      "lengthAfterMetres": 130.0,
+      "maxCorrespondenceErrorMetres": 1.907348632983643e-06
+    },
+    {
+      "edgeId": "edge.city.y85back.east.reverse",
+      "pointsBefore": 261,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 130.00000000006548,
+      "lengthAfterMetres": 130.0,
+      "maxCorrespondenceErrorMetres": 1.907348632962629e-06
+    },
+    {
+      "edgeId": "edge.city.y85back.west.forward",
+      "pointsBefore": 71,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 35.00000000002183,
+      "lengthAfterMetres": 35.0,
+      "maxCorrespondenceErrorMetres": 1.9073486328408083e-06
+    },
+    {
+      "edgeId": "edge.city.y85back.west.reverse",
+      "pointsBefore": 71,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 35.00000000001455,
+      "lengthAfterMetres": 35.0,
+      "maxCorrespondenceErrorMetres": 1.9073486328148823e-06
+    },
+    {
+      "edgeId": "edge.y55.vehicle.E",
+      "pointsBefore": 57,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 14.000000681421605,
+      "lengthAfterMetres": 14.000000012165922,
+      "maxCorrespondenceErrorMetres": 0.0005732267463893691
+    },
+    {
+      "edgeId": "edge.y55.vehicle.W",
+      "pointsBefore": 57,
+      "pointsAfter": 2,
+      "lengthBeforeMetres": 14.000000690320078,
+      "lengthAfterMetres": 14.000000012245566,
+      "maxCorrespondenceErrorMetres": 0.0005770073910846534
+    }
+  ],
+  "distanceBindings": [
+    {
+      "path": "network/controls/0/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.0",
+      "beforeMetres": 3.2000007248389655,
+      "afterMetres": 3.200000724838855
+    },
+    {
+      "path": "network/controls/1/distanceAlongMetres",
+      "edgeId": "edge.city.avenue.south.after55",
+      "beforeMetres": 21.199998790648166,
+      "afterMetres": 21.199998790497514
+    },
+    {
+      "path": "network/controls/4/distanceAlongMetres",
+      "edgeId": "edge.city.avenue.north.after55",
+      "beforeMetres": 11.199997055584642,
+      "afterMetres": 11.199997055543912
+    },
+    {
+      "path": "network/controls/5/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "beforeMetres": 6.200054046477164,
+      "afterMetres": 6.19951147461618
+    },
+    {
+      "path": "network/controls/8/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "beforeMetres": 21.45000070950144,
+      "afterMetres": 21.45000070949797
+    },
+    {
+      "path": "network/controls/9/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "beforeMetres": 11.450004686702833,
+      "afterMetres": 11.450004686664801
+    },
+    {
+      "path": "network/controls/10/distanceAlongMetres",
+      "edgeId": "edge.city.west.river55.forward",
+      "beforeMetres": 128.09842507145808,
+      "afterMetres": 128.09763624918614
+    },
+    {
+      "path": "network/controls/11/distanceAlongMetres",
+      "edgeId": "edge.city.east.y55.reverse",
+      "beforeMetres": 297.7999992383317,
+      "afterMetres": 297.7999992370562
+    },
+    {
+      "path": "network/spawnSegments/0/minDistanceMetres",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "beforeMetres": 4.0,
+      "afterMetres": 3.999999999999353
+    },
+    {
+      "path": "network/spawnSegments/0/maxDistanceMetres",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "beforeMetres": 10.0,
+      "afterMetres": 9.999999999998382
+    },
+    {
+      "path": "network/spawnSegments/1/minDistanceMetres",
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "beforeMetres": 4.0,
+      "afterMetres": 3.999999999986714
+    },
+    {
+      "path": "network/spawnSegments/1/maxDistanceMetres",
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "beforeMetres": 6.5,
+      "afterMetres": 6.49999999997841
+    },
+    {
+      "path": "placements/0/vehicles/0/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "beforeMetres": 0.24999999750188662,
+      "afterMetres": 0.24999999750184618
+    },
+    {
+      "path": "placements/0/vehicles/1/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "beforeMetres": 6.250000027947869,
+      "afterMetres": 6.250000027946857
+    },
+    {
+      "path": "placements/0/vehicles/2/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "beforeMetres": 18.249999988205552,
+      "afterMetres": 18.2499999882026
+    },
+    {
+      "path": "placements/0/vehicles/3/distanceAlongMetres",
+      "edgeId": "edge.city.avenue.north.after55",
+      "beforeMetres": 2.0000000189312654,
+      "afterMetres": 2.000000018923992
+    },
+    {
+      "path": "placements/0/vehicles/4/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.4",
+      "beforeMetres": 0.24999813557369244,
+      "afterMetres": 0.24997625739728355
+    },
+    {
+      "path": "placements/0/vehicles/5/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.north.4",
+      "beforeMetres": 6.249953389342311,
+      "afterMetres": 6.249406434932089
+    },
+    {
+      "path": "placements/0/vehicles/6/distanceAlongMetres",
+      "edgeId": "edge.city.avenue.south.after55",
+      "beforeMetres": 20.99999994087448,
+      "afterMetres": 20.99999994072525
+    },
+    {
+      "path": "placements/0/vehicles/7/distanceAlongMetres",
+      "edgeId": "edge.city.avenue.south.after55",
+      "beforeMetres": 14.49999992116643,
+      "afterMetres": 14.49999992106339
+    },
+    {
+      "path": "placements/0/vehicles/8/distanceAlongMetres",
+      "edgeId": "edge.city.avenue.south.after55",
+      "beforeMetres": 3.9999999776916204,
+      "afterMetres": 3.999999977663195
+    },
+    {
+      "path": "placements/0/vehicles/9/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "beforeMetres": 10.750000100043197,
+      "afterMetres": 10.75000010000749
+    },
+    {
+      "path": "placements/0/vehicles/10/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "beforeMetres": 7.0000559331924554,
+      "afterMetres": 6.999443352504256
+    },
+    {
+      "path": "placements/0/vehicles/11/distanceAlongMetres",
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "beforeMetres": 1.0001006794238372,
+      "afterMetres": 1.0000131597856634
+    }
+  ],
+  "vehiclePointsBefore": 13676,
+  "vehiclePointsAfter": 1028,
+  "maxCorrespondenceErrorMetres": 0.019984476807949042,
+  "schemaVersion": 1,
+  "exportId": "actors-runtime-candidate-v05",
+  "sourceExportId": "actors-runtime-candidate-v05-raw",
+  "sourceAssetsSha256": {
+    "city.glb": "8e356da2b5e532c381099adf29fe139a005a17bbb5658f9fc4e615e4ad61d836",
+    "scene.json": "a20f095971ed7f0ca06a82cec3333711fa696ac495b6426972629ca2b1eff529",
+    "road-network.json": "5e972f31561f45703d957c802bfbfafda080062e29536a4b2cc661e72e731eb6",
+    "vehicle-catalog.json": "5c69e7a6f1d476c9aa67f0cc17536dc47f850817c1a864ae6e08c7d7fdde5d15",
+    "demo-vehicles.json": "1101043f9cf17b8d3ae4a6dbe7fc137f0d6a0ca857c6a7d7949256989cf2ac80",
+    "legacy-vehicle-map.json": "b14353ee9afaef7db5224f434a4444a8172a35997112f15629197229b08d01cd",
+    "vehicles.glb": "51fc2df4f6676a65194f342dc1c15a0b8cb213bb28ee0516f685eec1a32411c4",
+    "pedestrians.glb": "258be892de95ef2dcc3861b8f8f39511226e70bf6577eb3507543007a1f42e65",
+    "pedestrian-catalog.json": "7a9e7072c777f3def1e6af3812b1056750e459d52a9364a71fa0d7b06c4d8d6b",
+    "demo-pedestrians.json": "7a866a5efd68c69ab0042a44e871e21e6dc934aa6744e60612f6f4635421e984",
+    "ATTRIBUTION_people.md": "d4f7bd860a11fbf1da173e835a3e4ef3efd54b47fa89ba7aa4fa730fade822b1"
+  },
+  "sourceDirectory": "C:\\Users\\super\\Documents\\Codex\\2026-10-14\\fk-x20\\outputs\\City_Web_Export\\actors-runtime-candidate-v05-raw",
+  "browserAcceptance": "not tested",
+  "sourceSceneChanged": false,
+  "glbReusedByteIdentically": true
+}
