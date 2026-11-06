@@ -130,26 +130,26 @@ function runServer() {
 }
 
 
-function miniBuildJsSignle(fullPath: string) {
-      const minPath = fullPath.replace(/\.(m?js)$/, '.min.$1');
+async function miniBuildJsSignle(fullPath: string) {
+  const minPath = fullPath.replace(/\.(m?js)$/, '.min.$1');
 
-      console.log(`Minimizing: ${fullPath} -> ${minPath}`);
+  console.log(`Minimizing: ${fullPath} -> ${minPath}`);
 
-      try {
-        const originalCode = fs.readFileSync(fullPath, "utf8");
-        const minified = UglifyJS.minify(originalCode, { module: fullPath.endsWith('.mjs') });
+  try {
+    const originalCode = await fs.promises.readFile(fullPath, "utf8");
+    const minified = UglifyJS.minify(originalCode, { module: fullPath.endsWith('.mjs') });
 
-        if (minified.error) {
-          console.error(`[Uglify Error] inside ${fullPath}:`, minified.error);
-          return;
-        }
+    if (minified.error) {
+      console.error(`[Uglify Error] inside ${fullPath}:`, minified.error);
+      return;
+    }
 
-        fs.writeFileSync(minPath, minified.code, "utf8");
-      } catch (err) {
-        console.error(`Failed to minimize ${fullPath}:`, err);
-      }
+    await fs.promises.writeFile(minPath, minified.code, "utf8");
+  } catch (err) {
+    console.error(`Failed to minimize ${fullPath}:`, err);
+  }
 }
-function miniBuildJs() {
+async function miniBuildJs() {
   const dir = destDir;
 
   if (!fs.existsSync(dir)) {
@@ -161,19 +161,19 @@ function miniBuildJs() {
 
   // Рекурсивно читаем все файлы и папки внутри destDir
   // withFileTypes: true позволит легко отсеять папки
-  const allFiles = fs.readdirSync(dir, { recursive: true, withFileTypes: true });
+  const allFiles = await fs.promises.readdir(dir, { recursive: true, withFileTypes: true });
 
-  for (const entry of allFiles) {
-    // Минифицируем скрипты .js и модули .mjs, 
-    // исключая уже минифицированные файлы.
-    if (entry.isFile() && /\.(m?js)$/.test(entry.name) && !/\.min\.(m?js)$/.test(entry.name)) {
+  await Promise.all(
+    allFiles.map(async (entry) => {
+      if (entry.isFile() && /\.(m?js)$/.test(entry.name) && !/\.min\.(m?js)$/.test(entry.name)) {
 
-      // entry.parentPath содержит путь к папке файла относительно исходной точки (в Node v20+)
-      // Если у вас старая нода, можно собирать путь через path.join(dir, entry.path, entry.name)
-      const fullPath = path.join(entry.parentPath || entry.path || dir, entry.name);
-      miniBuildJsSignle(fullPath)
-    }
-  }
+        // entry.parentPath содержит путь к папке файла относительно исходной точки (в Node v20+)
+        // Если у вас старая нода, можно собирать путь через path.join(dir, entry.path, entry.name)
+        const fullPath = path.join(entry.parentPath || entry.path || dir, entry.name);
+        await miniBuildJsSignle(fullPath)
+      }
+    })
+  )
   console.log("Minimizing complete!")
 }
 
@@ -196,9 +196,9 @@ function clearBuildDir() {
       fs.rmdirSync(recursePath);
     }
   };
-  if (fs.existsSync(srcDir)) {
+  if (fs.existsSync(destDir)) {
     console.log("Deleting...")
-    deleteFolderRecursive(srcDir)
+    deleteFolderRecursive(destDir)
     console.log("Deleting complete!")
   } else {
     console.error("Dir not need to be deleted")
@@ -211,7 +211,19 @@ function clearBuildDir() {
     return
   }
   deleteFolderInit()
-  if (args.watch) {
+
+  if (args.clear) {
+    try {
+      clearBuildDir()
+    } catch (e) {
+      if (e instanceof Error) {
+        console.error(e.name + "\n" + e.message + "\n" + e.stack)
+      } else {
+        console.error(e);
+      }
+    }
+    console.log("Clearing finished!")
+  } else if (args.watch) {
     runTscWatch();
     const watcher = chokidar.watch(srcDir, {
       ignored: [
@@ -251,7 +263,7 @@ function clearBuildDir() {
       // Если tsc обновил index.js в билде и это не минифицированный файл
       if (/\.(m?js)$/.test(srcPath) && !/\.min\.(m?js)$/.test(srcPath)) {
         console.log(`[Watch] Updated js file: ${srcPath}. Reminifying...`);
-        miniBuildJsSignle(srcPath);
+        await miniBuildJsSignle(srcPath);
       }
 
       if (
@@ -272,21 +284,10 @@ function clearBuildDir() {
       runServer()
     }
 
-  } else if (args.clear) {
-    try {
-      clearBuildDir()
-    } catch (e) {
-      if (e instanceof Error) {
-        console.error(e.name + "\n" + e.message + "\n" + e.stack)
-      } else {
-        console.error(e);
-      }
-    }
-    console.log("Clearing finished!")
   } else {
     await copyFilesInit()
     runTsc()
-    miniBuildJs()
+    await miniBuildJs()
     console.log("Finish!")
   }
 
