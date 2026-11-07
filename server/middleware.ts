@@ -96,21 +96,21 @@ export default function (request : Request, response : Response, next : NextFunc
       return request.cookies.theme ?? config.json.themes[0]
     },
     js_include: function (script_name : string) {
-      if (request.query.hasOwnProperty("nomini")) {
+      if (Object.hasOwn(request.query, "nomini")) {
         return script_name + ".js";
       } else {
         return script_name + ".min.js";
       }
     },
     js_module_include: function (script_name : string) {
-      if (request.query.hasOwnProperty("nomini")) {
+      if (Object.hasOwn(request.query, "nomini")) {
         return script_name + ".mjs";
       } else {
         return script_name + ".min.mjs";
       }
     },
     css_include: function (style_name : string) {
-      if (request.query.hasOwnProperty("nomini")) {
+      if (Object.hasOwn(request.query, "nomini")) {
         return style_name + ".css";
       } else {
         return style_name + ".min.css";
@@ -127,7 +127,7 @@ export default function (request : Request, response : Response, next : NextFunc
     },
     eventGoingSnow: function () { return config.IsEventGoing("snow") },
     useAd: function () {
-      return !request.query.hasOwnProperty("noad")
+      return !Object.hasOwn(request.query, "noad")
     },
     userAgent: function () {
       return request.headers["user-agent"]!
