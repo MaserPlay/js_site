@@ -16,7 +16,7 @@ export async function loadContentClasses() {
             const file = path.join(directory, entry.name, 'server.js');
             try {
                 const instance: IContent = await fs.promises.access(file)
-                    .then(async v => new (await import(file)).default(entry.name))
+                    .then(async () => new (await import(file)).default(entry.name))
                 contentClasses.set(entry.name, instance);
             } catch (error) {
                 console.error(`Unable to load content ${entry.name}:`, error);

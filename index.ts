@@ -1,17 +1,16 @@
-import express, { Express, Request, Response } from "express";
+import express, {  } from "express";
 import * as expressLayouts from 'express-ejs-layouts';
 import * as ejs from 'ejs';
 import * as path from 'path';
 import * as I18n from 'i18n';
 import * as config from './config';
-import { loadContentClasses } from './server/content-registry';
 import { registerRoutes } from './server/controller';
 import * as morgan from 'morgan';
 import * as node_http from 'node:http';
 import * as compression from 'compression';
 import * as cookie_parser from 'cookie-parser';
 import * as middleware from './server/middleware';
-import ioServer, { Server } from "socket.io"; // Импортируйте класс Server
+import ioServer from "socket.io"; // Импортируйте класс Server
 
 const app = express();
 const httpServer = node_http.createServer(app);
@@ -25,7 +24,7 @@ const i18n = new I18n.I18n({
   directory: path.join(__dirname, 'locales'),
   queryParameter: 'lang',
   retryInDefaultLocale: true,
-  directoryPermissions: <string> <unknown>0o755, // <-- Здесь задаются права
+  directoryPermissions: "755",
 })
 
 app.use(expressLayouts.default);

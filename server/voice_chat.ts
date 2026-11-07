@@ -1,8 +1,3 @@
-// const { BroadcastOperator } = require("socket.io");
-import { DefaultEventsMap, BroadcastOperator, Socket } from 'socket.io';
-// const socketsStatus = socket_io.BroadcastOperator
-
-// const io = require("../index").io;
 import * as index from '../index';
 const io = index.default.io
 
