@@ -63,7 +63,6 @@ export default ex;
 require('./server/voice_chat');
 
 async function start(): Promise<void> {
-  await loadContentClasses();
   registerRoutes(app);
   httpServer.listen(config.json.port, () => {
     console.log(`Server running on port ${config.json.port}; http://localhost:${config.json.port}`);
