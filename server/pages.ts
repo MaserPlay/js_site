@@ -8,8 +8,8 @@ interface HomePageOptions extends PageOptions {
 
 export const pagesRouter = Router();
 
-pagesRouter.get('/', (req, res) => {
-    const content = getVisibleContent(req).sort(([, a], [, b]) =>
+pagesRouter.get('/', async (req, res) => {
+    const content = (await getVisibleContent(req)).sort(([, a], [, b]) =>
         b.createdAt().getTime() - a.createdAt().getTime());
     renderPage<HomePageOptions>(res, 'index', {
         eachcontent: content.map(([id]) => ({ id, name: res.__(id) })),
@@ -22,7 +22,7 @@ pagesRouter.get('/', (req, res) => {
 
 pagesRouter.get('/content/:path', async (req, res, next) => {
     const name = req.params.path;
-    const content = getContentClass(name);
+    const content = await getContentClass(name);
     if (!content) { next(); return; }
     try {
         const access = content.mayShow(req);

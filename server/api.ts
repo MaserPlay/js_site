@@ -16,8 +16,8 @@ apiRouter.get('/locale', (req, res, next) => {
     res.json(result);
 });
 
-export function sitemap(req: Request, res: Response): void {
-    const urls = getVisibleContent(req).map(([name]) =>
+export async function sitemap(req: Request, res: Response): Promise<void> {
+    const urls = (await getVisibleContent(req)).map(([name]) =>
         `<url><loc>https://js.maserplay.ru/content/${encodeURIComponent(name)}</loc><priority>0.8</priority></url>`);
     res.type('application/xml').send(
         `<?xml version='1.0' encoding='UTF-8' ?>` +
