@@ -7,6 +7,7 @@ export interface SimulationActorSetupData {
 export abstract class SimulationActor<TSimulationActorSetupData extends SimulationActorSetupData> {
 
     public readonly boudingBox: THREE.Box3 = new THREE.Box3()
+    public name: string = ""
 
     constructor(
         public readonly setupData: TSimulationActorSetupData

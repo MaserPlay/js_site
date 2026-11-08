@@ -1,5 +1,6 @@
 import { Viewer } from "./index.mjs";
 import * as NOTIFICATIONS from "./notification.mjs"
+import * as DEBUG from "./debug.mjs"
 import { SummonVehicleSetupData, VehicleSetupDataWithoutModel, VehicleSetupDataWithoutStartingEdge } from "./vehicle.mjs";
 import { RoadNetwork } from "./road_network.mjs";
 import { RoadSimulationManager } from "./simulation.mjs";
@@ -23,22 +24,35 @@ function VehicleSetupDatas() : VehicleSetupDataWithoutStartingEdge[] {
 async function loop(delta: DeltaTime, sContext: SceneContext) {
     sContext.actors.forEach(a => a.update(delta))
     sContext.roadManager.update(delta)
+    DEBUG.loop(delta, sContext)
 }
 
 export async function setup(viewer:Viewer, setup:ViewerSetupData) {
     const rContext = viewer.getContext();
     const loader = new GLTFLoader();
 
-    const [gltf, vehiclesLibrary, awaitedNetwork, roadManager] = await Promise.all([
+    const [gltf, vehiclesLibrary, network, roadManager] = await Promise.all([
         loader.loadAsync(setup.initialCityPackUrl + "/city.glb"), 
         loader.loadAsync(setup.initialCityPackUrl + "/vehicles.glb"),
-        RoadNetwork.load(setup),
+        RoadNetwork.load(
+            setup.initialCityPackUrl + "/road-network.json"
+        ),
         RoadSimulationManager.load(
-            setup, 
+            setup.initialCityPackUrl + "/simulation-zones.json", 
             () => SContext, 
             rContext,
-            VehicleSetupDatas)
+            VehicleSetupDatas
+        )
     ]);
+
+    SContext = {
+        vehiclesModels: vehiclesLibrary.scene.children.filter(
+                (object): object is THREE.Group => object instanceof THREE.Group
+            ),
+        actors: [],
+        network: network,
+        roadManager: roadManager
+    }
 
     rContext.scene.add(gltf.scene);
     rContext.scene.fog = new THREE.Fog( 0xb8c9d9, 100, 110 );
@@ -57,18 +71,9 @@ export async function setup(viewer:Viewer, setup:ViewerSetupData) {
     rContext.sky.material.uniforms.sunPosition.value.copy(sun);
     rContext.sky.material.uniforms[ 'rayleigh' ].value = .1
     rContext.sky.material.uniforms[ 'cloudDensity' ].value = .1
-
-    SContext = {
-        vehiclesModels: vehiclesLibrary.scene.children.filter(
-                (object): object is THREE.Group => object instanceof THREE.Group
-            ),
-        actors: [],
-        network: awaitedNetwork,
-        roadManager: roadManager
-    }
     
 
-    SContext.roadManager.setup()
+    SContext.roadManager.setup(setup)
 
     rContext.sunlight.intensity = 1
 

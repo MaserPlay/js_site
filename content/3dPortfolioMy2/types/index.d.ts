@@ -12,9 +12,15 @@ declare global {
         readonly sky: Sky;
     }
 
+    interface Renderer {
+        setSize(width: number, height: number): void;
+        render(scene: THREE.Scene, camera: THREE.Camera): void;
+    }
+
     interface ViewerSetupData {
         readonly canvasSelector: string;
         readonly initialCityPackUrl: string;
+        readonly startingVehiclesCountGetter: () => number
         readonly simulationSpeedMultiplerGetter: () => number
     }
 

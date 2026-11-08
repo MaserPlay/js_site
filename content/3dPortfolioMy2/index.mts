@@ -6,9 +6,9 @@ import * as NOTIFICATIONS from "./notification.mjs"
 import * as DEBUG from "./debug.mjs"
 
 const modules: Array<() => Promise<ViewerModule>> = [
+    async () => await import('./debug.mjs'),
     async () => await import('./scene.mjs'),
     async () => await import('./camera.mjs'),
-    async () => import('./debug.mjs')
 ];
 
 export class ViewerEvent extends Event {
@@ -38,6 +38,7 @@ export interface Viewer {
 
 export class Viewer extends EventTarget {
     private context!: RenderContext;
+    private renders: Renderer[] = []
 
     constructor(setupData: ViewerSetupData) {
         super();
@@ -69,13 +70,13 @@ export class Viewer extends EventTarget {
             scene.add(sunlight)
             scene.add( sky );
 
-            renderer.setSize(window.innerWidth, window.innerHeight);
+            this.addRenderer(renderer);
             window.addEventListener('resize', async () => {
                 this.dispatchEvent(new ViewerEvent("resize"))
 
                 const width = window.innerWidth;
                 const height = window.innerHeight;
-                context.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renders.forEach(r => r.setSize(window.innerWidth, window.innerHeight))
 
                 context.camera.aspect = width / height;
                 context.camera.updateProjectionMatrix();
@@ -94,16 +95,20 @@ export class Viewer extends EventTarget {
                 timer.update(time);
                 const realDelta = timer.getDelta()
                 const modificatedDelta = realDelta * setupData.simulationSpeedMultiplerGetter()
-                this.context.sky.material.uniforms[ 'time' ].value += modificatedDelta;
+                context.sky.material.uniforms[ 'time' ].value += modificatedDelta;
 
                 this.dispatchEvent(new ViewerLoopEvent(
                     "loop", 
                     timer.getDelta() * setupData.simulationSpeedMultiplerGetter()
                 ))
-                renderer.render(scene, camera);
                 controls.update();
+                this.renders.forEach(r => r.render(scene, camera));
             });
         })().catch(NOTIFICATIONS.error);
+    }
+    addRenderer(renderer: Renderer) {
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        this.renders.push(renderer)
     }
     getContext() {
         return this.context
@@ -114,5 +119,6 @@ NOTIFICATIONS.addExecptionListeners()
 export const viewer = new Viewer({
     canvasSelector: "#canvas", 
     initialCityPackUrl: "/content/3dPortfolioMy2/exports/actors-runtime-candidate-v06",
-    simulationSpeedMultiplerGetter: DEBUG.getSimulationSpeed
+    simulationSpeedMultiplerGetter: DEBUG.getSimulationSpeed,
+    startingVehiclesCountGetter: DEBUG.getStartingVehiclesCount
 })

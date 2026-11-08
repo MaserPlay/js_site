@@ -24,7 +24,7 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
 
     private edge: RoadEdge
     private currentPoint: number = 0
-    private travelledPath: number = 0
+    private _travelledPath: number = 0
 
     public outsideTimer = 10
 
@@ -45,9 +45,15 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
         
         this.rotateByPath(1)
     }
+    get edgeId(): Readonly<string> {
+        return this.edge.id
+    }
+    get travelledPath(): Readonly<number> {
+        return this._travelledPath
+    }
     update(delta: DeltaTime) {
         if (this.getDistanceTo() > 0) {
-            this.travelledPath += delta * this.setupData.speed
+            this._travelledPath += delta * this.setupData.speed
         }
 
         this.rotateByPath(delta)
@@ -93,7 +99,7 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
 
         if (fraction > 1) {
             this.currentPoint++
-            this.travelledPath -= segmentLength;
+            this._travelledPath -= segmentLength;
             if (this.currentPoint >= this.edge.points.length - 1) {
                 if (!this.findNextedge()) {
                     return;
@@ -103,6 +109,7 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
         }
     }
     private findNextedge(): boolean {
+        const fromEdgeId = this.edgeId
         const nextEdges = this.network.getOutgoingEdges(this.edge.to)
         if (nextEdges.length == 0) {
             this.manager.removeVehicle(this)
@@ -111,11 +118,13 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
         
         if (nextEdges.length > 1) {
             this.edge = getRandom(nextEdges)
+            this.followCar = this.network.getFarVehicleByEdge(this.edgeId)
         } else {
             this.edge = nextEdges[0]
         }
         
         this.currentPoint = 0
+        this.network.swapEdge(fromEdgeId, this.edgeId, this)
         return true;
     }
     private calcStartEndEdgePos() {
