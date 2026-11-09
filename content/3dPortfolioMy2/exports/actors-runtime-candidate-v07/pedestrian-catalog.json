@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "kind": "city-pedestrian-catalog",
+  "exportId": "actors-runtime-candidate-v07",
+  "coordinates": {
+    "units": "metres",
+    "up": "+Y",
+    "forward": "+Z",
+    "space": "rig-local"
+  },
+  "cloneScope": "complete-rig-subtree",
+  "models": [
+    {
+      "id": "city-people.amara.default.high",
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010",
+      "nodeId": "city-people.rig.v1",
+      "meshNodeId": "city-people.amara.default.high",
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "basisRotation": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "origin": "rig-root",
+      "footprint": {
+        "halfLengthMetres": 0.41848012804985046,
+        "halfWidthMetres": 0.262712299823761,
+        "heightMetres": 1.6319220948498696,
+        "centerOffset": [
+          -0.000567018985748291,
+          0.8152880227426067,
+          0.006443411111831665
+        ]
+      },
+      "animations": {
+        "walk": "Walk",
+        "idle": "Idle"
+      }
+    },
+    {
+      "id": "city-people.daniel.tint0.high",
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010",
+      "nodeId": "city-people.rig.v1",
+      "meshNodeId": "city-people.daniel.tint0.high",
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "basisRotation": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "origin": "rig-root",
+      "footprint": {
+        "halfLengthMetres": 0.4290141612291336,
+        "halfWidthMetres": 0.3412081301212311,
+        "heightMetres": 1.743558461574139,
+        "centerOffset": [
+          0.0003395974636077881,
+          0.8715625727636507,
+          0.036923959851264954
+        ]
+      },
+      "animations": {
+        "walk": "Walk",
+        "idle": "Idle"
+      }
+    },
+    {
+      "id": "city-people.daniel.tint1.high",
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010",
+      "nodeId": "city-people.rig.v1",
+      "meshNodeId": "city-people.daniel.tint1.high",
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "basisRotation": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "origin": "rig-root",
+      "footprint": {
+        "halfLengthMetres": 0.4290141612291336,
+        "halfWidthMetres": 0.3412081301212311,
+        "heightMetres": 1.743558461574139,
+        "centerOffset": [
+          0.0003395974636077881,
+          0.8715625727636507,
+          0.036923959851264954
+        ]
+      },
+      "animations": {
+        "walk": "Walk",
+        "idle": "Idle"
+      }
+    },
+    {
+      "id": "city-people.daniel.tint2.high",
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010",
+      "nodeId": "city-people.rig.v1",
+      "meshNodeId": "city-people.daniel.tint2.high",
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "basisRotation": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "origin": "rig-root",
+      "footprint": {
+        "halfLengthMetres": 0.4290141612291336,
+        "halfWidthMetres": 0.3412081301212311,
+        "heightMetres": 1.743558461574139,
+        "centerOffset": [
+          0.0003395974636077881,
+          0.8715625727636507,
+          0.036923959851264954
+        ]
+      },
+      "animations": {
+        "walk": "Walk",
+        "idle": "Idle"
+      }
+    }
+  ],
+  "idleQuality": "held neutral pose; no breathing",
+  "footprintSpace": "after basisRotation, relative to the unchanged rig origin"
+}

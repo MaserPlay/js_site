@@ -21,7 +21,7 @@ declare global {
         readonly canvasSelector: string;
         readonly initialCityPackUrl: string;
         readonly startingVehiclesCountGetter: () => number
-        readonly simulationSpeedMultiplerGetter: () => number
+        readonly simulationSpeedModificator: (DeltaTime) => DeltaTime
     }
 
     interface ViewerModule {

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "lensesOffAndIndependent": 48,
+  "vehicleFinishes": 7,
+  "roadRecordsAndZonePreserved": true,
+  "cameraArea": {
+    "id": "camera.portfolio.pan",
+    "min": [
+      -12.0,
+      2.0,
+      -110.0
+    ],
+    "max": [
+      12.0,
+      2.0,
+      -20.0
+    ]
+  },
+  "browserAcceptance": "pending"
+}

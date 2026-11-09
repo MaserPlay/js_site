@@ -1,0 +1,33 @@
+{
+  "sourceSha256": "0cdf0b62bb226ddbe60baef82bbfd9747d706417deecd56f648a6f7875ad2990",
+  "removedOverlayObjects": 16,
+  "asphaltOffsetBeforeMetres": 0.006,
+  "stripeInteriorChecks": 240,
+  "gapChecks": 42,
+  "paintedTexels": 5891,
+  "atlasSize": [
+    4096,
+    1024
+  ],
+  "ok": true,
+  "removedGLBNodes": [
+    "Y55 zebra 49.5 0",
+    "Y55 zebra 49.5 1",
+    "Y55 zebra 49.5 2",
+    "Y55 zebra 49.5 3",
+    "Y55 zebra 49.5 4",
+    "Y55 zebra 49.5 5",
+    "Y55 zebra 49.5 6",
+    "Y55 zebra 49.5 7",
+    "Y55 zebra 60.5 0",
+    "Y55 zebra 60.5 1",
+    "Y55 zebra 60.5 2",
+    "Y55 zebra 60.5 3",
+    "Y55 zebra 60.5 4",
+    "Y55 zebra 60.5 5",
+    "Y55 zebra 60.5 6",
+    "Y55 zebra 60.5 7"
+  ],
+  "roadAndSceneBindingsVerified": true,
+  "browserAcceptance": "pending"
+}

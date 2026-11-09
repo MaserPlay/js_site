@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "kind": "vehicle-placement-preset",
+  "exportId": "actors-runtime-candidate-v07",
+  "optional": true,
+  "status": "legacy-example-not-runtime-verified",
+  "vehicles": [
+    {
+      "id": "actor.vehicle.avenue.01.spawn",
+      "modelId": "vehicle.van.teal.v1",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "distanceAlongMetres": 0.24999999750184618
+    },
+    {
+      "id": "actor.vehicle.avenue.02.spawn",
+      "modelId": "vehicle.roadster.red.v1",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "distanceAlongMetres": 6.250000027946857
+    },
+    {
+      "id": "actor.vehicle.avenue.03.spawn",
+      "modelId": "vehicle.police.white.v1",
+      "edgeId": "edge.avenue.vehicle.north.2",
+      "distanceAlongMetres": 18.2499999882026
+    },
+    {
+      "id": "actor.vehicle.avenue.04.spawn",
+      "modelId": "vehicle.sedan.nordic-burgundy.v1",
+      "edgeId": "edge.city.avenue.north.after55",
+      "distanceAlongMetres": 2.000000018923992
+    },
+    {
+      "id": "actor.vehicle.avenue.05.spawn",
+      "modelId": "vehicle.sedan.electric-silver.v1",
+      "edgeId": "edge.avenue.vehicle.north.4",
+      "distanceAlongMetres": 0.24997625739728355
+    },
+    {
+      "id": "actor.vehicle.avenue.06.spawn",
+      "modelId": "vehicle.suv.classic-olive.v1",
+      "edgeId": "edge.avenue.vehicle.north.4",
+      "distanceAlongMetres": 6.249406434932089
+    },
+    {
+      "id": "actor.vehicle.avenue.07.spawn",
+      "modelId": "vehicle.ambulance.white.v1",
+      "edgeId": "edge.city.avenue.south.after55",
+      "distanceAlongMetres": 20.99999994072525
+    },
+    {
+      "id": "actor.vehicle.avenue.08.spawn",
+      "modelId": "vehicle.van.teal.v1",
+      "edgeId": "edge.city.avenue.south.after55",
+      "distanceAlongMetres": 14.49999992106339
+    },
+    {
+      "id": "actor.vehicle.avenue.09.spawn",
+      "modelId": "vehicle.roadster.red.v1",
+      "edgeId": "edge.city.avenue.south.after55",
+      "distanceAlongMetres": 3.999999977663195
+    },
+    {
+      "id": "actor.vehicle.avenue.10.spawn",
+      "modelId": "vehicle.police.white.v1",
+      "edgeId": "edge.avenue.vehicle.south.2",
+      "distanceAlongMetres": 10.75000010000749
+    },
+    {
+      "id": "actor.vehicle.avenue.11.spawn",
+      "modelId": "vehicle.sedan.nordic-burgundy.v1",
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "distanceAlongMetres": 6.999443352504256
+    },
+    {
+      "id": "actor.vehicle.avenue.12.spawn",
+      "modelId": "vehicle.sedan.electric-silver.v1",
+      "edgeId": "edge.avenue.vehicle.south.0",
+      "distanceAlongMetres": 1.0000131597856634
+    }
+  ]
+}

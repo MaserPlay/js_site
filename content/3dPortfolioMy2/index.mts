@@ -94,12 +94,12 @@ export class Viewer extends EventTarget {
             renderer.setAnimationLoop((time: DOMHighResTimeStamp, frame: XRFrame) => {
                 timer.update(time);
                 const realDelta = timer.getDelta()
-                const modificatedDelta = realDelta * setupData.simulationSpeedMultiplerGetter()
+                const modificatedDelta = setupData.simulationSpeedModificator(realDelta)
                 context.sky.material.uniforms[ 'time' ].value += modificatedDelta;
 
                 this.dispatchEvent(new ViewerLoopEvent(
                     "loop", 
-                    timer.getDelta() * setupData.simulationSpeedMultiplerGetter()
+                    modificatedDelta
                 ))
                 controls.update();
                 this.renders.forEach(r => r.render(scene, camera));
@@ -118,7 +118,7 @@ export class Viewer extends EventTarget {
 NOTIFICATIONS.addExecptionListeners()
 export const viewer = new Viewer({
     canvasSelector: "#canvas", 
-    initialCityPackUrl: "/content/3dPortfolioMy2/exports/actors-runtime-candidate-v06",
-    simulationSpeedMultiplerGetter: DEBUG.getSimulationSpeed,
+    initialCityPackUrl: "/content/3dPortfolioMy2/exports/actors-runtime-candidate-v07",
+    simulationSpeedModificator: DEBUG.modificateDelta,
     startingVehiclesCountGetter: DEBUG.getStartingVehiclesCount
 })

@@ -50,8 +50,9 @@ export class RoadNetwork {
     getVehiclesByEdgeId(edgeId: string) {
         return this.vehiclesOnEdges.get(edgeId)!
     }
-    getFarVehicleByEdge(edgeId: string) {
-        return this.getVehiclesByEdgeId(edgeId).sort((a,b) => Number(a.travelledPath > b.travelledPath))[0]
+    getFarVehicleByEdge(edgeId: string): VehicleActor | undefined {
+        const vehicles = this.getVehiclesByEdgeId(edgeId);
+        return vehicles[vehicles.length - 1];
     }
 
     spawnVehicleActor(edgeId: string, self: VehicleActor) {

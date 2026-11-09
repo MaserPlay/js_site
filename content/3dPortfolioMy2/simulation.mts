@@ -63,7 +63,11 @@ export class RoadSimulationManager {
                 ...getRandom(this.vehicleSetupDatas()),
                 startingEdge: startEdgeId
             })
-            vehicle.followCar = this.SContext().network.getFarVehicleByEdge(startEdgeId)
+            const followCar : VehicleActor | undefined = this.SContext().network.getFarVehicleByEdge(startEdgeId)
+            if (followCar) {
+                vehicle.followCar = followCar
+                followCar.backCar = vehicle
+            }
             vehicle.name = String(i)
             this.addVehicle(startEdgeId, vehicle)
         }
@@ -94,12 +98,17 @@ export class RoadSimulationManager {
     }
     
     onVehicleRemoved(delVehicle: VehicleActor) {
+        delVehicle.detachFromLane();
         const startEdgeId = getRandom(this.entries).edgeId
         const vehicle = this.createVehicle({
             ...getRandom(this.vehicleSetupDatas()),
             startingEdge: startEdgeId
         })
-        vehicle.followCar = this.SContext().network.getFarVehicleByEdge(startEdgeId)
+        const followCar : VehicleActor | undefined = this.SContext().network.getFarVehicleByEdge(startEdgeId)
+        if (followCar) {
+            vehicle.followCar = followCar
+            followCar.backCar = vehicle
+        }
         vehicle.name = delVehicle.name
         this.addVehicle(startEdgeId, vehicle)
     }

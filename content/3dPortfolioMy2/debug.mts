@@ -8,22 +8,25 @@ const elements = {
     debug_fps: $<HTMLElement>("#debug-fps")[0]!,
     simulation_speed: $<HTMLInputElement>("#simulation-speed")[0]!,
     starting_vehicles_count: $<HTMLInputElement>("#starting-vehicles-count")[0]!,
-    starting_vehicles_count_out: $<HTMLOutputElement>("output[for=\"starting-vehicles-count\"]")[0]!
+    starting_vehicles_count_out: $<HTMLOutputElement>("output[for=\"starting-vehicles-count\"]")[0]!,
+    simulation_pause: $<HTMLButtonElement>("#simulation-pause")[0]!,
+    debug_markers: $<HTMLInputElement>("#debug-labels")[0]!
 }
 
 const debugContext = {
     simulation_speed: 1,
     starting_vehicles_count: 1,
+    simulationEnabled: true,
     debugRenderer: new CSS2DRenderer(),
     textMarkPool: Array<CSS2DObject>(0) 
 }
 
 function setDeltaTime(delta:DeltaTime) {
-    elements.debug_fps.textContent = ((1 / delta) * getSimulationSpeed()).toFixed(3);
+    elements.debug_fps.textContent = (1 / delta).toFixed(3);
 }
 
-export function getSimulationSpeed() {
-    return debugContext.simulation_speed
+export function modificateDelta(delta:DeltaTime) {
+    return debugContext.simulation_speed * delta * Number(debugContext.simulationEnabled)
 }
 
 export function getStartingVehiclesCount() {
@@ -40,6 +43,12 @@ export function setup(viewer:Viewer) {
     elements.starting_vehicles_count.addEventListener("input", () => {
         localStorage.setItem("starting_vehicles_count", elements.starting_vehicles_count.value)
         location.reload()
+    })
+    elements.simulation_pause.addEventListener("click", () => {
+        debugContext.simulationEnabled = !debugContext.simulationEnabled
+    })
+    elements.debug_markers.addEventListener("change", () => {
+        debugContext.debugRenderer.domElement.hidden = !elements.debug_markers.checked;
     })
     viewer.addEventListener("loop", (e : ViewerLoopEvent) => setDeltaTime(e.delta));
 
@@ -77,10 +86,14 @@ export function setup(viewer:Viewer) {
 export function loop(delta: DeltaTime, sContext: SceneContext) {
     for (let i = 0; i < Math.min(debugContext.textMarkPool.length, sContext.actors.length); i++) {
         const markPos = debugContext.textMarkPool[i].position
-        const actor : VehicleActor = sContext.actors[i]
-        markPos.copy(actor.position)
-        markPos.y += 3
-        debugContext.textMarkPool[i].element.textContent = "name: " + actor.name + "\n"
-        debugContext.textMarkPool[i].element.textContent += "followCar: " + actor.followCar?.name + "\n"
+        const markElement = debugContext.textMarkPool[i].element
+        const actor = sContext.actors[i]
+        if (actor instanceof VehicleActor) {
+            markPos.copy(actor.position)
+            markPos.y += 3
+            markElement.textContent = "name: " + actor.name + "\n"
+            markElement.textContent += "followCar: " + actor.followCar?.name + "\n"
+            markElement.textContent += "backCar: " + actor.backCar?.name + "\n"
+        }
     }
 }

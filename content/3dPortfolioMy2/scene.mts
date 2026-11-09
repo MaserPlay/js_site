@@ -11,7 +11,10 @@ import { Sky } from 'three/addons/objects/Sky.js';
 
 let SContext : SceneContext
 
-const vehicleSettings: Record<string, SummonVehicleSetupData> = {}
+const vehicleSettings: Record<string, SummonVehicleSetupData> = {
+    'vehicle.ambulance.white.v1': { speed: 6, rotatingSpeed: 8 },
+    'vehicle.roadster.red.v1': { speed: 12, rotatingSpeed: 8 },
+}
 
 const defaultVehicleSetting: SummonVehicleSetupData = {speed: 15, rotatingSpeed: 8}
 

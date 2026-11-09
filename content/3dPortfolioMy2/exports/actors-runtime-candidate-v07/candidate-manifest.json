@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "city-actors-runtime-candidate",
+  "exportId": "actors-runtime-candidate-v07",
+  "status": "candidate",
+  "geometryCompression": "none",
+  "assets": {
+    "city.glb": {
+      "url": "city.glb",
+      "sha256": "ae3fe0078efe2416123c5ca2cf0985155634f27dd63f7a0286729443fc0002a9"
+    },
+    "scene.json": {
+      "url": "scene.json",
+      "sha256": "319aaf520624d1b7122af3c172d81d6093d9419c88a159670a087433a3c3a351"
+    },
+    "road-network.json": {
+      "url": "road-network.json",
+      "sha256": "60506623eb3d605e5c3e91c6e888bf9780c558bc4f913c8e047f7bed873ca59a"
+    },
+    "vehicle-catalog.json": {
+      "url": "vehicle-catalog.json",
+      "sha256": "44c975b9f4412e309b98a95b175b7ab9c3aaf5f6f4045120660f4a2854a6d32b"
+    },
+    "demo-vehicles.json": {
+      "url": "demo-vehicles.json",
+      "sha256": "df95ddda82fcd5c0fc580483567deb2aeb9e06b81cc6ba0c07c8e658d32370d3"
+    },
+    "legacy-vehicle-map.json": {
+      "url": "legacy-vehicle-map.json",
+      "sha256": "b14353ee9afaef7db5224f434a4444a8172a35997112f15629197229b08d01cd"
+    },
+    "vehicles.glb": {
+      "url": "vehicles.glb",
+      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+    },
+    "pedestrians.glb": {
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010"
+    },
+    "pedestrian-catalog.json": {
+      "url": "pedestrian-catalog.json",
+      "sha256": "1598f40c3587b4a74cd04ecb18467e4aec54cbfe7e5254508aaf20a8cbbc7123"
+    },
+    "demo-pedestrians.json": {
+      "url": "demo-pedestrians.json",
+      "sha256": "3109f2add5f5a5dd2029edecf2efe00b213970f2479f690fc131d66778831873"
+    },
+    "ATTRIBUTION_people.md": {
+      "url": "ATTRIBUTION_people.md",
+      "sha256": "d4f7bd860a11fbf1da173e835a3e4ef3efd54b47fa89ba7aa4fa730fade822b1"
+    },
+    "simulation-zones.json": {
+      "url": "simulation-zones.json",
+      "sha256": "4ec54b6af2be43055744101b642391a75525727a35e690d9f05395526351e2ee"
+    },
+    "path-simplification-report.json": {
+      "url": "path-simplification-report.json",
+      "sha256": "0beff6d48f2fb4099cc2004e497089b577c8c98e879db55cdd984b4f147b2424"
+    },
+    "camera-area.json": {
+      "url": "camera-area.json",
+      "sha256": "3108aadf33d003a6c1701337a628525f6cbcab0679c126c9e2378d6692812b54"
+    },
+    "city-polish-verification.json": {
+      "url": "city-polish-verification.json",
+      "sha256": "f48d17ce1c7df6aa76c4feb9ab03f2eb9cc5c056a4856af4046cdb8d5e507fdf"
+    },
+    "README.md": {
+      "url": "README.md",
+      "sha256": "99c861b7a1178afb781ee675791964ea7f83425db6555a3b1a9aafd6f3c1d596"
+    }
+  },
+  "derivedFrom": {
+    "exportId": "actors-runtime-candidate-v07-raw",
+    "manifestSha256": "e2327cbdb279928b0aec04e39535abe65dbbab18822acc813ab9c0bbe2696955"
+  }
+}
