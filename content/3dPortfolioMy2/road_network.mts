@@ -1,21 +1,35 @@
 import { fetchJson } from "./utils.mjs";
-import { VehicleActor } from "./vehicle.mjs";
+import type { VehicleActor } from "./vehicle.mjs";
 
 export class RoadNetwork {
     private readonly edgesById = new Map<string, RoadEdge>();
     private readonly outgoingByNode = new Map<string, RoadEdge[]>();
-    private readonly edgeControlls = new Map<string, RoadSignalControl>();
+    private readonly signalControlsByEdge = new Map<string, RoadSignalControl[]>();
+    private readonly lengthsByEdge = new Map<string, number>();
     
     private readonly vehiclesOnEdges = new Map<string, VehicleActor[]>();
 
     private constructor(
-        roadNetworkData: RoadNetworkData
+        readonly data: RoadNetworkData
     ) {
-        for (const controll of roadNetworkData.controls) {
-            this.edgeControlls.set(controll.edgeId, controll);
+        for (const control of data.controls) {
+            let controls = this.signalControlsByEdge.get(control.edgeId);
+            if (!controls) {
+                controls = [];
+                this.signalControlsByEdge.set(control.edgeId, controls);
+            }
+            controls.push(control);
         }
-        for (const edge of roadNetworkData.edges) {
+        for (const edge of data.edges) {
             this.edgesById.set(edge.id, edge);
+
+            let length = 0;
+            for (let i = 1; i < edge.points.length; i++) {
+                const [ax, ay, az] = edge.points[i - 1];
+                const [bx, by, bz] = edge.points[i];
+                length += Math.hypot(bx - ax, by - ay, bz - az);
+            }
+            this.lengthsByEdge.set(edge.id, length);
 
             let outgoing = this.outgoingByNode.get(edge.from);
 
@@ -43,8 +57,18 @@ export class RoadNetwork {
         return this.outgoingByNode.get(nodeId) ?? [];
     }
 
-    getRoadController(edgeId: string) {
-        return this.edgeControlls.get(edgeId);
+    getSignalControls(edgeId: string): readonly RoadSignalControl[] {
+        return this.signalControlsByEdge.get(edgeId) ?? [];
+    }
+
+    getRoadController(edgeId: string): RoadSignalControl | undefined {
+        return this.getSignalControls(edgeId).at(-1);
+    }
+
+    getEdgeLength(edgeId: string): number {
+        const length = this.lengthsByEdge.get(edgeId);
+        if (length === undefined) throw new Error(`Unknown road edge: ${edgeId}`);
+        return length;
     }
 
     getVehiclesByEdgeId(edgeId: string) {

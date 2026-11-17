@@ -25,6 +25,7 @@ function VehicleSetupDatas() : VehicleSetupDataWithoutStartingEdge[] {
 }
 
 async function loop(delta: DeltaTime, sContext: SceneContext) {
+    sContext.roadManager.updateControllers(delta)
     sContext.actors.forEach(a => a.update(delta))
     sContext.roadManager.update(delta)
     DEBUG.loop(delta, sContext)
@@ -76,7 +77,7 @@ export async function setup(viewer:Viewer, setup:ViewerSetupData) {
     rContext.sky.material.uniforms[ 'cloudDensity' ].value = .1
     
 
-    SContext.roadManager.setup(setup)
+    SContext.roadManager.setup(setup, gltf.scene)
 
     rContext.sunlight.intensity = 1
 

@@ -7,6 +7,7 @@ interface RoadNetworkData {
     signalGroups: RoadSignalGroup[];
     signalHeads: RoadSignalHead[];
     junctions: RoadJunction[];
+    approaches?: RoadApproach[];
 }
 
 interface RoadNode {
@@ -32,7 +33,7 @@ interface RoadSignalControl {
     distanceAlongMetres: number;
 
     signalGroupId: string;
-    stopLineId: string;
+    stopLineId?: string;
 }
 
 interface RoadStopLine {
@@ -76,4 +77,12 @@ interface RoadJunction {
     // Пары участков, движение по которым конфликтует.
     conflicts: [string, string][];
     conflictsReviewed: boolean;
+}
+interface RoadApproach {
+    id: string;
+    junctionId: string;
+    incomingEdgeId: string;
+    movementEdgeIds: string[];
+    signalGroupId: string;
+    stopLineId: string;
 }

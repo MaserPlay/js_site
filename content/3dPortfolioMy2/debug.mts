@@ -61,7 +61,7 @@ export function setup(viewer:Viewer) {
     debugContext.textMarkPool = Array(debugContext.starting_vehicles_count).fill(() => {
         const css2dObj = new CSS2DObject(document.createElement('div'))
         css2dObj.element.className = 'badge bg-dark text-white';
-        css2dObj.element.textContent = "text"
+        css2dObj.visible = false;
         css2dObj.element.style.whiteSpace = 'pre-line';
         return css2dObj
     }).map(f => f())
@@ -83,17 +83,29 @@ export function setup(viewer:Viewer) {
     viewer.addRenderer(debugContext.debugRenderer)
 }
 
-export function loop(delta: DeltaTime, sContext: SceneContext) {
-    for (let i = 0; i < Math.min(debugContext.textMarkPool.length, sContext.actors.length); i++) {
-        const markPos = debugContext.textMarkPool[i].position
-        const markElement = debugContext.textMarkPool[i].element
-        const actor = sContext.actors[i]
-        if (actor instanceof VehicleActor) {
-            markPos.copy(actor.position)
-            markPos.y += 3
-            markElement.textContent = "name: " + actor.name + "\n"
-            markElement.textContent += "followCar: " + actor.followCar?.name + "\n"
-            markElement.textContent += "backCar: " + actor.backCar?.name + "\n"
+export function loop(_delta: DeltaTime, sContext: SceneContext): void {
+    const { textMarkPool } = debugContext;
+
+    for (let i = 0; i < textMarkPool.length; i++) {
+        const mark = textMarkPool[i];
+        const actor = sContext.actors[i];
+
+        if (!(actor instanceof VehicleActor)) {
+            mark.visible = false;
+            continue;
         }
+
+        mark.position.copy(actor.position);
+        mark.position.y += 3;
+        const leader = actor.vehicleAhead;
+        const nextEdgeLabel = leader && leader.edgeId !== actor.edgeId ? ' (next edge)' : '';
+
+        mark.element.textContent = [
+            "name: " + actor.name,
+            "ahead: " + leader?.name + nextEdgeLabel,
+            "forwardCar: " + (actor.laneQueue.forwardCar?.name ?? "—"),
+            "backCar: " + (actor.laneQueue.backCar?.name ?? "—"),
+        ].join("\n");
+        mark.visible = true;
     }
 }

@@ -1,19 +1,22 @@
 import { VehicleActor, VehicleSetupData, VehicleSetupDataWithoutStartingEdge } from './vehicle.mjs';
-import { fetchJson, getRandom, randomMix, wrap } from './utils.mjs';
+import { fetchJson, getRandom, randomMix } from './utils.mjs';
 
 import * as THREE from 'three';
-import { RoadNetwork } from './road_network.mjs';
+import { JunctionController, type RoadController, type RoadFeature } from './road_controllers.mjs';
 
 
 export class RoadSimulationManager {
 
     private readonly entries: SimulationPortal[]
-    private readonly exits: SimulationPortal[]
     private readonly inside: SimulationZoneEdge[]
 
     private readonly simulationBox: THREE.Box2
 
     private readonly checkPoint = new THREE.Vector2()
+    private readonly controllers: RoadController[] = [];
+    private readonly controllersByEdge = new Map<string, RoadController[]>();
+    private readonly pendingSpawns: string[] = [];
+    private spawnRetryElapsed = 0;
 
     private constructor(
         data: SimulationZonesData,
@@ -26,7 +29,6 @@ export class RoadSimulationManager {
         )!;
 
         this.entries = zone.portals.filter(p => p.direction === 'entry');
-        this.exits = zone.portals.filter(p => p.direction === 'exit');
         this.inside = zone.edgeIntervals.filter(
             edge => edge.mode === 'vehicle'
         );
@@ -55,23 +57,57 @@ export class RoadSimulationManager {
         )
     }
 
-    setup(setup:ViewerSetupData) {
-        const spawnEdgesArray = randomMix(this.inside)
-        for (let i = 0; i < setup.startingVehiclesCountGetter(); i++) {
-            const startEdgeId = spawnEdgesArray[wrap(i, 0, spawnEdgesArray.length - 1)].edgeId
+    setup(setup: ViewerSetupData, city: THREE.Object3D): void {
+        const { network } = this.SContext();
+        const objects = new Map<string, THREE.Object3D>();
+
+        city.traverse(object => {
+            const id = object.userData.web_id;
+            if (typeof id === 'string') objects.set(id, object);
+        });
+
+        const crossingEdges = new Set<string>();
+        for (const junction of network.data.junctions) {
+            this.addController(new JunctionController(junction, network, objects));
+            for (const edgeId of junction.movementEdgeIds) crossingEdges.add(edgeId);
+        }
+
+        const spawnEdges = randomMix(this.inside.filter(edge => !crossingEdges.has(edge.edgeId)));
+        const vehicleModels = this.vehicleSetupDatas();
+        if (!spawnEdges.length || !vehicleModels.length) return;
+
+        const count = setup.startingVehiclesCountGetter();
+        for (let i = 0; i < count; i++) {
+            const startEdgeId = spawnEdges[i % spawnEdges.length].edgeId;
             const vehicle = this.createVehicle({
-                ...getRandom(this.vehicleSetupDatas()),
-                startingEdge: startEdgeId
-            })
-            const followCar : VehicleActor | undefined = this.SContext().network.getFarVehicleByEdge(startEdgeId)
-            if (followCar) {
-                vehicle.followCar = followCar
-                followCar.backCar = vehicle
-            }
-            vehicle.name = String(i)
-            this.addVehicle(startEdgeId, vehicle)
+                ...getRandom(vehicleModels),
+                startingEdge: startEdgeId,
+            });
+            vehicle.name = String(i);
+
+            if (!this.addVehicle(startEdgeId, vehicle)) this.pendingSpawns.push(vehicle.name);
         }
     }
+
+    addController(controller: RoadController): void {
+        this.controllers.push(controller);
+
+        for (const edgeId of controller.approachEdgeIds) {
+            const controllers = this.controllersByEdge.get(edgeId) ?? [];
+            controllers.push(controller);
+            this.controllersByEdge.set(edgeId, controllers);
+        }
+    }
+
+    updateControllers(delta: DeltaTime): void {
+        for (const controller of this.controllers) controller.update(delta);
+    }
+
+    getRoadFeatures(vehicle: VehicleActor, maxStepMetres: number): RoadFeature[] {
+        const controllers = this.controllersByEdge.get(vehicle.edgeId);
+        return controllers?.flatMap(controller => controller.getFeatures(vehicle, maxStepMetres)) ?? [];
+    }
+
     update(delta: DeltaTime) {
         const actors = this.SContext().actors;
 
@@ -91,49 +127,91 @@ export class RoadSimulationManager {
                 }
             }
         }
+
+        this.retrySpawn(delta);
     }
 
     onVehicleAdded(_vehicle: VehicleActor) {
 
     }
     
-    onVehicleRemoved(delVehicle: VehicleActor) {
-        delVehicle.detachFromLane();
-        const startEdgeId = getRandom(this.entries).edgeId
-        const vehicle = this.createVehicle({
-            ...getRandom(this.vehicleSetupDatas()),
-            startingEdge: startEdgeId
-        })
-        const followCar : VehicleActor | undefined = this.SContext().network.getFarVehicleByEdge(startEdgeId)
-        if (followCar) {
-            vehicle.followCar = followCar
-            followCar.backCar = vehicle
-        }
-        vehicle.name = delVehicle.name
-        this.addVehicle(startEdgeId, vehicle)
+    onVehicleRemoved(vehicle: VehicleActor): void {
+        for (const controller of this.controllers) controller.releaseVehicle?.(vehicle);
+        this.pendingSpawns.push(vehicle.name);
     }
-    
+
+    private retrySpawn(delta: DeltaTime): void {
+        if (delta <= 0 || !this.pendingSpawns.length || !this.entries.length) return;
+
+        this.spawnRetryElapsed += delta;
+        if (this.spawnRetryElapsed < 0.25) return;
+        this.spawnRetryElapsed = 0;
+
+        const models = this.vehicleSetupDatas();
+        if (!models.length) return;
+
+        const startEdgeId = getRandom(this.entries).edgeId;
+        const vehicle = this.createVehicle({ ...getRandom(models), startingEdge: startEdgeId });
+        vehicle.name = this.pendingSpawns[0];
+
+        if (this.addVehicle(startEdgeId, vehicle)) this.pendingSpawns.shift();
+    }
+
     createVehicle(setupData: VehicleSetupData) {
         return new VehicleActor(setupData, this.SContext().network, this)
     }
 
-    addVehicle(startEdgeId: string, actor: VehicleActor) {
+    addVehicle(startEdgeId: string, actor: VehicleActor): boolean {
+        const { actors, network } = this.SContext();
+        const spawnBox = actor.getUpdateboudingBox().clone().expandByScalar(0.5);
 
-        this.rContext.scene.add(actor.setupData.model)
-        
-        this.SContext().actors.push(actor)
+        const occupied = actors.some(other =>
+            other instanceof VehicleActor && spawnBox.intersectsBox(other.getUpdateboudingBox()),
+        );
+        if (occupied) return false;
 
-        this.SContext().network.spawnVehicleActor(startEdgeId, actor)
-        
-        this.onVehicleAdded(actor)
+        const tail = network.getFarVehicleByEdge(startEdgeId);
+        network.spawnVehicleActor(startEdgeId, actor);
+        this.appendToLaneQueue(actor, tail);
+        this.rContext.scene.add(actor.setupData.model);
+        actors.push(actor);
+        this.onVehicleAdded(actor);
+        return true;
     }
+    moveVehicleToEdge(actor: VehicleActor, nextEdgeId: string): void {
+        const { network } = this.SContext();
+        const vehicles = network.getVehiclesByEdgeId(nextEdgeId);
+        // A self-loop can make the moving actor the current tail of its destination.
+        const tail = vehicles.at(-1) === actor ? vehicles.at(-2) : vehicles.at(-1);
+
+        network.swapEdge(actor.edgeId, nextEdgeId, actor);
+        this.removeFromLaneQueue(actor);
+        this.appendToLaneQueue(actor, tail);
+    }
+
+    private appendToLaneQueue(actor: VehicleActor, tail: VehicleActor | undefined): void {
+        actor.laneQueue.forwardCar = tail;
+        if (tail) tail.laneQueue.backCar = actor;
+    }
+
+    private removeFromLaneQueue(actor: VehicleActor): void {
+        const { backCar, forwardCar } = actor.laneQueue;
+
+        if (backCar) backCar.laneQueue.forwardCar = forwardCar;
+        if (forwardCar) forwardCar.laneQueue.backCar = backCar;
+
+        actor.laneQueue.backCar = undefined;
+        actor.laneQueue.forwardCar = undefined;
+    }
+
     removeVehicle(actor: VehicleActor) {
         const index = this.SContext().actors.indexOf(actor);
 
         if (index !== -1) {
+            this.SContext().network.removeVehicleActor(actor);
+            this.removeFromLaneQueue(actor);
             this.SContext().actors.splice(index, 1);
-            actor.setupData.model.removeFromParent()
-            this.SContext().network.removeVehicleActor(actor)
+            actor.setupData.model.removeFromParent();
             this.onVehicleRemoved(actor)
         } else {
             console.warn("This actor not in scene")

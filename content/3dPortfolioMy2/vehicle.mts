@@ -1,5 +1,5 @@
-import { RoadNetwork } from "./road_network.mjs";
-import { RoadSimulationManager } from "./simulation.mjs";
+import type { RoadNetwork } from "./road_network.mjs";
+import type { RoadSimulationManager } from "./simulation.mjs";
 
 import * as THREE from 'three';
 import { SimulationActor, SimulationActorSetupData } from "./simulation_actor.mjs";
@@ -15,6 +15,9 @@ export type VehicleSetupDataWithoutModel = Omit<VehicleSetupData, 'model'>
 export type VehicleSetupDataWithoutStartingEdge = Omit<VehicleSetupData, 'startingEdge'>
 export type SummonVehicleSetupData = Omit<Omit<VehicleSetupDataWithoutModel, 'startingEdge'>, 'model'>
 
+// Treat negligible rounding error as reaching the segment end.
+const SEGMENT_END_TOLERANCE_METRES = 1e-8;
+
 export class VehicleActor extends SimulationActor<VehicleSetupData> {
     private readonly upAxis = new THREE.Vector3(0, 1, 0);
     private readonly targetRotation = new THREE.Quaternion();
@@ -26,11 +29,18 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
     private nextEdge?: RoadEdge
     private currentPoint: number = 0
     private _travelledPath: number = 0
+    private segmentStartMetres = 0;
+    private _totalDistanceMetres = 0;
+
+    readonly frontOverhangMetres: number;
+    readonly rearOverhangMetres: number;
+    public speed = 0;
+    public cruiseSpeed: number;
 
     public outsideTimer = 10
 
-    public followCar?: VehicleActor
-    public backCar?: VehicleActor
+    // Neighbours on the current road edge.
+    public readonly laneQueue: { forwardCar?: VehicleActor; backCar?: VehicleActor } = {};
     
     constructor(
         setupData: VehicleSetupData, 
@@ -38,6 +48,11 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
         private readonly manager: RoadSimulationManager
     ) {
         super(setupData)
+        this.cruiseSpeed = setupData.speed;
+
+        const initialBounds = this.getUpdateboudingBox();
+        this.frontOverhangMetres = Math.max(0, this.position.z - initialBounds.min.z);
+        this.rearOverhangMetres = Math.max(0, initialBounds.max.z - this.position.z);
 
         this.edge = network.getEdge(setupData.startingEdge)!;
         this.calcNextEdge()
@@ -54,33 +69,96 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
     get travelledPath(): Readonly<number> {
         return this._travelledPath
     }
-    update(delta: DeltaTime) {
-        const requestedDistance = delta * this.setupData.speed;
-        this._travelledPath += Math.min(requestedDistance, this.getDistanceTo());
+    get nextEdgeId(): string | undefined {
+        return this.nextEdge?.id;
+    }
 
+    get vehicleAhead(): VehicleActor | undefined {
+        const sameEdgeLeader = this.laneQueue.forwardCar;
+        if (sameEdgeLeader && sameEdgeLeader !== this && sameEdgeLeader.edgeId === this.edgeId) {
+            return sameEdgeLeader;
+        }
 
-        // Сначала находим отрезок, на котором заканчивается шаг.
+        if (!this.nextEdge) return undefined;
+
+        const tail = this.network.getFarVehicleByEdge(this.nextEdge.id);
+        return tail === this ? undefined : tail;
+    }
+
+    get distanceAlongEdgeMetres(): number {
+        return this.segmentStartMetres + this._travelledPath;
+    }
+
+    get totalDistanceMetres(): number {
+        return this._totalDistanceMetres;
+    }
+
+    update(delta: DeltaTime): void {
+        if (delta <= 0) return;
+
+        const cruiseSpeed = Number.isFinite(this.cruiseSpeed)
+            ? Math.max(0, this.cruiseSpeed)
+            : 0;
+        const braking = 6;
+        const acceleration = 3;
+        let targetSpeed = cruiseSpeed;
+        let availableDistance = Infinity;
+
+        const positionAlongEdge = this.distanceAlongEdgeMetres;
+        const remainingOnEdge = Math.max(0, this.network.getEdgeLength(this.edgeId) - positionAlongEdge);
+        const leader = this.vehicleAhead;
+
+        if (leader) {
+            const centreDistance = leader.edgeId === this.edgeId
+                ? leader.distanceAlongEdgeMetres - positionAlongEdge
+                : remainingOnEdge + leader.distanceAlongEdgeMetres;
+            const pathGap = centreDistance - this.frontOverhangMetres - leader.rearOverhangMetres;
+
+            // A loop can put two distant points of the route next to each other.
+            // Only use the world boxes for close following along the route.
+            const closeFollowingDistance = 2 + cruiseSpeed * delta;
+            const gap = pathGap <= closeFollowingDistance
+                ? Math.min(pathGap, boxDistance(this.getUpdateboudingBox(), leader.getUpdateboudingBox()))
+                : pathGap;
+
+            const desiredGap = 0.5 + leader.speed * 0.6;
+            targetSpeed = Math.min(targetSpeed, Math.max(0, leader.speed + (gap - desiredGap)));
+            availableDistance = Math.max(0, gap - 0.5);
+        }
+
+        const features = this.manager.getRoadFeatures(this, cruiseSpeed * delta);
+        for (const feature of features) {
+            if (feature.endMetres !== undefined && positionAlongEdge >= feature.endMetres) continue;
+
+            const distanceToStart = Math.max(0, feature.startMetres - positionAlongEdge);
+            const speedAtStart = feature.maxSpeedMps;
+            const approachSpeed = Math.sqrt(speedAtStart ** 2 + 2 * braking * distanceToStart);
+            targetSpeed = Math.min(targetSpeed, approachSpeed);
+
+            if (speedAtStart === 0 || this.speed > speedAtStart) {
+                availableDistance = Math.min(availableDistance, distanceToStart + speedAtStart * delta);
+            }
+        }
+
+        const speedChange = THREE.MathUtils.clamp(
+            targetSpeed - this.speed, -braking * delta, acceleration * delta,
+        );
+        const allowedStep = Math.min((this.speed + speedChange) * delta, availableDistance);
+        this.speed = allowedStep / delta;
+
+        // Re-evaluate rules on the new approach before travelling on it.
+        const distance = Math.min(allowedStep, remainingOnEdge);
+        if (distance === 0) return;
+
+        this._travelledPath += distance;
+        this._totalDistanceMetres += distance;
+
         if (!this.trySwitchToNextPoint()) return;
 
-        this.rotateByPath(delta)
-        this.moveByPath()        
+        this.moveByPath();
+        this.rotateByPath(delta);
     }
-    private getDistanceTo(): number {
-        // Если ведущая уже сменила edge, смотрим на выбранное продолжение.
-        const nextLaneTail = !this.followCar && this.nextEdge
-            ? this.network.getFarVehicleByEdge(this.nextEdge.id)
-            : undefined;
 
-        const leader = this.followCar ?? nextLaneTail;
-        if (!leader || leader === this) return Infinity;
-
-        const gap = boxDistance(
-            this.getUpdateboudingBox(),
-            leader.getUpdateboudingBox(),
-        );
-
-        return Math.max(0, gap - 0.5);
-    }
     private moveByPath() {
         const segmentLength = this.edgeStartPos.distanceTo(this.edgeEndPos);
         const fraction = this.travelledPath / segmentLength;
@@ -105,11 +183,12 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
         while (true) {
             const length = this.edgeStartPos.distanceTo(this.edgeEndPos);
 
-            if (this._travelledPath < length) {
+            if (this._travelledPath + SEGMENT_END_TOLERANCE_METRES < length) {
                 return true;
             }
 
-            this._travelledPath -= length;
+            this._travelledPath = Math.max(0, this._travelledPath - length);
+            this.segmentStartMetres += length;
             this.currentPoint++;
 
             if (this.currentPoint >= this.edge.points.length - 1) {
@@ -119,23 +198,11 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
             this.calcStartEndEdgePos();
         }
     }
-    detachFromLane(): void {
-        const { backCar, followCar } = this;
+    private calcNextEdge(): void {
+        const outgoing = this.network.getOutgoingEdges(this.edge.to)
+            .filter(edge => edge.mode === 'vehicle');
 
-        if (backCar) backCar.followCar = followCar;
-        if (followCar) followCar.backCar = backCar;
-
-        this.backCar = undefined;
-        this.followCar = undefined;
-    }
-
-    private calcNextEdge() {
-        const nextEdges = this.network.getOutgoingEdges(this.edge.to);
-        if (nextEdges.length == 0) {
-            this.nextEdge = nextEdges[0]
-        } else {
-            this.nextEdge = getRandom(nextEdges);
-        }
+        this.nextEdge = outgoing.length > 1 ? getRandom(outgoing) : outgoing[0];
     }
 
     private findNextedge(): boolean {
@@ -146,18 +213,10 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
             return false;
         }
 
-        const fromEdgeId = this.edgeId;
-        this.detachFromLane();
-
-        // Читаем хвост до добавления нашей машины в новый список.
-        const tail = this.network.getFarVehicleByEdge(nextEdge.id);
-        this.followCar = tail;
-
-        if (tail) tail.backCar = this;
-
-        this.network.swapEdge(fromEdgeId, nextEdge.id, this);
+        this.manager.moveVehicleToEdge(this, nextEdge.id);
         this.edge = nextEdge;
         this.currentPoint = 0;
+        this.segmentStartMetres = 0;
         
         this.calcNextEdge()
         return true;
