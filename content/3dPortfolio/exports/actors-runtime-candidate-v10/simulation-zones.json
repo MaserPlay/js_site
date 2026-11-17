@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "kind": "city-simulation-zones",
-  "exportId": "actors-runtime-candidate-v08",
-  "citySha256": "6fdb385db56b269d087ef102abd997e404dfafb66e6d1376b39ea4119cda1fea",
+  "exportId": "actors-runtime-candidate-v10",
+  "citySha256": "665d7f68b9ed8addb145ca88253d5edb5df1a7adda521abb07a77705384e195d",
   "roadNetwork": {
     "url": "road-network.json",
-    "sha256": "e4b5c909316859cc98b6ec2bb092822fc31778782624b07a4f390b989c3d9149"
+    "sha256": "634377b2595530adbf283085743311f8748a0e4ac24dddb2cd20a94bd0c4a82c"
   },
   "coordinates": {
     "units": "metres",

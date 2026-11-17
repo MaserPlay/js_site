@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "city-pedestrian-catalog",
-  "exportId": "actors-runtime-candidate-v08",
+  "exportId": "actors-runtime-candidate-v10",
   "coordinates": {
     "units": "metres",
     "up": "+Y",

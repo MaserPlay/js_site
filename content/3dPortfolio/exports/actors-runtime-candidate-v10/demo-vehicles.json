@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "vehicle-placement-preset",
-  "exportId": "actors-runtime-candidate-v08",
+  "exportId": "actors-runtime-candidate-v10",
   "optional": true,
   "status": "legacy-example-not-runtime-verified",
   "vehicles": [

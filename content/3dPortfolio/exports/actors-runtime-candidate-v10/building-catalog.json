@@ -1,0 +1,959 @@
+{
+  "schemaVersion": 1,
+  "exportId": "actors-runtime-candidate-v10",
+  "coordinates": {
+    "units": "metres",
+    "up": "+Y",
+    "space": "building-local"
+  },
+  "models": [
+    {
+      "id": "building.avenue.06",
+      "name": "QuickVox",
+      "url": "buildings/QuickVox.glb",
+      "nodeId": "building.avenue.06",
+      "sha256": "8cb28752ae9d0b37e9b5bc4bfff63391170a552bc70cceb1a3144e2c3b740693",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.06",
+          "nodeId": "point.avenue.06",
+          "buildingId": "building.avenue.06",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.06.enter",
+          "pick": {
+            "min": [
+              -7.0928826332092285,
+              -0.32000046968460083,
+              -11.60917854309082
+            ],
+            "max": [
+              7.06910514831543,
+              9.199999809265137,
+              2.6000046730041504
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.06.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.06.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.06.screenshot.03",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.06.comments.01",
+              "role": "comments-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                9.033183232531883e-07,
+                2.700000047683716,
+                -10.750000953674316
+              ],
+              [
+                2.820505380630493,
+                2.700000047683716,
+                -7.3464226722717285
+              ],
+              [
+                -2.8442866802215576,
+                2.700000047683716,
+                -7.3464202880859375
+              ],
+              [
+                2.820507526397705,
+                2.700000047683716,
+                -1.6627525091171265
+              ]
+            ],
+            "distance": 14.209175521627197
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.06.enter",
+          "pointId": "point.avenue.06",
+          "arrivalNodeId": "point.avenue.06.entrance_in.01",
+          "points": [
+            [
+              -27.712810516357422,
+              17.6200008392334,
+              12.4954252243042
+            ],
+            [
+              -27.712810516357422,
+              24.1200008392334,
+              12.4954252243042
+            ],
+            [
+              5.7220458984375e-06,
+              24.1200008392334,
+              12.495415687561035
+            ],
+            [
+              5.7220458984375e-06,
+              1.5,
+              12.495415687561035
+            ],
+            [
+              1.6383119145757519e-06,
+              1.5,
+              1.4999996423721313
+            ],
+            [
+              4.1268094719271176e-07,
+              1.5,
+              -1.8000015020370483
+            ]
+          ],
+          "lookAt": [
+            -3.3012565836543217e-07,
+            1.5,
+            -3.8000004291534424
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "quickvox",
+      "platformNodeName": "Lift deck • QuickVox"
+    },
+    {
+      "id": "building.avenue.02",
+      "name": "ArcadeGames",
+      "url": "buildings/ArcadeGames.glb",
+      "nodeId": "building.avenue.02",
+      "sha256": "7352fd4a6a39ee2e3c6349f2535a2a66c89d621f0822a967a8eec23da17d3f17",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.02",
+          "nodeId": "point.avenue.02",
+          "buildingId": "building.avenue.02",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.02.enter",
+          "pick": {
+            "min": [
+              -4.350003242492676,
+              -5.960464477539063e-08,
+              -3.800004005432129
+            ],
+            "max": [
+              4.350000381469727,
+              5.160000801086426,
+              3.9030020236968994
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.02.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.02.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.02.comments.01",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.02.comments.02",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.02.comments.03",
+              "role": "comments-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                -1.7400016784667969,
+                2.700000047683716,
+                1.5920991897583008
+              ],
+              [
+                1.7399978637695312,
+                2.700000047683716,
+                1.5921005010604858
+              ],
+              [
+                -1.7400004863739014,
+                2.700000047683716,
+                -1.4891033172607422
+              ],
+              [
+                1.7399990558624268,
+                2.700000047683716,
+                -1.4891020059585571
+              ]
+            ],
+            "distance": 10.0
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.02.enter",
+          "pointId": "point.avenue.02",
+          "arrivalNodeId": "point.avenue.02.entrance_in.01",
+          "points": [
+            [
+              27.712810516357422,
+              17.8799991607666,
+              17.051511764526367
+            ],
+            [
+              27.712810516357422,
+              24.3799991607666,
+              17.051511764526367
+            ],
+            [
+              -5.7220458984375e-06,
+              24.3799991607666,
+              17.05150032043457
+            ],
+            [
+              -5.7220458984375e-06,
+              1.5,
+              17.05150032043457
+            ],
+            [
+              -1.0975168152072001e-06,
+              1.5,
+              4.599998950958252
+            ],
+            [
+              -1.9649360183393583e-06,
+              1.5,
+              1.7999988794326782
+            ]
+          ],
+          "lookAt": [
+            -3.1294785003410652e-06,
+            1.5,
+            -0.2000001221895218
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "ArcadeGames",
+      "platformNodeName": "Lift deck • ArcadeGames"
+    },
+    {
+      "id": "building.avenue.03",
+      "name": "EscapeFromLava",
+      "url": "buildings/EscapeFromLava.glb",
+      "nodeId": "building.avenue.03",
+      "sha256": "2d5c315910a276f6928f919689b14abe14a803a7a2bf91d8fc0fea332a53448a",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.03",
+          "nodeId": "point.avenue.03",
+          "buildingId": "building.avenue.03",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.03.enter",
+          "pick": {
+            "min": [
+              -4.6999969482421875,
+              2.384185791015625e-07,
+              -4.142505645751953
+            ],
+            "max": [
+              4.700007438659668,
+              5.024430274963379,
+              4.000000476837158
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.03.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.03.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.03.comments.01",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.03.comments.02",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.03.comments.03",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.03.comments.04",
+              "role": "comments-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                1.8800055980682373,
+                2.700000047683716,
+                -1.6997538805007935
+              ],
+              [
+                -1.8799965381622314,
+                2.700000047683716,
+                -1.6997524499893188
+              ],
+              [
+                1.8800067901611328,
+                2.700000047683716,
+                1.5572479963302612
+              ],
+              [
+                -1.879995346069336,
+                2.700000047683716,
+                1.5572494268417358
+              ]
+            ],
+            "distance": 10.0
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.03.enter",
+          "pointId": "point.avenue.03",
+          "arrivalNodeId": "point.avenue.03.entrance_in.01",
+          "points": [
+            [
+              -27.712804794311523,
+              17.93000030517578,
+              16.92875862121582
+            ],
+            [
+              -27.712804794311523,
+              24.43000030517578,
+              16.92875862121582
+            ],
+            [
+              1.1444091796875e-05,
+              24.43000030517578,
+              16.928749084472656
+            ],
+            [
+              1.1444091796875e-05,
+              1.5,
+              16.928749084472656
+            ],
+            [
+              6.865152954560472e-06,
+              1.5,
+              4.5999979972839355
+            ],
+            [
+              5.9366448112996295e-06,
+              1.5,
+              2.0999979972839355
+            ]
+          ],
+          "lookAt": [
+            5.193838205741486e-06,
+            1.5,
+            0.09999808669090271
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "EscapeFromLava",
+      "platformNodeName": "Lift deck • EscapeFromLava"
+    },
+    {
+      "id": "building.avenue.01",
+      "name": "AppAi",
+      "url": "buildings/AppAi.glb",
+      "nodeId": "building.avenue.01",
+      "sha256": "cd178dd0ca2a5106ebc87bc6a9f20311d40016e3555da274653f4c962a874d4d",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.01",
+          "nodeId": "point.avenue.01",
+          "buildingId": "building.avenue.01",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.01.enter",
+          "pick": {
+            "min": [
+              -4.450007438659668,
+              -0.3999008536338806,
+              -4.220005035400391
+            ],
+            "max": [
+              4.7212910652160645,
+              5.159427642822266,
+              4.424998760223389
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.01.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.01.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.01.comments.01",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.01.screenshot.03",
+              "role": "media-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                -5.092166247777641e-06,
+                3.0,
+                -2.3482125470764004e-06
+              ],
+              [
+                -1.698617935180664,
+                2.700000047683716,
+                1.831497073173523
+              ],
+              [
+                1.969900131225586,
+                2.700000047683716,
+                1.831498384475708
+              ],
+              [
+                -1.6986167430877686,
+                2.700000047683716,
+                -1.6265040636062622
+              ]
+            ],
+            "distance": 10.0
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.01.enter",
+          "pointId": "point.avenue.01",
+          "arrivalNodeId": "point.avenue.01.entrance_in.01",
+          "points": [
+            [
+              27.712804794311523,
+              17.829999923706055,
+              17.102508544921875
+            ],
+            [
+              27.712804794311523,
+              24.329999923706055,
+              17.102508544921875
+            ],
+            [
+              -1.1444091796875e-05,
+              24.329999923706055,
+              17.10249900817871
+            ],
+            [
+              -1.1444091796875e-05,
+              1.5,
+              17.10249900817871
+            ],
+            [
+              -6.800621576985577e-06,
+              1.5,
+              4.5999979972839355
+            ],
+            [
+              -5.7978322729468346e-06,
+              1.5,
+              1.8999972343444824
+            ]
+          ],
+          "lookAt": [
+            -5.055025667388691e-06,
+            1.5,
+            -0.1000027284026146
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "Appai",
+      "platformNodeName": "Lift deck • AppAi"
+    },
+    {
+      "id": "building.avenue.05",
+      "name": "GamesM2023",
+      "url": "buildings/GamesM2023.glb",
+      "nodeId": "building.avenue.05",
+      "sha256": "7030890ff6f3e7f9c67a68d8f8052b5551c620705326ede830106d3012d84489",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.05",
+          "nodeId": "point.avenue.05",
+          "buildingId": "building.avenue.05",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.05.enter",
+          "pick": {
+            "min": [
+              -4.749992847442627,
+              -2.980232238769531e-07,
+              -4.320005893707275
+            ],
+            "max": [
+              4.8225202560424805,
+              5.019999980926514,
+              4.524999141693115
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.05.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.05.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.05.comments.01",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.05.screenshot.03",
+              "role": "media-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                1.508667537564179e-06,
+                3.192500591278076,
+                0.6224971413612366
+              ],
+              [
+                1.9507529735565186,
+                2.700000286102295,
+                -1.6665050983428955
+              ],
+              [
+                -1.8782494068145752,
+                2.700000286102295,
+                -1.666503667831421
+              ],
+              [
+                1.9507542848587036,
+                2.700000286102295,
+                1.8714959621429443
+              ]
+            ],
+            "distance": 10.0
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.05.enter",
+          "pointId": "point.avenue.05",
+          "arrivalNodeId": "point.avenue.05.entrance_in.01",
+          "points": [
+            [
+              -27.712810516357422,
+              17.829999923706055,
+              17.102508544921875
+            ],
+            [
+              -27.712810516357422,
+              24.329999923706055,
+              17.102508544921875
+            ],
+            [
+              -0.9999923706054688,
+              24.329999923706055,
+              17.10249900817871
+            ],
+            [
+              -0.9999923706054688,
+              1.500000238418579,
+              17.10249900817871
+            ],
+            [
+              -0.9999969601631165,
+              1.500000238418579,
+              4.6999969482421875
+            ],
+            [
+              3.0230644370021764e-06,
+              1.500000238418579,
+              4.699996471405029
+            ],
+            [
+              9.612529538571835e-06,
+              1.500000238418579,
+              1.8999963998794556
+            ]
+          ],
+          "lookAt": [
+            1.649911791901104e-05,
+            1.500000238418579,
+            -0.1000026986002922
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "FlaskSite",
+      "platformNodeName": "Lift deck • GamesM2023"
+    },
+    {
+      "id": "building.avenue.07",
+      "name": "TelegramBot",
+      "url": "buildings/TelegramBot.glb",
+      "nodeId": "building.avenue.07",
+      "sha256": "fe85a6da058fa882e1927e98b83095b7711b2513ce2997861fecda19b62cdb38",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.07",
+          "nodeId": "point.avenue.07",
+          "buildingId": "building.avenue.07",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.07.enter",
+          "pick": {
+            "min": [
+              -4.640002250671387,
+              5.960464477539063e-08,
+              -4.637638092041016
+            ],
+            "max": [
+              4.639999866485596,
+              5.315000057220459,
+              4.624999523162842
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.07.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.07.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.07.comments.01",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.07.screenshot.03",
+              "role": "media-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                -8.947276910475921e-06,
+                3.0,
+                -4.224260919727385e-06
+              ],
+              [
+                -1.8560048341751099,
+                2.700000047683716,
+                1.846206545829773
+              ],
+              [
+                1.8559931516647339,
+                2.700000047683716,
+                1.846207857131958
+              ],
+              [
+                -1.8560034036636353,
+                2.700000047683716,
+                -1.858847737312317
+              ]
+            ],
+            "distance": 10.0
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.07.enter",
+          "pointId": "point.avenue.07",
+          "arrivalNodeId": "point.avenue.07.entrance_in.01",
+          "points": [
+            [
+              27.712810516357422,
+              17.829999923706055,
+              16.993694305419922
+            ],
+            [
+              27.712810516357422,
+              24.329999923706055,
+              16.993694305419922
+            ],
+            [
+              -7.62939453125e-06,
+              24.329999923706055,
+              16.993684768676758
+            ],
+            [
+              -7.62939453125e-06,
+              1.5,
+              16.993684768676758
+            ],
+            [
+              -3.1006188692117576e-06,
+              1.5,
+              4.799996852874756
+            ],
+            [
+              -9.690083970781416e-06,
+              1.5,
+              1.9999967813491821
+            ]
+          ],
+          "lookAt": [
+            -1.6576672351220623e-05,
+            1.5,
+            -4.224264557706192e-06
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "Chtgptforpers",
+      "platformNodeName": "Lift deck • TelegramBot"
+    },
+    {
+      "id": "building.avenue.04",
+      "name": "FenesyyySupport",
+      "url": "buildings/FenesyyySupport.glb",
+      "nodeId": "building.avenue.04",
+      "sha256": "2cf9f36d93fc1b398252ec6c27cd0c6141169c652f1ddc01db2c17c903b0b1ee",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.04",
+          "nodeId": "point.avenue.04",
+          "buildingId": "building.avenue.04",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.04.enter",
+          "pick": {
+            "min": [
+              -8.147500038146973,
+              -0.1999998688697815,
+              -13.147509574890137
+            ],
+            "max": [
+              8.147525787353516,
+              9.600000381469727,
+              1.487505555152893
+            ]
+          },
+          "slots": [
+            {
+              "nodeId": "point.avenue.04.screenshot.01",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.04.screenshot.02",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.04.screenshot.03",
+              "role": "media-slot"
+            },
+            {
+              "nodeId": "point.avenue.04.comments.01",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.04.comments.02",
+              "role": "comments-slot"
+            },
+            {
+              "nodeId": "point.avenue.04.comments.03",
+              "role": "comments-slot"
+            }
+          ],
+          "interiorLighting": {
+            "positions": [
+              [
+                3.259002923965454,
+                2.700000047683716,
+                -8.757002830505371
+              ],
+              [
+                -3.2589948177337646,
+                2.700000047683716,
+                -8.756999969482422
+              ],
+              [
+                3.259005069732666,
+                2.700000047683716,
+                -2.903001546859741
+              ],
+              [
+                -3.2589926719665527,
+                2.700000047683716,
+                -2.90299916267395
+              ]
+            ],
+            "distance": 16.295004954026666
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.04.enter",
+          "pointId": "point.avenue.04",
+          "arrivalNodeId": "point.avenue.04.entrance_in.01",
+          "points": [
+            [
+              -27.712799072265625,
+              17.670000076293945,
+              11.170010566711426
+            ],
+            [
+              -27.712799072265625,
+              24.170000076293945,
+              11.170010566711426
+            ],
+            [
+              1.52587890625e-05,
+              24.170000076293945,
+              11.170000076293945
+            ],
+            [
+              1.52587890625e-05,
+              1.5,
+              11.170000076293945
+            ],
+            [
+              1.1667318176478148e-05,
+              1.5,
+              1.4999995231628418
+            ],
+            [
+              9.996003427659161e-06,
+              1.5,
+              -3.000000476837158
+            ]
+          ],
+          "lookAt": [
+            9.253197276848368e-06,
+            1.5,
+            -4.999999523162842
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": "FenesyyySupport",
+      "platformNodeName": "Lift deck • FenesyyySupport"
+    },
+    {
+      "id": "building.avenue.08",
+      "name": "FinalContact",
+      "url": "buildings/FinalContact.glb",
+      "nodeId": "building.avenue.08",
+      "sha256": "691aa97fbc392e9dc145af42e4a5af7f0337c8797e0880a4fc0a31e38fb58f43",
+      "interaction": {
+        "point": {
+          "id": "point.avenue.08",
+          "nodeId": "point.avenue.08",
+          "buildingId": "building.avenue.08",
+          "role": "project-point",
+          "behavior": "enter-project",
+          "routeId": "camera.avenue.08.enter",
+          "pick": {
+            "min": [
+              -6.039999961853027,
+              -0.1299997717142105,
+              -6.652496337890625
+            ],
+            "max": [
+              6.039999961853027,
+              5.610000133514404,
+              1.7583160400390625
+            ]
+          },
+          "slots": [],
+          "interiorLighting": {
+            "positions": [
+              [
+                0.0,
+                3.1682498455047607,
+                -1.8949966430664062
+              ],
+              [
+                -2.4159998893737793,
+                2.6999998092651367,
+                -4.1292572021484375
+              ],
+              [
+                -2.4159998893737793,
+                2.6999998092651367,
+                -0.7649307250976562
+              ],
+              [
+                2.4159998893737793,
+                2.6999998092651367,
+                -4.1292572021484375
+              ]
+            ],
+            "distance": 12.079999923706055
+          }
+        },
+        "cameraRoute": {
+          "id": "camera.avenue.08.enter",
+          "pointId": "point.avenue.08",
+          "arrivalNodeId": "point.avenue.08.entrance_in.01",
+          "points": [
+            [
+              0.0,
+              18.3799991607666,
+              29.212814331054688
+            ],
+            [
+              0.0,
+              24.8799991607666,
+              29.212814331054688
+            ],
+            [
+              0.0,
+              24.8799991607666,
+              2.5
+            ],
+            [
+              0.0,
+              1.5,
+              2.5
+            ],
+            [
+              0.0,
+              1.5,
+              2.5
+            ],
+            [
+              0.0,
+              1.5,
+              1.5
+            ],
+            [
+              0.0,
+              1.5,
+              -1.5
+            ]
+          ],
+          "lookAt": [
+            0.0,
+            1.5,
+            -3.5
+          ],
+          "reversible": true
+        }
+      },
+      "technical_name": null
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "kind": "city-actors-runtime-candidate",
+  "exportId": "actors-runtime-candidate-v10",
+  "status": "candidate",
+  "geometryCompression": "none",
+  "derivedFrom": {
+    "exportId": "actors-runtime-candidate-v08",
+    "manifestSha256": "ca827ec1ca77cd8a8723f7deaf5218095b2551dd77c6f789f3001d4f97974dd7"
+  },
+  "assets": {
+    "assembled_avenue.png": {
+      "url": "assembled_avenue.png",
+      "sha256": "2b70c399079b3fe9ba3e9b5f0646dd6fed07120b7db02e56bcae8b88d3f93c18"
+    },
+    "assembled_rear.png": {
+      "url": "assembled_rear.png",
+      "sha256": "bf7417b355ffd72c5db27781cdfaecb0642f81e6e6f6068375601a59d695441e"
+    },
+    "ATTRIBUTION_people.md": {
+      "url": "ATTRIBUTION_people.md",
+      "sha256": "d4f7bd860a11fbf1da173e835a3e4ef3efd54b47fa89ba7aa4fa730fade822b1"
+    },
+    "building-catalog.json": {
+      "url": "building-catalog.json",
+      "sha256": "c99392648a81b77cf27c1de4cc4f39281e08bd9952bdaa16f1098ee99cb87512"
+    },
+    "building-placements.json": {
+      "url": "building-placements.json",
+      "sha256": "8c1cc99d1f6559af70537b2649fb1c30ebefa011ea3c5de8ebdf1ca8e73004a8"
+    },
+    "building-verification.json": {
+      "url": "building-verification.json",
+      "sha256": "7f84012da4a77ff4afcae2275e870a9214d39455dddea34d8ded1a1964797279"
+    },
+    "buildings/AppAi.glb": {
+      "url": "buildings/AppAi.glb",
+      "sha256": "cd178dd0ca2a5106ebc87bc6a9f20311d40016e3555da274653f4c962a874d4d"
+    },
+    "buildings/ArcadeGames.glb": {
+      "url": "buildings/ArcadeGames.glb",
+      "sha256": "7352fd4a6a39ee2e3c6349f2535a2a66c89d621f0822a967a8eec23da17d3f17"
+    },
+    "buildings/EscapeFromLava.glb": {
+      "url": "buildings/EscapeFromLava.glb",
+      "sha256": "2d5c315910a276f6928f919689b14abe14a803a7a2bf91d8fc0fea332a53448a"
+    },
+    "buildings/FenesyyySupport.glb": {
+      "url": "buildings/FenesyyySupport.glb",
+      "sha256": "2cf9f36d93fc1b398252ec6c27cd0c6141169c652f1ddc01db2c17c903b0b1ee"
+    },
+    "buildings/FinalContact.glb": {
+      "url": "buildings/FinalContact.glb",
+      "sha256": "691aa97fbc392e9dc145af42e4a5af7f0337c8797e0880a4fc0a31e38fb58f43"
+    },
+    "buildings/GamesM2023.glb": {
+      "url": "buildings/GamesM2023.glb",
+      "sha256": "7030890ff6f3e7f9c67a68d8f8052b5551c620705326ede830106d3012d84489"
+    },
+    "buildings/QuickVox.glb": {
+      "url": "buildings/QuickVox.glb",
+      "sha256": "8cb28752ae9d0b37e9b5bc4bfff63391170a552bc70cceb1a3144e2c3b740693"
+    },
+    "buildings/TelegramBot.glb": {
+      "url": "buildings/TelegramBot.glb",
+      "sha256": "fe85a6da058fa882e1927e98b83095b7711b2513ce2997861fecda19b62cdb38"
+    },
+    "camera-area.json": {
+      "url": "camera-area.json",
+      "sha256": "3108aadf33d003a6c1701337a628525f6cbcab0679c126c9e2378d6692812b54"
+    },
+    "city.glb": {
+      "url": "city.glb",
+      "sha256": "665d7f68b9ed8addb145ca88253d5edb5df1a7adda521abb07a77705384e195d"
+    },
+    "demo-pedestrians.json": {
+      "url": "demo-pedestrians.json",
+      "sha256": "47d050720679ccc960cfd1599a84fb047494e58e53d64d706929940ea8ab5e9f"
+    },
+    "demo-vehicles.json": {
+      "url": "demo-vehicles.json",
+      "sha256": "949ccb8e23a39737d0ec2ea360d611672758e6e0ce1dba3a057daed98bfcbe50"
+    },
+    "legacy-vehicle-map.json": {
+      "url": "legacy-vehicle-map.json",
+      "sha256": "513840eae84672f171bdd83cd623a134955353545bcd2a496b4edfae7699bb62"
+    },
+    "lint.json": {
+      "url": "lint.json",
+      "sha256": "4b2fca26eac7d20a56bb9e58c844701ba093e9a57df238eb04bb9f5aba947f9d"
+    },
+    "original_avenue.png": {
+      "url": "original_avenue.png",
+      "sha256": "34842de9c7ae1881ab0352dca3b0ffdf416e3c3a2b67f04ac54c175d55342513"
+    },
+    "original_rear.png": {
+      "url": "original_rear.png",
+      "sha256": "d24d6a0b68acdb7e60564d253db589da9aefe9bd3af9a9cab28667969632ade8"
+    },
+    "pedestrian-catalog.json": {
+      "url": "pedestrian-catalog.json",
+      "sha256": "a4ff36124b57d79fdeb04c47703686db18ce56852c54b4bbac480b5e4dda0062"
+    },
+    "pedestrians.glb": {
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010"
+    },
+    "README.md": {
+      "url": "README.md",
+      "sha256": "f937ef59e4833eff4c22060d4870607b5f1b2afa97bd9abf6052e69ae5afc035"
+    },
+    "road-network.json": {
+      "url": "road-network.json",
+      "sha256": "634377b2595530adbf283085743311f8748a0e4ac24dddb2cd20a94bd0c4a82c"
+    },
+    "scene.json": {
+      "url": "scene.json",
+      "sha256": "f58b64ac45287c99006ad431a09be6471ec490259d731c8d06f65017d3a58fc7"
+    },
+    "simulation-zones.json": {
+      "url": "simulation-zones.json",
+      "sha256": "41ac584f413d850a495254f06eab4b9a09e51b236f4959b19cfc0bf0b8ee808d"
+    },
+    "vehicle-catalog.json": {
+      "url": "vehicle-catalog.json",
+      "sha256": "87653cae3796bb5682f10af69ac4a3bf681006090e5c36e2ecdd45121a1c1d01"
+    },
+    "vehicles.glb": {
+      "url": "vehicles.glb",
+      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+    }
+  }
+}

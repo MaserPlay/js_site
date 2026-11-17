@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "exportId": "actors-runtime-candidate-v08",
-  "citySha256": "6fdb385db56b269d087ef102abd997e404dfafb66e6d1376b39ea4119cda1fea",
+  "exportId": "actors-runtime-candidate-v10",
+  "citySha256": "665d7f68b9ed8addb145ca88253d5edb5df1a7adda521abb07a77705384e195d",
   "coordinates": {
     "units": "metres",
     "up": "+Y",
@@ -5783,5 +5783,7 @@
       "materialId": "material.y55.walking.metal",
       "profile": "standard"
     }
-  ]
+  ],
+  "buildingCatalog": "building-catalog.json",
+  "buildingPlacements": "building-placements.json"
 }

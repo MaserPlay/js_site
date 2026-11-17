@@ -118,7 +118,7 @@ export class Viewer extends EventTarget {
 NOTIFICATIONS.addExecptionListeners()
 export const viewer = new Viewer({
     canvasSelector: "#canvas", 
-    initialCityPackUrl: "exports/actors-runtime-candidate-v08",
+    initialCityPackUrl: "exports/actors-runtime-candidate-v10",
     simulationSpeedModificator: DEBUG.modificateDelta,
     startingVehiclesCountGetter: DEBUG.getStartingVehiclesCount
 })
