@@ -58,7 +58,7 @@ interface RoadSignalHead {
     nodeId: string;
 
     kind: 'vehicle' | 'pedestrian';
-    facingAxis: '+X' | '-X' | '+Z' | '-Z';
+    facingAxis: Possible2DAxisSide;
 
     lenses: {
         aspect: 'red' | 'amber' | 'green';

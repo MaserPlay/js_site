@@ -4,7 +4,7 @@ interface BuildingCatalogData {
 
     coordinates: {
         units: 'metres';
-        up: '+Y';
+        up: PossibleAxisSide;
         space: 'building-local';
     };
 
@@ -69,7 +69,7 @@ interface BuildingPlacementsData {
 
     coordinates: {
         units: 'metres';
-        up: '+Y';
+        up: PossibleAxisSide;
         space: 'world';
     };
 

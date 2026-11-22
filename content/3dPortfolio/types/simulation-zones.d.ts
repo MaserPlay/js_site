@@ -14,8 +14,8 @@ interface SimulationZonesData {
 
     coordinates: {
         units: 'metres';
-        up: '+Y';
-        forward: '-Z';
+        up: PossibleAxisSide;
+        forward: PossibleAxisSide;
         space: 'world';
     };
 

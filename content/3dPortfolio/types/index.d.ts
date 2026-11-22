@@ -52,6 +52,7 @@ declare global {
     type PossibleXAxisSide = "+X" | "-X";
 
     type Possible2DAxisSide = PossibleZAxisSide | PossibleXAxisSide
+    type PossibleAxisSide = Possible2DAxisSide | PossibleYAxisSide
     
     type CoordinateUnits = "metres";
 }
