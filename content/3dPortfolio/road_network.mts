@@ -9,7 +9,7 @@ export class RoadNetwork {
     
     private readonly vehiclesOnEdges = new Map<string, VehicleActor[]>();
 
-    private constructor(
+    public constructor(
         readonly data: RoadNetworkData
     ) {
         for (const control of data.controls) {
@@ -42,11 +42,6 @@ export class RoadNetwork {
             
             this.vehiclesOnEdges.set(edge.id, [])
         }
-    }
-    static async load(
-        roadNetworkPath:string
-    ) {
-        return new RoadNetwork(await fetchJson(roadNetworkPath))
     }
 
     getEdge(id: string) {

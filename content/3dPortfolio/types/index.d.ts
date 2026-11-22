@@ -4,7 +4,6 @@ import { Sky } from 'three/addons/objects/Sky.js';
 
 declare global {
     interface RenderContext {
-        readonly renderer: THREE.WebGLRenderer;
         readonly scene: THREE.Scene;
         readonly camera: THREE.PerspectiveCamera;
         readonly controls: OrbitControls;
@@ -31,7 +30,6 @@ declare global {
         ): void | Promise<void>;
     }
 
-    type DeltaTime = number
 
     interface ViewerEventMap {
         loop: ViewerLoopEvent;
@@ -42,10 +40,18 @@ declare global {
         readonly web_id: string
     }
 
+    interface MouseInteractible {
+        isHovered(ray: THREE.Ray): boolean;
+        onClicked(ray: THREE.Ray): boolean;
+    }
+    
+    type DeltaTime = number
+
     type ViewerEvents = keyof ViewerEventMap
     
     type PossibleVector3 = [number, number, number];
-    type PossibleQuaternion = [number, number, number, number];
+    type PossibleVector4 = [number, number, number, number];
+    type PossibleQuaternion = PossibleVector4;
     
     type PossibleZAxisSide = "+Z" | "-Z";
     type PossibleYAxisSide = "+Y" | "-Y";

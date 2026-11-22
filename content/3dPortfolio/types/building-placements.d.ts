@@ -1,6 +1,6 @@
 
 // ----- координаты -----
-export interface BuildingInstancesCoordinates {
+interface BuildingInstancesCoordinates {
   units: CoordinateUnits;
   up: PossibleYAxisSide;
   /** Здесь "world" — инстансы уже в мировых координатах. */
@@ -8,7 +8,7 @@ export interface BuildingInstancesCoordinates {
 }
 
 // ----- один инстанс здания в мире -----
-export interface BuildingInstance {
+interface BuildingInstance {
   /** Уникальный id инстанса, напр. "building.avenue.06". */
   id: string;
   /** Ссылка на `BuildingModel.id` из buildings-catalog.json. */
@@ -22,7 +22,7 @@ export interface BuildingInstance {
 }
 
 // ----- корневой объект -----
-export interface BuildingInstances {
+interface BuildingInstances {
   /** Версия схемы. Сейчас — 1. */
   schemaVersion: 1;
   exportId: string;

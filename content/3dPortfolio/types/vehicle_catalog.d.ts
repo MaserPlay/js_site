@@ -7,7 +7,7 @@ type OriginType = "ground-center";
 /**
  * Система координат каталога.
  */
-export interface CatalogCoordinates {
+interface CatalogCoordinates {
   units: CoordinateUnits;
   up: PossibleYAxisSide;
   forward: Possible2DAxisSide;
@@ -18,7 +18,7 @@ export interface CatalogCoordinates {
 /**
  * Габариты модели и смещение центра.
  */
-export interface Footprint {
+interface Footprint {
   /** Полудлина в метрах. */
   halfLengthMetres: number;
   /** Полуширина в метрах. */
@@ -32,7 +32,7 @@ export interface Footprint {
 /**
  * Одна модель транспорта в каталоге.
  */
-export interface VehicleModel {
+interface VehicleModel {
   /** Например: "vehicle.ambulance.white.v1". */
   id: string;
   /** URL GLB-файла. */
@@ -52,7 +52,7 @@ export interface VehicleModel {
 /**
  * Корневой объект каталога транспорта.
  */
-export interface VehicleCatalog {
+interface VehicleCatalog {
   /** Версия схемы. Сейчас — 1. */
   schemaVersion: 1;
   /** Тип документа. */

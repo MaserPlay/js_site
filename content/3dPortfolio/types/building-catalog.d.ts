@@ -1,10 +1,10 @@
 // ----- домены -----
-export type ProjectPointRole = "project-point";
-export type ProjectPointBehavior = "enter-project";
-export type SlotRole = "media-slot" | "comments-slot";
+type ProjectPointRole = "project-point";
+type ProjectPointBehavior = "enter-project";
+type SlotRole = "media-slot" | "comments-slot";
 
 // ----- координаты -----
-export interface BuildingsCatalogCoordinates {
+interface BuildingsCatalogCoordinates {
   units: CoordinateUnits;
   up: PossibleYAxisSide;
   /** Например: "building-local". */
@@ -12,22 +12,22 @@ export interface BuildingsCatalogCoordinates {
 }
 
 // ----- точка взаимодействия -----
-export interface PickBox {
+interface PickBox {
   min: PossibleVector3;
   max: PossibleVector3;
 }
 
-export interface InteractionSlot {
+interface InteractionSlot {
   nodeId: string;
   role: SlotRole;
 }
 
-export interface InteriorLighting {
+interface InteriorLighting {
   positions: PossibleVector3[];
   distance: number;
 }
 
-export interface InteractionPoint {
+interface InteractionPoint {
   id: string;
   nodeId: string;
   buildingId: string;
@@ -41,7 +41,7 @@ export interface InteractionPoint {
 }
 
 // ----- камера -----
-export interface CameraRoute {
+interface CameraRoute {
   id: string;
   pointId: string;
   arrivalNodeId: string;
@@ -50,13 +50,13 @@ export interface CameraRoute {
   reversible: boolean;
 }
 
-export interface BuildingInteraction {
+interface BuildingInteraction {
   point: InteractionPoint;
   cameraRoute: CameraRoute;
 }
 
 // ----- модель здания -----
-export interface BuildingModel {
+interface BuildingModel {
   id: string;
   name: string;
   /** Относительный путь к GLB, напр. "buildings/QuickVox.glb". */
@@ -71,7 +71,7 @@ export interface BuildingModel {
 }
 
 // ----- корневой объект -----
-export interface BuildingsCatalog {
+interface BuildingsCatalog {
   /** Версия схемы. Сейчас — 1. */
   schemaVersion: 1;
   /** Идентификатор экспорта, напр. "actors-runtime-candidate-v13-…". */

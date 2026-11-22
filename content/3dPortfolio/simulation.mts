@@ -19,7 +19,7 @@ export class RoadSimulationManager {
     private readonly pendingSpawns: string[] = [];
     private spawnRetryElapsed = 0;
 
-    private constructor(
+    public constructor(
         data: SimulationZonesData,
         private readonly SContext : () => SceneContext, 
         private readonly rContext : RenderContext,
@@ -43,19 +43,6 @@ export class RoadSimulationManager {
             new THREE.Vector2(minX, minZ),
             new THREE.Vector2(maxX, maxZ),
         );
-    }
-    static async load(
-        simulationZonesPath:string, 
-        _SContext : () => SceneContext, 
-        _rContext : RenderContext, 
-        _vehicleSetupDatasGetter: () => VehicleSetupDataId[]
-    ) {
-        return new RoadSimulationManager(
-            await fetchJson(simulationZonesPath), 
-            _SContext, 
-            _rContext, 
-            _vehicleSetupDatasGetter
-        )
     }
 
     setup(setup: ViewerSetupData, city: THREE.Object3D): void {

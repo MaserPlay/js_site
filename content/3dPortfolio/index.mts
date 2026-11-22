@@ -39,11 +39,15 @@ export interface Viewer {
 export class Viewer extends EventTarget {
     private context!: RenderContext;
     private renders: Renderer[] = []
+    private mouseInteractibles: MouseInteractible[] = []
+
+    private readonly raycaster = new THREE.Raycaster();
+    private readonly ndc = new THREE.Vector2();
 
     constructor(setupData: ViewerSetupData) {
         super();
         (async () => {
-            const canvas = document.querySelector(setupData.canvasSelector)!;
+            const canvas = $(setupData.canvasSelector)[0]!;
 
             if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
                 throw new Error(`canvas not found: ${setupData.canvasSelector}`);
@@ -58,7 +62,6 @@ export class Viewer extends EventTarget {
             const sunlight = new THREE.DirectionalLight("#ffffff");
 
             this.context = Object.freeze<RenderContext>({
-                renderer,
                 camera,
                 scene,
                 controls,
@@ -80,6 +83,30 @@ export class Viewer extends EventTarget {
 
                 context.camera.aspect = width / height;
                 context.camera.updateProjectionMatrix();
+            })
+
+            const createRay = (e: PointerEvent | MouseEvent) => {
+                const rect = canvas.getBoundingClientRect();
+                this.ndc.set(
+                    ((e.clientX - rect.left) / rect.width) * 2 - 1,
+                    -((e.clientY - rect.top) / rect.height) * 2 + 1,
+                );
+                this.raycaster.setFromCamera(this.ndc, context.camera);
+                return this.raycaster.ray
+            }
+
+            canvas.addEventListener('mousemove', (e) => {
+                const ray = createRay(e)
+                if (this.mouseInteractibles.some(v => v.isHovered(ray))) {
+                    canvas.style.cursor = "pointer"
+                } else {
+                    canvas.style.cursor = "default"
+                }
+            })
+            canvas.addEventListener('click', (e) => {
+                const ray = createRay(e)
+                this.mouseInteractibles.find(v => v.isHovered(ray))
+                    ?.onClicked(ray)
             })
 
             for (const load of modules) {
@@ -109,6 +136,9 @@ export class Viewer extends EventTarget {
     addRenderer(renderer: Renderer) {
         renderer.setSize(window.innerWidth, window.innerHeight);
         this.renders.push(renderer)
+    }
+    addMouseInteractible(interact: MouseInteractible) {
+        this.mouseInteractibles.push(interact)
     }
     getContext() {
         return this.context

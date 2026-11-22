@@ -8,15 +8,26 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as THREE from 'three';
 import { VehicleSetupData } from "./vehicle.mjs";
 import { fetchJson } from "./utils.mjs";
-import { VehicleCatalog } from "./types/vehicle_catalog";
+import { ProjectBuilding, ProjectsManager } from "./buildings.mjs";
 
 let SContext : SceneContext
+
+declare global {
+    interface SceneContext {
+        vehiclesModelsPoses: Map<THREE.InstancedMesh, THREE.Object3D[]>;
+        actors: import("./vehicle.mjs").VehicleActor[];
+        network: import("./road_network.mjs").RoadNetwork;
+        roadManager: import("./simulation.mjs").RoadSimulationManager;
+        projectsManager: import("./buildings.mjs").ProjectsManager;
+        projectBuildings: import("./buildings.mjs").ProjectBuilding[];
+    }
+}
 
 const MAX_INSTANCED_MESH = 1000
 
 const vehicleSettings: Record<string, Partial<VehicleSetupData>> = {
-    'vehicle.ambulance.white.v1': { speed: 6, rotatingSpeed: 8 },
-    'vehicle.roadster.red.v1': { speed: 12, rotatingSpeed: 8 },
+    'vehicle.ambulance.white.v1': { speed: 6 },
+    'vehicle.roadster.red.v1': { speed: 12 },
 }
 
 const defaultVehicleSetting: VehicleSetupData = {speed: 15, rotatingSpeed: 8}
@@ -48,22 +59,19 @@ export async function setup(viewer:Viewer, setup:ViewerSetupData) {
     const rContext = viewer.getContext();
     const loader = new GLTFLoader();
 
-    const vehicleCatalog = await fetchJson<VehicleCatalog>(setup.initialCityPackUrl + "/vehicle-catalog.json")
-    
-    const [gltf, vehiclesLibrary, network, roadManager] = await Promise.all([
-        loader.loadAsync(setup.initialCityPackUrl + "/city.glb"), 
-        loader.loadAsync(setup.initialCityPackUrl + "/vehicles.glb"),
-        RoadNetwork.load(
-            setup.initialCityPackUrl + "/road-network.json"
-        ),
-        RoadSimulationManager.load(
-            setup.initialCityPackUrl + "/simulation-zones.json", 
-            () => SContext, 
-            rContext,
-            () => vehicleCatalog.models
-                .map((v) => ({id: v.id, ...vehicleSettings[v.id] ?? {}, ...defaultVehicleSetting}))
-        )
-    ]);
+    const [vehicleCatalog, roadNetwork, simulationZones, buildCatalog, buildPlacements, 
+
+    gltf, vehiclesLibrary] = await Promise.all([
+        fetchJson<VehicleCatalog>(setup.initialCityPackUrl + "/vehicle-catalog.json"),
+        fetchJson<RoadNetworkData>(setup.initialCityPackUrl + "/road-network.json"),
+        fetchJson<SimulationZonesData>(setup.initialCityPackUrl + "/simulation-zones.json"),
+        fetchJson<BuildingsCatalog>(setup.initialCityPackUrl + "/building-catalog.json"),
+        fetchJson<BuildingPlacementsData>(setup.initialCityPackUrl + "/building-placements.json"),
+
+
+        loader.loadAsync(setup.initialCityPackUrl + "/city.glb"),
+        loader.loadAsync(setup.initialCityPackUrl + "/vehicles.glb")
+    ])
 
     SContext = {
         vehiclesModelsPoses: new Map(vehiclesLibrary.scene.children.filter((object): object is THREE.Mesh =>
@@ -77,14 +85,33 @@ export async function setup(viewer:Viewer, setup:ViewerSetupData) {
             })
         ),
         actors: [],
-        network: network,
-        roadManager: roadManager
+        roadManager: new RoadSimulationManager(
+            simulationZones, () => SContext,
+            rContext,
+            () => vehicleCatalog.models
+                .map((v) => ({ id: v.id, ...vehicleSettings[v.id] ?? {}, ...defaultVehicleSetting }))
+        ),
+        network: new RoadNetwork(roadNetwork),
+        projectBuildings: await Promise.all(
+            buildCatalog.models.filter(v => v.technical_name).map(async (v) => 
+                new ProjectBuilding(v, ((await loader.loadAsync(setup.initialCityPackUrl + "/" + v.url)).scene)))
+        ),
+        projectsManager: new ProjectsManager(buildPlacements, () => SContext)
     }
     const vehiclesGroup = new THREE.Group()
     vehiclesGroup.name = "vehiclesGroup"
     rContext.scene.add(vehiclesGroup)
 
     SContext.vehiclesModelsPoses.forEach((_, instMesh) => vehiclesGroup.add(instMesh))
+    
+    const projectsGroup = new THREE.Group()
+    projectsGroup.name = "projectsGroup"
+    rContext.scene.add(projectsGroup)
+    SContext.projectBuildings.forEach(v => {
+        viewer.addMouseInteractible(v)
+        v.hideProject()
+        v.addTo(projectsGroup)
+    })
 
     rContext.scene.add(gltf.scene);
     rContext.scene.fog = new THREE.Fog( 0xb8c9d9, 100, 110 );
@@ -105,6 +132,7 @@ export async function setup(viewer:Viewer, setup:ViewerSetupData) {
     rContext.sky.material.uniforms[ 'cloudDensity' ].value = .1
     
 
+    SContext.projectsManager.setup()
     SContext.roadManager.setup(setup, gltf.scene)
 
     rContext.sunlight.intensity = 1
