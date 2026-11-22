@@ -1,0 +1,114 @@
+{
+  "exportId": "actors-runtime-candidate-v13-native-vehicles",
+  "vehicles": 7,
+  "buildings": [
+    {
+      "id": "building.avenue.06",
+      "oldMeshNodes": 65,
+      "meshNodes": 1,
+      "primitives": 112
+    },
+    {
+      "id": "building.avenue.02",
+      "oldMeshNodes": 21,
+      "meshNodes": 1,
+      "primitives": 33
+    },
+    {
+      "id": "building.avenue.03",
+      "oldMeshNodes": 47,
+      "meshNodes": 1,
+      "primitives": 59
+    },
+    {
+      "id": "building.avenue.01",
+      "oldMeshNodes": 40,
+      "meshNodes": 1,
+      "primitives": 49
+    },
+    {
+      "id": "building.avenue.05",
+      "oldMeshNodes": 39,
+      "meshNodes": 1,
+      "primitives": 48
+    },
+    {
+      "id": "building.avenue.07",
+      "oldMeshNodes": 41,
+      "meshNodes": 1,
+      "primitives": 50
+    },
+    {
+      "id": "building.avenue.04",
+      "oldMeshNodes": 24,
+      "meshNodes": 1,
+      "primitives": 53
+    },
+    {
+      "id": "building.avenue.08",
+      "oldMeshNodes": 20,
+      "meshNodes": 1,
+      "primitives": 44
+    }
+  ],
+  "staticBuildingFrontagesMerged": [
+    "building.city.0621d5652604dab7",
+    "building.city.e7d059ad60a9c928",
+    "building.city.4059b012dd57f35e",
+    "building.city.45ed37774662ed5e",
+    "building.city.005be6a8a111ea79",
+    "building.city.e0f35f1e89640c0b"
+  ],
+  "vehicleMeshes": [
+    {
+      "id": "vehicle.ambulance.white.v1",
+      "oldPrimitives": 15,
+      "primitives": 1,
+      "vertices": 22347,
+      "triangles": 25138
+    },
+    {
+      "id": "vehicle.police.white.v1",
+      "oldPrimitives": 16,
+      "primitives": 1,
+      "vertices": 24602,
+      "triangles": 18856
+    },
+    {
+      "id": "vehicle.roadster.red.v1",
+      "oldPrimitives": 15,
+      "primitives": 1,
+      "vertices": 41103,
+      "triangles": 41368
+    },
+    {
+      "id": "vehicle.sedan.electric-silver.v1",
+      "oldPrimitives": 12,
+      "primitives": 1,
+      "vertices": 25945,
+      "triangles": 19678
+    },
+    {
+      "id": "vehicle.sedan.nordic-burgundy.v1",
+      "oldPrimitives": 14,
+      "primitives": 1,
+      "vertices": 25575,
+      "triangles": 19734
+    },
+    {
+      "id": "vehicle.suv.classic-olive.v1",
+      "oldPrimitives": 12,
+      "primitives": 1,
+      "vertices": 19208,
+      "triangles": 16572
+    },
+    {
+      "id": "vehicle.van.teal.v1",
+      "oldPrimitives": 14,
+      "primitives": 1,
+      "vertices": 24355,
+      "triangles": 18914
+    }
+  ],
+  "vehicleMaterials": 1
+}

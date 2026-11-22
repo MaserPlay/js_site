@@ -43,4 +43,15 @@ declare global {
     }
 
     type ViewerEvents = keyof ViewerEventMap
+    
+    type PossibleVector3 = [number, number, number];
+    type PossibleQuaternion = [number, number, number, number];
+    
+    type PossibleZAxisSide = "+Z" | "-Z";
+    type PossibleYAxisSide = "+Y" | "-Y";
+    type PossibleXAxisSide = "+X" | "-X";
+
+    type Possible2DAxisSide = PossibleZAxisSide | PossibleXAxisSide
+    
+    type CoordinateUnits = "metres";
 }

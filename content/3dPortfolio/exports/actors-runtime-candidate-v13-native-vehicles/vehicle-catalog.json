@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "city-vehicle-catalog",
-  "exportId": "actors-runtime-candidate-v10",
+  "exportId": "actors-runtime-candidate-v13-native-vehicles",
   "coordinates": {
     "units": "metres",
     "up": "+Y",
@@ -32,7 +32,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     },
     {
       "id": "vehicle.police.white.v1",
@@ -57,7 +57,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     },
     {
       "id": "vehicle.roadster.red.v1",
@@ -82,7 +82,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     },
     {
       "id": "vehicle.sedan.electric-silver.v1",
@@ -107,7 +107,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     },
     {
       "id": "vehicle.sedan.nordic-burgundy.v1",
@@ -132,7 +132,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     },
     {
       "id": "vehicle.suv.classic-olive.v1",
@@ -157,7 +157,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     },
     {
       "id": "vehicle.van.teal.v1",
@@ -182,7 +182,7 @@
           0.0
         ]
       },
-      "sha256": "f55476a7d46b1a40969c6105354af51a31b3f606af5c4f8a6f44602cd54c0747"
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
     }
   ]
 }

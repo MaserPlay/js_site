@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "kind": "city-actors-runtime-candidate",
+  "exportId": "actors-runtime-candidate-v13-native-vehicles",
+  "status": "candidate",
+  "geometryCompression": "none",
+  "derivedFrom": {
+    "exportId": "actors-runtime-candidate-v12-single-mesh",
+    "manifestSha256": "e717aa19dda529834e7b957567b564e7b312e38ff7eef2fb9034691fac9c2d43"
+  },
+  "assets": {
+    "ATTRIBUTION_people.md": {
+      "url": "ATTRIBUTION_people.md",
+      "sha256": "d4f7bd860a11fbf1da173e835a3e4ef3efd54b47fa89ba7aa4fa730fade822b1"
+    },
+    "building-catalog.json": {
+      "url": "building-catalog.json",
+      "sha256": "3f232fb6dede43f50da2a89df0b2049948dd55f6ec637890ad71d7244964a424"
+    },
+    "building-placements.json": {
+      "url": "building-placements.json",
+      "sha256": "9ff161958f7654c1f15a24acd070c15814464e38c6d220deafccf3a97c3d6e17"
+    },
+    "buildings/AppAi.glb": {
+      "url": "buildings/AppAi.glb",
+      "sha256": "6d7bf577dab27ce057cd40ebf7caacf0c25d94d60b84bfdc02496b82a0cba8d8"
+    },
+    "buildings/ArcadeGames.glb": {
+      "url": "buildings/ArcadeGames.glb",
+      "sha256": "eeb670cb41fd8d1d9717b4c3e1048ec680549c9ec273ce736185a92b360dc826"
+    },
+    "buildings/EscapeFromLava.glb": {
+      "url": "buildings/EscapeFromLava.glb",
+      "sha256": "d3bb0ac3c469b617428cab0d29b44139f4c4b9d0fe678074c49386bb88d1ea29"
+    },
+    "buildings/FenesyyySupport.glb": {
+      "url": "buildings/FenesyyySupport.glb",
+      "sha256": "fddf9b1b6587c979ff8088ddaac7bbfc5d9dc1cf061979463e2353d6703fb3ef"
+    },
+    "buildings/FinalContact.glb": {
+      "url": "buildings/FinalContact.glb",
+      "sha256": "efad5df5b566b730103838f3d26757e625d482ed5797dac1a7499f0556e5e383"
+    },
+    "buildings/GamesM2023.glb": {
+      "url": "buildings/GamesM2023.glb",
+      "sha256": "d4f26033cb1d221622a531f171674eea98f3e4221f29bd4b589fce3ad9b40ad1"
+    },
+    "buildings/QuickVox.glb": {
+      "url": "buildings/QuickVox.glb",
+      "sha256": "9493c66eb3114efe8d3c6f520c845024702176578d160b2e850eee551f29a296"
+    },
+    "buildings/TelegramBot.glb": {
+      "url": "buildings/TelegramBot.glb",
+      "sha256": "5830a5b678ba1f902f0a16780cbd9ad5d26134306ca9767b230aaf5cccedae9f"
+    },
+    "camera-area.json": {
+      "url": "camera-area.json",
+      "sha256": "3108aadf33d003a6c1701337a628525f6cbcab0679c126c9e2378d6692812b54"
+    },
+    "city.glb": {
+      "url": "city.glb",
+      "sha256": "a70456fbe82fac2d71c0eaf99440e51a5ecf8c572600e0068f6c422725b900ab"
+    },
+    "demo-pedestrians.json": {
+      "url": "demo-pedestrians.json",
+      "sha256": "6fbaacf4309f6d35337a9687334bb12e54993710fa43109d928bd686697fd687"
+    },
+    "demo-vehicles.json": {
+      "url": "demo-vehicles.json",
+      "sha256": "4ba9e6b59e70f73782c1717cb4b9d5452df52ab4e5a1430cc872390f6919d345"
+    },
+    "legacy-vehicle-map.json": {
+      "url": "legacy-vehicle-map.json",
+      "sha256": "513840eae84672f171bdd83cd623a134955353545bcd2a496b4edfae7699bb62"
+    },
+    "mesh-layout.json": {
+      "url": "mesh-layout.json",
+      "sha256": "e06c2616b45dc04d7893d68a218f15cfabce22274f926571836eb42dda7e25aa"
+    },
+    "pedestrian-catalog.json": {
+      "url": "pedestrian-catalog.json",
+      "sha256": "dced67827fbfe6ee57e78284f2cd352f7229cf66f84d7623e65fe2c01e5b01d4"
+    },
+    "pedestrians.glb": {
+      "url": "pedestrians.glb",
+      "sha256": "c286cafaa70fbe702b2b9186ebf2e8a21e1d222ceb6422c227ebd73658fd9010"
+    },
+    "README.md": {
+      "url": "README.md",
+      "sha256": "5607eb439470d46798dd8b8afee736fca34bc135e5f00aee3b8eed5237de01a7"
+    },
+    "road-network.json": {
+      "url": "road-network.json",
+      "sha256": "656cf8b502e6e9e10ae0ef703fdaf22d4813891d4014a41f2875f7d88d50285b"
+    },
+    "scene.json": {
+      "url": "scene.json",
+      "sha256": "987d5a2a558fe0d6e9709b8eca0f9f967c4beaab0d538464dfa6560472132ff7"
+    },
+    "simulation-zones.json": {
+      "url": "simulation-zones.json",
+      "sha256": "754c2e576d5e42f801830925491a7226f622f32e3000d0e887c46244233c85a1"
+    },
+    "single-mesh.mjs": {
+      "url": "single-mesh.mjs",
+      "sha256": "660298f3060095fbfb897e37e6d840d8865768b336d86962533e6257871e1c4c"
+    },
+    "vehicle-catalog.json": {
+      "url": "vehicle-catalog.json",
+      "sha256": "dbc49d97fe5052485453615774e1a29523625df127505a460d19477971af7d58"
+    },
+    "vehicles.glb": {
+      "url": "vehicles.glb",
+      "sha256": "aee35fa2603f2f8eeca3a18a84a56e9bceb55d21f56e9cc6f8f378828bdbb5fc"
+    }
+  }
+}

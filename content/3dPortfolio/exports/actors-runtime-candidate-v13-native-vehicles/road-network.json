@@ -18326,8 +18326,8 @@
       }
     }
   ],
-  "exportId": "actors-runtime-candidate-v10",
-  "citySha256": "665d7f68b9ed8addb145ca88253d5edb5df1a7adda521abb07a77705384e195d",
+  "exportId": "actors-runtime-candidate-v13-native-vehicles",
+  "citySha256": "a70456fbe82fac2d71c0eaf99440e51a5ecf8c572600e0068f6c422725b900ab",
   "spawnSegments": [
     {
       "id": "spawn.avenue.north.interior",

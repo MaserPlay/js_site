@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "exportId": "actors-runtime-candidate-v10",
+  "exportId": "actors-runtime-candidate-v13-native-vehicles",
   "coordinates": {
     "units": "metres",
     "up": "+Y",
@@ -12,7 +12,7 @@
       "name": "QuickVox",
       "url": "buildings/QuickVox.glb",
       "nodeId": "building.avenue.06",
-      "sha256": "8cb28752ae9d0b37e9b5bc4bfff63391170a552bc70cceb1a3144e2c3b740693",
+      "sha256": "9493c66eb3114efe8d3c6f520c845024702176578d160b2e850eee551f29a296",
       "interaction": {
         "point": {
           "id": "point.avenue.06",
@@ -129,7 +129,7 @@
       "name": "ArcadeGames",
       "url": "buildings/ArcadeGames.glb",
       "nodeId": "building.avenue.02",
-      "sha256": "7352fd4a6a39ee2e3c6349f2535a2a66c89d621f0822a967a8eec23da17d3f17",
+      "sha256": "eeb670cb41fd8d1d9717b4c3e1048ec680549c9ec273ce736185a92b360dc826",
       "interaction": {
         "point": {
           "id": "point.avenue.02",
@@ -250,7 +250,7 @@
       "name": "EscapeFromLava",
       "url": "buildings/EscapeFromLava.glb",
       "nodeId": "building.avenue.03",
-      "sha256": "2d5c315910a276f6928f919689b14abe14a803a7a2bf91d8fc0fea332a53448a",
+      "sha256": "d3bb0ac3c469b617428cab0d29b44139f4c4b9d0fe678074c49386bb88d1ea29",
       "interaction": {
         "point": {
           "id": "point.avenue.03",
@@ -375,7 +375,7 @@
       "name": "AppAi",
       "url": "buildings/AppAi.glb",
       "nodeId": "building.avenue.01",
-      "sha256": "cd178dd0ca2a5106ebc87bc6a9f20311d40016e3555da274653f4c962a874d4d",
+      "sha256": "6d7bf577dab27ce057cd40ebf7caacf0c25d94d60b84bfdc02496b82a0cba8d8",
       "interaction": {
         "point": {
           "id": "point.avenue.01",
@@ -492,7 +492,7 @@
       "name": "GamesM2023",
       "url": "buildings/GamesM2023.glb",
       "nodeId": "building.avenue.05",
-      "sha256": "7030890ff6f3e7f9c67a68d8f8052b5551c620705326ede830106d3012d84489",
+      "sha256": "d4f26033cb1d221622a531f171674eea98f3e4221f29bd4b589fce3ad9b40ad1",
       "interaction": {
         "point": {
           "id": "point.avenue.05",
@@ -614,7 +614,7 @@
       "name": "TelegramBot",
       "url": "buildings/TelegramBot.glb",
       "nodeId": "building.avenue.07",
-      "sha256": "fe85a6da058fa882e1927e98b83095b7711b2513ce2997861fecda19b62cdb38",
+      "sha256": "5830a5b678ba1f902f0a16780cbd9ad5d26134306ca9767b230aaf5cccedae9f",
       "interaction": {
         "point": {
           "id": "point.avenue.07",
@@ -731,7 +731,7 @@
       "name": "FenesyyySupport",
       "url": "buildings/FenesyyySupport.glb",
       "nodeId": "building.avenue.04",
-      "sha256": "2cf9f36d93fc1b398252ec6c27cd0c6141169c652f1ddc01db2c17c903b0b1ee",
+      "sha256": "fddf9b1b6587c979ff8088ddaac7bbfc5d9dc1cf061979463e2353d6703fb3ef",
       "interaction": {
         "point": {
           "id": "point.avenue.04",
@@ -856,7 +856,7 @@
       "name": "FinalContact",
       "url": "buildings/FinalContact.glb",
       "nodeId": "building.avenue.08",
-      "sha256": "691aa97fbc392e9dc145af42e4a5af7f0337c8797e0880a4fc0a31e38fb58f43",
+      "sha256": "efad5df5b566b730103838f3d26757e625d482ed5797dac1a7499f0556e5e383",
       "interaction": {
         "point": {
           "id": "point.avenue.08",

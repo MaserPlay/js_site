@@ -2,23 +2,26 @@ import type { RoadNetwork } from "./road_network.mjs";
 import type { RoadSimulationManager } from "./simulation.mjs";
 
 import * as THREE from 'three';
-import { SimulationActor, SimulationActorSetupData } from "./simulation_actor.mjs";
+import { Actor, ActorSpawnData } from "./simulation_actor.mjs";
 import { boxDistance, getRandom } from "./utils.mjs";
 
 
-export interface VehicleSetupData extends SimulationActorSetupData {
-    startingEdge: string
+export interface VehicleSetupData {
     speed: number,
     rotatingSpeed: number,
 }
-export type VehicleSetupDataWithoutModel = Omit<VehicleSetupData, 'model'>
-export type VehicleSetupDataWithoutStartingEdge = Omit<VehicleSetupData, 'startingEdge'>
-export type SummonVehicleSetupData = Omit<Omit<VehicleSetupDataWithoutModel, 'startingEdge'>, 'model'>
+export interface VehicleSpawnData extends ActorSpawnData {
+    startingEdge: string
+}
+
+export type VehicleSetupDataId = VehicleSetupData & {id:string}
+export type VehicleSpawnDataId = VehicleSpawnData & {id:string}
+
 
 // Treat negligible rounding error as reaching the segment end.
 const SEGMENT_END_TOLERANCE_METRES = 1e-8;
 
-export class VehicleActor extends SimulationActor<VehicleSetupData> {
+export class VehicleActor extends Actor<VehicleSpawnData> {
     private readonly upAxis = new THREE.Vector3(0, 1, 0);
     private readonly targetRotation = new THREE.Quaternion();
 
@@ -27,8 +30,8 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
 
     private edge: RoadEdge
     private nextEdge?: RoadEdge
-    private currentPoint: number = 0
-    private _travelledPath: number = 0
+    private currentPoint = 0
+    private _travelledPath = 0
     private segmentStartMetres = 0;
     private _totalDistanceMetres = 0;
 
@@ -37,24 +40,25 @@ export class VehicleActor extends SimulationActor<VehicleSetupData> {
     public speed = 0;
     public cruiseSpeed: number;
 
-    public outsideTimer = 10
+    public outsideTimer = Number.POSITIVE_INFINITY
 
     // Neighbours on the current road edge.
     public readonly laneQueue: { forwardCar?: VehicleActor; backCar?: VehicleActor } = {};
     
     constructor(
-        setupData: VehicleSetupData, 
+        spawnData: VehicleSpawnData,
+        private readonly setupData: VehicleSetupData, 
         private readonly network: RoadNetwork, 
         private readonly manager: RoadSimulationManager
     ) {
-        super(setupData)
+        super(spawnData)
         this.cruiseSpeed = setupData.speed;
 
         const initialBounds = this.getUpdateboudingBox();
         this.frontOverhangMetres = Math.max(0, this.position.z - initialBounds.min.z);
         this.rearOverhangMetres = Math.max(0, initialBounds.max.z - this.position.z);
 
-        this.edge = network.getEdge(setupData.startingEdge)!;
+        this.edge = network.getEdge(spawnData.startingEdge)!;
         this.calcNextEdge()
         
         this.calcStartEndEdgePos()

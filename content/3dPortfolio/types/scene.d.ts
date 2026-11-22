@@ -1,10 +1,8 @@
 import * as THREE from 'three';
 
 declare global {
-    type PossibleVector3 = [number, number, number];
-
     interface SceneContext{
-        vehiclesModels: THREE.Object3D<TEventMap>[],
+        vehiclesModelsPoses: Map<THREE.InstancedMesh, THREE.Object3D[]>,
         actors: SimulationActor[],
         network: RoadNetwork,
         roadManager: RoadSimulationManager

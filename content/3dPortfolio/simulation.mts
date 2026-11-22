@@ -1,8 +1,9 @@
-import { VehicleActor, VehicleSetupData, VehicleSetupDataWithoutStartingEdge } from './vehicle.mjs';
+import { VehicleActor, VehicleSetupData, VehicleSetupDataId, VehicleSpawnData } from './vehicle.mjs';
 import { fetchJson, getRandom, randomMix } from './utils.mjs';
 
 import * as THREE from 'three';
 import { JunctionController, type RoadController, type RoadFeature } from './road_controllers.mjs';
+import { findVehicaleInstanceByName } from './scene.mjs';
 
 
 export class RoadSimulationManager {
@@ -22,7 +23,7 @@ export class RoadSimulationManager {
         data: SimulationZonesData,
         private readonly SContext : () => SceneContext, 
         private readonly rContext : RenderContext,
-        private readonly vehicleSetupDatas: () => VehicleSetupDataWithoutStartingEdge[]
+        private readonly vehicleSetupDatas: () => VehicleSetupDataId[]
     ) {
         const zone = data.zones.find(
             zone => zone.id === 'simulation.portfolio'
@@ -47,7 +48,7 @@ export class RoadSimulationManager {
         simulationZonesPath:string, 
         _SContext : () => SceneContext, 
         _rContext : RenderContext, 
-        _vehicleSetupDatasGetter: () => VehicleSetupDataWithoutStartingEdge[]
+        _vehicleSetupDatasGetter: () => VehicleSetupDataId[]
     ) {
         return new RoadSimulationManager(
             await fetchJson(simulationZonesPath), 
@@ -78,14 +79,17 @@ export class RoadSimulationManager {
 
         const count = setup.startingVehiclesCountGetter();
         for (let i = 0; i < count; i++) {
-            const startEdgeId = spawnEdges[i % spawnEdges.length].edgeId;
-            const vehicle = this.createVehicle({
-                ...getRandom(vehicleModels),
-                startingEdge: startEdgeId,
-            });
+            const model = getRandom(vehicleModels)
+            const spawnData : VehicleSpawnData = {
+                startingEdge: spawnEdges[i % spawnEdges.length].edgeId,
+                transform: new THREE.Object3D(),
+                modelName: model.id,
+                localBounds: new THREE.Box3()
+            }
+            const vehicle = this.createVehicle(spawnData, model);
             vehicle.name = String(i);
 
-            if (!this.addVehicle(startEdgeId, vehicle)) this.pendingSpawns.push(vehicle.name);
+            if (!this.addVehicle(vehicle)) this.pendingSpawns.push(vehicle.name);
         }
     }
 
@@ -150,18 +154,28 @@ export class RoadSimulationManager {
         const models = this.vehicleSetupDatas();
         if (!models.length) return;
 
-        const startEdgeId = getRandom(this.entries).edgeId;
-        const vehicle = this.createVehicle({ ...getRandom(models), startingEdge: startEdgeId });
+        const model = getRandom(models)
+
+        const spawnData : VehicleSpawnData = {
+            startingEdge: getRandom(this.entries).edgeId,
+            transform: new THREE.Object3D(),
+            modelName: model.id,
+            localBounds: new THREE.Box3()
+        }
+        const vehicle = this.createVehicle(spawnData, model);
         vehicle.name = this.pendingSpawns[0];
 
-        if (this.addVehicle(startEdgeId, vehicle)) this.pendingSpawns.shift();
+        if (this.addVehicle(vehicle)) this.pendingSpawns.shift();
     }
 
-    createVehicle(setupData: VehicleSetupData) {
-        return new VehicleActor(setupData, this.SContext().network, this)
+    createVehicle(spawnData: VehicleSpawnData, setupData: VehicleSetupData) {
+        const [inst, transforms] = findVehicaleInstanceByName(this.SContext(), spawnData.modelName)!
+        
+        spawnData.localBounds.copy(inst.geometry.boundingBox!)
+        return new VehicleActor(spawnData, setupData, this.SContext().network, this)
     }
 
-    addVehicle(startEdgeId: string, actor: VehicleActor): boolean {
+    addVehicle(actor: VehicleActor): boolean {
         const { actors, network } = this.SContext();
         const spawnBox = actor.getUpdateboudingBox().clone().expandByScalar(0.5);
 
@@ -170,11 +184,13 @@ export class RoadSimulationManager {
         );
         if (occupied) return false;
 
-        const tail = network.getFarVehicleByEdge(startEdgeId);
-        network.spawnVehicleActor(startEdgeId, actor);
+        const tail = network.getFarVehicleByEdge(actor.edgeId);
+        const [inst, transforms] = findVehicaleInstanceByName(this.SContext(), actor.spawnData.modelName)!
+
+        network.spawnVehicleActor(actor.edgeId, actor);
         this.appendToLaneQueue(actor, tail);
-        this.rContext.scene.add(actor.setupData.model);
         actors.push(actor);
+        transforms.push(actor.spawnData.transform)
         this.onVehicleAdded(actor);
         return true;
     }
@@ -211,7 +227,11 @@ export class RoadSimulationManager {
             this.SContext().network.removeVehicleActor(actor);
             this.removeFromLaneQueue(actor);
             this.SContext().actors.splice(index, 1);
-            actor.setupData.model.removeFromParent();
+
+            const [inst, transforms] = findVehicaleInstanceByName(this.SContext(), actor.spawnData.modelName)!
+            const ti = transforms.indexOf(actor.spawnData.transform)
+            transforms.splice(ti, 1)
+                
             this.onVehicleRemoved(actor)
         } else {
             console.warn("This actor not in scene")
