@@ -51,7 +51,10 @@ export class Content implements IContent{
     private createdAtDate : Date | undefined
     constructor(name : Readonly<string>){
         this.name = name;
-        this.calcDates();
+        if (this.lastModification().getTime() === 0 ||
+            this.createdAt().getTime() === 0) {
+            this.calcDates();
+        }
     }
     mayShow(_req: Readonly<Request>){
         return true
@@ -78,18 +81,19 @@ export class Content implements IContent{
         return req.get('User-Agent')!.match(/(iPhone|iPod|iPad|Android|BlackBerry)/)
     }
     private async calcDates() {
+        const githubUri = `https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}`
         console.log("")
-        console.log(`Requesting to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}"`)
-        const githubCommitInfo = await fetch(`https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}`);
+        console.log(`Requesting to "${githubUri}"`)
+        const githubCommitInfo = await fetch(githubUri);
         if (!githubCommitInfo.ok)
         {
-            console.error(`Github sent an unsuccessful response to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
+            console.error(`Github sent an unsuccessful response to "${githubUri}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
             return
         }
         const data : GitHubCommits | undefined | any = await githubCommitInfo.json()
         if (!isGitHubCommits(data))
         {
-            console.error(`Github sent not GitHubCommits to "https://api.github.com/repos/MaserPlay/js_site/commits?path=content/${this.name}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
+            console.error(`Github sent not GitHubCommits to "${githubUri}" response.\n ${githubCommitInfo.status}\n${await githubCommitInfo.text() ?? ""}`)
             return
         }
         if (data.length > 0)
